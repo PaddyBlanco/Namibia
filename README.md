@@ -1,0 +1,2 @@
+# Namibia
+Reisedokumentation, Reiseplanung etc
