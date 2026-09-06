@@ -1,18 +1,14 @@
 # Offene Punkte
 
-Stand: 06.09.2026, 18:01 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
+Stand: 06.09.2026, 18:16 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
 
 ## Blockierend für korrekte Zahlen
 
 | # | Punkt | Warum es zählt |
 |---|---|---|
-| 1 | **Kalahari (03.–04.09.), 36 €** — wer hat wie bezahlt? Steht noch als TBD/offen. | 36 € offen |
-| 2 | **Wereldend (07.09., 47,80 €)** — cash on arrival, wer zahlt vor Ort? | Bargeldplanung |
-| 3 | **Little Sossus (84 €), Moonvalley (25 €), Spitzkoppe (62 €)** — Zahlungsstatus offen. | 171 € offen |
-| 4 | **Granietkop (48 €), Onguma 2 Nächte (116 €)** — Zahlungsstatus unklar. | 164 € offen |
-| 5 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt, aktuell 45 € komplett als offen geführt. | Zahlungsstand |
-| 6 | **Klein Aus Vista Lodge, 100,91 € am 05.09.** — als Restzahlung Desert Horse eingetragen, aber Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit). Bitte bestätigen, ob der höhere Betrag stimmt oder ob hier etwas Zusätzliches bezahlt wurde. | 76,91 € Differenz zur Planung |
-| 7 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
+| 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
+| 2 | **Klein Aus Vista Lodge, 100,91 € am 05.09.** — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit). | 76,91 € Differenz zur Planung |
+| 3 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 
 ## Nach der Reise
 
@@ -42,3 +38,12 @@ Stand: 06.09.2026, 18:01 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   nicht Ausrüstung).
 - **2.000-€-Überweisung Patrick → Nora:** vor Reisebeginn (vor 02.09.2026)
   überwiesen, exaktes Datum nicht bekannt.
+- **Kalahari Anib Campsite (36 €):** vorab von Nora bezahlt (N26 Debit),
+  wie die anderen im Voraus gebuchten Camps.
+- **Wereldend Mountain Campsite (47,80 €):** bestätigt noch nicht fällig,
+  bleibt planmäßig als „cash on arrival" offen.
+- **Little Sossus (84 €), Moonvalley (25 €), Spitzkoppe (62 €):** bestätigt
+  noch nicht fällig, alle drei liegen noch in der Zukunft (08./10./11.09.),
+  bleiben planmäßig offen.
+- **Granietkop (48 €), Onguma 2 Nächte (116 €):** bestätigt noch nicht fällig
+  (13./17.–19.09. liegen noch in der Zukunft), bleiben planmäßig offen.

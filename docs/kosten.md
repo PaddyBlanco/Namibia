@@ -8,7 +8,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) | – | 1.895,26 € | bezahlt | 1.895,26 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 2 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
-| 3 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | vor Ort - bestaetigen | 0,00 € | 36,00 € | TBD ⚠️ | Bargeld? | Nacht bereits vergangen - wer hat gezahlt? |
+| 3 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | bezahlt | 36,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 4 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
 | 5 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,00 € | Deposit bezahlt - Rest siehe Blatt 02 | 24,00 € | 0,00 € | Nora | N26 Debit | Restzahlung 100.91 EUR am 05.09. an Klein Aus Vista Lodge - steht in Blatt 02 Nr. 11 |
 | 6 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 47,80 € | offen - cash on arrival | 0,00 € | 47,80 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
@@ -24,7 +24,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 16 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 17 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 
-**Summe:** 5.302,91 € geplant · 4.839,11 € bezahlt · **463,80 € noch offen**
+**Summe:** 5.302,91 € geplant · 4.875,11 € bezahlt · **427,80 € noch offen**
 
 ## 2. Laufende Kosten während der Reise
 
@@ -76,8 +76,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 2.726,15 € | 311,35 € | 3.037,50 € |
-| Nora | 2.112,96 € | 413,07 € | 2.526,03 € |
-| Noch ungeklärt (TBD) | 418,80 € | – | 418,80 € |
+| Nora | 2.148,96 € | 413,07 € | 2.562,03 € |
+| Noch ungeklärt (TBD) | 382,80 € | – | 382,80 € |
 
 ### Reisekasse (Bargeld)
 
@@ -92,7 +92,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Beitrag Patrick (Karte + Kasse + Überweisung) | 5.037,50 € |
-| Beitrag Nora (Karte) | 2.526,03 € |
+| Beitrag Nora (Karte) | 2.562,03 € |
 | Gesamtausgaben | 6.027,33 € |
 | Anteil je Person (50/50) | 3.013,67 € |
 | Saldo Patrick ohne Überweisung | 23,83 € |
