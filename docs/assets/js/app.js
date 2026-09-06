@@ -123,6 +123,63 @@
     return d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
   }
 
+  // ---------------- Reise-Status (aktuelle/naechste Unterkunft) ----------------
+  function renderReiseStatus(data) {
+    var today = todayISO();
+    var unterkuenfte = data.plan.filter(function (p) { return p.kategorie === "Unterkunft"; });
+
+    var aktuell = unterkuenfte.find(function (p) { return p.start <= today && today < p.ende; });
+    if (!aktuell) aktuell = unterkuenfte.find(function (p) { return p.start === today; });
+    var naechstes = unterkuenfte
+      .filter(function (p) { return p.start > today; })
+      .sort(function (a, b) { return a.start < b.start ? -1 : 1; })[0];
+
+    document.getElementById("status-aktuell").textContent = aktuell ? aktuell.beschreibung : "–";
+    document.getElementById("status-naechstes").textContent = naechstes
+      ? naechstes.beschreibung + " (ab " + fmtDate(naechstes.start) + ")"
+      : "Reise beendet";
+
+    var list = document.getElementById("unterkuenfte-list");
+    list.innerHTML = unterkuenfte.map(function (u) {
+      var range = u.naechte > 1 ? fmtDate(u.start) + "–" + fmtDate(u.ende) : fmtDate(u.start);
+      var link = u.info_link
+        ? '<a href="' + esc(u.info_link) + '" target="_blank" rel="noopener">Website ↗</a>'
+        : "";
+      return '<div class="unterkuenfte-row">' +
+        '<div><div class="uk-name">' + esc(u.beschreibung) + '</div><div class="uk-dates">' + range + "</div></div>" +
+        link +
+      "</div>";
+    }).join("");
+  }
+
+  // ---------------- Letzte Ausgaben ----------------
+  function renderLetzteAusgaben(data) {
+    var letzte = data.ausgaben.slice(-5).reverse();
+    var list = document.getElementById("letzte-ausgaben-list");
+    if (!letzte.length) {
+      list.innerHTML = '<div class="empty-state">Noch keine Ausgaben erfasst.</div>';
+      return;
+    }
+    list.innerHTML = letzte.map(function (a) {
+      var zahlungsPill = a.status === "offen"
+        ? '<span class="pill status-offen">offen</span>'
+        : '<span class="pill">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>";
+      return '<div class="card">' +
+        '<div class="card-row">' +
+          '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
+          '<span class="card-amount">' + euro(a.betrag) + "</span>" +
+        "</div>" +
+        '<div class="card-meta">' +
+          '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
+          zahlungsPill +
+          "<span>" + fmtDate(a.datum) + "</span>" +
+        "</div>" +
+      "</div>";
+    }).join("");
+
+    document.getElementById("alle-ausgaben-btn").onclick = function () { showSubView("ausgaben"); };
+  }
+
   // ---------------- Ausgaben ----------------
   var activeKat = "Alle", activeZahler = "Alle";
 
@@ -477,6 +534,8 @@
     document.getElementById("header-subline").textContent =
       "02.09. – 21.09.2026 · Patrick & Nora";
     renderHeute(data);
+    renderReiseStatus(data);
+    renderLetzteAusgaben(data);
     renderAusgaben(data);
     renderPlan(data);
     renderMehr(data);

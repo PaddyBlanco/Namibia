@@ -52,7 +52,7 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 
 | Pfad | Inhalt |
 |------|--------|
-| `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus |
+| `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus + `info_link` (offizielle Website je Unterkunft, siehe unten) |
 | `data/02_laufend.csv`      | Laufende Kosten während der Reise + Bargeldbewegungen |
 | `data/03_verrechnung.csv`  | Interne Transfers zwischen Patrick und Nora |
 | `data/04_tanken.csv`       | Tankvorgänge: Liter, Preis/Liter (NAD), km-Stand — ergänzt die `Tanken`-Zeilen aus `02_laufend.csv`, zählt selbst NICHT in die Summen |
@@ -97,6 +97,30 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
   Tabs kopieren) zu langsam war. `scripts/build_sheet.py` bleibt im Repo falls
   später doch gebraucht, aber **nicht mehr automatisch ausführen**.
 
+## CSV-Fallstrick: Kommas in Anmerkungen
+
+Am 06.09.2026 gefunden: Ein unquotiertes Komma in einer `anmerkung` (Flug-
+Zeile) hat die CSV stillschweigend zerlegt — `csv.DictReader` hat den Rest
+nach dem Komma in einen `None`-Restkey gepackt, wodurch der Text ab dort in
+`docs/kosten.md` und `site-data.json` fehlte, ohne Fehler. **Deshalb: CSVs
+nie mehr per Hand mit Kommas in Freitextfeldern schreiben** — entweder das
+Feld in Anführungszeichen setzen (`"Text, mit Komma"`) oder (sicherer) mit
+Pythons `csv`-Modul (`csv.DictWriter`) schreiben, das automatisch quotet.
+Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
+`python3 -c "import csv; [print(i+2,r) for i,r in enumerate(csv.DictReader(open('data/01_bezahlt.csv'))) if None in r]"`
+
+## Unterkunfts-Links (`info_link`)
+
+- Jede Unterkunft in `data/01_bezahlt.csv` hat eine `info_link`-Spalte mit
+  der **offiziellen Website** oder einer neutralen Info-Seite (z. B.
+  Tracks4Africa, iOverlander) — recherchiert am 06.09.2026, siehe Chat für
+  Quellen. **Nie die persönliche Buchungsbestätigung verlinken** (die aus
+  dem alten Google Sheet enthielten `auth_key=`/`sid=`-Tokens) — das Repo
+  ist öffentlich, ein Token in einer URL wäre wie ein offenliegendes
+  Passwort. Nur allgemeine, token-freie Seiten.
+- Wird in der Website unter „Alle Unterkünfte" (Kostenübersicht) verlinkt
+  und fließt über `data.plan` (aus `build_site_data.py`) ins JSON.
+
 ## Tanken
 
 - **`data/04_tanken.csv` dupliziert keine Kosten** — jeder Tankvorgang steht
@@ -119,10 +143,20 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
 - Mobile-first Single-Page-App, reines HTML/CSS/JS, **keine externen Libraries/CDNs**
   (funktioniert auch bei schlechtem Netz in Namibia; JSON wird zusätzlich in
   `localStorage` gecacht, damit die Seite auch offline zuletzt geladene Daten zeigt).
-- 3 Tabs unten: **Kosten** (mit Sub-Nav „Kostenübersicht" [Stat-Kacheln,
-  Saldo, Kategorien-Donut] und „Ausgabenliste" [filterbare Liste]),
-  **Reiseplan** (Zeitleiste, heutiger Tag live aus dem Gerätedatum des
-  Betrachters hervorgehoben), **Mehr** (Tanken, Verrechnung, offene Punkte).
+- 3 Tabs unten: **Kosten** (mit Sub-Nav „Kostenübersicht" und
+  „Ausgabenliste"), **Reiseplan** (Zeitleiste, heutiger Tag live aus dem
+  Gerätedatum des Betrachters hervorgehoben), **Mehr** (Tanken,
+  Verrechnung, offene Punkte).
+- **„Kostenübersicht" (= Startseite) von oben nach unten:** Reise-Status
+  (klein: aktuelle Unterkunft, nächstes Ziel, aufklappbare Liste „Alle
+  Unterkünfte" mit Links — berechnet aus `data.plan`, gefiltert auf
+  `kategorie === "Unterkunft"`, Vergleich gegen das *Gerätedatum des
+  Betrachters*, nicht gegen `generated_at`) → Letzte 5 Ausgaben (aus
+  `data.ausgaben`, das schon aufsteigend sortiert ist — einfach `.slice(-5)`)
+  mit Button zurück zur vollen Ausgabenliste → Gesamtkosten (Stat-Kacheln +
+  Kategorien-Donut) → Reisekasse → Saldo. Diese Reihenfolge kam vom Nutzer
+  (06.09.2026) explizit so, nicht selbst so entschieden — bei weiteren
+  Layoutwünschen an dieser Reihenfolge orientieren, nicht neu erfinden.
   Sub-Nav-Umschaltung (`showSubView()` in `app.js`) ist reines Anzeigen/
   Verstecken, nicht in der URL kodiert (kein Deep-Link auf die Ausgabenliste).
   Die DOM-IDs der einzelnen Widgets (`#day-badge`, `#t-gesamt`,
@@ -160,6 +194,18 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
   bleibt für noch nicht bezahlte Posten erhalten — Status hat Vorrang vor
   Zahlmittel. Neue Zahlmittel-Werte in den CSVs ggf. in `mapZahlmittel()`
   ergänzen, sonst erscheinen sie 1:1 als Fallback-Text.
+- **Dark-Mode-Design „Namibia bei Nacht"** (Nutzerwunsch 06.09.2026, mehr
+  Namibia-Bezug statt neutralem Dunkelmodus): wärmeres Wüstenschwarz
+  (`--bg: #14100c`) statt Grau, satteres Sonnenuntergangs-Terrakotta als
+  Akzent (`--accent: #e2793d`, Kontrast gegen `--bg` = 6,3:1, per
+  `dataviz`-Skill-Validator geprüft), plus eine sehr dezente, nahtlos
+  kachelnde Dünensilhouette als `background-image` auf `body`
+  (nur im Dark-Mode-Media-Query, `:root:not([data-theme="light"]) body`
+  — **nicht** auf `:root` selbst, sonst wird sie vom deckenden
+  `body`-Hintergrund verdeckt, siehe Chatverlauf 06.09.2026). Kategorie-
+  Donutfarben (`--series-*`) bleiben unverändert, nur die UI-Chrome-Farben
+  wurden angepasst. Beim Weiterbauen: neue Akzentfarben immer gegen
+  `--bg` mit dem Validator prüfen, nicht eyeballen.
 
 ## Konventionen
 

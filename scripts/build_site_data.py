@@ -244,6 +244,7 @@ def main():
             "kategorie": r["kategorie"],
             "beschreibung": beschreibung,
             "status": "offen" if num(r["offen_eur"]) > 0 and num(r["betrag_eur"]) > 0 else "bezahlt",
+            "info_link": r.get("info_link") or None,
         })
 
     offene_punkte = parse_offene_punkte()

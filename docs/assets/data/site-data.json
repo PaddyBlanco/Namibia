@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T19:08:31+00:00",
+  "generated_at": "2026-09-06T19:28:44+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -365,7 +365,8 @@
       "naechte": 0,
       "kategorie": "Flug",
       "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.)",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": null
     },
     {
       "start": "2026-09-03",
@@ -373,7 +374,8 @@
       "naechte": 0,
       "kategorie": "Mietwagen",
       "beschreibung": "Mietwagen inkl. Camping-Ausstattung 03.-21.09.",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": null
     },
     {
       "start": "2026-09-03",
@@ -381,7 +383,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Kalahari Anib Campsite",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://gondwana-collection.com/accommodation/kalahari-anib-campsite"
     },
     {
       "start": "2026-09-04",
@@ -389,7 +392,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Quiver Tree Camping",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://quivertreeforest.com/"
     },
     {
       "start": "2026-09-05",
@@ -397,7 +401,8 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://www.klein-aus-vista.com/accommodation/desert-horse-campsite/"
     },
     {
       "start": "2026-09-07",
@@ -405,7 +410,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Wereldend Mountain Campsite",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://tracks4africa.co.za/listings/item/w139286/wereldend-campsite/"
     },
     {
       "start": "2026-09-08",
@@ -413,7 +419,8 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Little Sossus Campsite",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://www.littlesossuslodge.com/"
     },
     {
       "start": "2026-09-10",
@@ -421,7 +428,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://ioverlander.com/places/107230-moonvalley-river-camp"
     },
     {
       "start": "2026-09-11",
@@ -429,7 +437,8 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://spitzkoppe.com/"
     },
     {
       "start": "2026-09-13",
@@ -437,7 +446,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Granietkop Campsite Damaraland",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://granietkop.com/"
     },
     {
       "start": "2026-09-14",
@@ -445,7 +455,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://hoadacampsite.com/"
     },
     {
       "start": "2026-09-15",
@@ -453,7 +464,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Okaukuejo Campsite Etosha",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://www.nwr.com.na/resorts/okaukuejo-resort/"
     },
     {
       "start": "2026-09-16",
@@ -461,7 +473,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Halali Campsite Etosha",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://www.nwr.com.na/resorts/halali-resort/"
     },
     {
       "start": "2026-09-17",
@@ -469,7 +482,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://onguma.com/tamboti-luxury-campsite/"
     },
     {
       "start": "2026-09-18",
@@ -477,7 +491,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
-      "status": "offen"
+      "status": "offen",
+      "info_link": "https://onguma.com/tamboti-luxury-campsite/"
     },
     {
       "start": "2026-09-19",
@@ -485,7 +500,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Waterberg Campsite",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://www.nwr.com.na/resorts/waterberg-resort/"
     },
     {
       "start": "2026-09-20",
@@ -493,7 +509,8 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
-      "status": "bezahlt"
+      "status": "bezahlt",
+      "info_link": "https://omatozu.com/"
     }
   ],
   "tanken": {

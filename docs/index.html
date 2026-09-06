@@ -28,7 +28,33 @@
     <div class="subview active" id="subview-uebersicht">
       <div class="day-badge" id="day-badge">–</div>
 
-      <h2>Gesamt</h2>
+      <!-- Reise-Status: klein, kompakt -->
+      <div class="reise-status" id="reise-status">
+        <div class="reise-status-row">
+          <span class="reise-status-icon">🏕️</span>
+          <div class="reise-status-text">
+            <div class="reise-status-label">Aktuell</div>
+            <div class="reise-status-value" id="status-aktuell">–</div>
+          </div>
+        </div>
+        <div class="reise-status-row">
+          <span class="reise-status-icon">➡️</span>
+          <div class="reise-status-text">
+            <div class="reise-status-label">Nächstes Ziel</div>
+            <div class="reise-status-value" id="status-naechstes">–</div>
+          </div>
+        </div>
+        <details class="unterkuenfte-details">
+          <summary>Alle Unterkünfte</summary>
+          <div id="unterkuenfte-list"></div>
+        </details>
+      </div>
+
+      <h2>Letzte Ausgaben</h2>
+      <div class="card-list card-list-compact" id="letzte-ausgaben-list"></div>
+      <button class="link-button" id="alle-ausgaben-btn">Alle Ausgaben anzeigen →</button>
+
+      <h2>Gesamtkosten</h2>
       <div class="tile-grid">
         <div class="tile wide">
           <div class="label">Gesamtausgaben</div>
@@ -43,6 +69,10 @@
           <div class="value" id="t-offen">–</div>
         </div>
       </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" id="kategorien-donut" viewBox="0 0 160 160" role="img" aria-label="Kostenverteilung nach Kategorie"></svg>
+      </div>
+      <div class="legend-list" id="kategorien-legend"></div>
 
       <h2>Reisekasse</h2>
       <div class="tile-grid">
@@ -67,12 +97,6 @@
           <div class="value" id="t-saldo">–</div>
         </div>
       </div>
-
-      <h2>Kosten nach Kategorie</h2>
-      <div class="donut-wrap">
-        <svg class="donut-svg" id="kategorien-donut" viewBox="0 0 160 160" role="img" aria-label="Kostenverteilung nach Kategorie"></svg>
-      </div>
-      <div class="legend-list" id="kategorien-legend"></div>
     </div>
 
     <div class="subview" id="subview-ausgaben">

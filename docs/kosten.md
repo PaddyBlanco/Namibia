@@ -6,8 +6,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Nr | Datum | Kategorie | Beschreibung | Nächte | Betrag | Status | bezahlt | offen | Zahler | Zahlmittel | Anmerkung |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Patrick-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Patrick | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt |
-| 2 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Nora-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Nora | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt |
+| 1 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Patrick-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Patrick | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt, bereits bezahlt |
+| 2 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Nora-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Nora | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt, bereits bezahlt |
 | 3 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
 | 4 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | bezahlt | 36,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
