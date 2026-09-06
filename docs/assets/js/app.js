@@ -332,6 +332,65 @@
     });
   }
 
+  // ---------------- Tanken ----------------
+  function renderTanken(data) {
+    var t = data.tanken || { fillups: [], summary: {}, tankstellen_hinweise: [] };
+    var s = t.summary || {};
+
+    var tiles = document.getElementById("tanken-tiles");
+    tiles.innerHTML =
+      tile("Gesamt getankt", s.gesamt_liter != null ? s.gesamt_liter.toLocaleString("de-DE") + " L" : "noch offen") +
+      tile("⌀ Preis / Liter", s.avg_preis_liter_eur != null ? euro(s.avg_preis_liter_eur) : "noch offen") +
+      tile("⌀ Verbrauch", s.avg_verbrauch_l_100km != null ? s.avg_verbrauch_l_100km.toLocaleString("de-DE") + " L/100km" : "noch offen") +
+      tile("Reichweite (voll)", s.reichweite_km != null ? "~" + s.reichweite_km + " km" : "Tankgröße fehlt noch", true);
+
+    var list = document.getElementById("tanken-list");
+    if (!t.fillups.length) {
+      list.innerHTML = '<div class="empty-state">Noch keine Tankvorgänge erfasst.</div>';
+    } else {
+      list.innerHTML = t.fillups.slice().reverse().map(function (f) {
+        var details = [];
+        if (f.liter != null) details.push(f.liter.toLocaleString("de-DE") + " L");
+        if (f.preis_pro_liter_nad != null) details.push(f.preis_pro_liter_nad.toLocaleString("de-DE") + " NAD/L");
+        if (f.verbrauch_l_100km != null) details.push(f.verbrauch_l_100km.toLocaleString("de-DE") + " L/100km");
+        if (f.kilometerstand != null) details.push(Math.round(f.kilometerstand).toLocaleString("de-DE") + " km-Stand");
+        return '<div class="card">' +
+          '<div class="card-row">' +
+            '<span class="card-title">' + esc(f.ort) + "</span>" +
+            '<span class="card-amount">' + euro(f.betrag_eur) + "</span>" +
+          "</div>" +
+          '<div class="card-meta">' +
+            (details.length ? details.map(function (d) { return '<span class="pill">' + esc(d) + "</span>"; }).join("") : '<span class="pill">Details fehlen noch</span>') +
+            '<span class="pill zahler-' + f.zahler.toLowerCase() + '">' + esc(f.zahler) + "</span>" +
+            "<span>" + fmtDate(f.datum) + "</span>" +
+          "</div>" +
+        "</div>";
+      }).join("");
+    }
+
+    var hint = document.getElementById("tanken-hint");
+    if (s.fahrzeug_modell === "TBD" || s.tankgroesse_liter == null) {
+      hint.textContent = "Fahrzeugmodell und Tankgröße fehlen noch – sobald bekannt, rechnet die Seite die Reichweite automatisch aus.";
+    } else {
+      hint.textContent = "";
+    }
+
+    var tsList = document.getElementById("tankstellen-list");
+    tsList.innerHTML = (t.tankstellen_hinweise || []).map(function (h) {
+      return '<div class="tankstellen-item">' +
+        '<div class="abschnitt">' + esc(h.abschnitt) + "</div>" +
+        '<div class="hinweis">' + esc(h.hinweis) + "</div>" +
+      "</div>";
+    }).join("");
+  }
+
+  function tile(label, value, wide) {
+    return '<div class="tile' + (wide ? " wide" : "") + '">' +
+      '<div class="label">' + esc(label) + "</div>" +
+      '<div class="value">' + esc(value) + "</div>" +
+    "</div>";
+  }
+
   // ---------------- Mehr: Kategorien, Verrechnung, offene Punkte ----------------
   function renderMehr(data) {
     var wedges = buildWedges(data.kategorien);
@@ -339,6 +398,7 @@
     renderDonut(wedges, total);
     renderLegend(wedges, total);
     initDonutInteraction();
+    renderTanken(data);
 
     var s = data.summary;
     var vc = document.getElementById("verrechnung-cards");

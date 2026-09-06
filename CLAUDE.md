@@ -55,6 +55,9 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus |
 | `data/02_laufend.csv`      | Laufende Kosten während der Reise + Bargeldbewegungen |
 | `data/03_verrechnung.csv`  | Interne Transfers zwischen Patrick und Nora |
+| `data/04_tanken.csv`       | Tankvorgänge: Liter, Preis/Liter (NAD), km-Stand — ergänzt die `Tanken`-Zeilen aus `02_laufend.csv`, zählt selbst NICHT in die Summen |
+| `data/fahrzeug.json`       | Mietwagen-Modell, Tankgröße, Herstellerverbrauch — für die Reichweitenberechnung |
+| `data/tankstellen_hinweise.csv` | Recherchierte Tankstellen-Planung entlang der Route (statisch, kein Kostenbezug) |
 | `docs/kosten.md`           | **Primäre Ansicht** – automatisch aus den CSVs erzeugt, lesbar auf GitHub |
 | `docs/karten-gebuehren.md` | Recherche Kartenkonditionen + Handlungsempfehlung |
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
@@ -93,6 +96,23 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
   (`docs/kosten.md`), weil der Sheet-Umweg (xlsx bauen → hochladen → manuell
   Tabs kopieren) zu langsam war. `scripts/build_sheet.py` bleibt im Repo falls
   später doch gebraucht, aber **nicht mehr automatisch ausführen**.
+
+## Tanken
+
+- **`data/04_tanken.csv` dupliziert keine Kosten** — jeder Tankvorgang steht
+  bereits als `Ausgabe`/Kategorie `Tanken` in `data/02_laufend.csv`. Die
+  Tanken-CSV ergänzt nur Liter, Preis/Liter (NAD) und Kilometerstand für
+  dieselbe Zeile (verknüpft über Datum/Ort in der Anmerkung). Beim Eintragen
+  neuer Tankbelege also **beide Dateien** pflegen: Betrag in `02_laufend.csv`,
+  Details in `04_tanken.csv`.
+- Verbrauch (L/100km) wird nur berechnet, wenn zwei **aufeinanderfolgende**
+  Fill-ups beide einen Kilometerstand haben — sonst `null`, nie geschätzt.
+- Reichweite (km) = Tankgröße ÷ Verbrauch × 100, nur wenn beides in
+  `data/fahrzeug.json` bzw. aus echten Fill-ups bekannt ist. Solange das
+  Fahrzeugmodell `"TBD"` ist, zeigt die Seite "Tankgröße fehlt noch".
+- `data/tankstellen_hinweise.csv` ist recherchiertes Allgemeinwissen zur
+  Route (Stand 06.09.2026, siehe Quellen im Chat-Verlauf), keine Live-Daten -
+  bei Bedarf mit tatsächlicher Erfahrung vor Ort aktualisieren.
 
 ## Website (GitHub Pages, `docs/`)
 

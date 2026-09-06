@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T17:21:04+00:00",
+  "generated_at": "2026-09-06T17:39:50+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -455,6 +455,105 @@
       "status": "bezahlt"
     }
   ],
+  "tanken": {
+    "fillups": [
+      {
+        "datum": "2026-09-03",
+        "ort": "Rehoboth",
+        "liter": null,
+        "preis_pro_liter_nad": null,
+        "preis_pro_liter_eur": null,
+        "betrag_eur": 73.42,
+        "kilometerstand": null,
+        "verbrauch_l_100km": null,
+        "zahler": "Patrick",
+        "anmerkung": "Entspricht Blatt 02 Nr. 7 (Agrimark) - Liter/Preis/km-Stand fehlen noch"
+      },
+      {
+        "datum": "2026-09-05",
+        "ort": "Keetmanshoop",
+        "liter": null,
+        "preis_pro_liter_nad": null,
+        "preis_pro_liter_eur": null,
+        "betrag_eur": 98.15,
+        "kilometerstand": null,
+        "verbrauch_l_100km": null,
+        "zahler": "Nora",
+        "anmerkung": "Entspricht Blatt 02 Nr. 10 (Agra Keetmanshoop) - Liter/Preis/km-Stand fehlen noch"
+      },
+      {
+        "datum": "2026-09-06",
+        "ort": "Lüderitz",
+        "liter": null,
+        "preis_pro_liter_nad": null,
+        "preis_pro_liter_eur": null,
+        "betrag_eur": 60.2,
+        "kilometerstand": null,
+        "verbrauch_l_100km": null,
+        "zahler": "Nora",
+        "anmerkung": "Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch"
+      }
+    ],
+    "summary": {
+      "gesamt_liter": null,
+      "gesamt_kosten": 231.77,
+      "avg_preis_liter_eur": null,
+      "avg_verbrauch_l_100km": null,
+      "fahrzeug_modell": "TBD",
+      "tankgroesse_liter": null,
+      "reichweite_km": null
+    },
+    "tankstellen_hinweise": [
+      {
+        "abschnitt": "Windhoek → Kalahari",
+        "hinweis": "Windhoek hat zahlreiche Tankstellen (Engen/Shell/Caltex) - vor Abfahrt volltanken."
+      },
+      {
+        "abschnitt": "Kalahari → Quiver Tree (Keetmanshoop)",
+        "hinweis": "Mariental und Keetmanshoop sind gut versorgt"
+      },
+      {
+        "abschnitt": "Quiver Tree → Aus",
+        "hinweis": "Aus hat mind. 2 Tankstellen im Ort - laut Rechnungen bereits genutzt (Agrimark Rehoboth war vorher)."
+      },
+      {
+        "abschnitt": "Aus → Wêreldend → Sossusvlei",
+        "hinweis": "Zwischen Aus/Sesriem-Gebiet und der Küste gibt es nur EINE Tankstelle unterwegs: Solitaire (ca. 340 km bis zur Küste"
+      },
+      {
+        "abschnitt": "Sossusvlei → Swakopmund",
+        "hinweis": "Vor Sesriem/Sossusvlei volltanken (dort selbst meist keine öffentliche Tankstelle)"
+      },
+      {
+        "abschnitt": "Swakopmund → Spitzkoppe",
+        "hinweis": "Spitzkoppe selbst hat KEINE Tankstelle. Vor Abfahrt in Swakopmund volltanken - Henties Bay auf dem Weg ist eine Option"
+      },
+      {
+        "abschnitt": "Spitzkoppe → Damaraland",
+        "hinweis": "Uis hat eine gut ausgestattete Engen-Tankstelle mit Shop - zuverlässiger Stopp auf dem Weg nach Damaraland."
+      },
+      {
+        "abschnitt": "Damaraland → Ugab/Hoada",
+        "hinweis": "Khorixas hat eine Engen-Tankstelle direkt an der Hauptstrasse - letzte sichere Gelegenheit vor den abgelegeneren Camps."
+      },
+      {
+        "abschnitt": "Ugab/Hoada → Etosha",
+        "hinweis": "Kamanjab und Outjo haben Tankstellen - Outjo ist die letzte groessere Stadt vor dem Etosha-Südeingang"
+      },
+      {
+        "abschnitt": "Etosha (Okaukuejo/Halali)",
+        "hinweis": "Innerhalb des Parks gibt es Tankstellen in Okaukuejo UND Halali (Namutoni im Osten ebenfalls) - Tanken im Park selbst ist also möglich"
+      },
+      {
+        "abschnitt": "Etosha → Waterberg → Omatozu",
+        "hinweis": "Otjiwarongo auf dem Weg ist gut versorgt (mehrere Tankstellen) - günstiger Zwischenstopp vor Waterberg."
+      },
+      {
+        "abschnitt": "Omatozu → Windhoek (Rückgabe)",
+        "hinweis": "Vor der Mietwagen-Rückgabe volltanken"
+      }
+    ]
+  },
   "offene_punkte": [
     {
       "punkt": "Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt.",
@@ -467,6 +566,10 @@
     {
       "punkt": "Mehrere N26-Umsätze standen beim Screenshot noch auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig.",
       "warum": "Kleine Rundungsabweichungen möglich, sobald final gebucht"
+    },
+    {
+      "punkt": "Tanken-Details:** Mietwagen-Modell, Tankgröße und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Patrick sagt, die Angaben kommen nach. Betrifft nicht die Kostensumme (die stimmt bereits), nur die neue Reichweiten-/Verbrauchsanzeige auf der Seite.",
+      "warum": "Reichweite/Verbrauch lassen sich erst berechnen, wenn Tankgröße + mind. 2 Fill-ups mit km-Stand bekannt sind"
     }
   ]
 }

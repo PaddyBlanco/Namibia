@@ -9,6 +9,7 @@ Stand: 06.09.2026, 18:16 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
 | 2 | **Klein Aus Vista Lodge, 100,91 € am 05.09.** — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit). | 76,91 € Differenz zur Planung |
 | 3 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
+| 4 | **Tanken-Details:** Mietwagen-Modell, Tankgröße und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Patrick sagt, die Angaben kommen nach. Betrifft nicht die Kostensumme (die stimmt bereits), nur die neue Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite/Verbrauch lassen sich erst berechnen, wenn Tankgröße + mind. 2 Fill-ups mit km-Stand bekannt sind |
 
 ## Nach der Reise
 

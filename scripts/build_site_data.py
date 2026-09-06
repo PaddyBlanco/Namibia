@@ -36,6 +36,83 @@ def num(v):
         return 0.0
 
 
+def is_tbd(v):
+    return v is None or v.strip() in ("", "TBD")
+
+
+def parse_tanken():
+    """Fill-ups aus 04_tanken.csv, angereichert um berechnete Kennzahlen.
+
+    Verbrauch (L/100km) wird nur zwischen zwei aufeinanderfolgenden Fill-ups
+    berechnet, die BEIDE einen Kilometerstand haben - fehlt einer, bleibt
+    das Feld None statt geraten zu werden.
+    """
+    try:
+        rows_ = rows("04_tanken.csv")
+    except FileNotFoundError:
+        return {"fillups": [], "summary": None}
+
+    fillups = []
+    last_km = None
+    for r in rows_:
+        liter = None if is_tbd(r["liter"]) else float(r["liter"])
+        preis_l_nad = None if is_tbd(r["preis_pro_liter_nad"]) else float(r["preis_pro_liter_nad"])
+        km = None if is_tbd(r["kilometerstand"]) else float(r["kilometerstand"])
+        betrag = num(r["betrag_eur"])
+        preis_l_eur = round(betrag / liter, 3) if liter else None
+
+        verbrauch = None
+        if km is not None and last_km is not None and liter is not None and km > last_km:
+            verbrauch = round(liter / (km - last_km) * 100, 1)
+        if km is not None:
+            last_km = km
+
+        fillups.append({
+            "datum": r["datum"],
+            "ort": r["ort"],
+            "liter": liter,
+            "preis_pro_liter_nad": preis_l_nad,
+            "preis_pro_liter_eur": preis_l_eur,
+            "betrag_eur": round(betrag, 2),
+            "kilometerstand": km,
+            "verbrauch_l_100km": verbrauch,
+            "zahler": r["zahler"],
+            "anmerkung": r["anmerkung"],
+        })
+
+    liter_bekannt = [f["liter"] for f in fillups if f["liter"] is not None]
+    verbrauch_bekannt = [f["verbrauch_l_100km"] for f in fillups if f["verbrauch_l_100km"] is not None]
+    preise_bekannt = [f["preis_pro_liter_eur"] for f in fillups if f["preis_pro_liter_eur"] is not None]
+
+    fahrzeug_path = DATA / "fahrzeug.json"
+    fahrzeug = json.loads(fahrzeug_path.read_text(encoding="utf-8")) if fahrzeug_path.exists() else {}
+    tankgroesse = fahrzeug.get("tankgroesse_liter")
+    verbrauch_avg = round(sum(verbrauch_bekannt) / len(verbrauch_bekannt), 1) if verbrauch_bekannt else fahrzeug.get("herstellerverbrauch_l_100km")
+
+    reichweite = None
+    if tankgroesse and verbrauch_avg:
+        reichweite = round(tankgroesse / verbrauch_avg * 100)
+
+    summary = {
+        "gesamt_liter": round(sum(liter_bekannt), 1) if liter_bekannt else None,
+        "gesamt_kosten": round(sum(f["betrag_eur"] for f in fillups), 2),
+        "avg_preis_liter_eur": round(sum(preise_bekannt) / len(preise_bekannt), 3) if preise_bekannt else None,
+        "avg_verbrauch_l_100km": verbrauch_avg,
+        "fahrzeug_modell": fahrzeug.get("modell", "TBD"),
+        "tankgroesse_liter": tankgroesse,
+        "reichweite_km": reichweite,
+    }
+
+    tankstellen_path = DATA / "tankstellen_hinweise.csv"
+    tankstellen = []
+    if tankstellen_path.exists():
+        with open(tankstellen_path, encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                tankstellen.append({"abschnitt": r["naeheAbschnitt"], "hinweis": r["hinweis"]})
+
+    return {"fillups": fillups, "summary": summary, "tankstellen_hinweise": tankstellen}
+
+
 def parse_offene_punkte():
     """Extrahiert die Tabellenzeilen unter '## Blockierend fuer korrekte Zahlen'."""
     text = OFFENE_PUNKTE_MD.read_text(encoding="utf-8")
@@ -141,6 +218,7 @@ def main():
         })
 
     offene_punkte = parse_offene_punkte()
+    tanken = parse_tanken()
 
     site_data = {
         "generated_at": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
@@ -149,6 +227,7 @@ def main():
         "kategorien": kategorien,
         "ausgaben": ausgaben,
         "plan": plan,
+        "tanken": tanken,
         "offene_punkte": offene_punkte,
     }
 

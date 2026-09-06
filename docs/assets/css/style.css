@@ -321,6 +321,49 @@ main {
 
 .empty-state { color: var(--text-dim); font-size: 0.88rem; padding: 20px 0; text-align: center; }
 
+/* ---------- Tanken ---------- */
+.tanken-hint {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  margin: 10px 0 18px;
+}
+.tanken-hint:empty { display: none; }
+
+.tankstellen-details {
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.tankstellen-details summary {
+  padding: 12px 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: var(--bg-elevated);
+  list-style: none;
+}
+.tankstellen-details summary::-webkit-details-marker { display: none; }
+.tankstellen-details summary::after { content: "▾"; float: right; color: var(--text-dim); }
+.tankstellen-details[open] summary::after { content: "▴"; }
+.tankstellen-item {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.tankstellen-item .abschnitt {
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 3px;
+}
+.tankstellen-item .hinweis { color: var(--text-dim); line-height: 1.4; }
+
 /* ---------- Bottom nav ---------- */
 .bottom-nav {
   position: fixed;
