@@ -157,8 +157,11 @@ def parse_offene_punkte():
         m = re.match(r"^\|\s*(\d+)\s*\|(.+)\|(.+)\|\s*$", line)
         if not m:
             continue
-        punkt = m.group(2).strip().strip("*")
-        punkt = re.sub(r"\*\*(.+?)\*\*", r"\1", punkt)
+        # Erst die **Bold**-Paare aufloesen, DANN strippen - umgekehrt
+        # zerstoert das fuehrende strip("*") das oeffnende Paar, und die
+        # schliessenden ** blieben mitten im Text stehen.
+        punkt = re.sub(r"\*\*(.+?)\*\*", r"\1", m.group(2).strip())
+        punkt = punkt.replace("**", "").strip()
         warum = m.group(3).strip()
         items.append({"punkt": punkt, "warum": warum})
     return items

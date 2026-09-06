@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T19:44:05+00:00",
+  "generated_at": "2026-09-06T21:06:51+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -636,11 +636,11 @@
   },
   "offene_punkte": [
     {
-      "punkt": "Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt.",
+      "punkt": "Hoada-Anzahlung — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt.",
       "warum": "Zahlungsstand"
     },
     {
-      "punkt": "Klein Aus Vista Lodge, 100,91 € am 05.09.** — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit).",
+      "punkt": "Klein Aus Vista Lodge, 100,91 € am 05.09. — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit).",
       "warum": "76,91 € Differenz zur Planung"
     },
     {
@@ -648,7 +648,7 @@
       "warum": "Kleine Rundungsabweichungen möglich, sobald final gebucht"
     },
     {
-      "punkt": "Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite.",
+      "punkt": "Tanken-Details: Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite.",
       "warum": "Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand)"
     }
   ]

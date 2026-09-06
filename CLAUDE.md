@@ -62,6 +62,7 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `docs/kosten.md`           | **Primäre Ansicht** – automatisch aus den CSVs erzeugt, lesbar auf GitHub |
 | `docs/karten-gebuehren.md` | Recherche Kartenkonditionen + Handlungsempfehlung |
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
+| `docs/handover.md`         | Projektstand-Übergabe: was fertig ist, was offen ist, wie es weitergeht |
 | `scripts/build_md.py`      | Baut `docs/kosten.md` aus den CSVs (schnell, Standardweg) |
 | `scripts/build_sheet.py`   | Baut zusätzlich eine .xlsx mit 3 Tabs – nur auf Zuruf, siehe unten |
 | `scripts/build_site_data.py` | Baut `docs/assets/data/site-data.json` für die GitHub-Pages-Seite |
