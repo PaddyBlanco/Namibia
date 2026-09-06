@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T19:28:44+00:00",
+  "generated_at": "2026-09-06T19:36:17+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -384,7 +384,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Kalahari Anib Campsite",
       "status": "bezahlt",
-      "info_link": "https://gondwana-collection.com/accommodation/kalahari-anib-campsite"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Kalahari%20Anib%20Campsite%2C%20Namibia"
     },
     {
       "start": "2026-09-04",
@@ -393,7 +393,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Quiver Tree Camping",
       "status": "bezahlt",
-      "info_link": "https://quivertreeforest.com/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Quiver%20Tree%20Camping%2C%20Namibia"
     },
     {
       "start": "2026-09-05",
@@ -402,7 +402,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
       "status": "bezahlt",
-      "info_link": "https://www.klein-aus-vista.com/accommodation/desert-horse-campsite/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia"
     },
     {
       "start": "2026-09-07",
@@ -411,7 +411,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Wereldend Mountain Campsite",
       "status": "offen",
-      "info_link": "https://tracks4africa.co.za/listings/item/w139286/wereldend-campsite/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Wereldend%20Mountain%20Campsite%2C%20Namibia"
     },
     {
       "start": "2026-09-08",
@@ -420,7 +420,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Little Sossus Campsite",
       "status": "offen",
-      "info_link": "https://www.littlesossuslodge.com/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia"
     },
     {
       "start": "2026-09-10",
@@ -429,7 +429,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
       "status": "offen",
-      "info_link": "https://ioverlander.com/places/107230-moonvalley-river-camp"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia"
     },
     {
       "start": "2026-09-11",
@@ -438,7 +438,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
       "status": "offen",
-      "info_link": "https://spitzkoppe.com/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia"
     },
     {
       "start": "2026-09-13",
@@ -447,7 +447,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Granietkop Campsite Damaraland",
       "status": "offen",
-      "info_link": "https://granietkop.com/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Granietkop%20Campsite%20Damaraland%2C%20Namibia"
     },
     {
       "start": "2026-09-14",
@@ -456,7 +456,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
       "status": "offen",
-      "info_link": "https://hoadacampsite.com/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Hoada%20Campsite%20%28statt%20Ugab%20Terrace%29%2C%20Namibia"
     },
     {
       "start": "2026-09-15",
@@ -465,7 +465,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Okaukuejo Campsite Etosha",
       "status": "bezahlt",
-      "info_link": "https://www.nwr.com.na/resorts/okaukuejo-resort/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Okaukuejo%20Campsite%20Etosha%2C%20Namibia"
     },
     {
       "start": "2026-09-16",
@@ -474,7 +474,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Halali Campsite Etosha",
       "status": "bezahlt",
-      "info_link": "https://www.nwr.com.na/resorts/halali-resort/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Halali%20Campsite%20Etosha%2C%20Namibia"
     },
     {
       "start": "2026-09-17",
@@ -483,7 +483,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti",
       "status": "offen",
-      "info_link": "https://onguma.com/tamboti-luxury-campsite/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%2C%20Namibia"
     },
     {
       "start": "2026-09-18",
@@ -492,7 +492,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
       "status": "offen",
-      "info_link": "https://onguma.com/tamboti-luxury-campsite/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia"
     },
     {
       "start": "2026-09-19",
@@ -501,7 +501,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Waterberg Campsite",
       "status": "bezahlt",
-      "info_link": "https://www.nwr.com.na/resorts/waterberg-resort/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Waterberg%20Campsite%2C%20Namibia"
     },
     {
       "start": "2026-09-20",
@@ -510,7 +510,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
       "status": "bezahlt",
-      "info_link": "https://omatozu.com/"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia"
     }
   ],
   "tanken": {
@@ -549,7 +549,7 @@
         "kilometerstand": null,
         "verbrauch_l_100km": null,
         "zahler": "Nora",
-        "anmerkung": "Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch"
+        "anmerkung": "Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch - Volltanken von Patrick bestaetigt (06.09.)"
       }
     ],
     "summary": {
@@ -611,7 +611,28 @@
         "abschnitt": "Omatozu → Windhoek (Rückgabe)",
         "hinweis": "Vor der Mietwagen-Rückgabe volltanken"
       }
-    ]
+    ],
+    "planung": {
+      "stand": "2026-09-06",
+      "letzter_volltank": {
+        "ort": "Lüderitz",
+        "datum": "2026-09-06"
+      },
+      "aktueller_standort": {
+        "ort": "Aus",
+        "datum": "2026-09-06"
+      },
+      "strecke_seit_volltank_km": 125,
+      "naechster_pflicht_stopp": {
+        "ort": "Solitaire",
+        "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
+      },
+      "strecke_bis_naechster_stopp_km": 348,
+      "empfehlung": "Aus hat zuverlässige Tankstellen direkt vor Ort – vor der Weiterfahrt Richtung Sesriem dort volltanken ist die sichere Wahl, auch wenn der Tank laut Schätzung noch reicht. Spätestens in Solitaire (ca. 348 km ab Aus über Sesriem) auffüllen – das ist die letzte Tankmöglichkeit vor der langen Küstenstrecke.",
+      "anmerkung": "Schätzung ohne Kilometerstand: 125 km basiert auf der Straßenentfernung Lüderitz–Aus (B4, ~125 km), 348 km auf Aus–Sesriem (~265 km) + Sesriem–Solitaire (~83 km). Verbrauch = Bordcomputer-Schnitt aus data/fahrzeug.json. Kein Ersatz für die Tankanzeige im Auto – bei nächster echter Tankung mit Kilometerstand wird die Schätzung wieder genau.",
+      "geschaetzte_rest_liter": 146.0,
+      "geschaetzte_restreichweite_km": 1304
+    }
   },
   "offene_punkte": [
     {

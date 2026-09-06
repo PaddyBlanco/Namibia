@@ -127,7 +127,25 @@ def parse_tanken():
             for r in csv.DictReader(fh):
                 tankstellen.append({"abschnitt": r["naeheAbschnitt"], "hinweis": r["hinweis"]})
 
-    return {"fillups": fillups, "summary": summary, "tankstellen_hinweise": tankstellen}
+    planung_path = DATA / "tankplanung.json"
+    planung = None
+    if planung_path.exists():
+        planung = json.loads(planung_path.read_text(encoding="utf-8"))
+        if tankgroesse and verbrauch_avg:
+            verbraucht = planung["strecke_seit_volltank_km"] / 100 * verbrauch_avg
+            rest_liter = max(tankgroesse - verbraucht, 0)
+            planung["geschaetzte_rest_liter"] = round(rest_liter, 1)
+            planung["geschaetzte_restreichweite_km"] = round(rest_liter / verbrauch_avg * 100)
+        else:
+            planung["geschaetzte_rest_liter"] = None
+            planung["geschaetzte_restreichweite_km"] = None
+
+    return {
+        "fillups": fillups,
+        "summary": summary,
+        "tankstellen_hinweise": tankstellen,
+        "planung": planung,
+    }
 
 
 def parse_offene_punkte():

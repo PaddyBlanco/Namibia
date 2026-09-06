@@ -18,8 +18,8 @@
 
 <main>
 
-  <!-- ============ KOSTEN ============ -->
-  <section class="view active" id="view-kosten">
+  <!-- ============ HOME ============ -->
+  <section class="view active" id="view-home">
     <div class="subnav">
       <button class="subnav-btn active" data-subview="uebersicht">Kostenübersicht</button>
       <button class="subnav-btn" data-subview="ausgaben">Ausgabenliste</button>
@@ -112,17 +112,26 @@
     <div class="timeline" id="plan-timeline"></div>
   </section>
 
-  <!-- ============ MEHR ============ -->
-  <section class="view" id="view-mehr">
-    <h2>⛽ Tanken</h2>
+  <!-- ============ TANKEN ============ -->
+  <section class="view" id="view-tanken">
+    <h2>Wo als nächstes tanken?</h2>
+    <div class="tankplanung-card" id="tankplanung-card"></div>
+
+    <h2>Verbrauch &amp; Reichweite</h2>
     <div class="tile-grid" id="tanken-tiles"></div>
-    <div class="card-list" id="tanken-list"></div>
     <div class="tanken-hint" id="tanken-hint"></div>
+
+    <h2>Tankvorgänge</h2>
+    <div class="card-list" id="tanken-list"></div>
+
     <details class="tankstellen-details">
       <summary>Tankstellen-Planung entlang der Route</summary>
       <div id="tankstellen-list"></div>
     </details>
+  </section>
 
+  <!-- ============ MEHR ============ -->
+  <section class="view" id="view-mehr">
     <h2>Wer hat wie viel getragen</h2>
     <div class="card-list" id="verrechnung-cards"></div>
 
@@ -135,7 +144,8 @@
 </main>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" data-view="kosten"><span class="icon">💶</span>Kosten</button>
+  <button class="nav-btn active" data-view="home"><span class="icon">🏠</span>Home</button>
+  <button class="nav-btn" data-view="tanken"><span class="icon">⛽</span>Tanken</button>
   <button class="nav-btn" data-view="plan"><span class="icon">🗺️</span>Reiseplan</button>
   <button class="nav-btn" data-view="mehr"><span class="icon">⋯</span>Mehr</button>
 </nav>

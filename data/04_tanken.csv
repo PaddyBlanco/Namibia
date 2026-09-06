@@ -1,4 +1,4 @@
-nr,datum,ort,liter,preis_pro_liter_nad,kilometerstand,betrag_eur,zahler,anmerkung
-1,2026-09-03,Rehoboth,TBD,TBD,TBD,73.42,Patrick,Entspricht Blatt 02 Nr. 7 (Agrimark) - Liter/Preis/km-Stand fehlen noch
-2,2026-09-05,Keetmanshoop,TBD,TBD,TBD,98.15,Nora,Entspricht Blatt 02 Nr. 10 (Agra Keetmanshoop) - Liter/Preis/km-Stand fehlen noch
-3,2026-09-06,Lüderitz,TBD,TBD,TBD,60.20,Nora,Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch
+nr,datum,ort,liter,preis_pro_liter_nad,kilometerstand,betrag_eur,zahler,anmerkung,volltanken
+1,2026-09-03,Rehoboth,TBD,TBD,TBD,73.42,Patrick,Entspricht Blatt 02 Nr. 7 (Agrimark) - Liter/Preis/km-Stand fehlen noch,TBD
+2,2026-09-05,Keetmanshoop,TBD,TBD,TBD,98.15,Nora,Entspricht Blatt 02 Nr. 10 (Agra Keetmanshoop) - Liter/Preis/km-Stand fehlen noch,TBD
+3,2026-09-06,Lüderitz,TBD,TBD,TBD,60.20,Nora,Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch - Volltanken von Patrick bestaetigt (06.09.),ja

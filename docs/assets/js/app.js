@@ -44,7 +44,7 @@
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () { showView(btn.dataset.view); });
     });
-    var initial = (location.hash || "#kosten").replace("#", "");
+    var initial = (location.hash || "#home").replace("#", "");
     showView(initial);
     initSubNav();
   }
@@ -59,7 +59,7 @@
     history.replaceState(null, "", "#" + name);
   }
 
-  // ---------------- Sub-Navigation (innerhalb "Kosten") ----------------
+  // ---------------- Sub-Navigation (innerhalb "Home") ----------------
   function initSubNav() {
     var buttons = document.querySelectorAll(".subnav-btn");
     buttons.forEach(function (btn) {
@@ -143,7 +143,7 @@
     list.innerHTML = unterkuenfte.map(function (u) {
       var range = u.naechte > 1 ? fmtDate(u.start) + "–" + fmtDate(u.ende) : fmtDate(u.start);
       var link = u.info_link
-        ? '<a href="' + esc(u.info_link) + '" target="_blank" rel="noopener">Website ↗</a>'
+        ? '<a href="' + esc(u.info_link) + '" target="_blank" rel="noopener">Google Maps ↗</a>'
         : "";
       return '<div class="unterkuenfte-row">' +
         '<div><div class="uk-name">' + esc(u.beschreibung) + '</div><div class="uk-dates">' + range + "</div></div>" +
@@ -426,9 +426,34 @@
   }
 
   // ---------------- Tanken ----------------
+  function renderTankplanung(planung) {
+    var card = document.getElementById("tankplanung-card");
+    if (!planung) {
+      card.innerHTML = '<div class="empty-state">Keine Tankplanung hinterlegt.</div>';
+      return;
+    }
+    var rows =
+      row("Letzter Volltank", planung.letzter_volltank.ort + " (" + fmtDate(planung.letzter_volltank.datum) + ")") +
+      row("Aktueller Standort", planung.aktueller_standort.ort + " (" + fmtDate(planung.aktueller_standort.datum) + ")") +
+      row("Geschätzt gefahren seit Volltank", "~" + planung.strecke_seit_volltank_km + " km") +
+      (planung.geschaetzte_restreichweite_km != null
+        ? row("Geschätzte Restreichweite", "~" + planung.geschaetzte_restreichweite_km + " km (~" + planung.geschaetzte_rest_liter + " L)")
+        : "") +
+      row("Nächster Pflichtstopp", planung.naechster_pflicht_stopp.ort + " (~" + planung.strecke_bis_naechster_stopp_km + " km)");
+
+    card.innerHTML = rows +
+      '<div class="tankplanung-empfehlung"><span class="icon">💡</span>' + esc(planung.empfehlung) + "</div>" +
+      '<div class="tankplanung-anmerkung">' + esc(planung.anmerkung) + "</div>";
+
+    function row(label, value) {
+      return '<div class="tankplanung-row"><span class="tp-label">' + esc(label) + '</span><span class="tp-value">' + esc(value) + "</span></div>";
+    }
+  }
+
   function renderTanken(data) {
-    var t = data.tanken || { fillups: [], summary: {}, tankstellen_hinweise: [] };
+    var t = data.tanken || { fillups: [], summary: {}, tankstellen_hinweise: [], planung: null };
     var s = t.summary || {};
+    renderTankplanung(t.planung);
 
     var quelleLabel = { fillups: "gemessen", bordcomputer: "Bordcomputer", hersteller: "Hersteller" }[s.verbrauch_quelle];
     var verbrauchLabel = "⌀ Verbrauch" + (quelleLabel ? " (" + quelleLabel + ")" : "");
@@ -544,6 +569,6 @@
   });
 
   window.addEventListener("hashchange", function () {
-    showView(location.hash.replace("#", "") || "kosten");
+    showView(location.hash.replace("#", "") || "home");
   });
 })();

@@ -52,12 +52,13 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 
 | Pfad | Inhalt |
 |------|--------|
-| `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus + `info_link` (offizielle Website je Unterkunft, siehe unten) |
+| `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus + `info_link` (Google-Maps-Suchlink je Unterkunft, siehe unten) |
 | `data/02_laufend.csv`      | Laufende Kosten während der Reise + Bargeldbewegungen |
 | `data/03_verrechnung.csv`  | Interne Transfers zwischen Patrick und Nora |
-| `data/04_tanken.csv`       | Tankvorgänge: Liter, Preis/Liter (NAD), km-Stand — ergänzt die `Tanken`-Zeilen aus `02_laufend.csv`, zählt selbst NICHT in die Summen |
+| `data/04_tanken.csv`       | Tankvorgänge: Liter, Preis/Liter (NAD), km-Stand, `volltanken` (ja/nein/TBD) — ergänzt die `Tanken`-Zeilen aus `02_laufend.csv`, zählt selbst NICHT in die Summen |
 | `data/fahrzeug.json`       | Mietwagen-Modell, Tankgröße, Herstellerverbrauch — für die Reichweitenberechnung |
 | `data/tankstellen_hinweise.csv` | Recherchierte Tankstellen-Planung entlang der Route (statisch, kein Kostenbezug) |
+| `data/tankplanung.json`    | Manuell gepflegte Momentaufnahme "wo als Nächstes tanken" (siehe Abschnitt Tanken) |
 | `docs/kosten.md`           | **Primäre Ansicht** – automatisch aus den CSVs erzeugt, lesbar auf GitHub |
 | `docs/karten-gebuehren.md` | Recherche Kartenkonditionen + Handlungsempfehlung |
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
@@ -112,14 +113,21 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
 ## Unterkunfts-Links (`info_link`)
 
 - Jede Unterkunft in `data/01_bezahlt.csv` hat eine `info_link`-Spalte mit
-  der **offiziellen Website** oder einer neutralen Info-Seite (z. B.
-  Tracks4Africa, iOverlander) — recherchiert am 06.09.2026, siehe Chat für
-  Quellen. **Nie die persönliche Buchungsbestätigung verlinken** (die aus
-  dem alten Google Sheet enthielten `auth_key=`/`sid=`-Tokens) — das Repo
-  ist öffentlich, ein Token in einer URL wäre wie ein offenliegendes
-  Passwort. Nur allgemeine, token-freie Seiten.
-- Wird in der Website unter „Alle Unterkünfte" (Kostenübersicht) verlinkt
-  und fließt über `data.plan` (aus `build_site_data.py`) ins JSON.
+  einem **Google-Maps-Suchlink** (`https://www.google.com/maps/search/?api=1&query=<Name>+Namibia`,
+  URL-encodiert) — Nutzerwunsch 06.09.2026: „nur den allgemeinen Link, dass
+  ich nachschauen kann wie es aussieht, Google Maps Standort mit Bildern,
+  kein Buchungslink". Bewusst eine **Such**-URL statt fest codierter
+  Koordinaten/Place-ID: Maps löst den Namen selbst auf, kein Risiko eines
+  falschen Orts durch recherchierte-aber-falsche Koordinaten.
+  Frühere Version verlinkte offizielle Websites/Tracks4Africo — auf
+  Nutzerwunsch durch Maps-Links ersetzt.
+- **Nie die persönliche Buchungsbestätigung verlinken** (die aus dem alten
+  Google Sheet enthielten `auth_key=`/`sid=`-Tokens) — das Repo ist
+  öffentlich, ein Token in einer URL wäre wie ein offenliegendes Passwort.
+- Wird in der Website unter „Alle Unterkünfte" (Home) als „Google Maps ↗"
+  verlinkt und fließt über `data.plan` (aus `build_site_data.py`) ins JSON.
+- Neu erfasste Unterkünfte: `info_link` immer im selben Muster setzen,
+  nie eine andere Linkart (Buchungsseite, Blog, Social Media) einsetzen.
 
 ## Tanken
 
@@ -137,17 +145,36 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
 - `data/tankstellen_hinweise.csv` ist recherchiertes Allgemeinwissen zur
   Route (Stand 06.09.2026, siehe Quellen im Chat-Verlauf), keine Live-Daten -
   bei Bedarf mit tatsächlicher Erfahrung vor Ort aktualisieren.
+- **Tanken ist ein eigener Tab** (nicht mehr unter „Mehr", Nutzerwunsch
+  06.09.2026), mit der Tankplanung-Karte ganz oben.
+- **`data/tankplanung.json` ist eine manuell gepflegte Momentaufnahme**,
+  kein automatischer Tracker — es gibt keine Odometer-/GPS-Anbindung.
+  Enthält: letzter bestätigter Volltank (Ort+Datum), aktueller Standort,
+  geschätzte gefahrene km seit Volltank (aus Straßenentfernungen
+  recherchiert, nie geraten ohne Quelle), nächster Pflicht-Tankstopp,
+  Freitext-Empfehlung. `build_site_data.py` rechnet daraus
+  `geschaetzte_rest_liter`/`geschaetzte_restreichweite_km` (Tankgröße −
+  gefahrene km/100×Verbrauch). **Nach jedem Ortswechsel oder echten
+  Tankvorgang aktualisieren**, sonst zeigt die Seite eine veraltete
+  Position. Sobald ein Fill-up einen echten Kilometerstand hat, diese
+  Datei mit dem neuen Nullpunkt (Ort, Datum, 0 km seit Volltank)
+  überschreiben.
 
 ## Website (GitHub Pages, `docs/`)
 
 - Mobile-first Single-Page-App, reines HTML/CSS/JS, **keine externen Libraries/CDNs**
   (funktioniert auch bei schlechtem Netz in Namibia; JSON wird zusätzlich in
   `localStorage` gecacht, damit die Seite auch offline zuletzt geladene Daten zeigt).
-- 3 Tabs unten: **Kosten** (mit Sub-Nav „Kostenübersicht" und
-  „Ausgabenliste"), **Reiseplan** (Zeitleiste, heutiger Tag live aus dem
-  Gerätedatum des Betrachters hervorgehoben), **Mehr** (Tanken,
-  Verrechnung, offene Punkte).
-- **„Kostenübersicht" (= Startseite) von oben nach unten:** Reise-Status
+- 4 Tabs unten (Stand 06.09.2026, `id`/`data-view`/Hash in Klammern):
+  **Home** (`home`, Icon 🏠 — mit Sub-Nav „Kostenübersicht" und
+  „Ausgabenliste"), **Tanken** (`tanken`, Icon ⛽ — Tankplanung-Karte,
+  Verbrauch/Reichweite-Kacheln, Tankvorgänge, Tankstellen-Planung),
+  **Reiseplan** (`plan`, Zeitleiste, heutiger Tag live aus dem Gerätedatum
+  des Betrachters hervorgehoben), **Mehr** (`mehr` — nur noch Verrechnung
+  und offene Punkte, Tanken wurde herausgelöst). Der erste Tab hieß bis
+  06.09.2026 „Kosten"/`kosten` — auf Nutzerwunsch zu „Home"/`home`
+  umbenannt, weil er jetzt der allgemeine Startbildschirm ist.
+- **„Kostenübersicht" (= Home-Startseite) von oben nach unten:** Reise-Status
   (klein: aktuelle Unterkunft, nächstes Ziel, aufklappbare Liste „Alle
   Unterkünfte" mit Links — berechnet aus `data.plan`, gefiltert auf
   `kategorie === "Unterkunft"`, Vergleich gegen das *Gerätedatum des
