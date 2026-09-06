@@ -59,7 +59,7 @@
     history.replaceState(null, "", "#" + name);
   }
 
-  // ---------------- Sub-Navigation (innerhalb "Home") ----------------
+  // ---------------- Sub-Navigation (innerhalb "Kosten") ----------------
   function initSubNav() {
     var buttons = document.querySelectorAll(".subnav-btn");
     buttons.forEach(function (btn) {
@@ -177,7 +177,12 @@
       "</div>";
     }).join("");
 
-    document.getElementById("alle-ausgaben-btn").onclick = function () { showSubView("ausgaben"); };
+    // Ausgabenliste liegt seit 06.09.2026 im eigenen Kosten-Tab, nicht mehr
+    // als Sub-View von Home - deshalb Tab UND Sub-View umschalten.
+    document.getElementById("alle-ausgaben-btn").onclick = function () {
+      showView("kosten");
+      showSubView("ausgaben");
+    };
   }
 
   // ---------------- Ausgaben ----------------

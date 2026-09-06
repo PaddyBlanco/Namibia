@@ -165,26 +165,34 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
 - Mobile-first Single-Page-App, reines HTML/CSS/JS, **keine externen Libraries/CDNs**
   (funktioniert auch bei schlechtem Netz in Namibia; JSON wird zusätzlich in
   `localStorage` gecacht, damit die Seite auch offline zuletzt geladene Daten zeigt).
-- 4 Tabs unten (Stand 06.09.2026, `id`/`data-view`/Hash in Klammern):
-  **Home** (`home`, Icon 🏠 — mit Sub-Nav „Kostenübersicht" und
-  „Ausgabenliste"), **Tanken** (`tanken`, Icon ⛽ — Tankplanung-Karte,
-  Verbrauch/Reichweite-Kacheln, Tankvorgänge, Tankstellen-Planung),
-  **Reiseplan** (`plan`, Zeitleiste, heutiger Tag live aus dem Gerätedatum
-  des Betrachters hervorgehoben), **Mehr** (`mehr` — nur noch Verrechnung
-  und offene Punkte, Tanken wurde herausgelöst). Der erste Tab hieß bis
-  06.09.2026 „Kosten"/`kosten` — auf Nutzerwunsch zu „Home"/`home`
-  umbenannt, weil er jetzt der allgemeine Startbildschirm ist.
-- **„Kostenübersicht" (= Home-Startseite) von oben nach unten:** Reise-Status
-  (klein: aktuelle Unterkunft, nächstes Ziel, aufklappbare Liste „Alle
-  Unterkünfte" mit Links — berechnet aus `data.plan`, gefiltert auf
-  `kategorie === "Unterkunft"`, Vergleich gegen das *Gerätedatum des
-  Betrachters*, nicht gegen `generated_at`) → Letzte 5 Ausgaben (aus
-  `data.ausgaben`, das schon aufsteigend sortiert ist — einfach `.slice(-5)`)
-  mit Button zurück zur vollen Ausgabenliste → Gesamtkosten (Stat-Kacheln +
-  Kategorien-Donut) → Reisekasse → Saldo. Diese Reihenfolge kam vom Nutzer
-  (06.09.2026) explizit so, nicht selbst so entschieden — bei weiteren
-  Layoutwünschen an dieser Reihenfolge orientieren, nicht neu erfinden.
-  Sub-Nav-Umschaltung (`showSubView()` in `app.js`) ist reines Anzeigen/
+- **5 gleichwertige Tabs unten** (Stand 06.09.2026, `id`/`data-view`/Hash
+  in Klammern) — **Home, Kosten und Tanken sind bewusst eigene Kategorien,
+  keine Unterpunkte voneinander** (Nutzer hat das ausdrücklich korrigiert,
+  nachdem Home zuerst nur eine Umbenennung des Kosten-Tabs war):
+  1. **Home** (`home`, 🏠) — der Startbildschirm, genau drei Blöcke, siehe unten
+  2. **Kosten** (`kosten`, 💶) — Sub-Nav „Kostenübersicht" (Gesamt-Kacheln,
+     Reisekasse, Saldo) und „Ausgabenliste" (filterbare Vollliste)
+  3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
+     Tankvorgänge, Tankstellen-Planung
+  4. **Plan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem
+     Gerätedatum des Betrachters hervorgehoben (Label bewusst kurz „Plan",
+     damit 5 Tabs auch auf 320px-Displays nebeneinander passen)
+  5. **Mehr** (`mehr`, ⋯) — Verrechnung, offene Punkte
+- **Home enthält genau diese drei Blöcke, in dieser Reihenfolge**
+  (Nutzervorgabe, nicht selbst erfunden — bei Layoutwünschen daran
+  orientieren):
+  1. Reise-Status, klein oben: aktuelle Unterkunft, nächstes Ziel,
+     aufklappbare Liste „Alle Unterkünfte" mit Maps-Links — berechnet aus
+     `data.plan`, gefiltert auf `kategorie === "Unterkunft"`, verglichen
+     gegen das *Gerätedatum des Betrachters*, nicht gegen `generated_at`
+  2. Letzte 5 Ausgaben (aus `data.ausgaben`, schon aufsteigend sortiert —
+     einfach `.slice(-5).reverse()`), plus Button „Alle Ausgaben anzeigen",
+     der per `showView("kosten") + showSubView("ausgaben")` in den
+     Kosten-Tab springt
+  3. Gesamtkosten als Tortendiagramm (Donut + Legende)
+  Stat-Kacheln, Reisekasse und Saldo gehören **nicht** auf Home, sondern in
+  den Kosten-Tab.
+- Sub-Nav-Umschaltung (`showSubView()` in `app.js`) ist reines Anzeigen/
   Verstecken, nicht in der URL kodiert (kein Deep-Link auf die Ausgabenliste).
   Die DOM-IDs der einzelnen Widgets (`#day-badge`, `#t-gesamt`,
   `#kategorien-donut`, `#ausgaben-list` usw.) sind unabhängig davon, in
