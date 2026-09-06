@@ -34,7 +34,14 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 4. **Fremdwährung immer im Original erfassen** (Betrag NAD + Betrag EUR).
    Der effektive Kurs wird berechnet, nicht eingetragen.
 5. **Unsichere Daten werden als `TBD` markiert**, nicht geschätzt. Annahmen gehören
-   in die Spalte `Anmerkung` und ins Änderungsprotokoll unten.
+   in die Spalte `Anmerkung`.
+6. **Jede Zahlung steht genau einmal.** Eine Unterkunft, die vor Ort (bar oder Karte)
+   bezahlt wird, gehört als Zahlung nach `02_laufend.csv`. Ihre Zeile in
+   `01_bezahlt.csv` bleibt als Buchungsübersicht stehen, bekommt aber
+   `betrag_eur = 0`, `offen_eur = 0` und einen Verweis in der Anmerkung —
+   sonst zählt Blatt 3 den Posten doppelt.
+7. **Barausgaben in EUR** werden mit dem Kurs bewertet, zu dem das Bargeld beschafft
+   wurde (aktuell **18,633 NAD/€** aus der ATM-Abhebung vom 03.09.).
 
 ## Kategorien (fix — nicht erweitern ohne Rücksprache)
 
@@ -48,25 +55,34 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus |
 | `data/02_laufend.csv`      | Laufende Kosten während der Reise + Bargeldbewegungen |
 | `data/03_verrechnung.csv`  | Interne Transfers zwischen Patrick und Nora |
+| `docs/kosten.md`           | **Primäre Ansicht** – automatisch aus den CSVs erzeugt, lesbar auf GitHub |
 | `docs/karten-gebuehren.md` | Recherche Kartenkonditionen + Handlungsempfehlung |
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
-| `scripts/build_sheet.py`   | Baut aus den CSVs eine .xlsx mit 3 Tabs (Google-Sheets-tauglich) |
+| `scripts/build_md.py`      | Baut `docs/kosten.md` aus den CSVs (schnell, Standardweg) |
+| `scripts/build_sheet.py`   | Baut zusätzlich eine .xlsx mit 3 Tabs – nur auf Zuruf, siehe unten |
 
 ## Workflow bei neuen Belegen
 
-1. Screenshot/Beleg auswerten → Zeile in die passende CSV eintragen (Zahler nicht vergessen)
-2. `python3 scripts/build_sheet.py` → erzeugt `build/Namibia_2026_Kosten.xlsx`
-3. Datei nach Google Drive hochladen (Konvertierung zu Google Sheet)
-4. Committen und pushen auf `claude/namibia-2026-bkm6h4`
+**Standardweg (schnell, während der Reise):**
 
-## Google Sheet
+1. Screenshot/Beleg auswerten → Zeile in die passende CSV eintragen (Zahler nicht vergessen)
+2. `python3 scripts/build_md.py` → aktualisiert `docs/kosten.md`
+3. Committen und pushen auf `claude/namibia-2026-bkm6h4`
+
+Der Google-Sheet-Weg (xlsx bauen + hochladen) ist bewusst pausiert, weil er pro
+Beleg mehrere Tool-Calls und eine manuelle Kopieraktion braucht — zu langsam für
+unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
+`scripts/build_sheet.py` und Abschnitt „Google Sheet" unten).
+
+## Google Sheet (pausiert)
 
 - Hauptsheet: `19ONck2pfgBvzi8dsNkwXYO7dFQyZN9uRk7ymKBBJCOE` ("Namibia 2026")
 - **Einschränkung:** Der Google-Drive-Connector kann lesen und neue Dateien anlegen,
   aber **keine Tabs in ein bestehendes Sheet schreiben**. Ein Google-Sheets-Schreib-
   Connector existiert im Connector-Verzeichnis nicht. Ablauf daher:
-  neues Sheet erzeugen → im Hauptsheet je Reiter Rechtsklick →
-  *Kopieren nach* → *Vorhandene Tabelle*.
+  `python3 scripts/build_sheet.py` → neues Sheet in Drive hochladen →
+  im Hauptsheet je Reiter Rechtsklick → *Kopieren nach* → *Vorhandene Tabelle*.
+- Nur auf ausdrücklichen Wunsch des Nutzers wieder aufnehmen.
 
 ## Konventionen
 

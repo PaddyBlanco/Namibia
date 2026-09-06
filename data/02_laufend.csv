@@ -6,3 +6,13 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 5,2026-09-03,09:08,Ausgabe,Windhoek,ATM Behebungsentgelt,Gebühren,,EUR,2.52,Patrick,Oberbank Debit,Entgelt zur Abhebung Nr. 4
 6,2026-09-03,12:26,Ausgabe,Windhoek,Superspar Maerua Mall,Lebensmittel,3122.63,NAD,169.22,Patrick,Oberbank Debit?,Grosseinkauf Camping-Proviant
 7,2026-09-03,13:51,Ausgabe,Rehoboth,Agrimark Rehoboth Express,Ausrüstung,1343.30,NAD,73.42,Patrick,Oberbank Debit?,KATEGORIE UNKLAR - Agrimark = Landhandel (Gas/Holz/Ausruestung/Lebensmittel?)
+8,2026-09-05,,Ausgabe,Quiver Tree Forest,Quivertree Forest Camping,Unterkunft,720.00,NAD,38.64,Patrick,Bargeld,Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet
+9,2026-09-04,11:58,Ausgabe,Mariental,Spar Mariental,Lebensmittel,,EUR,20.11,Nora,N26 Debit,
+10,2026-09-05,12:19,Ausgabe,Keetmanshoop,Agra Keetmanshoop - Fo,Tanken,,EUR,98.15,Nora,N26 Debit,KATEGORIE ZU BESTAETIGEN - Agra ist Landhandel mit Tankstelle; N26 kategorisiert als Transport & Auto
+11,2026-09-05,15:00,Ausgabe,Aus,Klein Aus Vista Lodge,Unterkunft,,EUR,100.91,Nora,N26 Debit,BETRAG PRUEFEN - Restzahlung Desert Horse Campsite (2 Naechte); geplant waren 48 EUR gesamt inkl. 24 EUR Deposit
+12,2026-09-06,08:24,Ausgabe,Kolmanskop,Ghost Town Tours CC,Aktivitäten,,EUR,24.96,Nora,N26 Debit,Geisterstadt-Tour Kolmanskop
+13,2026-09-06,11:24,Ausgabe,Aus,Desert Deli,Restaurant,,EUR,4.72,Nora,N26 Debit,
+14,2026-09-06,12:46,Ausgabe,Lüderitz,Portugues Fisherman,Restaurant,,EUR,45.57,Nora,N26 Debit,
+15,2026-09-06,13:43,Ausgabe,Lüderitz,Spar Lüderitz,Lebensmittel,,EUR,38.38,Nora,N26 Debit,
+16,2026-09-06,13:54,Ausgabe,Lüderitz,Studio88 Lüderitz,Shopping,,EUR,20.07,Nora,N26 Debit,
+17,2026-09-06,14:19,Ausgabe,Lüderitz,Lüderitz Fuel Center,Tanken,,EUR,60.20,Nora,N26 Debit,
