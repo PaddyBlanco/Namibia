@@ -1,0 +1,8 @@
+nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,zahlmittel,anmerkung
+1,2026-09-02,14:14,Ausgabe,Flughafen Wien,Leberkaespepi,Restaurant,,EUR,9.80,Patrick,Oberbank Debit?,Verpflegung Anreise
+2,2026-09-02,15:03,Ausgabe,Flughafen Wien,Relay F Gate,Sonstiges,,EUR,11.84,Patrick,Oberbank Debit?,Kiosk - Kategorie bitte bestaetigen
+3,2026-09-02,20:05,Ausgabe,Flughafen Muenchen,MUC Airport Retail,Sonstiges,,EUR,5.91,Patrick,Oberbank Debit?,Transit MUC
+4,2026-09-03,09:08,Abhebung,Windhoek,ATM WHKHKC01,Bargeld,4047.00,NAD,217.20,Patrick,Oberbank Debit,Bargeldbezug in die Reisekasse - KEINE Ausgabe
+5,2026-09-03,09:08,Ausgabe,Windhoek,ATM Behebungsentgelt,Gebühren,,EUR,2.52,Patrick,Oberbank Debit,Entgelt zur Abhebung Nr. 4
+6,2026-09-03,12:26,Ausgabe,Windhoek,Superspar Maerua Mall,Lebensmittel,3122.63,NAD,169.22,Patrick,Oberbank Debit?,Grosseinkauf Camping-Proviant
+7,2026-09-03,13:51,Ausgabe,Rehoboth,Agrimark Rehoboth Express,Ausrüstung,1343.30,NAD,73.42,Patrick,Oberbank Debit?,KATEGORIE UNKLAR - Agrimark = Landhandel (Gas/Holz/Ausruestung/Lebensmittel?)
