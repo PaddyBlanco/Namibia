@@ -74,15 +74,22 @@ Beleg mehrere Tool-Calls und eine manuelle Kopieraktion braucht — zu langsam f
 unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
 `scripts/build_sheet.py` und Abschnitt „Google Sheet" unten).
 
-## Google Sheet (pausiert)
+## Google Sheet — bewusst nicht mehr benutzt
 
-- Hauptsheet: `19ONck2pfgBvzi8dsNkwXYO7dFQyZN9uRk7ymKBBJCOE` ("Namibia 2026")
-- **Einschränkung:** Der Google-Drive-Connector kann lesen und neue Dateien anlegen,
-  aber **keine Tabs in ein bestehendes Sheet schreiben**. Ein Google-Sheets-Schreib-
-  Connector existiert im Connector-Verzeichnis nicht. Ablauf daher:
-  `python3 scripts/build_sheet.py` → neues Sheet in Drive hochladen →
-  im Hauptsheet je Reiter Rechtsklick → *Kopieren nach* → *Vorhandene Tabelle*.
-- Nur auf ausdrücklichen Wunsch des Nutzers wieder aufnehmen.
+- Hauptsheet: `19ONck2pfgBvzi8dsNkwXYO7dFQyZN9uRk7ymKBBJCOE` ("Namibia 2026"), Eigentümerin
+  Nora (norafhuber@gmail.com), Freigabe steht auf "jeder mit Link kann bearbeiten".
+- **Technische Grenze, nicht Berechtigungsfrage:** Der verbundene Google-Drive-
+  Connector kann Dateien lesen/suchen/neu anlegen (`create_file`, `copy_file`,
+  `read_file_content`, `update_file` für Titel/Ordner, `share_file`), aber es gibt
+  **keine Funktion, die Zellen oder Tabs in einem bestehenden Sheet ändert**.
+  Das gilt unabhängig davon, wie das Sheet freigegeben ist. Ein separater
+  Google-Sheets-Schreib-Connector ist im Connector-Verzeichnis nicht vorhanden.
+  "Claude für Google Sheets" (die Workspace-Erweiterung, die man direkt in Sheets
+  installiert) ist ein anderes Produkt und läuft nicht über diese Session.
+- Nutzer hat sich am 06.09.2026 explizit für den Markdown-Weg entschieden
+  (`docs/kosten.md`), weil der Sheet-Umweg (xlsx bauen → hochladen → manuell
+  Tabs kopieren) zu langsam war. `scripts/build_sheet.py` bleibt im Repo falls
+  später doch gebraucht, aber **nicht mehr automatisch ausführen**.
 
 ## Konventionen
 
