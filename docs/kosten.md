@@ -7,7 +7,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Nr | Datum | Kategorie | Beschreibung | Nächte | Betrag | Status | bezahlt | offen | Zahler | Zahlmittel | Anmerkung |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) | – | 1.895,26 € | bezahlt | 1.895,26 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
-| 2 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.805,00 € | bezahlt | 2.805,00 € | 0,00 € | Patrick ⚠️ | TBD | BETRAG UNKLAR: 2805.00 (DE-Tab) vs 2605.03 (Altversion) - bitte klaeren |
+| 2 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
 | 3 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | vor Ort - bestaetigen | 0,00 € | 36,00 € | TBD ⚠️ | Bargeld? | Nacht bereits vergangen - wer hat gezahlt? |
 | 4 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
 | 5 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,00 € | Deposit bezahlt - Rest siehe Blatt 02 | 24,00 € | 0,00 € | Nora | N26 Debit | Restzahlung 100.91 EUR am 05.09. an Klein Aus Vista Lodge - steht in Blatt 02 Nr. 11 |
@@ -24,7 +24,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 16 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 17 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 
-**Summe:** 5.381,76 € geplant · 4.917,96 € bezahlt · **463,80 € noch offen**
+**Summe:** 5.302,91 € geplant · 4.839,11 € bezahlt · **463,80 € noch offen**
 
 ## 2. Laufende Kosten während der Reise
 
@@ -32,13 +32,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Nr | Datum | Zeit | Typ | Ort | Händler | Kategorie | Betrag FW | € | Zahler | Zahlmittel | Kurs | Anmerkung |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2026-09-02 | 14:14 | Ausgabe | Flughafen Wien | Leberkaespepi | Restaurant | – | 9,80 € | Patrick | Oberbank Debit? | – | Verpflegung Anreise |
-| 2 | 2026-09-02 | 15:03 | Ausgabe | Flughafen Wien | Relay F Gate | Sonstiges | – | 11,84 € | Patrick | Oberbank Debit? | – | Kiosk - Kategorie bitte bestaetigen |
-| 3 | 2026-09-02 | 20:05 | Ausgabe | Flughafen Muenchen | MUC Airport Retail | Sonstiges | – | 5,91 € | Patrick | Oberbank Debit? | – | Transit MUC |
+| 1 | 2026-09-02 | 14:14 | Ausgabe | Flughafen Wien | Leberkaespepi | Restaurant | – | 9,80 € | Patrick | TBD | – | Verpflegung Anreise - Karte auf Wunsch nicht weiter geklaert |
+| 2 | 2026-09-02 | 15:03 | Ausgabe | Flughafen Wien | Relay F Gate | Sonstiges | – | 11,84 € | Patrick | TBD | – | Kiosk - Karte auf Wunsch nicht weiter geklaert |
+| 3 | 2026-09-02 | 20:05 | Ausgabe | Flughafen Muenchen | MUC Airport Retail | Sonstiges | – | 5,91 € | Patrick | TBD | – | Transit MUC - Karte auf Wunsch nicht weiter geklaert |
 | 4 | 2026-09-03 | 09:08 | Abhebung 💶 | Windhoek | ATM WHKHKC01 | Bargeld | 4047.00 NAD | 217,20 € | Patrick | Oberbank Debit | 18.633 | Bargeldbezug in die Reisekasse - KEINE Ausgabe |
 | 5 | 2026-09-03 | 09:08 | Ausgabe | Windhoek | ATM Behebungsentgelt | Gebühren | – | 2,52 € | Patrick | Oberbank Debit | – | Entgelt zur Abhebung Nr. 4 |
-| 6 | 2026-09-03 | 12:26 | Ausgabe | Windhoek | Superspar Maerua Mall | Lebensmittel | 3122.63 NAD | 169,22 € | Patrick | Oberbank Debit? | 18.453 | Grosseinkauf Camping-Proviant |
-| 7 | 2026-09-03 | 13:51 | Ausgabe | Rehoboth | Agrimark Rehoboth Express | Ausrüstung | 1343.30 NAD | 73,42 € | Patrick | Oberbank Debit? | 18.296 | KATEGORIE UNKLAR - Agrimark = Landhandel (Gas/Holz/Ausruestung/Lebensmittel?) ⚠️ |
+| 6 | 2026-09-03 | 12:26 | Ausgabe | Windhoek | Superspar Maerua Mall | Lebensmittel | 3122.63 NAD | 169,22 € | Patrick | Oberbank Debit | 18.453 | Grosseinkauf Camping-Proviant - Karte von Patrick bestaetigt |
+| 7 | 2026-09-03 | 13:51 | Ausgabe | Rehoboth | Agrimark Rehoboth Express | Tanken | 1343.30 NAD | 73,42 € | Patrick | TBD | 18.296 | Diesel/Tanken - von Patrick bestaetigt; Karte auf Wunsch nicht weiter geklaert |
 | 8 | 2026-09-05 | – | Ausgabe | Quiver Tree Forest | Quivertree Forest Camping | Unterkunft | 720.00 NAD | 38,64 € | Patrick | Bargeld | 18.634 | Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet |
 | 9 | 2026-09-04 | 11:58 | Ausgabe | Mariental | Spar Mariental | Lebensmittel | – | 20,11 € | Nora | N26 Debit | – | – |
 | 10 | 2026-09-05 | 12:19 | Ausgabe | Keetmanshoop | Agra Keetmanshoop - Fo | Tanken | – | 98,15 € | Nora | N26 Debit | – | KATEGORIE ZU BESTAETIGEN - Agra ist Landhandel mit Tankstelle; N26 kategorisiert als Transport & Auto |
@@ -58,25 +58,24 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Kategorie | Betrag |
 |---|---|
-| Mietwagen | 2.805,00 € |
+| Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
 | Unterkunft | 821,05 € |
+| Tanken | 231,77 € |
 | Lebensmittel | 227,71 € |
-| Tanken | 158,35 € |
-| Ausrüstung | 73,42 € |
 | Restaurant | 60,09 € |
 | Aktivitäten | 24,96 € |
 | Shopping | 20,07 € |
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |
 
-**Gesamtausgaben: 6.106,18 €**
+**Gesamtausgaben: 6.027,33 €**
 
 ### Wer hat wie viel getragen
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 2.805,00 € | 311,35 € | 3.116,35 € |
+| Patrick | 2.726,15 € | 311,35 € | 3.037,50 € |
 | Nora | 2.112,96 € | 413,07 € | 2.526,03 € |
 | Noch ungeklärt (TBD) | 418,80 € | – | 418,80 € |
 
@@ -88,16 +87,16 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 ### Verrechnung zwischen Patrick und Nora
 
-- TBD: **Patrick → Nora**, 2.000,00 € — Ausgleich fuer Noras Vorauszahlungen (Flug + Unterkuenfte) (Datum bitte ergaenzen)
+- vor 2026-09-02: **Patrick → Nora**, 2.000,00 € — Ausgleich fuer Noras Vorauszahlungen (Flug + Unterkuenfte) (Genaues Datum unbekannt - laut Patrick vor Reisebeginn ueberwiesen)
 
 |  | Betrag |
 |---|---|
-| Beitrag Patrick (Karte + Kasse + Überweisung) | 5.116,35 € |
+| Beitrag Patrick (Karte + Kasse + Überweisung) | 5.037,50 € |
 | Beitrag Nora (Karte) | 2.526,03 € |
-| Gesamtausgaben | 6.106,18 € |
-| Anteil je Person (50/50) | 3.053,09 € |
-| Saldo Patrick ohne Überweisung | 63,26 € |
-| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.063,26 €** |
+| Gesamtausgaben | 6.027,33 € |
+| Anteil je Person (50/50) | 3.013,67 € |
+| Saldo Patrick ohne Überweisung | 23,83 € |
+| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.023,83 €** |
 
 *Lesehilfe: Die 2.000 € sind noch weitgehend ungenutztes Guthaben bei Nora, keine Ausgabe. Sobald Nora damit gemeinsame Kosten zahlt, sinkt der Saldo automatisch – neue Zeilen dazu in `data/02_laufend.csv` mit Zahler `Nora`.*
 
