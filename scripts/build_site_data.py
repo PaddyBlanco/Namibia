@@ -203,8 +203,18 @@ def main():
     }
 
     # ---------- Reiseplan (aus Blatt 1, inkl. Naechte-Spanne) ----------
+    # Aufgeteilte Posten (z.B. Flug haelftig Patrick/Nora) stehen als zwei
+    # Zeilen in 01_bezahlt.csv - fuer die Zeitleiste zu einem Eintrag
+    # zusammenfassen, sonst taucht derselbe Tag doppelt auf.
+    ANTEIL_SUFFIX = re.compile(r"\s*-\s*\S+-Anteil\s*\(\d+%\)\s*$")
     plan = []
+    seen_plan_keys = set()
     for r in b1:
+        beschreibung = ANTEIL_SUFFIX.sub("", r["beschreibung"])
+        key = (r["datum"], r["kategorie"], beschreibung)
+        if key in seen_plan_keys:
+            continue
+        seen_plan_keys.add(key)
         start = datetime.date.fromisoformat(r["datum"])
         naechte = int(float(r["naechte"])) if r["naechte"] else 0
         ende = (start + datetime.timedelta(days=naechte)).isoformat() if naechte else r["datum"]
@@ -213,7 +223,7 @@ def main():
             "ende": ende,
             "naechte": naechte,
             "kategorie": r["kategorie"],
-            "beschreibung": r["beschreibung"],
+            "beschreibung": beschreibung,
             "status": "offen" if num(r["offen_eur"]) > 0 and num(r["betrag_eur"]) > 0 else "bezahlt",
         })
 

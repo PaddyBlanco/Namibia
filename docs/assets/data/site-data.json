@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T17:39:50+00:00",
+  "generated_at": "2026-09-06T17:51:05+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -11,10 +11,10 @@
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
-    "beitrag_patrick": 5037.5,
-    "beitrag_nora": 2562.03,
+    "beitrag_patrick": 5985.13,
+    "beitrag_nora": 1614.4,
     "anteil_pro_person": 3013.66,
-    "saldo_patrick": 2023.84,
+    "saldo_patrick": 2971.47,
     "transfer_patrick_nora": 2000.0
   },
   "kategorien": [
@@ -63,8 +63,16 @@
     {
       "datum": "2026-09-02",
       "kategorie": "Flug",
-      "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.)",
-      "betrag": 1895.26,
+      "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.) - Patrick-Anteil (50%)",
+      "betrag": 947.63,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-02",
+      "kategorie": "Flug",
+      "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.) - Nora-Anteil (50%)",
+      "betrag": 947.63,
       "zahler": "Nora",
       "status": "bezahlt"
     },

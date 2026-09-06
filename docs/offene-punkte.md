@@ -21,7 +21,9 @@ Stand: 06.09.2026, 18:16 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 
 - Bargeld-Logik festgelegt: Abhebung = Umbuchung, nicht Ausgabe (nur Entgelt zählt).
 - Kartenempfehlung recherchiert (`docs/karten-gebuehren.md`).
-- Flug: von Nora vorab bezahlt (nicht Patrick, wie ursprünglich vermutet).
+- **Flug (1.895,26 €):** gleichmäßig zwischen Patrick und Nora aufgeteilt
+  (je 947,63 €), beide Anteile bereits bezahlt. Zahlmittel je Anteil noch
+  unbekannt (`TBD`). Vorherige Annahme „komplett Nora" war falsch.
 - Unterkünfte: Patrick hat keine davon direkt bezahlt — vorab bezahlte Camps
   (Okaukuejo, Halali, Waterberg, Omatozu, Desert-Horse-Deposit, Hoada-Anzahlung)
   liefen über Nora.

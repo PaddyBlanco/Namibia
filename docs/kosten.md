@@ -6,23 +6,24 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Nr | Datum | Kategorie | Beschreibung | Nächte | Betrag | Status | bezahlt | offen | Zahler | Zahlmittel | Anmerkung |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) | – | 1.895,26 € | bezahlt | 1.895,26 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
-| 2 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
-| 3 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | bezahlt | 36,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
-| 4 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
-| 5 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,00 € | Deposit bezahlt - Rest siehe Blatt 02 | 24,00 € | 0,00 € | Nora | N26 Debit | Restzahlung 100.91 EUR am 05.09. an Klein Aus Vista Lodge - steht in Blatt 02 Nr. 11 |
-| 6 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 47,80 € | offen - cash on arrival | 0,00 € | 47,80 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
-| 7 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,00 € | offen | 0,00 € | 84,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
-| 8 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 25,00 € | offen - cash on arrival | 0,00 € | 25,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
-| 9 | 2026-09-11 | Unterkunft | Spitzkoppe Campsite | 2 | 62,00 € | offen | 0,00 € | 62,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
-| 10 | 2026-09-13 | Unterkunft | Granietkop Campsite Damaraland | 1 | 48,00 € | gebucht - Status unklar | 0,00 € | 48,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
-| 11 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | angezahlt | 0,00 € | 45,00 € | Nora | N26 Debit | Anzahlungsbetrag unbekannt - bitte nachtragen |
-| 12 | 2026-09-15 | Unterkunft | Okaukuejo Campsite Etosha | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
-| 13 | 2026-09-16 | Unterkunft | Halali Campsite Etosha | 1 | 57,00 € | bezahlt | 57,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
-| 14 | 2026-09-17 | Unterkunft | Onguma Tamboti | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
-| 15 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
-| 16 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
-| 17 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
+| 1 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Patrick-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Patrick | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt |
+| 2 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Nora-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Nora | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt |
+| 3 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
+| 4 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | bezahlt | 36,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
+| 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
+| 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,00 € | Deposit bezahlt - Rest siehe Blatt 02 | 24,00 € | 0,00 € | Nora | N26 Debit | Restzahlung 100.91 EUR am 05.09. an Klein Aus Vista Lodge - steht in Blatt 02 Nr. 11 |
+| 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 47,80 € | offen - cash on arrival | 0,00 € | 47,80 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
+| 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,00 € | offen | 0,00 € | 84,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
+| 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 25,00 € | offen - cash on arrival | 0,00 € | 25,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
+| 10 | 2026-09-11 | Unterkunft | Spitzkoppe Campsite | 2 | 62,00 € | offen | 0,00 € | 62,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
+| 11 | 2026-09-13 | Unterkunft | Granietkop Campsite Damaraland | 1 | 48,00 € | gebucht - Status unklar | 0,00 € | 48,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
+| 12 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | angezahlt | 0,00 € | 45,00 € | Nora | N26 Debit | Anzahlungsbetrag unbekannt - bitte nachtragen |
+| 13 | 2026-09-15 | Unterkunft | Okaukuejo Campsite Etosha | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
+| 14 | 2026-09-16 | Unterkunft | Halali Campsite Etosha | 1 | 57,00 € | bezahlt | 57,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
+| 15 | 2026-09-17 | Unterkunft | Onguma Tamboti | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
+| 16 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
+| 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
+| 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 
 **Summe:** 5.302,91 € geplant · 4.875,11 € bezahlt · **427,80 € noch offen**
 
@@ -75,8 +76,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 2.726,15 € | 311,35 € | 3.037,50 € |
-| Nora | 2.148,96 € | 413,07 € | 2.562,03 € |
+| Patrick | 3.673,78 € | 311,35 € | 3.985,13 € |
+| Nora | 1.201,33 € | 413,07 € | 1.614,40 € |
 | Noch ungeklärt (TBD) | 382,80 € | – | 382,80 € |
 
 ### Reisekasse (Bargeld)
@@ -91,12 +92,12 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Beitrag Patrick (Karte + Kasse + Überweisung) | 5.037,50 € |
-| Beitrag Nora (Karte) | 2.562,03 € |
+| Beitrag Patrick (Karte + Kasse + Überweisung) | 5.985,13 € |
+| Beitrag Nora (Karte) | 1.614,40 € |
 | Gesamtausgaben | 6.027,33 € |
 | Anteil je Person (50/50) | 3.013,67 € |
-| Saldo Patrick ohne Überweisung | 23,83 € |
-| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.023,83 €** |
+| Saldo Patrick ohne Überweisung | 971,46 € |
+| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.971,46 €** |
 
 *Lesehilfe: Die 2.000 € sind noch weitgehend ungenutztes Guthaben bei Nora, keine Ausgabe. Sobald Nora damit gemeinsame Kosten zahlt, sinkt der Saldo automatisch – neue Zeilen dazu in `data/02_laufend.csv` mit Zahler `Nora`.*
 
