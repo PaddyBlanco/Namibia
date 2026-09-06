@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T18:31:30+00:00",
+  "generated_at": "2026-09-06T19:08:31+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -66,6 +66,7 @@
       "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.) - Patrick-Anteil (50%)",
       "betrag": 947.63,
       "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -74,6 +75,7 @@
       "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.) - Nora-Anteil (50%)",
       "betrag": 947.63,
       "zahler": "Nora",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -82,6 +84,7 @@
       "beschreibung": "Leberkaespepi",
       "betrag": 9.8,
       "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -90,6 +93,7 @@
       "beschreibung": "Relay F Gate",
       "betrag": 11.84,
       "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -98,6 +102,7 @@
       "beschreibung": "MUC Airport Retail",
       "betrag": 5.91,
       "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -106,6 +111,7 @@
       "beschreibung": "Mietwagen inkl. Camping-Ausstattung 03.-21.09.",
       "betrag": 2726.15,
       "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -114,6 +120,7 @@
       "beschreibung": "Kalahari Anib Campsite",
       "betrag": 36.0,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -122,6 +129,7 @@
       "beschreibung": "ATM Behebungsentgelt",
       "betrag": 2.52,
       "zahler": "Patrick",
+      "zahlmittel": "Oberbank Debit",
       "status": "bezahlt"
     },
     {
@@ -130,6 +138,7 @@
       "beschreibung": "Superspar Maerua Mall",
       "betrag": 169.22,
       "zahler": "Patrick",
+      "zahlmittel": "Oberbank Debit",
       "status": "bezahlt"
     },
     {
@@ -138,6 +147,7 @@
       "beschreibung": "Agrimark Rehoboth Express",
       "betrag": 73.42,
       "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -146,6 +156,7 @@
       "beschreibung": "Spar Mariental",
       "betrag": 20.11,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -154,6 +165,7 @@
       "beschreibung": "Desert Horse Campsite Aus",
       "betrag": 24.0,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -162,6 +174,7 @@
       "beschreibung": "Quivertree Forest Camping",
       "betrag": 38.64,
       "zahler": "Patrick",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
     {
@@ -170,6 +183,7 @@
       "beschreibung": "Agra Keetmanshoop - Fo",
       "betrag": 98.15,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -178,6 +192,7 @@
       "beschreibung": "Klein Aus Vista Lodge",
       "betrag": 100.91,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -186,6 +201,7 @@
       "beschreibung": "Ghost Town Tours CC",
       "betrag": 24.96,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -194,6 +210,7 @@
       "beschreibung": "Desert Deli",
       "betrag": 4.72,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -202,6 +219,7 @@
       "beschreibung": "Portugues Fisherman",
       "betrag": 45.57,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -210,6 +228,7 @@
       "beschreibung": "Spar Lüderitz",
       "betrag": 38.38,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -218,6 +237,7 @@
       "beschreibung": "Studio88 Lüderitz",
       "betrag": 20.07,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -226,6 +246,7 @@
       "beschreibung": "Lüderitz Fuel Center",
       "betrag": 60.2,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -234,6 +255,7 @@
       "beschreibung": "Wereldend Mountain Campsite",
       "betrag": 47.8,
       "zahler": "TBD",
+      "zahlmittel": "Bargeld",
       "status": "offen"
     },
     {
@@ -242,6 +264,7 @@
       "beschreibung": "Little Sossus Campsite",
       "betrag": 84.0,
       "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen"
     },
     {
@@ -250,6 +273,7 @@
       "beschreibung": "Moonvalley River Camp Swakopmund",
       "betrag": 25.0,
       "zahler": "TBD",
+      "zahlmittel": "Bargeld",
       "status": "offen"
     },
     {
@@ -258,6 +282,7 @@
       "beschreibung": "Spitzkoppe Campsite",
       "betrag": 62.0,
       "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen"
     },
     {
@@ -266,6 +291,7 @@
       "beschreibung": "Granietkop Campsite Damaraland",
       "betrag": 48.0,
       "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen"
     },
     {
@@ -274,6 +300,7 @@
       "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
       "betrag": 45.0,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "offen"
     },
     {
@@ -282,6 +309,7 @@
       "beschreibung": "Okaukuejo Campsite Etosha",
       "betrag": 58.0,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -290,6 +318,7 @@
       "beschreibung": "Halali Campsite Etosha",
       "betrag": 57.0,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -298,6 +327,7 @@
       "beschreibung": "Onguma Tamboti",
       "betrag": 58.0,
       "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen"
     },
     {
@@ -306,6 +336,7 @@
       "beschreibung": "Onguma Tamboti (2. Nacht)",
       "betrag": 58.0,
       "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen"
     },
     {
@@ -314,6 +345,7 @@
       "beschreibung": "Waterberg Campsite",
       "betrag": 44.7,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -322,6 +354,7 @@
       "beschreibung": "Omatozu Safari Camp",
       "betrag": 34.0,
       "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     }
   ],

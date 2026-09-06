@@ -145,6 +145,14 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
   Source: *Deploy from branch* → Branch **`claude/namibia-2026-bkm6h4`**
   (Stand 06.09.2026: `main` enthält nur die Start-README, die gesamte
   Website liegt ausschließlich im Feature-Branch) → Ordner `/docs`.
+- **Ausgaben-Tab zeigt Zahlmittel statt „bezahlt".** Ein bezahlter Posten
+  bekommt statt der Status-Pille „bezahlt" die Kurzform des Zahlmittels
+  (`mapZahlmittel()` in `app.js`): `Bargeld`→Bar, alles mit `N26`→N26,
+  `card complete`/„Kredit"→Kredit, alles andere mit „Debit"→Debit
+  (= Patricks Oberbank). `TBD` bleibt `TBD` (nie raten). Die Pille „offen"
+  bleibt für noch nicht bezahlte Posten erhalten — Status hat Vorrang vor
+  Zahlmittel. Neue Zahlmittel-Werte in den CSVs ggf. in `mapZahlmittel()`
+  ergänzen, sonst erscheinen sie 1:1 als Fallback-Text.
 
 ## Konventionen
 

@@ -163,6 +163,7 @@ def main():
             "beschreibung": r["beschreibung"],
             "betrag": round(betrag, 2),
             "zahler": r["zahler"],
+            "zahlmittel": r["zahlmittel"],
             "status": "offen" if num(r["offen_eur"]) > 0 else "bezahlt",
         })
     for r in b2:
@@ -174,6 +175,7 @@ def main():
             "beschreibung": r["haendler"] or r["ort"],
             "betrag": round(num(r["betrag_eur"]), 2),
             "zahler": r["zahler"],
+            "zahlmittel": r["zahlmittel"],
             "status": "bezahlt",
         })
     ausgaben.sort(key=lambda x: x["datum"])

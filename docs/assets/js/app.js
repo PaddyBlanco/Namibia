@@ -130,6 +130,9 @@
     filtered.slice().reverse().forEach(function (a) {
       var card = document.createElement("div");
       card.className = "card";
+      var zahlungsPill = a.status === "offen"
+        ? '<span class="pill status-offen">offen</span>'
+        : '<span class="pill">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>";
       card.innerHTML =
         '<div class="card-row">' +
           '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
@@ -138,7 +141,7 @@
         '<div class="card-meta">' +
           '<span class="pill">' + esc(a.kategorie) + "</span>" +
           '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
-          '<span class="pill status-' + a.status + '">' + esc(a.status) + "</span>" +
+          zahlungsPill +
           "<span>" + fmtDate(a.datum) + "</span>" +
         "</div>";
       list.appendChild(card);
@@ -165,6 +168,21 @@
     var div = document.createElement("div");
     div.textContent = s == null ? "" : s;
     return div.innerHTML;
+  }
+
+  // Rohes Zahlmittel aus den CSVs (z.B. "Oberbank Debit", "N26 Debit",
+  // "Bargeld") auf die vier Kurzformen abbilden, die der Nutzer sehen will.
+  // Reihenfolge wichtig: N26 zuerst pruefen, sonst faellt "N26 Debit"
+  // unter das generische "Debit".
+  function mapZahlmittel(raw) {
+    var v = (raw || "").trim();
+    if (!v || v === "TBD") return "TBD";
+    var low = v.toLowerCase();
+    if (low.indexOf("bargeld") !== -1 || low === "bar") return "Bar";
+    if (low.indexOf("n26") !== -1) return "N26";
+    if (low.indexOf("kredit") !== -1 || low.indexOf("card complete") !== -1) return "Kredit";
+    if (low.indexOf("debit") !== -1) return "Debit";
+    return v;
   }
 
   // ---------------- Reiseplan ----------------
