@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T18:29:37+00:00",
+  "generated_at": "2026-09-06T18:31:30+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -506,10 +506,11 @@
       "gesamt_liter": null,
       "gesamt_kosten": 231.77,
       "avg_preis_liter_eur": null,
-      "avg_verbrauch_l_100km": null,
+      "avg_verbrauch_l_100km": 11.2,
+      "verbrauch_quelle": "bordcomputer",
       "fahrzeug_modell": "TBD",
       "tankgroesse_liter": 160,
-      "reichweite_km": null
+      "reichweite_km": 1429
     },
     "tankstellen_hinweise": [
       {

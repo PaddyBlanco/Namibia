@@ -87,7 +87,23 @@ def parse_tanken():
     fahrzeug_path = DATA / "fahrzeug.json"
     fahrzeug = json.loads(fahrzeug_path.read_text(encoding="utf-8")) if fahrzeug_path.exists() else {}
     tankgroesse = fahrzeug.get("tankgroesse_liter")
-    verbrauch_avg = round(sum(verbrauch_bekannt) / len(verbrauch_bekannt), 1) if verbrauch_bekannt else fahrzeug.get("herstellerverbrauch_l_100km")
+
+    # Verbrauchsquelle in Vertrauensreihenfolge: echte Fill-ups (aus
+    # tatsaechlich getankten Litern + gefahrenen km) schlagen den vom
+    # Bordcomputer abgelesenen Schnitt, der wiederum die Herstellerangabe
+    # schlaegt - nie geraten, nur die beste verfuegbare echte Quelle.
+    verbrauch_quelle = None
+    if verbrauch_bekannt:
+        verbrauch_avg = round(sum(verbrauch_bekannt) / len(verbrauch_bekannt), 1)
+        verbrauch_quelle = "fillups"
+    elif fahrzeug.get("bordcomputer_verbrauch_l_100km") is not None:
+        verbrauch_avg = fahrzeug["bordcomputer_verbrauch_l_100km"]
+        verbrauch_quelle = "bordcomputer"
+    elif fahrzeug.get("herstellerverbrauch_l_100km") is not None:
+        verbrauch_avg = fahrzeug["herstellerverbrauch_l_100km"]
+        verbrauch_quelle = "hersteller"
+    else:
+        verbrauch_avg = None
 
     reichweite = None
     if tankgroesse and verbrauch_avg:
@@ -98,6 +114,7 @@ def parse_tanken():
         "gesamt_kosten": round(sum(f["betrag_eur"] for f in fillups), 2),
         "avg_preis_liter_eur": round(sum(preise_bekannt) / len(preise_bekannt), 3) if preise_bekannt else None,
         "avg_verbrauch_l_100km": verbrauch_avg,
+        "verbrauch_quelle": verbrauch_quelle,
         "fahrzeug_modell": fahrzeug.get("modell", "TBD"),
         "tankgroesse_liter": tankgroesse,
         "reichweite_km": reichweite,

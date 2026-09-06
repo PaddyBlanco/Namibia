@@ -337,11 +337,14 @@
     var t = data.tanken || { fillups: [], summary: {}, tankstellen_hinweise: [] };
     var s = t.summary || {};
 
+    var quelleLabel = { fillups: "gemessen", bordcomputer: "Bordcomputer", hersteller: "Hersteller" }[s.verbrauch_quelle];
+    var verbrauchLabel = "⌀ Verbrauch" + (quelleLabel ? " (" + quelleLabel + ")" : "");
+
     var tiles = document.getElementById("tanken-tiles");
     tiles.innerHTML =
       tile("Gesamt getankt", s.gesamt_liter != null ? s.gesamt_liter.toLocaleString("de-DE") + " L" : "noch offen") +
       tile("⌀ Preis / Liter", s.avg_preis_liter_eur != null ? euro(s.avg_preis_liter_eur) : "noch offen") +
-      tile("⌀ Verbrauch", s.avg_verbrauch_l_100km != null ? s.avg_verbrauch_l_100km.toLocaleString("de-DE") + " L/100km" : "noch offen") +
+      tile(verbrauchLabel, s.avg_verbrauch_l_100km != null ? s.avg_verbrauch_l_100km.toLocaleString("de-DE") + " L/100km" : "noch offen") +
       tile("Reichweite (voll)", s.reichweite_km != null ? "~" + s.reichweite_km + " km" : "Tankgröße fehlt noch", true);
 
     var list = document.getElementById("tanken-list");

@@ -3,5 +3,7 @@
   "tankgroesse_liter": 160,
   "tank_aufteilung": "2x 80 Liter (Haupt- + Zusatztank)",
   "herstellerverbrauch_l_100km": null,
-  "anmerkung": "Tankgroesse von Patrick bestaetigt: 160L gesamt, 2x80L. Modell und Herstellerverbrauch fehlen noch - Reichweite wird berechnet, sobald genug Fill-ups mit km-Stand vorliegen (siehe CLAUDE.md, Abschnitt Tanken)."
+  "bordcomputer_verbrauch_l_100km": 11.2,
+  "bordcomputer_stand": "2026-09-06",
+  "anmerkung": "11.2 L/100km ist der aktuelle Durchschnittsverbrauch laut Bordcomputer (Annahme - Patrick hat nicht explizit 'Bordcomputer' gesagt, aber das ist die einzige plausible Quelle fuer einen 'aktuellen' Wert unterwegs; bei Bedarf korrigieren). Wird als Verbrauchs-Fallback benutzt, bis genug echte Fill-ups mit km-Stand vorliegen - die haben dann Vorrang. Modell und Herstellerverbrauch (lt. Datenblatt) fehlen weiterhin."
 }
