@@ -122,20 +122,29 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
 - 4 Tabs unten: Heute (Stat-Kacheln + Saldo), Ausgaben (filterbare Liste),
   Reiseplan (Zeitleiste, heutiger Tag live aus dem Gerätedatum des Betrachters
   hervorgehoben), Mehr (Kategorien-Chart, Verrechnung, offene Punkte).
-- Repo ist **privat**. Entscheidung des Nutzers (06.09.2026): volle Kostendetails
-  inkl. Saldo anzeigen, aber:
-  - **Nie Buchungslinks/Tokens ins JSON oder in die CSVs übernehmen** — auf
-    GitHub Free ist eine Pages-Seite aus einem privaten Repo trotzdem für
-    jeden mit der URL erreichbar (kein automatischer Zugriffsschutz ohne
+- **Repo ist öffentlich** (Statuswechsel von privat → öffentlich am 06.09.2026,
+  vom Nutzer bestätigt/gewollt). Damit sind CSVs, Saldo und alle Beträge
+  ohnehin schon über die normale GitHub-Dateiansicht für jeden einsehbar,
+  unabhängig von Pages — die Website macht es nur bequemer lesbar, nicht
+  öffentlicher. Konsequenzen:
+  - **Nie Buchungslinks/Tokens ins JSON oder in die CSVs übernehmen** —
+    unabhängig von der Sichtbarkeit, das war schon immer Regel.
+  - `<meta name="robots" content="noindex, nofollow">` bleibt in `index.html`
+    (verhindert Auffindbarkeit über Suchmaschinen, aber keinen direkten
+    Zugriffsschutz — bei öffentlichem Repo ohnehin nicht relevant für die
+    Rohdaten, nur für die Pages-Seite selbst).
+  - Falls der Nutzer das Repo je wieder auf privat stellt: nur der Owner kann
+    das unter Settings → General → Danger Zone → Change visibility. Auf
+    GitHub Free ist eine Pages-Seite aus einem *privaten* Repo dann trotzdem
+    für jeden mit der URL erreichbar (kein automatischer Zugriffsschutz ohne
     GitHub Pro/Team).
-  - `<meta name="robots" content="noindex, nofollow">` in `index.html`, keine
-    Sitemap, keine Verlinkung von außen.
 - `scripts/build_site_data.py` ist die einzige Quelle für `site-data.json` —
   nie von Hand editieren, parst auch die Tabelle unter „## Blockierend für
   korrekte Zahlen" aus `docs/offene-punkte.md`.
 - GitHub-Pages-Einstellung (macht der Nutzer selbst): Settings → Pages →
-  Source: *Deploy from branch* → Branch `claude/namibia-2026-bkm6h4` (oder
-  `main` nach einem Merge) → Ordner `/docs`.
+  Source: *Deploy from branch* → Branch **`claude/namibia-2026-bkm6h4`**
+  (Stand 06.09.2026: `main` enthält nur die Start-README, die gesamte
+  Website liegt ausschließlich im Feature-Branch) → Ordner `/docs`.
 
 ## Konventionen
 
