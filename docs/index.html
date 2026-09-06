@@ -18,57 +18,68 @@
 
 <main>
 
-  <!-- ============ HEUTE ============ -->
-  <section class="view active" id="view-heute">
-    <div class="day-badge" id="day-badge">–</div>
-
-    <h2>Gesamt</h2>
-    <div class="tile-grid">
-      <div class="tile wide">
-        <div class="label">Gesamtausgaben</div>
-        <div class="value" id="t-gesamt">–</div>
-      </div>
-      <div class="tile">
-        <div class="label">Bezahlt</div>
-        <div class="value" id="t-bezahlt">–</div>
-      </div>
-      <div class="tile">
-        <div class="label">Noch offen</div>
-        <div class="value" id="t-offen">–</div>
-      </div>
+  <!-- ============ KOSTEN ============ -->
+  <section class="view active" id="view-kosten">
+    <div class="subnav">
+      <button class="subnav-btn active" data-subview="uebersicht">Kostenübersicht</button>
+      <button class="subnav-btn" data-subview="ausgaben">Ausgabenliste</button>
     </div>
 
-    <h2>Reisekasse</h2>
-    <div class="tile-grid">
-      <div class="tile">
-        <div class="label">Abgehoben</div>
-        <div class="value" id="t-kasse-abgehoben">–</div>
+    <div class="subview active" id="subview-uebersicht">
+      <div class="day-badge" id="day-badge">–</div>
+
+      <h2>Gesamt</h2>
+      <div class="tile-grid">
+        <div class="tile wide">
+          <div class="label">Gesamtausgaben</div>
+          <div class="value" id="t-gesamt">–</div>
+        </div>
+        <div class="tile">
+          <div class="label">Bezahlt</div>
+          <div class="value" id="t-bezahlt">–</div>
+        </div>
+        <div class="tile">
+          <div class="label">Noch offen</div>
+          <div class="value" id="t-offen">–</div>
+        </div>
       </div>
-      <div class="tile">
-        <div class="label">Bar ausgegeben</div>
-        <div class="value" id="t-kasse-ausgegeben">–</div>
+
+      <h2>Reisekasse</h2>
+      <div class="tile-grid">
+        <div class="tile">
+          <div class="label">Abgehoben</div>
+          <div class="value" id="t-kasse-abgehoben">–</div>
+        </div>
+        <div class="tile">
+          <div class="label">Bar ausgegeben</div>
+          <div class="value" id="t-kasse-ausgegeben">–</div>
+        </div>
+        <div class="tile wide">
+          <div class="label">Kassenbestand (rechnerisch)</div>
+          <div class="value ok" id="t-kasse-bestand">–</div>
+        </div>
       </div>
-      <div class="tile wide">
-        <div class="label">Kassenbestand (rechnerisch)</div>
-        <div class="value ok" id="t-kasse-bestand">–</div>
+
+      <h2>Saldo</h2>
+      <div class="tile-grid">
+        <div class="tile wide">
+          <div class="label" id="saldo-label">Saldo Patrick ↔ Nora</div>
+          <div class="value" id="t-saldo">–</div>
+        </div>
       </div>
+
+      <h2>Kosten nach Kategorie</h2>
+      <div class="donut-wrap">
+        <svg class="donut-svg" id="kategorien-donut" viewBox="0 0 160 160" role="img" aria-label="Kostenverteilung nach Kategorie"></svg>
+      </div>
+      <div class="legend-list" id="kategorien-legend"></div>
     </div>
 
-    <h2>Saldo</h2>
-    <div class="tile-grid">
-      <div class="tile wide">
-        <div class="label" id="saldo-label">Saldo Patrick ↔ Nora</div>
-        <div class="value" id="t-saldo">–</div>
-      </div>
+    <div class="subview" id="subview-ausgaben">
+      <div class="chip-row" id="filter-kategorie"></div>
+      <div class="chip-row" id="filter-zahler"></div>
+      <div class="card-list" id="ausgaben-list"></div>
     </div>
-  </section>
-
-  <!-- ============ AUSGABEN ============ -->
-  <section class="view" id="view-ausgaben">
-    <h2>Ausgaben</h2>
-    <div class="chip-row" id="filter-kategorie"></div>
-    <div class="chip-row" id="filter-zahler"></div>
-    <div class="card-list" id="ausgaben-list"></div>
   </section>
 
   <!-- ============ REISEPLAN ============ -->
@@ -79,12 +90,6 @@
 
   <!-- ============ MEHR ============ -->
   <section class="view" id="view-mehr">
-    <h2>Kosten nach Kategorie</h2>
-    <div class="donut-wrap">
-      <svg class="donut-svg" id="kategorien-donut" viewBox="0 0 160 160" role="img" aria-label="Kostenverteilung nach Kategorie"></svg>
-    </div>
-    <div class="legend-list" id="kategorien-legend"></div>
-
     <h2>⛽ Tanken</h2>
     <div class="tile-grid" id="tanken-tiles"></div>
     <div class="card-list" id="tanken-list"></div>
@@ -106,8 +111,7 @@
 </main>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" data-view="heute"><span class="icon">🏕️</span>Heute</button>
-  <button class="nav-btn" data-view="ausgaben"><span class="icon">💶</span>Ausgaben</button>
+  <button class="nav-btn active" data-view="kosten"><span class="icon">💶</span>Kosten</button>
   <button class="nav-btn" data-view="plan"><span class="icon">🗺️</span>Reiseplan</button>
   <button class="nav-btn" data-view="mehr"><span class="icon">⋯</span>Mehr</button>
 </nav>

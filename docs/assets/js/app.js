@@ -44,8 +44,9 @@
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () { showView(btn.dataset.view); });
     });
-    var initial = (location.hash || "#heute").replace("#", "");
+    var initial = (location.hash || "#kosten").replace("#", "");
     showView(initial);
+    initSubNav();
   }
 
   function showView(name) {
@@ -56,6 +57,23 @@
     if (view) view.classList.add("active");
     if (btn) btn.classList.add("active");
     history.replaceState(null, "", "#" + name);
+  }
+
+  // ---------------- Sub-Navigation (innerhalb "Kosten") ----------------
+  function initSubNav() {
+    var buttons = document.querySelectorAll(".subnav-btn");
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () { showSubView(btn.dataset.subview); });
+    });
+  }
+
+  function showSubView(name) {
+    document.querySelectorAll(".subview").forEach(function (v) { v.classList.remove("active"); });
+    document.querySelectorAll(".subnav-btn").forEach(function (b) { b.classList.remove("active"); });
+    var view = document.getElementById("subview-" + name);
+    var btn = document.querySelector('.subnav-btn[data-subview="' + name + '"]');
+    if (view) view.classList.add("active");
+    if (btn) btn.classList.add("active");
   }
 
   // ---------------- Heute ----------------
@@ -467,6 +485,6 @@
   });
 
   window.addEventListener("hashchange", function () {
-    showView(location.hash.replace("#", "") || "heute");
+    showView(location.hash.replace("#", "") || "kosten");
   });
 })();

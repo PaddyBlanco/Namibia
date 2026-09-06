@@ -196,6 +196,35 @@ main {
 .pill.zahler-patrick { background: var(--accent-soft); color: var(--accent); }
 .pill.zahler-nora { background: var(--ok-soft); color: var(--ok); }
 
+/* ---------- Sub-navigation (innerhalb eines Tabs) ---------- */
+.subnav {
+  display: flex;
+  gap: 4px;
+  background: var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 18px;
+}
+.subnav-btn {
+  flex: 1;
+  border: none;
+  background: none;
+  color: var(--text-dim);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 8px 4px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.subnav-btn.active {
+  background: var(--bg-elevated);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+.subview { display: none; }
+.subview.active { display: block; animation: fade .15s ease-out; }
+
 /* ---------- Filter chips ---------- */
 .chip-row {
   display: flex;

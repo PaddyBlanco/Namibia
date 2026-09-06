@@ -119,9 +119,16 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
 - Mobile-first Single-Page-App, reines HTML/CSS/JS, **keine externen Libraries/CDNs**
   (funktioniert auch bei schlechtem Netz in Namibia; JSON wird zusätzlich in
   `localStorage` gecacht, damit die Seite auch offline zuletzt geladene Daten zeigt).
-- 4 Tabs unten: Heute (Stat-Kacheln + Saldo), Ausgaben (filterbare Liste),
-  Reiseplan (Zeitleiste, heutiger Tag live aus dem Gerätedatum des Betrachters
-  hervorgehoben), Mehr (Kategorien-Chart, Verrechnung, offene Punkte).
+- 3 Tabs unten: **Kosten** (mit Sub-Nav „Kostenübersicht" [Stat-Kacheln,
+  Saldo, Kategorien-Donut] und „Ausgabenliste" [filterbare Liste]),
+  **Reiseplan** (Zeitleiste, heutiger Tag live aus dem Gerätedatum des
+  Betrachters hervorgehoben), **Mehr** (Tanken, Verrechnung, offene Punkte).
+  Sub-Nav-Umschaltung (`showSubView()` in `app.js`) ist reines Anzeigen/
+  Verstecken, nicht in der URL kodiert (kein Deep-Link auf die Ausgabenliste).
+  Die DOM-IDs der einzelnen Widgets (`#day-badge`, `#t-gesamt`,
+  `#kategorien-donut`, `#ausgaben-list` usw.) sind unabhängig davon, in
+  welchem Tab sie liegen — beim Umbauen der Navigation reicht es, das
+  HTML zu verschieben, die Render-Funktionen in `app.js` bleiben gleich.
 - **Repo ist öffentlich** (Statuswechsel von privat → öffentlich am 06.09.2026,
   vom Nutzer bestätigt/gewollt). Damit sind CSVs, Saldo und alle Beträge
   ohnehin schon über die normale GitHub-Dateiansicht für jeden einsehbar,
