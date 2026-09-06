@@ -1,0 +1,263 @@
+(function () {
+  "use strict";
+
+  var CACHE_KEY = "namibia2026:site-data";
+  var DATA_URL = "assets/data/site-data.json";
+
+  var euro = function (v) {
+    return (v < 0 ? "-" : "") + Math.abs(v).toLocaleString("de-DE", {
+      minimumFractionDigits: 2, maximumFractionDigits: 2
+    }) + " €";
+  };
+
+  var parseISO = function (s) { return new Date(s + "T00:00:00"); };
+  var todayISO = function () {
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  };
+
+  // ---------------- Daten laden (mit Offline-Fallback) ----------------
+  function loadData() {
+    return fetch(DATA_URL, { cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (e) {}
+        return data;
+      })
+      .catch(function (err) {
+        var cached = null;
+        try { cached = localStorage.getItem(CACHE_KEY); } catch (e) {}
+        if (cached) {
+          document.getElementById("offline-banner").classList.add("show");
+          return JSON.parse(cached);
+        }
+        throw err;
+      });
+  }
+
+  // ---------------- Navigation ----------------
+  function initNav() {
+    var buttons = document.querySelectorAll(".nav-btn");
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () { showView(btn.dataset.view); });
+    });
+    var initial = (location.hash || "#heute").replace("#", "");
+    showView(initial);
+  }
+
+  function showView(name) {
+    document.querySelectorAll(".view").forEach(function (v) { v.classList.remove("active"); });
+    document.querySelectorAll(".nav-btn").forEach(function (b) { b.classList.remove("active"); });
+    var view = document.getElementById("view-" + name);
+    var btn = document.querySelector('.nav-btn[data-view="' + name + '"]');
+    if (view) view.classList.add("active");
+    if (btn) btn.classList.add("active");
+    history.replaceState(null, "", "#" + name);
+  }
+
+  // ---------------- Heute ----------------
+  function renderHeute(data) {
+    var start = parseISO(data.trip.start);
+    var end = parseISO(data.trip.end);
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var totalDays = Math.round((end - start) / 86400000) + 1;
+    var dayNum = Math.round((today - start) / 86400000) + 1;
+
+    var badge = document.getElementById("day-badge");
+    if (dayNum < 1) {
+      badge.textContent = "Reise startet am " + fmtDate(data.trip.start);
+    } else if (dayNum > totalDays) {
+      badge.textContent = "Reise beendet – " + totalDays + " Tage";
+    } else {
+      badge.textContent = "Tag " + dayNum + " von " + totalDays;
+    }
+
+    var s = data.summary;
+    document.getElementById("t-gesamt").textContent = euro(s.gesamt);
+    document.getElementById("t-bezahlt").textContent = euro(s.bezahlt);
+    document.getElementById("t-offen").textContent = euro(s.offen);
+    document.getElementById("t-kasse-abgehoben").textContent = euro(s.kasse_abgehoben);
+    document.getElementById("t-kasse-ausgegeben").textContent = euro(s.kasse_bar_ausgegeben);
+    document.getElementById("t-kasse-bestand").textContent = euro(s.kasse_bestand);
+
+    var saldoEl = document.getElementById("t-saldo");
+    var labelEl = document.getElementById("saldo-label");
+    if (s.saldo_patrick > 0.5) {
+      labelEl.textContent = "Nora schuldet Patrick";
+      saldoEl.textContent = euro(s.saldo_patrick);
+      saldoEl.className = "value debt";
+    } else if (s.saldo_patrick < -0.5) {
+      labelEl.textContent = "Patrick schuldet Nora";
+      saldoEl.textContent = euro(-s.saldo_patrick);
+      saldoEl.className = "value debt";
+    } else {
+      labelEl.textContent = "Ausgeglichen";
+      saldoEl.textContent = euro(0);
+      saldoEl.className = "value ok";
+    }
+  }
+
+  function fmtDate(iso) {
+    var d = parseISO(iso);
+    return d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
+  }
+
+  // ---------------- Ausgaben ----------------
+  var activeKat = "Alle", activeZahler = "Alle";
+
+  function renderAusgaben(data) {
+    var kats = ["Alle"].concat(uniq(data.ausgaben.map(function (a) { return a.kategorie; })));
+    var zahler = ["Alle"].concat(uniq(data.ausgaben.map(function (a) { return a.zahler; })));
+
+    renderChips("filter-kategorie", kats, activeKat, function (v) { activeKat = v; renderAusgaben(data); });
+    renderChips("filter-zahler", zahler, activeZahler, function (v) { activeZahler = v; renderAusgaben(data); });
+
+    var list = document.getElementById("ausgaben-list");
+    list.innerHTML = "";
+    var filtered = data.ausgaben.filter(function (a) {
+      return (activeKat === "Alle" || a.kategorie === activeKat) &&
+             (activeZahler === "Alle" || a.zahler === activeZahler);
+    });
+
+    if (!filtered.length) {
+      list.innerHTML = '<div class="empty-state">Keine Ausgaben in dieser Ansicht.</div>';
+      return;
+    }
+
+    filtered.slice().reverse().forEach(function (a) {
+      var card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML =
+        '<div class="card-row">' +
+          '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
+          '<span class="card-amount">' + euro(a.betrag) + "</span>" +
+        "</div>" +
+        '<div class="card-meta">' +
+          '<span class="pill">' + esc(a.kategorie) + "</span>" +
+          '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
+          '<span class="pill status-' + a.status + '">' + esc(a.status) + "</span>" +
+          "<span>" + fmtDate(a.datum) + "</span>" +
+        "</div>";
+      list.appendChild(card);
+    });
+  }
+
+  function renderChips(containerId, options, active, onPick) {
+    var el = document.getElementById(containerId);
+    el.innerHTML = "";
+    options.forEach(function (opt) {
+      var chip = document.createElement("button");
+      chip.className = "chip" + (opt === active ? " active" : "");
+      chip.textContent = opt;
+      chip.addEventListener("click", function () { onPick(opt); });
+      el.appendChild(chip);
+    });
+  }
+
+  function uniq(arr) {
+    return arr.filter(function (v, i) { return arr.indexOf(v) === i; }).sort();
+  }
+
+  function esc(s) {
+    var div = document.createElement("div");
+    div.textContent = s == null ? "" : s;
+    return div.innerHTML;
+  }
+
+  // ---------------- Reiseplan ----------------
+  function renderPlan(data) {
+    var today = todayISO();
+    var el = document.getElementById("plan-timeline");
+    el.innerHTML = "";
+
+    data.plan.forEach(function (p) {
+      var state = "future";
+      if (p.ende <= today) state = "past";
+      else if (p.start <= today && today < p.ende) state = "today";
+      else if (p.start === today) state = "today";
+
+      var item = document.createElement("div");
+      item.className = "timeline-item " + state;
+      var range = p.naechte > 1
+        ? fmtDate(p.start) + " – " + fmtDate(p.ende) + " · " + p.naechte + " Nächte"
+        : fmtDate(p.start);
+      item.innerHTML =
+        '<div class="timeline-date">' + range + "</div>" +
+        '<div class="card">' +
+          '<div class="card-row">' +
+            '<span class="card-title">' + esc(p.beschreibung) + "</span>" +
+          "</div>" +
+          '<div class="card-meta">' +
+            '<span class="pill">' + esc(p.kategorie) + "</span>" +
+            (p.status === "offen" ? '<span class="pill status-offen">offen</span>' : "") +
+          "</div>" +
+        "</div>";
+      el.appendChild(item);
+    });
+  }
+
+  // ---------------- Mehr: Kategorien, Verrechnung, offene Punkte ----------------
+  function renderMehr(data) {
+    var max = Math.max.apply(null, data.kategorien.map(function (k) { return k.betrag; }));
+    var chart = document.getElementById("kategorien-chart");
+    chart.innerHTML = "";
+    data.kategorien.forEach(function (k) {
+      var row = document.createElement("div");
+      row.className = "bar-row";
+      var pct = max ? Math.round((k.betrag / max) * 100) : 0;
+      row.innerHTML =
+        '<div class="bar-label">' + esc(k.name) + "</div>" +
+        '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="bar-value">' + euro(k.betrag) + "</div>";
+      chart.appendChild(row);
+    });
+
+    var s = data.summary;
+    var vc = document.getElementById("verrechnung-cards");
+    vc.innerHTML =
+      cardRow("Patrick", s.beitrag_patrick) +
+      cardRow("Nora", s.beitrag_nora) +
+      cardRow("Anteil pro Person", s.anteil_pro_person) +
+      cardRow("Überweisung Patrick → Nora", s.transfer_patrick_nora);
+
+    var op = document.getElementById("offene-punkte-list");
+    if (!data.offene_punkte.length) {
+      op.innerHTML = '<div class="empty-state">Keine offenen Punkte 🎉</div>';
+    } else {
+      op.innerHTML = data.offene_punkte.map(function (o) {
+        return '<div class="open-item"><div>' + esc(o.punkt) + '</div>' +
+               '<div class="warum">' + esc(o.warum) + "</div></div>";
+      }).join("");
+    }
+
+    document.getElementById("update-note").textContent =
+      "Stand: " + new Date(data.generated_at).toLocaleString("de-DE");
+  }
+
+  function cardRow(label, value) {
+    return '<div class="card"><div class="card-row">' +
+      '<span class="card-title">' + esc(label) + "</span>" +
+      '<span class="card-amount">' + euro(value) + "</span>" +
+      "</div></div>";
+  }
+
+  // ---------------- Start ----------------
+  initNav();
+  loadData().then(function (data) {
+    document.getElementById("header-subline").textContent =
+      "02.09. – 21.09.2026 · Patrick & Nora";
+    renderHeute(data);
+    renderAusgaben(data);
+    renderPlan(data);
+    renderMehr(data);
+  }).catch(function () {
+    document.getElementById("header-subline").textContent = "Daten konnten nicht geladen werden.";
+  });
+
+  window.addEventListener("hashchange", function () {
+    showView(location.hash.replace("#", "") || "heute");
+  });
+})();

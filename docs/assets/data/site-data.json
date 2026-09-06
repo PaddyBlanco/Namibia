@@ -1,0 +1,472 @@
+{
+  "generated_at": "2026-09-06T17:21:04+00:00",
+  "trip": {
+    "start": "2026-09-02",
+    "end": "2026-09-21"
+  },
+  "summary": {
+    "gesamt": 6027.33,
+    "bezahlt": 5599.53,
+    "offen": 427.8,
+    "kasse_abgehoben": 217.2,
+    "kasse_bar_ausgegeben": 38.64,
+    "kasse_bestand": 178.56,
+    "beitrag_patrick": 5037.5,
+    "beitrag_nora": 2562.03,
+    "anteil_pro_person": 3013.66,
+    "saldo_patrick": 2023.84,
+    "transfer_patrick_nora": 2000.0
+  },
+  "kategorien": [
+    {
+      "name": "Mietwagen",
+      "betrag": 2726.15
+    },
+    {
+      "name": "Flug",
+      "betrag": 1895.26
+    },
+    {
+      "name": "Unterkunft",
+      "betrag": 821.05
+    },
+    {
+      "name": "Tanken",
+      "betrag": 231.77
+    },
+    {
+      "name": "Lebensmittel",
+      "betrag": 227.71
+    },
+    {
+      "name": "Restaurant",
+      "betrag": 60.09
+    },
+    {
+      "name": "Aktivitäten",
+      "betrag": 24.96
+    },
+    {
+      "name": "Shopping",
+      "betrag": 20.07
+    },
+    {
+      "name": "Sonstiges",
+      "betrag": 17.75
+    },
+    {
+      "name": "Gebühren",
+      "betrag": 2.52
+    }
+  ],
+  "ausgaben": [
+    {
+      "datum": "2026-09-02",
+      "kategorie": "Flug",
+      "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.)",
+      "betrag": 1895.26,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-02",
+      "kategorie": "Restaurant",
+      "beschreibung": "Leberkaespepi",
+      "betrag": 9.8,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-02",
+      "kategorie": "Sonstiges",
+      "beschreibung": "Relay F Gate",
+      "betrag": 11.84,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-02",
+      "kategorie": "Sonstiges",
+      "beschreibung": "MUC Airport Retail",
+      "betrag": 5.91,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-03",
+      "kategorie": "Mietwagen",
+      "beschreibung": "Mietwagen inkl. Camping-Ausstattung 03.-21.09.",
+      "betrag": 2726.15,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-03",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Kalahari Anib Campsite",
+      "betrag": 36.0,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-03",
+      "kategorie": "Gebühren",
+      "beschreibung": "ATM Behebungsentgelt",
+      "betrag": 2.52,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-03",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Superspar Maerua Mall",
+      "betrag": 169.22,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-03",
+      "kategorie": "Tanken",
+      "beschreibung": "Agrimark Rehoboth Express",
+      "betrag": 73.42,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-04",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Spar Mariental",
+      "betrag": 20.11,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-05",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Desert Horse Campsite Aus",
+      "betrag": 24.0,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-05",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Quivertree Forest Camping",
+      "betrag": 38.64,
+      "zahler": "Patrick",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-05",
+      "kategorie": "Tanken",
+      "beschreibung": "Agra Keetmanshoop - Fo",
+      "betrag": 98.15,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-05",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Klein Aus Vista Lodge",
+      "betrag": 100.91,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Aktivitäten",
+      "beschreibung": "Ghost Town Tours CC",
+      "betrag": 24.96,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Restaurant",
+      "beschreibung": "Desert Deli",
+      "betrag": 4.72,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Restaurant",
+      "beschreibung": "Portugues Fisherman",
+      "betrag": 45.57,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Spar Lüderitz",
+      "betrag": 38.38,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Shopping",
+      "beschreibung": "Studio88 Lüderitz",
+      "betrag": 20.07,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Tanken",
+      "beschreibung": "Lüderitz Fuel Center",
+      "betrag": 60.2,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-07",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Wereldend Mountain Campsite",
+      "betrag": 47.8,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-08",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Little Sossus Campsite",
+      "betrag": 84.0,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-10",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Moonvalley River Camp Swakopmund",
+      "betrag": 25.0,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-11",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Spitzkoppe Campsite",
+      "betrag": 62.0,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-13",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Granietkop Campsite Damaraland",
+      "betrag": 48.0,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-14",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
+      "betrag": 45.0,
+      "zahler": "Nora",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-15",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Okaukuejo Campsite Etosha",
+      "betrag": 58.0,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-16",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Halali Campsite Etosha",
+      "betrag": 57.0,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-17",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Onguma Tamboti",
+      "betrag": 58.0,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-18",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Onguma Tamboti (2. Nacht)",
+      "betrag": 58.0,
+      "zahler": "TBD",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-19",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Waterberg Campsite",
+      "betrag": 44.7,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-20",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Omatozu Safari Camp",
+      "betrag": 34.0,
+      "zahler": "Nora",
+      "status": "bezahlt"
+    }
+  ],
+  "plan": [
+    {
+      "start": "2026-09-02",
+      "ende": "2026-09-02",
+      "naechte": 0,
+      "kategorie": "Flug",
+      "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.)",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-03",
+      "ende": "2026-09-03",
+      "naechte": 0,
+      "kategorie": "Mietwagen",
+      "beschreibung": "Mietwagen inkl. Camping-Ausstattung 03.-21.09.",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-03",
+      "ende": "2026-09-04",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Kalahari Anib Campsite",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-04",
+      "ende": "2026-09-05",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Quiver Tree Camping",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-05",
+      "ende": "2026-09-07",
+      "naechte": 2,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Desert Horse Campsite Aus",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-07",
+      "ende": "2026-09-08",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Wereldend Mountain Campsite",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-08",
+      "ende": "2026-09-10",
+      "naechte": 2,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Little Sossus Campsite",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-10",
+      "ende": "2026-09-11",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Moonvalley River Camp Swakopmund",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-11",
+      "ende": "2026-09-13",
+      "naechte": 2,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Spitzkoppe Campsite",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-13",
+      "ende": "2026-09-14",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Granietkop Campsite Damaraland",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-14",
+      "ende": "2026-09-15",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-15",
+      "ende": "2026-09-16",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Okaukuejo Campsite Etosha",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-16",
+      "ende": "2026-09-17",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Halali Campsite Etosha",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-17",
+      "ende": "2026-09-18",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Onguma Tamboti",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-18",
+      "ende": "2026-09-19",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Onguma Tamboti (2. Nacht)",
+      "status": "offen"
+    },
+    {
+      "start": "2026-09-19",
+      "ende": "2026-09-20",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Waterberg Campsite",
+      "status": "bezahlt"
+    },
+    {
+      "start": "2026-09-20",
+      "ende": "2026-09-21",
+      "naechte": 1,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Omatozu Safari Camp",
+      "status": "bezahlt"
+    }
+  ],
+  "offene_punkte": [
+    {
+      "punkt": "Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt.",
+      "warum": "Zahlungsstand"
+    },
+    {
+      "punkt": "Klein Aus Vista Lodge, 100,91 € am 05.09.** — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit).",
+      "warum": "76,91 € Differenz zur Planung"
+    },
+    {
+      "punkt": "Mehrere N26-Umsätze standen beim Screenshot noch auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig.",
+      "warum": "Kleine Rundungsabweichungen möglich, sobald final gebucht"
+    }
+  ]
+}

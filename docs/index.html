@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Namibia 2026</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>🐘 Namibia 2026</h1>
+  <div class="subline" id="header-subline">wird geladen …</div>
+</header>
+
+<div class="offline-banner" id="offline-banner">Offline – zeige zuletzt geladenen Stand</div>
+
+<main>
+
+  <!-- ============ HEUTE ============ -->
+  <section class="view active" id="view-heute">
+    <div class="day-badge" id="day-badge">–</div>
+
+    <h2>Gesamt</h2>
+    <div class="tile-grid">
+      <div class="tile wide">
+        <div class="label">Gesamtausgaben</div>
+        <div class="value" id="t-gesamt">–</div>
+      </div>
+      <div class="tile">
+        <div class="label">Bezahlt</div>
+        <div class="value" id="t-bezahlt">–</div>
+      </div>
+      <div class="tile">
+        <div class="label">Noch offen</div>
+        <div class="value" id="t-offen">–</div>
+      </div>
+    </div>
+
+    <h2>Reisekasse</h2>
+    <div class="tile-grid">
+      <div class="tile">
+        <div class="label">Abgehoben</div>
+        <div class="value" id="t-kasse-abgehoben">–</div>
+      </div>
+      <div class="tile">
+        <div class="label">Bar ausgegeben</div>
+        <div class="value" id="t-kasse-ausgegeben">–</div>
+      </div>
+      <div class="tile wide">
+        <div class="label">Kassenbestand (rechnerisch)</div>
+        <div class="value ok" id="t-kasse-bestand">–</div>
+      </div>
+    </div>
+
+    <h2>Saldo</h2>
+    <div class="tile-grid">
+      <div class="tile wide">
+        <div class="label" id="saldo-label">Saldo Patrick ↔ Nora</div>
+        <div class="value" id="t-saldo">–</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUSGABEN ============ -->
+  <section class="view" id="view-ausgaben">
+    <h2>Ausgaben</h2>
+    <div class="chip-row" id="filter-kategorie"></div>
+    <div class="chip-row" id="filter-zahler"></div>
+    <div class="card-list" id="ausgaben-list"></div>
+  </section>
+
+  <!-- ============ REISEPLAN ============ -->
+  <section class="view" id="view-plan">
+    <h2>Reiseplan</h2>
+    <div class="timeline" id="plan-timeline"></div>
+  </section>
+
+  <!-- ============ MEHR ============ -->
+  <section class="view" id="view-mehr">
+    <h2>Kosten nach Kategorie</h2>
+    <div class="bar-chart" id="kategorien-chart"></div>
+
+    <h2>Wer hat wie viel getragen</h2>
+    <div class="card-list" id="verrechnung-cards"></div>
+
+    <h2>Offene Punkte</h2>
+    <div id="offene-punkte-list"></div>
+
+    <div class="update-note" id="update-note"></div>
+  </section>
+
+</main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-view="heute"><span class="icon">🏕️</span>Heute</button>
+  <button class="nav-btn" data-view="ausgaben"><span class="icon">💶</span>Ausgaben</button>
+  <button class="nav-btn" data-view="plan"><span class="icon">🗺️</span>Reiseplan</button>
+  <button class="nav-btn" data-view="mehr"><span class="icon">⋯</span>Mehr</button>
+</nav>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

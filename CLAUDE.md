@@ -60,6 +60,8 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
 | `scripts/build_md.py`      | Baut `docs/kosten.md` aus den CSVs (schnell, Standardweg) |
 | `scripts/build_sheet.py`   | Baut zusätzlich eine .xlsx mit 3 Tabs – nur auf Zuruf, siehe unten |
+| `scripts/build_site_data.py` | Baut `docs/assets/data/site-data.json` für die GitHub-Pages-Seite |
+| `docs/index.html` + `docs/assets/` | GitHub-Pages-Seite (Mobile-App-Stil), siehe Abschnitt „Website" unten |
 
 ## Workflow bei neuen Belegen
 
@@ -67,7 +69,8 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 
 1. Screenshot/Beleg auswerten → Zeile in die passende CSV eintragen (Zahler nicht vergessen)
 2. `python3 scripts/build_md.py` → aktualisiert `docs/kosten.md`
-3. Committen und pushen auf `claude/namibia-2026-bkm6h4`
+3. `python3 scripts/build_site_data.py` → aktualisiert die Website-Daten
+4. Committen und pushen auf `claude/namibia-2026-bkm6h4`
 
 Der Google-Sheet-Weg (xlsx bauen + hochladen) ist bewusst pausiert, weil er pro
 Beleg mehrere Tool-Calls und eine manuelle Kopieraktion braucht — zu langsam für
@@ -90,6 +93,29 @@ unterwegs. Erst wieder aktivieren, wenn der Nutzer explizit danach fragt (siehe
   (`docs/kosten.md`), weil der Sheet-Umweg (xlsx bauen → hochladen → manuell
   Tabs kopieren) zu langsam war. `scripts/build_sheet.py` bleibt im Repo falls
   später doch gebraucht, aber **nicht mehr automatisch ausführen**.
+
+## Website (GitHub Pages, `docs/`)
+
+- Mobile-first Single-Page-App, reines HTML/CSS/JS, **keine externen Libraries/CDNs**
+  (funktioniert auch bei schlechtem Netz in Namibia; JSON wird zusätzlich in
+  `localStorage` gecacht, damit die Seite auch offline zuletzt geladene Daten zeigt).
+- 4 Tabs unten: Heute (Stat-Kacheln + Saldo), Ausgaben (filterbare Liste),
+  Reiseplan (Zeitleiste, heutiger Tag live aus dem Gerätedatum des Betrachters
+  hervorgehoben), Mehr (Kategorien-Chart, Verrechnung, offene Punkte).
+- Repo ist **privat**. Entscheidung des Nutzers (06.09.2026): volle Kostendetails
+  inkl. Saldo anzeigen, aber:
+  - **Nie Buchungslinks/Tokens ins JSON oder in die CSVs übernehmen** — auf
+    GitHub Free ist eine Pages-Seite aus einem privaten Repo trotzdem für
+    jeden mit der URL erreichbar (kein automatischer Zugriffsschutz ohne
+    GitHub Pro/Team).
+  - `<meta name="robots" content="noindex, nofollow">` in `index.html`, keine
+    Sitemap, keine Verlinkung von außen.
+- `scripts/build_site_data.py` ist die einzige Quelle für `site-data.json` —
+  nie von Hand editieren, parst auch die Tabelle unter „## Blockierend für
+  korrekte Zahlen" aus `docs/offene-punkte.md`.
+- GitHub-Pages-Einstellung (macht der Nutzer selbst): Settings → Pages →
+  Source: *Deploy from branch* → Branch `claude/namibia-2026-bkm6h4` (oder
+  `main` nach einem Merge) → Ordner `/docs`.
 
 ## Konventionen
 
