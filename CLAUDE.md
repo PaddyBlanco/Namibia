@@ -174,10 +174,21 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
      Reisekasse, Saldo) und „Ausgabenliste" (filterbare Vollliste)
   3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
      Tankvorgänge, Tankstellen-Planung
-  4. **Plan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem
-     Gerätedatum des Betrachters hervorgehoben (Label bewusst kurz „Plan",
-     damit 5 Tabs auch auf 320px-Displays nebeneinander passen)
+  4. **Reiseplan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem
+     Gerätedatum des Betrachters hervorgehoben
   5. **Mehr** (`mehr`, ⋯) — Verrechnung, offene Punkte
+- **Kleinstes Zielgerät ist ein iPhone 15 (393 × 852 CSS-Pixel)** — vom
+  Nutzer am 06.09.2026 festgelegt. Nicht mehr auf 320px optimieren
+  (deshalb heißt Tab 4 wieder ausgeschrieben „Reiseplan"). Beim Testen
+  mit Playwright diese Viewport-Größe verwenden.
+- **Die Kopfzeile erscheint nur auf Home** und ist bewusst kompakt
+  (`.app-header.hidden` wird in `showView()` gesetzt, sobald der Tab
+  nicht `home` ist). Auf den anderen Tabs übernimmt die Bottom-Nav die
+  Orientierung. **Wichtig dabei:** ohne sichtbaren Header muss der Inhalt
+  selbst um Notch/Dynamic Island herum — dafür sorgt
+  `.app-header.hidden ~ main { padding-top: calc(16px + env(safe-area-inset-top)) }`.
+  Diese Regel nicht entfernen, sonst startet der Inhalt auf dem iPhone
+  unter der Statusleiste (im Desktop-Browser unsichtbarer Fehler).
 - **Home enthält genau diese drei Blöcke, in dieser Reihenfolge**
   (Nutzervorgabe, nicht selbst erfunden — bei Layoutwünschen daran
   orientieren):

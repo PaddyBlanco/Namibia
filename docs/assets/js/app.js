@@ -56,6 +56,8 @@
     var btn = document.querySelector('.nav-btn[data-view="' + name + '"]');
     if (view) view.classList.add("active");
     if (btn) btn.classList.add("active");
+    // Kopfzeile nur auf Home - auf den anderen Tabs gehoert der Platz dem Inhalt.
+    document.querySelector(".app-header").classList.toggle("hidden", name !== "home");
     history.replaceState(null, "", "#" + name);
   }
 

@@ -78,24 +78,28 @@ body {
   padding-bottom: calc(var(--nav-height) + 12px);
 }
 
+/* Header ist bewusst kompakt und erscheint nur auf Home (Nutzerwunsch
+   06.09.2026) - auf den anderen Tabs uebernimmt die Bottom-Nav die
+   Orientierung, der Platz gehoert dem Inhalt. */
 .app-header {
-  padding: 20px 16px 12px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 10px;
   position: sticky;
   top: 0;
   background: var(--bg);
   z-index: 10;
   border-bottom: 1px solid var(--border);
 }
+.app-header.hidden { display: none; }
 
 .app-header h1 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.02rem;
   letter-spacing: -0.01em;
 }
 
 .app-header .subline {
-  margin-top: 2px;
-  font-size: 0.85rem;
+  margin-top: 1px;
+  font-size: 0.72rem;
   color: var(--text-dim);
 }
 
@@ -113,6 +117,12 @@ main {
   padding: 16px;
   max-width: 720px;
   margin: 0 auto;
+}
+
+/* Ohne sichtbaren Header muss der Inhalt selbst um die Notch/Dynamic Island
+   herum - sonst startet er auf dem iPhone unter der Statusleiste. */
+.app-header.hidden ~ main {
+  padding-top: calc(16px + env(safe-area-inset-top, 0px));
 }
 
 .view { display: none; }
