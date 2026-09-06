@@ -1,6 +1,7 @@
 {
   "modell": "TBD",
-  "tankgroesse_liter": null,
+  "tankgroesse_liter": 160,
+  "tank_aufteilung": "2x 80 Liter (Haupt- + Zusatztank)",
   "herstellerverbrauch_l_100km": null,
-  "anmerkung": "Alle drei Werte fehlen noch - Patrick weiss Modell/Tankgroesse vom Mietwagen nicht auswendig. Sobald bekannt: hier eintragen, dann rechnet die Seite die Reichweite automatisch."
+  "anmerkung": "Tankgroesse von Patrick bestaetigt: 160L gesamt, 2x80L. Modell und Herstellerverbrauch fehlen noch - Reichweite wird berechnet, sobald genug Fill-ups mit km-Stand vorliegen (siehe CLAUDE.md, Abschnitt Tanken)."
 }

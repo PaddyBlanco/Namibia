@@ -369,8 +369,11 @@
     }
 
     var hint = document.getElementById("tanken-hint");
-    if (s.fahrzeug_modell === "TBD" || s.tankgroesse_liter == null) {
-      hint.textContent = "Fahrzeugmodell und Tankgröße fehlen noch – sobald bekannt, rechnet die Seite die Reichweite automatisch aus.";
+    var fehlend = [];
+    if (s.tankgroesse_liter == null) fehlend.push("Tankgröße");
+    if (s.avg_verbrauch_l_100km == null) fehlend.push("Verbrauch (Fill-ups mit km-Stand oder Herstellerangabe)");
+    if (fehlend.length) {
+      hint.textContent = fehlend.join(" und ") + " fehlen noch – sobald bekannt, rechnet die Seite die Reichweite automatisch aus.";
     } else {
       hint.textContent = "";
     }
