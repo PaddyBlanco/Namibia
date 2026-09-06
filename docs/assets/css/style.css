@@ -288,6 +288,7 @@ main {
 .pill.status-bezahlt { background: var(--ok-soft); color: var(--ok); }
 .pill.zahler-patrick { background: var(--accent-soft); color: var(--accent); }
 .pill.zahler-nora { background: var(--ok-soft); color: var(--ok); }
+.pill.fahrzeit { background: var(--accent-soft); color: var(--accent); }
 
 /* ---------- Sub-navigation (innerhalb eines Tabs) ---------- */
 .subnav {

@@ -137,18 +137,24 @@
       .sort(function (a, b) { return a.start < b.start ? -1 : 1; })[0];
 
     document.getElementById("status-aktuell").textContent = aktuell ? aktuell.beschreibung : "–";
-    document.getElementById("status-naechstes").textContent = naechstes
-      ? naechstes.beschreibung + " (ab " + fmtDate(naechstes.start) + ")"
-      : "Reise beendet";
+    var naechstesEl = document.getElementById("status-naechstes");
+    if (naechstes) {
+      var zusatz = "ab " + fmtDate(naechstes.start);
+      if (naechstes.fahrzeit) zusatz += " · 🚗 " + naechstes.fahrzeit;
+      naechstesEl.textContent = naechstes.beschreibung + " (" + zusatz + ")";
+    } else {
+      naechstesEl.textContent = "Reise beendet";
+    }
 
     var list = document.getElementById("unterkuenfte-list");
     list.innerHTML = unterkuenfte.map(function (u) {
       var range = u.naechte > 1 ? fmtDate(u.start) + "–" + fmtDate(u.ende) : fmtDate(u.start);
+      if (u.fahrzeit) range += " · 🚗 " + u.fahrzeit;
       var link = u.info_link
         ? '<a href="' + esc(u.info_link) + '" target="_blank" rel="noopener">Google Maps ↗</a>'
         : "";
       return '<div class="unterkuenfte-row">' +
-        '<div><div class="uk-name">' + esc(u.beschreibung) + '</div><div class="uk-dates">' + range + "</div></div>" +
+        '<div><div class="uk-name">' + esc(u.beschreibung) + '</div><div class="uk-dates">' + esc(range) + "</div></div>" +
         link +
       "</div>";
     }).join("");
@@ -292,6 +298,7 @@
           "</div>" +
           '<div class="card-meta">' +
             '<span class="pill">' + esc(p.kategorie) + "</span>" +
+            (p.fahrzeit ? '<span class="pill fahrzeit">🚗 ' + esc(p.fahrzeit) + "</span>" : "") +
             (p.status === "offen" ? '<span class="pill status-offen">offen</span>' : "") +
           "</div>" +
         "</div>";

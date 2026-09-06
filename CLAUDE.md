@@ -52,7 +52,7 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 
 | Pfad | Inhalt |
 |------|--------|
-| `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus + `info_link` (Google-Maps-Suchlink je Unterkunft, siehe unten) |
+| `data/01_bezahlt.csv`      | Vorab-/Fixkosten: Flug, Mietwagen, Unterkünfte inkl. Zahlungsstatus, `info_link` (Google-Maps-Suchlink) und `fahrzeit` (Anfahrt zu dieser Unterkunft) |
 | `data/02_laufend.csv`      | Laufende Kosten während der Reise + Bargeldbewegungen |
 | `data/03_verrechnung.csv`  | Interne Transfers zwischen Patrick und Nora |
 | `data/04_tanken.csv`       | Tankvorgänge: Liter, Preis/Liter (NAD), km-Stand, `volltanken` (ja/nein/TBD) — ergänzt die `Tanken`-Zeilen aus `02_laufend.csv`, zählt selbst NICHT in die Summen |
@@ -129,6 +129,23 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   verlinkt und fließt über `data.plan` (aus `build_site_data.py`) ins JSON.
 - Neu erfasste Unterkünfte: `info_link` immer im selben Muster setzen,
   nie eine andere Linkart (Buchungsseite, Blog, Social Media) einsetzen.
+
+## Fahrzeiten (`fahrzeit` in `01_bezahlt.csv`)
+
+- Die Spalte `fahrzeit` ist die **Anfahrt ZU dieser Unterkunft**, nicht die
+  Weiterfahrt. Bei der 2. Onguma-Nacht deshalb leer (kein Ortswechsel),
+  bei Flug/Mietwagen ebenfalls leer.
+- **Herkunft der Werte:** Die meisten stammen aus der „Fahrzeit"-Spalte des
+  ursprünglichen Google Sheets (3h, 2h, 1h15, 5–7h …). Zwei fehlten dort
+  bzw. standen auf `#ERROR!` und wurden am 06.09.2026 recherchiert — sie
+  sind mit `ca.` gekennzeichnet:
+  - Hoada → Okaukuejo: **ca. 3h30** (~300 km via C40/C38 und Anderson Gate)
+  - Waterberg → Omatozu: **ca. 2h30** (~215 km, überwiegend B1;
+    Omatozu liegt 25 km nördlich von Okahandja)
+- Angezeigt an drei Stellen: „Nächstes Ziel" auf Home, in der aufklappbaren
+  Unterkunftsliste, und als Pille im Reiseplan — überall mit 🚗-Präfix.
+- Neue Etappen: Wert eintragen, bei eigener Schätzung `ca.` davorsetzen,
+  damit erkennbar bleibt was gemessen und was geschätzt ist.
 
 ## Tanken
 

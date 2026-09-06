@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T21:06:51+00:00",
+  "generated_at": "2026-09-06T21:11:06+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -366,7 +366,8 @@
       "kategorie": "Flug",
       "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.)",
       "status": "bezahlt",
-      "info_link": null
+      "info_link": null,
+      "fahrzeit": null
     },
     {
       "start": "2026-09-03",
@@ -375,7 +376,8 @@
       "kategorie": "Mietwagen",
       "beschreibung": "Mietwagen inkl. Camping-Ausstattung 03.-21.09.",
       "status": "bezahlt",
-      "info_link": null
+      "info_link": null,
+      "fahrzeit": null
     },
     {
       "start": "2026-09-03",
@@ -384,7 +386,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Kalahari Anib Campsite",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Kalahari%20Anib%20Campsite%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Kalahari%20Anib%20Campsite%2C%20Namibia",
+      "fahrzeit": "3h"
     },
     {
       "start": "2026-09-04",
@@ -393,7 +396,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Quiver Tree Camping",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Quiver%20Tree%20Camping%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Quiver%20Tree%20Camping%2C%20Namibia",
+      "fahrzeit": "3h"
     },
     {
       "start": "2026-09-05",
@@ -402,7 +406,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia",
+      "fahrzeit": "2h"
     },
     {
       "start": "2026-09-07",
@@ -411,7 +416,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Wereldend Mountain Campsite",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Wereldend%20Mountain%20Campsite%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Wereldend%20Mountain%20Campsite%2C%20Namibia",
+      "fahrzeit": "4h"
     },
     {
       "start": "2026-09-08",
@@ -420,7 +426,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Little Sossus Campsite",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia",
+      "fahrzeit": "1h15"
     },
     {
       "start": "2026-09-10",
@@ -429,7 +436,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia",
+      "fahrzeit": "5–7h"
     },
     {
       "start": "2026-09-11",
@@ -438,7 +446,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
+      "fahrzeit": "2h"
     },
     {
       "start": "2026-09-13",
@@ -447,7 +456,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Granietkop Campsite Damaraland",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Granietkop%20Campsite%20Damaraland%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Granietkop%20Campsite%20Damaraland%2C%20Namibia",
+      "fahrzeit": "3h"
     },
     {
       "start": "2026-09-14",
@@ -456,7 +466,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Hoada%20Campsite%20%28statt%20Ugab%20Terrace%29%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Hoada%20Campsite%20%28statt%20Ugab%20Terrace%29%2C%20Namibia",
+      "fahrzeit": "2h"
     },
     {
       "start": "2026-09-15",
@@ -465,7 +476,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Okaukuejo Campsite Etosha",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Okaukuejo%20Campsite%20Etosha%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Okaukuejo%20Campsite%20Etosha%2C%20Namibia",
+      "fahrzeit": "ca. 3h30"
     },
     {
       "start": "2026-09-16",
@@ -474,7 +486,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Halali Campsite Etosha",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Halali%20Campsite%20Etosha%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Halali%20Campsite%20Etosha%2C%20Namibia",
+      "fahrzeit": "2h"
     },
     {
       "start": "2026-09-17",
@@ -483,7 +496,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%2C%20Namibia",
+      "fahrzeit": "3h"
     },
     {
       "start": "2026-09-18",
@@ -492,7 +506,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
       "status": "offen",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia",
+      "fahrzeit": null
     },
     {
       "start": "2026-09-19",
@@ -501,7 +516,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Waterberg Campsite",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Waterberg%20Campsite%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Waterberg%20Campsite%2C%20Namibia",
+      "fahrzeit": "4h30"
     },
     {
       "start": "2026-09-20",
@@ -510,7 +526,8 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
       "status": "bezahlt",
-      "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia"
+      "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
+      "fahrzeit": "ca. 2h30"
     }
   ],
   "tanken": {
