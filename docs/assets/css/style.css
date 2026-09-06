@@ -17,6 +17,16 @@
   --shadow: 0 1px 3px rgba(43, 36, 32, 0.08);
   --nav-height: 64px;
   --radius: 14px;
+
+  /* Kategorie-Farben: fest der Kategorie zugeordnet (nie nach Rang/Betrag),
+     Reihenfolge + Werte aus der validierten Dataviz-Standardpalette. */
+  --series-mietwagen: #2a78d6;
+  --series-flug: #eb6834;
+  --series-unterkunft: #1baf7a;
+  --series-tanken: #eda100;
+  --series-lebensmittel: #e87ba4;
+  --series-restaurant: #008300;
+  --series-other: var(--text-dim);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +45,13 @@
     --warn-soft: #3a3122;
     --debt: #e0836f;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    --series-mietwagen: #3987e5;
+    --series-flug: #d95926;
+    --series-unterkunft: #199e70;
+    --series-tanken: #c98500;
+    --series-lebensmittel: #d55181;
+    --series-restaurant: #008300;
   }
 }
 
@@ -205,13 +222,68 @@ main {
   color: var(--accent-contrast);
 }
 
-/* ---------- Bar chart ---------- */
-.bar-chart { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 20px; }
-.bar-row { display: grid; grid-template-columns: 92px 1fr 64px; align-items: center; gap: 8px; }
-.bar-label { font-size: 0.82rem; color: var(--text-dim); }
-.bar-track { background: var(--border); border-radius: 6px; height: 10px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--accent); border-radius: 6px; }
-.bar-value { font-size: 0.8rem; text-align: right; font-variant-numeric: tabular-nums; }
+/* ---------- Donut chart (Kategorien) ---------- */
+.donut-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+.donut-svg { width: 100%; max-width: 220px; height: auto; }
+.donut-segment {
+  transition: opacity .15s ease;
+  cursor: pointer;
+}
+.donut-svg.has-selection .donut-segment { opacity: 0.28; }
+.donut-svg.has-selection .donut-segment.selected { opacity: 1; }
+.donut-center-value {
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--text);
+  text-anchor: middle;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.donut-center-label {
+  font-size: 7px;
+  fill: var(--text-dim);
+  text-anchor: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-family: inherit;
+}
+
+.legend-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 20px; }
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity .15s ease, background .15s ease;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+.legend-row:active { background: var(--bg-elevated); }
+.legend-list.has-selection .legend-row { opacity: 0.45; }
+.legend-list.has-selection .legend-row.selected { opacity: 1; background: var(--bg-elevated); }
+.legend-swatch {
+  width: 12px; height: 12px;
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+.legend-name { flex: 1; font-size: 0.88rem; }
+.legend-amount { font-size: 0.88rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.legend-pct {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  width: 38px;
+  text-align: right;
+}
 
 /* ---------- Timeline ---------- */
 .timeline { position: relative; padding-left: 20px; }

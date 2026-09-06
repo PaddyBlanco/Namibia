@@ -199,21 +199,146 @@
     });
   }
 
+  // ---------------- Kategorien-Donut ----------------
+  // Feste Zuordnung Kategorie -> Farbe (nie nach Rang/Betrag, sonst wechselt
+  // die Bedeutung einer Farbe von Update zu Update). Alles ausserhalb dieser
+  // Liste faellt in "Weitere" - siehe dataviz-Skill: >6 Segmente verschwimmen,
+  // eine 9. Farbe wird nie generiert, sondern gefaltet.
+  var CATEGORY_COLORS = [
+    ["Mietwagen", "--series-mietwagen"],
+    ["Flug", "--series-flug"],
+    ["Unterkunft", "--series-unterkunft"],
+    ["Tanken", "--series-tanken"],
+    ["Lebensmittel", "--series-lebensmittel"],
+    ["Restaurant", "--series-restaurant"]
+  ];
+
+  function buildWedges(kategorien) {
+    var byName = {};
+    kategorien.forEach(function (k) { byName[k.name] = k.betrag; });
+    var wedges = [];
+    var used = {};
+    CATEGORY_COLORS.forEach(function (pair) {
+      var name = pair[0], cssVar = pair[1];
+      if (byName[name] > 0) {
+        wedges.push({ name: name, betrag: byName[name], colorVar: cssVar });
+        used[name] = true;
+      }
+    });
+    var rest = 0;
+    kategorien.forEach(function (k) {
+      if (!used[k.name]) rest += k.betrag;
+    });
+    if (rest > 0) wedges.push({ name: "Weitere", betrag: rest, colorVar: "--series-other" });
+    return wedges;
+  }
+
+  function renderDonut(wedges, total) {
+    var svg = document.getElementById("kategorien-donut");
+    var r = 62, cx = 80, cy = 80;
+    var circumference = 2 * Math.PI * r;
+    var gap = 3; // sichtbarer Trenner zwischen Segmenten (Surface-Gap-Prinzip)
+    var offset = 0;
+    var ns = "http://www.w3.org/2000/svg";
+    svg.innerHTML = "";
+
+    wedges.forEach(function (w, i) {
+      var share = w.betrag / total;
+      var len = Math.max(share * circumference - gap, 0);
+      var circle = document.createElementNS(ns, "circle");
+      circle.setAttribute("cx", cx);
+      circle.setAttribute("cy", cy);
+      circle.setAttribute("r", r);
+      circle.setAttribute("fill", "none");
+      circle.setAttribute("stroke", "var(" + w.colorVar + ")");
+      circle.setAttribute("stroke-width", "24");
+      circle.setAttribute("stroke-dasharray", len + " " + (circumference - len));
+      circle.setAttribute("stroke-dashoffset", (-offset).toFixed(2));
+      circle.setAttribute("transform", "rotate(-90 " + cx + " " + cy + ")");
+      circle.classList.add("donut-segment");
+      circle.dataset.name = w.name;
+      var title = document.createElementNS(ns, "title");
+      title.textContent = w.name + ": " + euro(w.betrag) + " (" + Math.round(share * 100) + " %)";
+      circle.appendChild(title);
+      svg.appendChild(circle);
+      offset += share * circumference;
+    });
+
+    var valueText = document.createElementNS(ns, "text");
+    valueText.setAttribute("x", cx);
+    valueText.setAttribute("y", cy - 3);
+    valueText.setAttribute("class", "donut-center-value");
+    valueText.textContent = euro(total);
+    svg.appendChild(valueText);
+
+    var labelText = document.createElementNS(ns, "text");
+    labelText.setAttribute("x", cx);
+    labelText.setAttribute("y", cy + 11);
+    labelText.setAttribute("class", "donut-center-label");
+    labelText.textContent = "Gesamt";
+    svg.appendChild(labelText);
+  }
+
+  function renderLegend(wedges, total) {
+    var el = document.getElementById("kategorien-legend");
+    el.innerHTML = "";
+    wedges.forEach(function (w) {
+      var pct = Math.round((w.betrag / total) * 100);
+      var row = document.createElement("button");
+      row.type = "button";
+      row.className = "legend-row";
+      row.dataset.name = w.name;
+      row.innerHTML =
+        '<span class="legend-swatch" style="background:var(' + w.colorVar + ')"></span>' +
+        '<span class="legend-name">' + esc(w.name) + "</span>" +
+        '<span class="legend-pct">' + pct + " %</span>" +
+        '<span class="legend-amount">' + euro(w.betrag) + "</span>";
+      el.appendChild(row);
+    });
+  }
+
+  function initDonutInteraction() {
+    var svg = document.getElementById("kategorien-donut");
+    var legend = document.getElementById("kategorien-legend");
+
+    function select(name) {
+      var isSame = svg.dataset.selected === name;
+      if (isSame) {
+        svg.dataset.selected = "";
+        svg.classList.remove("has-selection");
+        legend.classList.remove("has-selection");
+        svg.querySelectorAll(".donut-segment").forEach(function (s) { s.classList.remove("selected"); });
+        legend.querySelectorAll(".legend-row").forEach(function (r) { r.classList.remove("selected"); });
+        return;
+      }
+      svg.dataset.selected = name;
+      svg.classList.add("has-selection");
+      legend.classList.add("has-selection");
+      svg.querySelectorAll(".donut-segment").forEach(function (s) {
+        s.classList.toggle("selected", s.dataset.name === name);
+      });
+      legend.querySelectorAll(".legend-row").forEach(function (r) {
+        r.classList.toggle("selected", r.dataset.name === name);
+      });
+    }
+
+    svg.addEventListener("click", function (e) {
+      var seg = e.target.closest(".donut-segment");
+      if (seg) select(seg.dataset.name);
+    });
+    legend.addEventListener("click", function (e) {
+      var row = e.target.closest(".legend-row");
+      if (row) select(row.dataset.name);
+    });
+  }
+
   // ---------------- Mehr: Kategorien, Verrechnung, offene Punkte ----------------
   function renderMehr(data) {
-    var max = Math.max.apply(null, data.kategorien.map(function (k) { return k.betrag; }));
-    var chart = document.getElementById("kategorien-chart");
-    chart.innerHTML = "";
-    data.kategorien.forEach(function (k) {
-      var row = document.createElement("div");
-      row.className = "bar-row";
-      var pct = max ? Math.round((k.betrag / max) * 100) : 0;
-      row.innerHTML =
-        '<div class="bar-label">' + esc(k.name) + "</div>" +
-        '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
-        '<div class="bar-value">' + euro(k.betrag) + "</div>";
-      chart.appendChild(row);
-    });
+    var wedges = buildWedges(data.kategorien);
+    var total = wedges.reduce(function (sum, w) { return sum + w.betrag; }, 0);
+    renderDonut(wedges, total);
+    renderLegend(wedges, total);
+    initDonutInteraction();
 
     var s = data.summary;
     var vc = document.getElementById("verrechnung-cards");
