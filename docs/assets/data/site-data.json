@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-06T21:11:06+00:00",
+  "generated_at": "2026-09-07T08:15:43+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6027.33,
-    "bezahlt": 5599.53,
+    "gesamt": 6032.86,
+    "bezahlt": 5605.06,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
     "beitrag_patrick": 5985.13,
-    "beitrag_nora": 1614.4,
-    "anteil_pro_person": 3013.66,
-    "saldo_patrick": 2971.47,
+    "beitrag_nora": 1619.93,
+    "anteil_pro_person": 3016.43,
+    "saldo_patrick": 2968.7,
     "transfer_patrick_nora": 2000.0
   },
   "kategorien": [
@@ -28,7 +28,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 821.05
+      "betrag": 745.1
     },
     {
       "name": "Tanken",
@@ -39,12 +39,12 @@
       "betrag": 227.71
     },
     {
-      "name": "Restaurant",
-      "betrag": 60.09
+      "name": "Aktivitäten",
+      "betrag": 100.91
     },
     {
-      "name": "Aktivitäten",
-      "betrag": 24.96
+      "name": "Restaurant",
+      "betrag": 65.62
     },
     {
       "name": "Shopping",
@@ -189,8 +189,17 @@
     {
       "datum": "2026-09-05",
       "kategorie": "Unterkunft",
-      "beschreibung": "Klein Aus Vista Lodge",
-      "betrag": 100.91,
+      "beschreibung": "Klein-Aus Vista - Unterkunft (Rest)",
+      "betrag": 24.96,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-05",
+      "kategorie": "Aktivitäten",
+      "beschreibung": "Klein-Aus Vista - Sunset Drive (2 Pers.)",
+      "betrag": 75.95,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "status": "bezahlt"
@@ -257,6 +266,15 @@
       "zahler": "TBD",
       "zahlmittel": "Bargeld",
       "status": "offen"
+    },
+    {
+      "datum": "2026-09-07",
+      "kategorie": "Restaurant",
+      "beschreibung": "Klein-Aus Vista - Getränke",
+      "betrag": 5.53,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
     },
     {
       "datum": "2026-09-08",
@@ -655,10 +673,6 @@
     {
       "punkt": "Hoada-Anzahlung — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt.",
       "warum": "Zahlungsstand"
-    },
-    {
-      "punkt": "Klein Aus Vista Lodge, 100,91 € am 05.09. — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit).",
-      "warum": "76,91 € Differenz zur Planung"
     },
     {
       "punkt": "Mehrere N26-Umsätze standen beim Screenshot noch auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig.",

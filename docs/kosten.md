@@ -43,15 +43,17 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 8 | 2026-09-05 | – | Ausgabe | Quiver Tree Forest | Quivertree Forest Camping | Unterkunft | 720.00 NAD | 38,64 € | Patrick | Bargeld | 18.634 | Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet |
 | 9 | 2026-09-04 | 11:58 | Ausgabe | Mariental | Spar Mariental | Lebensmittel | – | 20,11 € | Nora | N26 Debit | – | – |
 | 10 | 2026-09-05 | 12:19 | Ausgabe | Keetmanshoop | Agra Keetmanshoop - Fo | Tanken | – | 98,15 € | Nora | N26 Debit | – | KATEGORIE ZU BESTAETIGEN - Agra ist Landhandel mit Tankstelle; N26 kategorisiert als Transport & Auto |
-| 11 | 2026-09-05 | 15:00 | Ausgabe | Aus | Klein Aus Vista Lodge | Unterkunft | – | 100,91 € | Nora | N26 Debit | – | BETRAG PRUEFEN - Restzahlung Desert Horse Campsite (2 Naechte); geplant waren 48 EUR gesamt inkl. 24 EUR Deposit ⚠️ |
+| 11 | 2026-09-05 | 15:00 | Ausgabe | Aus | Klein-Aus Vista - Unterkunft (Rest) | Unterkunft | 460.00 NAD | 24,96 € | Nora | N26 Debit | 18.429 | Restzahlung Desert Horse Campsite (2 Naechte) laut Rechnung 6483110; 920 NAD gesamt minus 460 NAD Deposit vom 23.04. |
 | 12 | 2026-09-06 | 08:24 | Ausgabe | Kolmanskop | Ghost Town Tours CC | Aktivitäten | – | 24,96 € | Nora | N26 Debit | – | Geisterstadt-Tour Kolmanskop |
 | 13 | 2026-09-06 | 11:24 | Ausgabe | Aus | Desert Deli | Restaurant | – | 4,72 € | Nora | N26 Debit | – | – |
 | 14 | 2026-09-06 | 12:46 | Ausgabe | Lüderitz | Portugues Fisherman | Restaurant | – | 45,57 € | Nora | N26 Debit | – | – |
 | 15 | 2026-09-06 | 13:43 | Ausgabe | Lüderitz | Spar Lüderitz | Lebensmittel | – | 38,38 € | Nora | N26 Debit | – | – |
 | 16 | 2026-09-06 | 13:54 | Ausgabe | Lüderitz | Studio88 Lüderitz | Shopping | – | 20,07 € | Nora | N26 Debit | – | – |
 | 17 | 2026-09-06 | 14:19 | Ausgabe | Lüderitz | Lüderitz Fuel Center | Tanken | – | 60,20 € | Nora | N26 Debit | – | – |
+| 18 | 2026-09-05 | 15:00 | Ausgabe | Aus | Klein-Aus Vista - Sunset Drive (2 Pers.) | Aktivitäten | 1400.00 NAD | 75,95 € | Nora | N26 Debit | 18.433 | Teil derselben N26-Zahlung von 100.91 EUR wie Nr. 11 - laut Rechnung 6483110 zwei Sitze a 700 NAD |
+| 19 | 2026-09-07 | 10:05 | Ausgabe | Aus | Klein-Aus Vista - Getränke | Restaurant | 102.00 NAD | 5,53 € | Nora | N26 Debit | 18.445 | Restsaldo der Rechnung 6483110 beim Auschecken (Windhoek Lager, Savanna Dry, Hansa Draught) - EUR mit dem Kurs der 05.09.-Zahlung gerechnet, echter N26-Betrag noch nicht bekannt |
 
-**Echte Ausgaben:** 724,42 € (davon bar 38,64 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 178,56 €
+**Echte Ausgaben:** 729,95 € (davon bar 38,64 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 178,56 €
 
 ## 3. Zusammenfassung
 
@@ -61,23 +63,23 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
-| Unterkunft | 821,05 € |
+| Unterkunft | 745,10 € |
 | Tanken | 231,77 € |
 | Lebensmittel | 227,71 € |
-| Restaurant | 60,09 € |
-| Aktivitäten | 24,96 € |
+| Aktivitäten | 100,91 € |
+| Restaurant | 65,62 € |
 | Shopping | 20,07 € |
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |
 
-**Gesamtausgaben: 6.027,33 €**
+**Gesamtausgaben: 6.032,86 €**
 
 ### Wer hat wie viel getragen
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 311,35 € | 3.985,13 € |
-| Nora | 1.201,33 € | 413,07 € | 1.614,40 € |
+| Nora | 1.201,33 € | 418,60 € | 1.619,93 € |
 | Noch ungeklärt (TBD) | 382,80 € | – | 382,80 € |
 
 ### Reisekasse (Bargeld)
@@ -93,11 +95,11 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Beitrag Patrick (Karte + Kasse + Überweisung) | 5.985,13 € |
-| Beitrag Nora (Karte) | 1.614,40 € |
-| Gesamtausgaben | 6.027,33 € |
-| Anteil je Person (50/50) | 3.013,67 € |
-| Saldo Patrick ohne Überweisung | 971,46 € |
-| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.971,46 €** |
+| Beitrag Nora (Karte) | 1.619,93 € |
+| Gesamtausgaben | 6.032,86 € |
+| Anteil je Person (50/50) | 3.016,43 € |
+| Saldo Patrick ohne Überweisung | 968,70 € |
+| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.968,70 €** |
 
 *Lesehilfe: Die 2.000 € sind noch weitgehend ungenutztes Guthaben bei Nora, keine Ausgabe. Sobald Nora damit gemeinsame Kosten zahlt, sinkt der Saldo automatisch – neue Zeilen dazu in `data/02_laufend.csv` mit Zahler `Nora`.*
 

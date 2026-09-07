@@ -1,15 +1,14 @@
 # Offene Punkte
 
-Stand: 06.09.2026, 18:16 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
+Stand: 07.09.2026, 10:15 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
 
 ## Blockierend für korrekte Zahlen
 
 | # | Punkt | Warum es zählt |
 |---|---|---|
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
-| 2 | **Klein Aus Vista Lodge, 100,91 € am 05.09.** — ob das nur die Desert-Horse-Restzahlung war oder mehr, weiß Patrick noch nicht. Plan sah nur 24 € Restzahlung vor (48 € gesamt − 24 € Deposit). | 76,91 € Differenz zur Planung |
-| 3 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
-| 4 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
+| 2 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
+| 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
 
 ## Nach der Reise
 
@@ -51,3 +50,12 @@ Stand: 06.09.2026, 18:16 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 - **Granietkop (48 €), Onguma 2 Nächte (116 €):** bestätigt noch nicht fällig
   (13./17.–19.09. liegen noch in der Zukunft), bleiben planmäßig offen.
 - **Tankgröße:** 160 Liter, aufgeteilt in 2×80-Liter-Tanks (Haupt- + Zusatztank).
+- **Klein-Aus Vista, 100,91 € vom 05.09. aufgeklärt** (Rechnung 6483110, erhalten
+  beim Auschecken am 07.09.): Es war *nicht* nur die Unterkunft. Die Zahlung
+  bestand aus 460 NAD Unterkunfts-Restzahlung (24,96 €) und 1.400 NAD für den
+  **Sunset Drive für zwei Personen** (75,95 €) — letzterer war bis dahin
+  überhaupt nicht erfasst. Beide Posten stehen jetzt getrennt in
+  `02_laufend.csv`. Die ursprünglich vermutete „Differenz zur Planung" war also
+  eine bisher unbekannte Aktivität, kein Fehler.
+- **Getränke Klein-Aus Vista (102 NAD ≈ 5,53 €)** beim Auschecken am 07.09. von
+  Nora per N26 bezahlt — war der Restsaldo derselben Rechnung.
