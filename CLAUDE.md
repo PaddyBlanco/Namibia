@@ -42,6 +42,16 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
    sonst zählt Blatt 3 den Posten doppelt.
 7. **Barausgaben in EUR** werden mit dem Kurs bewertet, zu dem das Bargeld beschafft
    wurde (aktuell **18,633 NAD/€** aus der ATM-Abhebung vom 03.09.).
+8. **Saldo-Definition (seit 07.09.2026, `scripts/kosten_core.py`):** 50/50 auf
+   Basis dessen, was **bisher nachweislich von Patrick oder Nora bezahlt** wurde
+   (`saldo_basis`). Noch offene Posten gehören niemandem, bis sie jemand bezahlt;
+   Zahlungen mit `zahler = TBD` bleiben außerhalb der Basis. Die 2.000-€-Überweisung
+   zählt bei Patrick plus, bei Nora minus („effektiv getragen"). Vorher wurde der
+   Anteil auf die Gesamtsumme *inkl. offen* gerechnet — das unterstellte still-
+   schweigend, dass Nora alle offenen Posten zahlt, und wies Noras Beitrag ohne
+   Abzug der Überweisung aus (Summe der Beiträge lag 2.000 € über dem Bezahlten).
+   `build_md.py` und `build_site_data.py` rechnen **beide** über `kosten_core.compute()`
+   — Zahlenlogik nie in einem der beiden Skripte allein ändern.
 
 ## Kategorien (fix — nicht erweitern ohne Rücksprache)
 
@@ -63,9 +73,10 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `docs/karten-gebuehren.md` | Recherche Kartenkonditionen + Handlungsempfehlung |
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
 | `docs/handover.md`         | Projektstand-Übergabe: was fertig ist, was offen ist, wie es weitergeht |
+| `scripts/kosten_core.py`   | **Gemeinsame Rechenlogik** (Summen, Kategorien, Saldo) für beide Build-Skripte — einzige Stelle für Zahlenlogik |
 | `scripts/build_md.py`      | Baut `docs/kosten.md` aus den CSVs (schnell, Standardweg) |
 | `scripts/build_sheet.py`   | Baut zusätzlich eine .xlsx mit 3 Tabs – nur auf Zuruf, siehe unten |
-| `scripts/build_site_data.py` | Baut `docs/assets/data/site-data.json` für die GitHub-Pages-Seite |
+| `scripts/build_site_data.py` | Baut `docs/assets/data/site-data.json` für die GitHub-Pages-Seite und stempelt `?v=<hash>` an `app.js`/`style.css` in `index.html` (Cache-Busting, s. Website) |
 | `docs/index.html` + `docs/assets/` | GitHub-Pages-Seite (Mobile-App-Stil), siehe Abschnitt „Website" unten |
 
 ## Workflow bei neuen Belegen
@@ -189,7 +200,14 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   nachdem Home zuerst nur eine Umbenennung des Kosten-Tabs war):
   1. **Home** (`home`, 🏠) — der Startbildschirm, genau drei Blöcke, siehe unten
   2. **Kosten** (`kosten`, 💶) — Sub-Nav „Kostenübersicht" (Gesamt-Kacheln,
-     Reisekasse, Saldo) und „Ausgabenliste" (filterbare Vollliste)
+     Reisekasse, Saldo + Hinweis zur Saldo-Basis) und „Ausgabenliste"
+     (filterbar). **Die Ausgabenliste trennt nach Gerätedatum:** oben alles
+     bis heute, neueste zuerst; darunter ein eingeklappter Block „Kommende
+     Buchungen (n · Summe)" mit den Blatt-1-Zeilen, deren Check-in-Datum in
+     der Zukunft liegt. Grund (Bug 07.09.2026): Blatt-1-Zeilen tragen das
+     Check-in-, nicht das Zahldatum — ohne Trennung standen 11 vorausbezahlte
+     Unterkünfte über den echten Einträgen von heute, die dadurch „fehlten".
+     NAD-Originalbetrag wird in der Zeile mit angezeigt (`betrag_fw`/`waehrung`).
   3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
      Tankvorgänge, Tankstellen-Planung
   4. **Reiseplan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem
@@ -214,10 +232,12 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
      aufklappbare Liste „Alle Unterkünfte" mit Maps-Links — berechnet aus
      `data.plan`, gefiltert auf `kategorie === "Unterkunft"`, verglichen
      gegen das *Gerätedatum des Betrachters*, nicht gegen `generated_at`
-  2. Letzte 5 Ausgaben (aus `data.ausgaben`, schon aufsteigend sortiert —
-     einfach `.slice(-5).reverse()`), plus Button „Alle Ausgaben anzeigen",
-     der per `showView("kosten") + showSubView("ausgaben")` in den
-     Kosten-Tab springt
+  2. Letzte 5 Ausgaben — `bisherigeAusgaben(data).slice(-5).reverse()` in
+     `app.js`: `data.ausgaben` ist nach `(datum, zeit)` aufsteigend sortiert,
+     wird aber erst gegen das Gerätedatum auf „bis heute" gefiltert, sonst
+     stünden vorausbezahlte Unterkünfte mit künftigem Check-in oben. Plus
+     Button „Alle Ausgaben anzeigen", der per
+     `showView("kosten") + showSubView("ausgaben")` in den Kosten-Tab springt
   3. Gesamtkosten als Tortendiagramm (Donut + Legende)
   Stat-Kacheln, Reisekasse und Saldo gehören **nicht** auf Home, sondern in
   den Kosten-Tab.
@@ -246,6 +266,14 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
 - `scripts/build_site_data.py` ist die einzige Quelle für `site-data.json` —
   nie von Hand editieren, parst auch die Tabelle unter „## Blockierend für
   korrekte Zahlen" aus `docs/offene-punkte.md`.
+- **Cache-Busting:** GitHub Pages liefert Assets mit `max-age=600`. Damit
+  nach einem Push nicht 10 Minuten lang das alte `app.js` gegen die neue
+  `site-data.json` läuft (so sind am 07.09.2026 zweimal „veraltete" Ansichten
+  entstanden), stempelt `build_site_data.py` einen Inhalts-Hash als `?v=`
+  an `app.js` und `style.css` in `index.html`. Der Stempel ändert sich nur,
+  wenn sich die Datei ändert. `site-data.json` selbst wird mit
+  `cache: "no-store"` geladen. `index.html` bleibt 10 Min gecacht — dagegen
+  hilft nur Neuladen.
 - GitHub-Pages-Einstellung (macht der Nutzer selbst): Settings → Pages →
   Source: *Deploy from branch* → Branch **`claude/namibia-2026-bkm6h4`**
   (Stand 06.09.2026: `main` enthält nur die Start-README, die gesamte

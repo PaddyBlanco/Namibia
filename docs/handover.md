@@ -19,16 +19,22 @@ Vollständiges Datenmodell in `data/*.csv`, aus dem zwei Ansichten erzeugt werde
 
 | | |
 |---|---|
-| Gesamtausgaben | 6.027,33 € |
-| davon bezahlt | 5.599,53 € |
+| Gesamtausgaben | 6.039,70 € |
+| davon bezahlt | 5.611,90 € |
 | noch offen | 427,80 € |
 | Kassenbestand (Bargeld) | 178,56 € |
-| Saldo | Nora schuldet Patrick 2.971,47 € |
-| erfasste Ausgaben | 33 Einträge |
+| Saldo | Nora schuldet Patrick 3.179,18 € |
+| erfasste Ausgaben | 36 Einträge |
 
 Der Saldo ist hoch, weil Patrick vor der Reise 2.000 € an Nora überwiesen hat,
 die sie größtenteils noch nicht für gemeinsame Kosten ausgegeben hat. Sobald
 sie damit zahlt, sinkt der Saldo automatisch.
+
+**Saldo-Definition (geändert 07.09.2026):** 50/50 auf Basis dessen, was bisher
+tatsächlich von Patrick oder Nora bezahlt wurde — nicht mehr auf die Gesamtsumme
+inkl. der 427,80 € offen (das hatte stillschweigend unterstellt, Nora zahle alle
+offenen Posten, und den Saldo um 213,90 € zu niedrig gezeigt). Rechenlogik
+liegt zentral in `scripts/kosten_core.py`, siehe CLAUDE.md Grundregel 8.
 
 ### Website (GitHub Pages)
 Mobile-first, ohne externe Bibliotheken, offlinefähig. **5 Tabs:**
@@ -36,7 +42,8 @@ Mobile-first, ohne externe Bibliotheken, offlinefähig. **5 Tabs:**
 1. **Home** — Reise-Status (aktuelle Unterkunft, nächstes Ziel, alle Unterkünfte
    mit Google-Maps-Links), letzte 5 Ausgaben, Gesamtkosten-Tortendiagramm
 2. **Kosten** — Untermenü: Kostenübersicht (Kacheln, Reisekasse, Saldo) und
-   Ausgabenliste (filterbar nach Kategorie und Zahler)
+   Ausgabenliste (filterbar nach Kategorie und Zahler; oben alles bis heute,
+   neueste zuerst, darunter eingeklappt „Kommende Buchungen")
 3. **Tanken** — Tankplanung („wo als nächstes tanken"), Verbrauch/Reichweite,
    Tankvorgänge, recherchierte Tankstellen entlang der Route
 4. **Reiseplan** — Zeitleiste, heutiger Tag hervorgehoben

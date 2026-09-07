@@ -73,15 +73,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |
 
-**Gesamtausgaben: 6.039,70 €**
+**Gesamtausgaben: 6.039,70 €** (davon bezahlt 5.611,90 €, noch offen 427,80 €)
 
-### Wer hat wie viel getragen
+### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 311,35 € | 3.985,13 € |
 | Nora | 1.201,33 € | 425,44 € | 1.626,77 € |
-| Noch ungeklärt (TBD) | 382,80 € | – | 382,80 € |
+| Noch offen (Zahler steht erst bei Bezahlung fest) | – | – | 382,80 € |
 
 ### Reisekasse (Bargeld)
 
@@ -95,14 +95,16 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Beitrag Patrick (Karte + Kasse + Überweisung) | 5.985,13 € |
-| Beitrag Nora (Karte) | 1.626,77 € |
-| Gesamtausgaben | 6.039,70 € |
-| Anteil je Person (50/50) | 3.019,85 € |
-| Saldo Patrick ohne Überweisung | 965,28 € |
-| **Saldo Patrick inkl. 2.000-€-Überweisung** | **2.965,28 €** |
+| Patrick gezahlt (Karte + Bargeld) | 3.985,13 € |
+| Nora gezahlt (Karte) | 1.626,77 € |
+| Überweisung Patrick → Nora | 2.000,00 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 5.611,90 € |
+| Anteil je Person (50 %) | 2.805,95 € |
+| Patrick effektiv getragen (gezahlt + Überweisung) | 5.985,13 € |
+| Nora effektiv getragen (gezahlt − Überweisung) | -373,23 € |
+| **Saldo** | **Nora schuldet Patrick 3.179,18 €** |
 
-*Lesehilfe: Die 2.000 € sind noch weitgehend ungenutztes Guthaben bei Nora, keine Ausgabe. Sobald Nora damit gemeinsame Kosten zahlt, sinkt der Saldo automatisch – neue Zeilen dazu in `data/02_laufend.csv` mit Zahler `Nora`.*
+*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 427,80 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
 ### Offene Punkte (⚠️ markiert)
 

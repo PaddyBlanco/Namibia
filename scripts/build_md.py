@@ -2,28 +2,14 @@
 """Baut docs/kosten.md aus data/*.csv - schnelle, lesbare Markdown-Ansicht.
 
 Aufruf: python3 scripts/build_md.py
+Rechenlogik (Summen, Saldo) liegt in kosten_core.py, gemeinsam mit build_site_data.py.
 """
-import csv
-import collections
 import pathlib
 
+from kosten_core import compute, load, num
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
 OUT = ROOT / "docs" / "kosten.md"
-
-
-def rows(name):
-    with open(DATA / name, encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
-
-
-def num(v):
-    if v is None or v.strip() in ("", "TBD"):
-        return 0.0
-    try:
-        return float(v)
-    except ValueError:
-        return 0.0
 
 
 def eur(v):
@@ -39,15 +25,14 @@ def md_table(header, rows_):
 
 
 def main():
-    b1 = rows("01_bezahlt.csv")
-    b2 = rows("02_laufend.csv")
-    b3 = rows("03_verrechnung.csv")
+    b1, b2, b3 = load()
+    k = compute(b1, b2, b3)
 
     lines = []
     lines.append("# Namibia 2026 – Kosten")
     lines.append("")
     lines.append("Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. "
-                  "**Nicht direkt editieren** — Änderungen gehen in den CSVs verloren.")
+                 "**Nicht direkt editieren** — Änderungen gehen in den CSVs verloren.")
     lines.append("")
 
     # ---------------- Blatt 1
@@ -56,9 +41,7 @@ def main():
     header = ["Nr", "Datum", "Kategorie", "Beschreibung", "Nächte", "Betrag",
               "Status", "bezahlt", "offen", "Zahler", "Zahlmittel", "Anmerkung"]
     trows = []
-    plan_sum = bez_sum = off_sum = 0.0
     for r in b1:
-        plan_sum += num(r["betrag_eur"]); bez_sum += num(r["bezahlt_eur"]); off_sum += num(r["offen_eur"])
         flag = " ⚠️" if r["zahler"] == "TBD" or "UNKLAR" in r["anmerkung"].upper() or "PRUEFEN" in r["anmerkung"].upper() else ""
         trows.append([r["nr"], r["datum"], r["kategorie"], r["beschreibung"],
                       r["naechte"] or "–", eur(num(r["betrag_eur"])), r["status"],
@@ -66,27 +49,21 @@ def main():
                       r["zahler"] + flag, r["zahlmittel"], r["anmerkung"] or "–"])
     lines.append(md_table(header, trows))
     lines.append("")
-    lines.append(f"**Summe:** {eur(plan_sum)} geplant · {eur(bez_sum)} bezahlt · **{eur(off_sum)} noch offen**")
+    lines.append(f"**Summe:** {eur(k['plan_sum'])} geplant · {eur(k['bez_sum'])} bezahlt · "
+                 f"**{eur(k['off_sum'])} noch offen**")
     lines.append("")
 
     # ---------------- Blatt 2
     lines.append("## 2. Laufende Kosten während der Reise")
     lines.append("")
     lines.append("`Typ = Abhebung` ist eine Umbuchung in die Reisekasse, **keine Ausgabe**. "
-                  "Nur `Typ = Ausgabe` zählt in den Summen.")
+                 "Nur `Typ = Ausgabe` zählt in den Summen.")
     lines.append("")
     header2 = ["Nr", "Datum", "Zeit", "Typ", "Ort", "Händler", "Kategorie",
                "Betrag FW", "€", "Zahler", "Zahlmittel", "Kurs", "Anmerkung"]
     trows2 = []
-    aus_sum = abh_sum = bar_sum = 0.0
     for r in b2:
         betrag_eur = num(r["betrag_eur"])
-        if r["typ"] == "Ausgabe":
-            aus_sum += betrag_eur
-            if r["zahlmittel"] == "Bargeld":
-                bar_sum += betrag_eur
-        elif r["typ"] == "Abhebung":
-            abh_sum += betrag_eur
         fw = f"{r['betrag_fw']} {r['waehrung']}" if r["betrag_fw"] else "–"
         kurs = ""
         if r["betrag_fw"] and betrag_eur:
@@ -98,8 +75,9 @@ def main():
                        kurs or "–", (r["anmerkung"] or "–") + flag])
     lines.append(md_table(header2, trows2))
     lines.append("")
-    lines.append(f"**Echte Ausgaben:** {eur(aus_sum)} (davon bar {eur(bar_sum)}) · "
-                  f"**Bargeldabhebungen:** {eur(abh_sum)} · **Kassenbestand:** {eur(abh_sum - bar_sum)}")
+    lines.append(f"**Echte Ausgaben:** {eur(k['aus_sum'])} (davon bar {eur(k['kasse_bar_ausgegeben'])}) · "
+                 f"**Bargeldabhebungen:** {eur(k['kasse_abgehoben'])} · "
+                 f"**Kassenbestand:** {eur(k['kasse_bestand'])}")
     lines.append("")
 
     # ---------------- Blatt 3: Zusammenfassung
@@ -107,64 +85,63 @@ def main():
     lines.append("")
     lines.append("### Kosten nach Kategorie")
     lines.append("")
-    kat = collections.Counter()
-    for r in b1:
-        kat[r["kategorie"]] += num(r["betrag_eur"])
-    for r in b2:
-        if r["typ"] == "Ausgabe":
-            kat[r["kategorie"] or "Sonstiges"] += num(r["betrag_eur"])
-    ktable = [[k, eur(v)] for k, v in sorted(kat.items(), key=lambda x: -x[1]) if v]
-    gesamt = sum(kat.values())
-    lines.append(md_table(["Kategorie", "Betrag"], ktable))
+    lines.append(md_table(["Kategorie", "Betrag"], [[name, eur(v)] for name, v in k["kategorien"]]))
     lines.append("")
-    lines.append(f"**Gesamtausgaben: {eur(gesamt)}**")
+    lines.append(f"**Gesamtausgaben: {eur(k['gesamt'])}** "
+                 f"(davon bezahlt {eur(k['bezahlt'])}, noch offen {eur(k['offen'])})")
     lines.append("")
 
-    lines.append("### Wer hat wie viel getragen")
+    lines.append("### Wer hat wie viel gezahlt")
     lines.append("")
     pv = sum(num(r["bezahlt_eur"]) for r in b1 if r["zahler"] == "Patrick")
     nv = sum(num(r["bezahlt_eur"]) for r in b1 if r["zahler"] == "Nora")
-    pl = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Ausgabe" and r["zahler"] == "Patrick")
-    nl = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Ausgabe" and r["zahler"] == "Nora")
+    pl = k["patrick_gezahlt"] - pv
+    nl = k["nora_gezahlt"] - nv
     tbd_v = sum(num(r["bezahlt_eur"]) + num(r["offen_eur"]) for r in b1 if r["zahler"] == "TBD")
     lines.append(md_table(
         ["Person", "Vorab (Blatt 1)", "Laufend (Blatt 2)", "Gesamt"],
-        [["Patrick", eur(pv), eur(pl), eur(pv + pl)],
-         ["Nora", eur(nv), eur(nl), eur(nv + nl)],
-         ["Noch ungeklärt (TBD)", eur(tbd_v), "–", eur(tbd_v)]]))
+        [["Patrick", eur(pv), eur(pl), eur(k["patrick_gezahlt"])],
+         ["Nora", eur(nv), eur(nl), eur(k["nora_gezahlt"])],
+         ["Noch offen (Zahler steht erst bei Bezahlung fest)", "–", "–", eur(tbd_v)]]))
     lines.append("")
 
     lines.append("### Reisekasse (Bargeld)")
     lines.append("")
-    lines.append(f"- Abgehoben gesamt: **{eur(abh_sum)}**")
-    lines.append(f"- Davon bar ausgegeben: **{eur(bar_sum)}**")
-    lines.append(f"- Kassenbestand rechnerisch: **{eur(abh_sum - bar_sum)}**")
+    lines.append(f"- Abgehoben gesamt: **{eur(k['kasse_abgehoben'])}**")
+    lines.append(f"- Davon bar ausgegeben: **{eur(k['kasse_bar_ausgegeben'])}**")
+    lines.append(f"- Kassenbestand rechnerisch: **{eur(k['kasse_bestand'])}**")
     lines.append("")
 
     lines.append("### Verrechnung zwischen Patrick und Nora")
     lines.append("")
-    transfer = sum(num(v["betrag_eur"]) for v in b3)
     for v in b3:
         lines.append(f"- {v['datum']}: **{v['von']} → {v['nach']}**, {eur(num(v['betrag_eur']))} "
-                      f"— {v['zweck']} ({v['anmerkung']})")
+                     f"— {v['zweck']} ({v['anmerkung']})")
     lines.append("")
-    beitrag_p = pv + pl + transfer
-    beitrag_n = nv + nl
-    anteil = gesamt / 2
-    saldo_ohne = pv + pl - anteil
-    saldo_mit = beitrag_p - anteil
+    saldo = k["saldo_patrick"]
+    saldo_text = (f"**Nora schuldet Patrick {eur(saldo)}**" if saldo > 0.005
+                  else f"**Patrick schuldet Nora {eur(-saldo)}**" if saldo < -0.005
+                  else "**Ausgeglichen**")
     lines.append(md_table(
         ["", "Betrag"],
-        [["Beitrag Patrick (Karte + Kasse + Überweisung)", eur(beitrag_p)],
-         ["Beitrag Nora (Karte)", eur(beitrag_n)],
-         ["Gesamtausgaben", eur(gesamt)],
-         ["Anteil je Person (50/50)", eur(anteil)],
-         ["Saldo Patrick ohne Überweisung", eur(saldo_ohne)],
-         ["**Saldo Patrick inkl. 2.000-€-Überweisung**", f"**{eur(saldo_mit)}**"]]))
+        [["Patrick gezahlt (Karte + Bargeld)", eur(k["patrick_gezahlt"])],
+         ["Nora gezahlt (Karte)", eur(k["nora_gezahlt"])],
+         ["Überweisung Patrick → Nora", eur(k["transfer_patrick_nora"])],
+         ["Bisher bezahlt gesamt (Saldo-Basis)", eur(k["saldo_basis"])],
+         ["Anteil je Person (50 %)", eur(k["anteil_pro_person"])],
+         ["Patrick effektiv getragen (gezahlt + Überweisung)", eur(k["beitrag_patrick"])],
+         ["Nora effektiv getragen (gezahlt − Überweisung)", eur(k["beitrag_nora"])],
+         ["**Saldo**", saldo_text]]))
     lines.append("")
-    lines.append("*Lesehilfe: Die 2.000 € sind noch weitgehend ungenutztes Guthaben bei Nora, "
-                  "keine Ausgabe. Sobald Nora damit gemeinsame Kosten zahlt, sinkt der Saldo "
-                  "automatisch – neue Zeilen dazu in `data/02_laufend.csv` mit Zahler `Nora`.*")
+    lines.append("*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich "
+                 f"bezahlt wurde – die noch offenen {eur(k['offen'])} zählen erst, wenn jemand sie "
+                 "bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: "
+                 "von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. "
+                 "Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*")
+    if k["tbd_gezahlt"] > 0.005:
+        lines.append("")
+        lines.append(f"⚠️ **{eur(k['tbd_gezahlt'])} sind bezahlt, aber ohne bekannten Zahler (TBD)** – "
+                     "diese Beträge stehen außerhalb der Saldo-Basis, bis der Zahler geklärt ist.")
     lines.append("")
 
     lines.append("### Offene Punkte (⚠️ markiert)")

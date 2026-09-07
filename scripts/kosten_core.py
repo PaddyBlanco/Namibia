@@ -1,0 +1,96 @@
+"""Gemeinsame Rechenlogik fuer build_md.py und build_site_data.py.
+
+Einzige Quelle fuer Summen, Kategorien und Saldo - beide Build-Skripte
+importieren von hier, damit docs/kosten.md und die Website nie auseinanderlaufen.
+"""
+import collections
+import csv
+import pathlib
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+
+
+def rows(name):
+    with open(DATA / name, encoding="utf-8") as fh:
+        return list(csv.DictReader(fh))
+
+
+def num(v):
+    if v is None or v.strip() in ("", "TBD"):
+        return 0.0
+    try:
+        return float(v)
+    except ValueError:
+        return 0.0
+
+
+def is_tbd(v):
+    return v is None or v.strip() in ("", "TBD")
+
+
+def load():
+    return rows("01_bezahlt.csv"), rows("02_laufend.csv"), rows("03_verrechnung.csv")
+
+
+def compute(b1, b2, b3):
+    ausgaben2 = [r for r in b2 if r["typ"] == "Ausgabe"]
+
+    plan_sum = sum(num(r["betrag_eur"]) for r in b1)
+    bez_sum = sum(num(r["bezahlt_eur"]) for r in b1)
+    off_sum = sum(num(r["offen_eur"]) for r in b1)
+    aus_sum = sum(num(r["betrag_eur"]) for r in ausgaben2)
+    bar_sum = sum(num(r["betrag_eur"]) for r in ausgaben2 if r["zahlmittel"] == "Bargeld")
+    abh_sum = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Abhebung")
+    gesamt = plan_sum + aus_sum
+    bezahlt = bez_sum + aus_sum
+
+    kat = collections.Counter()
+    for r in b1:
+        kat[r["kategorie"]] += num(r["betrag_eur"])
+    for r in ausgaben2:
+        kat[r["kategorie"] or "Sonstiges"] += num(r["betrag_eur"])
+    kategorien = [(name, v) for name, v in sorted(kat.items(), key=lambda x: -x[1]) if v]
+
+    def gezahlt(person):
+        return (sum(num(r["bezahlt_eur"]) for r in b1 if r["zahler"] == person)
+                + sum(num(r["betrag_eur"]) for r in ausgaben2 if r["zahler"] == person))
+
+    patrick_gezahlt = gezahlt("Patrick")
+    nora_gezahlt = gezahlt("Nora")
+    tbd_gezahlt = round(bezahlt - patrick_gezahlt - nora_gezahlt, 2) + 0.0  # + 0.0: kein -0.0
+    transfer = sum(num(v["betrag_eur"]) for v in b3)
+
+    # Saldo = 50/50 auf Basis dessen, was bisher nachweislich von Patrick oder
+    # Nora bezahlt wurde. Noch offene Posten gehoeren niemandem, bis sie jemand
+    # bezahlt; Zahlungen mit Zahler TBD bleiben ausserhalb der Basis, statt
+    # stillschweigend einer Person zugerechnet zu werden. Die Ueberweisung ist
+    # Patricks Geld, das Nora ausgibt: zaehlt bei ihm plus, bei ihr minus.
+    basis = patrick_gezahlt + nora_gezahlt
+    anteil = basis / 2
+    beitrag_patrick = patrick_gezahlt + transfer
+    beitrag_nora = nora_gezahlt - transfer
+    saldo_patrick = beitrag_patrick - anteil  # > 0: Nora schuldet Patrick
+
+    return {
+        "plan_sum": plan_sum,
+        "bez_sum": bez_sum,
+        "off_sum": off_sum,
+        "aus_sum": aus_sum,
+        "gesamt": gesamt,
+        "bezahlt": bezahlt,
+        "offen": off_sum,
+        "kasse_abgehoben": abh_sum,
+        "kasse_bar_ausgegeben": bar_sum,
+        "kasse_bestand": abh_sum - bar_sum,
+        "kategorien": kategorien,
+        "patrick_gezahlt": patrick_gezahlt,
+        "nora_gezahlt": nora_gezahlt,
+        "tbd_gezahlt": tbd_gezahlt,
+        "transfer_patrick_nora": transfer,
+        "saldo_basis": basis,
+        "anteil_pro_person": anteil,
+        "beitrag_patrick": beitrag_patrick,
+        "beitrag_nora": beitrag_nora,
+        "saldo_patrick": saldo_patrick,
+    }

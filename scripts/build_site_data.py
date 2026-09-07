@@ -7,11 +7,13 @@ Buchungslinks werden hier absichtlich nie ausgegeben (siehe CLAUDE.md).
 Aufruf: python3 scripts/build_site_data.py
 """
 import csv
-import collections
 import datetime
+import hashlib
 import json
 import pathlib
 import re
+
+from kosten_core import compute, is_tbd, load, num, rows
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -22,22 +24,24 @@ TRIP_START = "2026-09-02"
 TRIP_END = "2026-09-21"
 
 
-def rows(name):
-    with open(DATA / name, encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
+INDEX_HTML = ROOT / "docs" / "index.html"
+VERSIONED_ASSETS = ("assets/css/style.css", "assets/js/app.js")
 
 
-def num(v):
-    if v is None or v.strip() in ("", "TBD"):
-        return 0.0
-    try:
-        return float(v)
-    except ValueError:
-        return 0.0
+def stamp_asset_versions():
+    """Haengt ?v=<Inhalts-Hash> an style.css und app.js in index.html.
 
-
-def is_tbd(v):
-    return v is None or v.strip() in ("", "TBD")
+    GitHub Pages liefert Assets mit Cache-Control max-age=600. Ohne Stempel
+    laeuft nach einem Push bis zu 10 Minuten lang das alte app.js gegen die
+    neue site-data.json (die selbst mit cache: no-store geladen wird). Der
+    Hash aendert sich nur, wenn sich die Datei aendert - reine Datenupdates
+    erzeugen also kein Diff in index.html.
+    """
+    html = INDEX_HTML.read_text(encoding="utf-8")
+    for rel in VERSIONED_ASSETS:
+        digest = hashlib.sha1((ROOT / "docs" / rel).read_bytes()).hexdigest()[:8]
+        html = re.sub(re.escape(rel) + r"(\?v=[0-9a-f]+)?", rel + "?v=" + digest, html)
+    INDEX_HTML.write_text(html, encoding="utf-8")
 
 
 def parse_tanken():
@@ -168,9 +172,8 @@ def parse_offene_punkte():
 
 
 def main():
-    b1 = rows("01_bezahlt.csv")
-    b2 = rows("02_laufend.csv")
-    b3 = rows("03_verrechnung.csv")
+    b1, b2, b3 = load()
+    k = compute(b1, b2, b3)
 
     # ---------- Ausgaben (kombinierte Liste, ohne Abhebungen/Nullzeilen) ----------
     ausgaben = []
@@ -180,9 +183,12 @@ def main():
             continue  # z.B. Quiver Tree: steht schon in Blatt 2, hier nur Referenz
         ausgaben.append({
             "datum": r["datum"],
+            "zeit": "",
             "kategorie": r["kategorie"],
             "beschreibung": r["beschreibung"],
             "betrag": round(betrag, 2),
+            "betrag_fw": None,
+            "waehrung": "EUR",
             "zahler": r["zahler"],
             "zahlmittel": r["zahlmittel"],
             "status": "offen" if num(r["offen_eur"]) > 0 else "bezahlt",
@@ -192,63 +198,30 @@ def main():
             continue
         ausgaben.append({
             "datum": r["datum"],
+            "zeit": r["zeit"] or "",
             "kategorie": r["kategorie"] or "Sonstiges",
             "beschreibung": r["haendler"] or r["ort"],
             "betrag": round(num(r["betrag_eur"]), 2),
+            "betrag_fw": round(num(r["betrag_fw"]), 2) if r["betrag_fw"] else None,
+            "waehrung": r["waehrung"] or "EUR",
             "zahler": r["zahler"],
             "zahlmittel": r["zahlmittel"],
             "status": "bezahlt",
         })
-    ausgaben.sort(key=lambda x: x["datum"])
-
-    # ---------- Letzte Ausgaben (fuer Home) ----------
-    # ausgaben enthaelt auch vorab bezahlte Unterkuenfte mit kuenftigem
-    # Check-in-Datum (Blatt 1) - nach datum sortiert wuerden die immer ans
-    # Ende rutschen und die echten aktuellen Ausgaben aus Blatt 2 verdraengen.
-    # Fuer "letzte Ausgaben" daher nur Eintraege bis heute beruecksichtigen.
-    heute = datetime.date.today().isoformat()
-    letzte_ausgaben = [a for a in ausgaben if a["datum"] <= heute][-5:]
+    # Blatt-1-Zeilen tragen das Check-in-Datum, nicht das Zahldatum - kuenftige
+    # Buchungen landen daher hinten. Die Website trennt "bisher" und "kommend"
+    # selbst anhand des Geraetedatums (bisherigeAusgaben() in app.js).
+    ausgaben.sort(key=lambda x: (x["datum"], x["zeit"]))
 
     # ---------- Kategorien ----------
-    kat = collections.Counter()
-    for a in ausgaben:
-        kat[a["kategorie"]] += a["betrag"]
-    kategorien = [{"name": k, "betrag": round(v, 2)}
-                  for k, v in sorted(kat.items(), key=lambda x: -x[1]) if v]
+    kategorien = [{"name": name, "betrag": round(v, 2)} for name, v in k["kategorien"]]
 
-    # ---------- Summary ----------
-    plan_sum = sum(num(r["betrag_eur"]) for r in b1)
-    bez_sum = sum(num(r["bezahlt_eur"]) for r in b1)
-    off_sum = sum(num(r["offen_eur"]) for r in b1)
-    aus_sum = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Ausgabe")
-    bar_sum = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Ausgabe" and r["zahlmittel"] == "Bargeld")
-    abh_sum = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Abhebung")
-    gesamt = plan_sum + aus_sum
-
-    pv = sum(num(r["bezahlt_eur"]) for r in b1 if r["zahler"] == "Patrick")
-    nv = sum(num(r["bezahlt_eur"]) for r in b1 if r["zahler"] == "Nora")
-    pl = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Ausgabe" and r["zahler"] == "Patrick")
-    nl = sum(num(r["betrag_eur"]) for r in b2 if r["typ"] == "Ausgabe" and r["zahler"] == "Nora")
-    transfer = sum(num(v["betrag_eur"]) for v in b3)
-
-    beitrag_patrick = pv + pl + transfer
-    beitrag_nora = nv + nl
-    anteil = gesamt / 2
-    saldo_patrick = beitrag_patrick - anteil
-
-    summary = {
-        "gesamt": round(gesamt, 2),
-        "bezahlt": round(bez_sum + aus_sum, 2),
-        "offen": round(off_sum, 2),
-        "kasse_abgehoben": round(abh_sum, 2),
-        "kasse_bar_ausgegeben": round(bar_sum, 2),
-        "kasse_bestand": round(abh_sum - bar_sum, 2),
-        "beitrag_patrick": round(beitrag_patrick, 2),
-        "beitrag_nora": round(beitrag_nora, 2),
-        "anteil_pro_person": round(anteil, 2),
-        "saldo_patrick": round(saldo_patrick, 2),
-        "transfer_patrick_nora": round(transfer, 2),
-    }
+    # ---------- Summary (Rechenlogik in kosten_core.py) ----------
+    summary = {key: round(k[key], 2) for key in (
+        "gesamt", "bezahlt", "offen", "kasse_abgehoben", "kasse_bar_ausgegeben",
+        "kasse_bestand", "patrick_gezahlt", "nora_gezahlt", "tbd_gezahlt",
+        "transfer_patrick_nora", "saldo_basis", "anteil_pro_person",
+        "beitrag_patrick", "beitrag_nora", "saldo_patrick")}
 
     # ---------- Reiseplan (aus Blatt 1, inkl. Naechte-Spanne) ----------
     # Aufgeteilte Posten (z.B. Flug haelftig Patrick/Nora) stehen als zwei
@@ -286,7 +259,6 @@ def main():
         "summary": summary,
         "kategorien": kategorien,
         "ausgaben": ausgaben,
-        "letzte_ausgaben": letzte_ausgaben,
         "plan": plan,
         "tanken": tanken,
         "offene_punkte": offene_punkte,
@@ -295,6 +267,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(site_data, ensure_ascii=False, indent=2), encoding="utf-8")
     print("geschrieben:", OUT)
+    stamp_asset_versions()
 
 
 if __name__ == "__main__":

@@ -478,7 +478,7 @@ main {
   line-height: 1.4;
 }
 
-.tanken-hint {
+.tanken-hint, .hint {
   background: var(--accent-soft);
   color: var(--accent);
   border-radius: var(--radius);
@@ -486,15 +486,15 @@ main {
   font-size: 0.82rem;
   margin: 10px 0 18px;
 }
-.tanken-hint:empty { display: none; }
+.tanken-hint:empty, .hint:empty { display: none; }
 
-.tankstellen-details {
+.tankstellen-details, .collapse-block {
   margin-bottom: 20px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
 }
-.tankstellen-details summary {
+.tankstellen-details summary, .collapse-block summary {
   padding: 12px 14px;
   font-weight: 600;
   font-size: 0.9rem;
@@ -502,9 +502,14 @@ main {
   background: var(--bg-elevated);
   list-style: none;
 }
-.tankstellen-details summary::-webkit-details-marker { display: none; }
-.tankstellen-details summary::after { content: "▾"; float: right; color: var(--text-dim); }
-.tankstellen-details[open] summary::after { content: "▴"; }
+.tankstellen-details summary::-webkit-details-marker,
+.collapse-block summary::-webkit-details-marker { display: none; }
+.tankstellen-details summary::after,
+.collapse-block summary::after { content: "▾"; float: right; color: var(--text-dim); }
+.tankstellen-details[open] summary::after,
+.collapse-block[open] summary::after { content: "▴"; }
+.collapse-block { margin: 8px 0 0; }
+.collapse-block .collapse-body { padding: 8px; }
 .tankstellen-item {
   padding: 10px 14px;
   border-top: 1px solid var(--border);

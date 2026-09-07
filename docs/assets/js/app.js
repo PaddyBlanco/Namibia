@@ -16,6 +16,25 @@
     return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
   };
 
+  // Blatt-1-Buchungen tragen ihr Check-in-Datum, nicht das Zahldatum. Damit
+  // kuenftige (laengst vorausbezahlte) Unterkuenfte nicht als "neueste
+  // Ausgabe" erscheinen, wird gegen das Geraetedatum getrennt.
+  var bisherigeAusgaben = function (data) {
+    var t = todayISO();
+    return data.ausgaben.filter(function (a) { return a.datum <= t; });
+  };
+  var kommendeAusgaben = function (data) {
+    var t = todayISO();
+    return data.ausgaben.filter(function (a) { return a.datum > t; });
+  };
+
+  function saldoHint(s) {
+    var txt = "50/50 auf Basis der bisher bezahlten " + euro(s.saldo_basis) + ". ";
+    if (s.offen > 0) txt += "Noch offen: " + euro(s.offen) + " – zählt erst, wenn jemand sie bezahlt (dann beim Zahler). ";
+    if (s.tbd_gezahlt > 0.005) txt += "Achtung: " + euro(s.tbd_gezahlt) + " bezahlt ohne bekannten Zahler (TBD) – nicht im Saldo. ";
+    return txt.trim();
+  }
+
   // ---------------- Daten laden (mit Offline-Fallback) ----------------
   function loadData() {
     return fetch(DATA_URL, { cache: "no-store" })
@@ -118,6 +137,7 @@
       saldoEl.textContent = euro(0);
       saldoEl.className = "value ok";
     }
+    document.getElementById("saldo-hint").textContent = saldoHint(s);
   }
 
   function fmtDate(iso) {
@@ -162,7 +182,7 @@
 
   // ---------------- Letzte Ausgaben ----------------
   function renderLetzteAusgaben(data) {
-    var letzte = (data.letzte_ausgaben || data.ausgaben).slice(-5).reverse();
+    var letzte = bisherigeAusgaben(data).slice(-5).reverse();
     var list = document.getElementById("letzte-ausgaben-list");
     if (!letzte.length) {
       list.innerHTML = '<div class="empty-state">Noch keine Ausgaben erfasst.</div>';
@@ -203,37 +223,46 @@
     renderChips("filter-kategorie", kats, activeKat, function (v) { activeKat = v; renderAusgaben(data); });
     renderChips("filter-zahler", zahler, activeZahler, function (v) { activeZahler = v; renderAusgaben(data); });
 
-    var list = document.getElementById("ausgaben-list");
-    list.innerHTML = "";
-    var filtered = data.ausgaben.filter(function (a) {
+    var match = function (a) {
       return (activeKat === "Alle" || a.kategorie === activeKat) &&
              (activeZahler === "Alle" || a.zahler === activeZahler);
-    });
+    };
+    var bisher = bisherigeAusgaben(data).filter(match).reverse();
+    var kommend = kommendeAusgaben(data).filter(match);
 
-    if (!filtered.length) {
-      list.innerHTML = '<div class="empty-state">Keine Ausgaben in dieser Ansicht.</div>';
-      return;
+    var html = bisher.length
+      ? bisher.map(ausgabeCard).join("")
+      : '<div class="empty-state">Keine Ausgaben in dieser Ansicht.</div>';
+    if (kommend.length) {
+      var summe = kommend.reduce(function (acc, a) { return acc + a.betrag; }, 0);
+      html += '<details class="collapse-block">' +
+        "<summary>Kommende Buchungen (" + kommend.length + " · " + euro(summe) + ")</summary>" +
+        '<div class="collapse-body card-list">' + kommend.map(ausgabeCard).join("") + "</div>" +
+        "</details>";
     }
+    document.getElementById("ausgaben-list").innerHTML = html;
+  }
 
-    filtered.slice().reverse().forEach(function (a) {
-      var card = document.createElement("div");
-      card.className = "card";
-      var zahlungsPill = a.status === "offen"
-        ? '<span class="pill status-offen">offen</span>'
-        : '<span class="pill">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>";
-      card.innerHTML =
-        '<div class="card-row">' +
-          '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
-          '<span class="card-amount">' + euro(a.betrag) + "</span>" +
-        "</div>" +
-        '<div class="card-meta">' +
-          '<span class="pill">' + esc(a.kategorie) + "</span>" +
-          '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
-          zahlungsPill +
-          "<span>" + fmtDate(a.datum) + "</span>" +
-        "</div>";
-      list.appendChild(card);
-    });
+  function ausgabeCard(a) {
+    var zahlungsPill = a.status === "offen"
+      ? '<span class="pill status-offen">offen</span>'
+      : '<span class="pill">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>";
+    var fw = a.betrag_fw && a.waehrung && a.waehrung !== "EUR"
+      ? "<span>" + a.betrag_fw.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) +
+        " " + esc(a.waehrung) + "</span>"
+      : "";
+    return '<div class="card">' +
+      '<div class="card-row">' +
+        '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
+        '<span class="card-amount">' + euro(a.betrag) + "</span>" +
+      "</div>" +
+      '<div class="card-meta">' +
+        '<span class="pill">' + esc(a.kategorie) + "</span>" +
+        '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
+        zahlungsPill + fw +
+        "<span>" + fmtDate(a.datum) + "</span>" +
+      "</div>" +
+    "</div>";
   }
 
   function renderChips(containerId, options, active, onPick) {
@@ -545,10 +574,16 @@
     var s = data.summary;
     var vc = document.getElementById("verrechnung-cards");
     vc.innerHTML =
-      cardRow("Patrick", s.beitrag_patrick) +
-      cardRow("Nora", s.beitrag_nora) +
-      cardRow("Anteil pro Person", s.anteil_pro_person) +
-      cardRow("Überweisung Patrick → Nora", s.transfer_patrick_nora);
+      cardRow("Patrick gezahlt (Karte + Bargeld)", s.patrick_gezahlt) +
+      cardRow("Nora gezahlt (Karte)", s.nora_gezahlt) +
+      cardRow("Überweisung Patrick → Nora", s.transfer_patrick_nora) +
+      cardRow("Anteil je Person (50 %)", s.anteil_pro_person) +
+      cardRow("Patrick effektiv getragen", s.beitrag_patrick) +
+      cardRow("Nora effektiv getragen", s.beitrag_nora);
+    document.getElementById("verrechnung-hint").textContent =
+      "Effektiv = eigene Zahlungen plus/minus Überweisung. " +
+      (s.beitrag_nora < 0 ? "Negativ bei Nora heißt: von den 2.000 € ist noch mehr übrig, als sie selbst beigesteuert hat. " : "") +
+      saldoHint(s);
 
     var op = document.getElementById("offene-punkte-list");
     if (!data.offene_punkte.length) {
