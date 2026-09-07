@@ -9,7 +9,7 @@ Stand: 07.09.2026, 13:25 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
 | 2 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 | 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
-| 4 | **Anzahlung Desert Horse Campsite** — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt. **Wer hat die 460 NAD wann womit gezahlt?** Bis dahin fehlt der Posten (~25 €) in den Summen. | Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben |
+| 4 | **Anzahlung Desert Horse Campsite** — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt vom 06.09. (Blatt 2 Nr. 12). **Wer hat die 460 NAD wann womit gezahlt?** Bis dahin fehlt der Posten (~25 €) in den Summen. | Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben |
 
 ## Nach der Reise
 
@@ -62,6 +62,8 @@ Stand: 07.09.2026, 13:25 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 - **Getränke Klein-Aus Vista (102 NAD ≈ 5,53 €)** beim Auschecken am 07.09. von
   Nora per N26 bezahlt — war der Restsaldo derselben Rechnung.
 - **„Desert Horse Campsite 24 €" (Blatt 1 Nr. 6) war der Kolmanskop-Eintritt**
-  (Patrick, 07.09.): jetzt eigene Zeile Nr. 19, Kategorie `Eintritt`, Nora/N26.
-  Die Unterkunfts-Zeile bleibt mit 0 € als Buchungsreferenz stehen (Restzahlung
-  460 NAD steht in Blatt 2 Nr. 11). Folgefrage zur 460-NAD-Anzahlung → Punkt 4 oben.
+  (Patrick, 07.09.) — und zwar dieselbe Zahlung wie „Ghost Town Tours CC"
+  24,96 € vom 06.09. (Blatt 2 Nr. 12, jetzt Kategorie `Eintritt`). Die 24 €
+  in Blatt 1 waren also keine eigene Zahlung und sind gestrichen; die
+  Unterkunfts-Zeile bleibt mit 0 € als Buchungsreferenz (Restzahlung 460 NAD
+  steht in Blatt 2 Nr. 11). Folgefrage zur 460-NAD-Anzahlung → Punkt 4 oben.

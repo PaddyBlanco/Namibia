@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-07T11:23:37+00:00",
+  "generated_at": "2026-09-07T11:24:51+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6039.78,
-    "bezahlt": 5611.98,
+    "gesamt": 6015.78,
+    "bezahlt": 5587.98,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
     "patrick_gezahlt": 3985.13,
-    "nora_gezahlt": 1626.85,
+    "nora_gezahlt": 1602.85,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5611.98,
-    "anteil_pro_person": 2805.99,
+    "saldo_basis": 5587.98,
+    "anteil_pro_person": 2793.99,
     "beitrag_patrick": 5985.13,
-    "beitrag_nora": -373.15,
-    "saldo_patrick": 3179.14
+    "beitrag_nora": -397.15,
+    "saldo_patrick": 3191.14
   },
   "kategorien": [
     {
@@ -44,7 +44,7 @@
     },
     {
       "name": "Aktivitäten",
-      "betrag": 100.91
+      "betrag": 75.95
     },
     {
       "name": "Restaurant",
@@ -52,7 +52,7 @@
     },
     {
       "name": "Eintritt",
-      "betrag": 24.0
+      "betrag": 24.96
     },
     {
       "name": "Shopping",
@@ -250,20 +250,8 @@
     },
     {
       "datum": "2026-09-06",
-      "zeit": "",
-      "kategorie": "Eintritt",
-      "beschreibung": "Kolmanskop Eintritt (vorab bezahlt)",
-      "betrag": 24.0,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
-      "status": "bezahlt"
-    },
-    {
-      "datum": "2026-09-06",
       "zeit": "08:24",
-      "kategorie": "Aktivitäten",
+      "kategorie": "Eintritt",
       "beschreibung": "Ghost Town Tours CC",
       "betrag": 24.96,
       "betrag_fw": null,
@@ -671,16 +659,6 @@
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
       "fahrzeit": "ca. 2h30"
-    },
-    {
-      "start": "2026-09-06",
-      "ende": "2026-09-06",
-      "naechte": 0,
-      "kategorie": "Eintritt",
-      "beschreibung": "Kolmanskop Eintritt (vorab bezahlt)",
-      "status": "bezahlt",
-      "info_link": null,
-      "fahrzeit": null
     }
   ],
   "tanken": {
@@ -824,7 +802,7 @@
       "warum": "Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand)"
     },
     {
-      "punkt": "Anzahlung Desert Horse Campsite — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt. Wer hat die 460 NAD wann womit gezahlt? Bis dahin fehlt der Posten (~25 €) in den Summen.",
+      "punkt": "Anzahlung Desert Horse Campsite — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt vom 06.09. (Blatt 2 Nr. 12). Wer hat die 460 NAD wann womit gezahlt? Bis dahin fehlt der Posten (~25 €) in den Summen.",
       "warum": "Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben"
     }
   ]

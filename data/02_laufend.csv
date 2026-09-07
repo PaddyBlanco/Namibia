@@ -10,7 +10,7 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 9,2026-09-04,11:58,Ausgabe,Mariental,Spar Mariental,Lebensmittel,,EUR,20.11,Nora,N26 Debit,
 10,2026-09-05,12:19,Ausgabe,Keetmanshoop,Agra Keetmanshoop - Fo,Tanken,,EUR,98.15,Nora,N26 Debit,KATEGORIE ZU BESTAETIGEN - Agra ist Landhandel mit Tankstelle; N26 kategorisiert als Transport & Auto
 11,2026-09-05,15:00,Ausgabe,Aus,Klein-Aus Vista - Unterkunft (Rest),Unterkunft,460.00,NAD,24.96,Nora,N26 Debit,Restzahlung Desert Horse Campsite (2 Naechte) laut Rechnung 6483110; 920 NAD gesamt minus 460 NAD Deposit vom 23.04.
-12,2026-09-06,08:24,Ausgabe,Kolmanskop,Ghost Town Tours CC,Aktivitäten,,EUR,24.96,Nora,N26 Debit,Geisterstadt-Tour Kolmanskop
+12,2026-09-06,08:24,Ausgabe,Kolmanskop,Ghost Town Tours CC,Eintritt,,EUR,24.96,Nora,N26 Debit,Kolmanskop Eintritt (2 Pers.) - im alten Sheet als "24 EUR Desert Horse" gefuehrt (Patrick 07.09.)
 13,2026-09-06,11:24,Ausgabe,Aus,Desert Deli,Restaurant,,EUR,4.72,Nora,N26 Debit,
 14,2026-09-06,12:46,Ausgabe,Lüderitz,Portugues Fisherman,Restaurant,,EUR,45.57,Nora,N26 Debit,
 15,2026-09-06,13:43,Ausgabe,Lüderitz,Spar Lüderitz,Lebensmittel,,EUR,38.38,Nora,N26 Debit,
