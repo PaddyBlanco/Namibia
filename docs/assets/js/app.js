@@ -449,6 +449,10 @@
     var rows =
       row("Letzter Volltank", planung.letzter_volltank.ort + " (" + fmtDate(planung.letzter_volltank.datum) + ")") +
       row("Aktueller Standort", planung.aktueller_standort.ort + " (" + fmtDate(planung.aktueller_standort.datum) + ")") +
+      (planung.kilometerstand
+        ? row("Kilometerstand", planung.kilometerstand.wert.toLocaleString("de-DE") + " km · " +
+              planung.kilometerstand.ort + ", " + fmtDate(planung.kilometerstand.datum))
+        : "") +
       row("Geschätzt gefahren seit Volltank", "~" + planung.strecke_seit_volltank_km + " km") +
       (planung.geschaetzte_restreichweite_km != null
         ? row("Geschätzte Restreichweite", "~" + planung.geschaetzte_restreichweite_km + " km (~" + planung.geschaetzte_rest_liter + " L)")

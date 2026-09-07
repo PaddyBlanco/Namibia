@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T08:15:43+00:00",
+  "generated_at": "2026-09-07T08:22:01+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -648,14 +648,20 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-06",
+      "stand": "2026-09-07",
       "letzter_volltank": {
         "ort": "Lüderitz",
-        "datum": "2026-09-06"
+        "datum": "2026-09-06",
+        "kilometerstand": null
       },
       "aktueller_standort": {
         "ort": "Aus",
-        "datum": "2026-09-06"
+        "datum": "2026-09-07"
+      },
+      "kilometerstand": {
+        "wert": 21474,
+        "datum": "2026-09-07",
+        "ort": "Aus (beim Checkout)"
       },
       "strecke_seit_volltank_km": 125,
       "naechster_pflicht_stopp": {
@@ -663,8 +669,8 @@
         "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
       },
       "strecke_bis_naechster_stopp_km": 348,
-      "empfehlung": "Aus hat zuverlässige Tankstellen direkt vor Ort – vor der Weiterfahrt Richtung Sesriem dort volltanken ist die sichere Wahl, auch wenn der Tank laut Schätzung noch reicht. Spätestens in Solitaire (ca. 348 km ab Aus über Sesriem) auffüllen – das ist die letzte Tankmöglichkeit vor der langen Küstenstrecke.",
-      "anmerkung": "Schätzung ohne Kilometerstand: 125 km basiert auf der Straßenentfernung Lüderitz–Aus (B4, ~125 km), 348 km auf Aus–Sesriem (~265 km) + Sesriem–Solitaire (~83 km). Verbrauch = Bordcomputer-Schnitt aus data/fahrzeug.json. Kein Ersatz für die Tankanzeige im Auto – bei nächster echter Tankung mit Kilometerstand wird die Schätzung wieder genau.",
+      "empfehlung": "Reicht rechnerisch locker bis Solitaire. Trotzdem: in Aus volltanken, solange die Gelegenheit da ist – die nächste sichere Tankstelle kommt erst nach ~348 km über Sesriem. Wêreldend und das NamibRand-Gebiet dazwischen haben keine.",
+      "anmerkung": "Kilometerstand 21.474 km ist ein echter Messwert (Aus, 07.09. beim Checkout). Die 125 km seit dem Volltank sind weiterhin geschätzt (Straßenentfernung Lüderitz–Aus, B4), weil der Kilometerstand beim Volltanken in Lüderitz nicht notiert wurde – daraus folgt ein geschätzter Stand von ~21.349 km zum Tankzeitpunkt. Ab dem nächsten Tankvorgang mit notiertem Kilometerstand rechnet die Seite mit echten Werten statt mit dem Bordcomputer-Schnitt.",
       "geschaetzte_rest_liter": 146.0,
       "geschaetzte_restreichweite_km": 1304
     }
