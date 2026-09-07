@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-07T11:26:33+00:00",
+  "generated_at": "2026-09-07T11:34:08+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6040.74,
-    "bezahlt": 5612.94,
+    "gesamt": 6070.85,
+    "bezahlt": 5643.05,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
     "patrick_gezahlt": 3985.13,
-    "nora_gezahlt": 1627.81,
+    "nora_gezahlt": 1657.92,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5612.94,
-    "anteil_pro_person": 2806.47,
+    "saldo_basis": 5643.05,
+    "anteil_pro_person": 2821.53,
     "beitrag_patrick": 5985.13,
-    "beitrag_nora": -372.19,
-    "saldo_patrick": 3178.66
+    "beitrag_nora": -342.08,
+    "saldo_patrick": 3163.61
   },
   "kategorien": [
     {
@@ -43,12 +43,12 @@
       "betrag": 231.77
     },
     {
-      "name": "Aktivitäten",
-      "betrag": 75.95
+      "name": "Restaurant",
+      "betrag": 95.73
     },
     {
-      "name": "Restaurant",
-      "betrag": 65.62
+      "name": "Aktivitäten",
+      "betrag": 75.95
     },
     {
       "name": "Eintritt",
@@ -343,6 +343,18 @@
       "zahler": "TBD",
       "zahlmittel": "Bargeld",
       "status": "offen"
+    },
+    {
+      "datum": "2026-09-07",
+      "zeit": "",
+      "kategorie": "Restaurant",
+      "beschreibung": "Helmeringhausen",
+      "betrag": 30.11,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
     },
     {
       "datum": "2026-09-07",

@@ -53,8 +53,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 18 | 2026-09-05 | 15:00 | Ausgabe | Aus | Klein-Aus Vista - Sunset Drive (2 Pers.) | Aktivitäten | 1400.00 NAD | 75,95 € | Nora | N26 Debit | 18.433 | Teil derselben N26-Zahlung von 100.91 EUR wie Nr. 11 - laut Rechnung 6483110 zwei Sitze a 700 NAD |
 | 19 | 2026-09-07 | 10:05 | Ausgabe | Aus | Klein-Aus Vista - Getränke | Restaurant | 102.00 NAD | 5,53 € | Nora | N26 Debit | 18.445 | Restsaldo der Rechnung 6483110 beim Auschecken (Windhoek Lager, Savanna Dry, Hansa Draught) - EUR mit dem Kurs der 05.09.-Zahlung gerechnet, echter N26-Betrag noch nicht bekannt |
 | 20 | 2026-09-07 | 10:43 | Ausgabe | Namib Garage | Namib Garage | Lebensmittel | 127.50 NAD | 6,92 € | Nora | N26 Debit | 18.425 | Debit Mastercard ****1143 (Noras N26) - echter N26-Betrag laut App (Kurs 18.425 NAD/EUR) |
+| 21 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Restaurant | – | 30,11 € | Nora | N26 Debit | – | Essen + Kaffee/Kuchen |
 
-**Echte Ausgaben:** 736,87 € (davon bar 38,64 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 178,56 €
+**Echte Ausgaben:** 766,98 € (davon bar 38,64 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 178,56 €
 
 ## 3. Zusammenfassung
 
@@ -67,21 +68,21 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Unterkunft | 746,06 € |
 | Lebensmittel | 234,63 € |
 | Tanken | 231,77 € |
+| Restaurant | 95,73 € |
 | Aktivitäten | 75,95 € |
-| Restaurant | 65,62 € |
 | Eintritt | 24,96 € |
 | Shopping | 20,07 € |
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |
 
-**Gesamtausgaben: 6.040,74 €** (davon bezahlt 5.612,94 €, noch offen 427,80 €)
+**Gesamtausgaben: 6.070,85 €** (davon bezahlt 5.643,05 €, noch offen 427,80 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 311,35 € | 3.985,13 € |
-| Nora | 1.202,29 € | 425,52 € | 1.627,81 € |
+| Nora | 1.202,29 € | 455,63 € | 1.657,92 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 427,80 € |
 
 ### Reisekasse (Bargeld)
@@ -97,13 +98,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 3.985,13 € |
-| Nora gezahlt (Karte) | 1.627,81 € |
+| Nora gezahlt (Karte) | 1.657,92 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 5.612,94 € |
-| Anteil je Person (50 %) | 2.806,47 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 5.643,05 € |
+| Anteil je Person (50 %) | 2.821,53 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 5.985,13 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | -372,19 € |
-| **Saldo** | **Nora schuldet Patrick 3.178,66 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | -342,08 € |
+| **Saldo** | **Nora schuldet Patrick 3.163,61 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 427,80 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
