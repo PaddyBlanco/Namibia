@@ -18,4 +18,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 17,2026-09-06,14:19,Ausgabe,Lüderitz,Lüderitz Fuel Center,Tanken,,EUR,60.20,Nora,N26 Debit,
 18,2026-09-05,15:00,Ausgabe,Aus,Klein-Aus Vista - Sunset Drive (2 Pers.),Aktivitäten,1400.00,NAD,75.95,Nora,N26 Debit,Teil derselben N26-Zahlung von 100.91 EUR wie Nr. 11 - laut Rechnung 6483110 zwei Sitze a 700 NAD
 19,2026-09-07,10:05,Ausgabe,Aus,Klein-Aus Vista - Getränke,Restaurant,102.00,NAD,5.53,Nora,N26 Debit,"Restsaldo der Rechnung 6483110 beim Auschecken (Windhoek Lager, Savanna Dry, Hansa Draught) - EUR mit dem Kurs der 05.09.-Zahlung gerechnet, echter N26-Betrag noch nicht bekannt"
-20,2026-09-07,10:43,Ausgabe,Namib Garage,Namib Garage,Lebensmittel,127.50,NAD,6.84,Nora,N26 Debit,"Debit Mastercard ****1143 (Noras N26) - EUR vorlaeufig mit Cash-Kurs 18.633 geschaetzt, echter N26-Kurs noch nicht bekannt"
+20,2026-09-07,10:43,Ausgabe,Namib Garage,Namib Garage,Lebensmittel,127.50,NAD,6.92,Nora,N26 Debit,Debit Mastercard ****1143 (Noras N26) - echter N26-Betrag laut App (Kurs 18.425 NAD/EUR)

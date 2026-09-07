@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-07T11:06:50+00:00",
+  "generated_at": "2026-09-07T11:17:34+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6039.7,
-    "bezahlt": 5611.9,
+    "gesamt": 6039.78,
+    "bezahlt": 5611.98,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
     "patrick_gezahlt": 3985.13,
-    "nora_gezahlt": 1626.77,
+    "nora_gezahlt": 1626.85,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5611.9,
-    "anteil_pro_person": 2805.95,
+    "saldo_basis": 5611.98,
+    "anteil_pro_person": 2805.99,
     "beitrag_patrick": 5985.13,
-    "beitrag_nora": -373.23,
-    "saldo_patrick": 3179.18
+    "beitrag_nora": -373.15,
+    "saldo_patrick": 3179.14
   },
   "kategorien": [
     {
@@ -36,7 +36,7 @@
     },
     {
       "name": "Lebensmittel",
-      "betrag": 234.55
+      "betrag": 234.63
     },
     {
       "name": "Tanken",
@@ -357,7 +357,7 @@
       "zeit": "10:43",
       "kategorie": "Lebensmittel",
       "beschreibung": "Namib Garage",
-      "betrag": 6.84,
+      "betrag": 6.92,
       "betrag_fw": 127.5,
       "waehrung": "NAD",
       "zahler": "Nora",
