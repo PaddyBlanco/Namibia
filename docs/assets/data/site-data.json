@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-07T11:34:43+00:00",
+  "generated_at": "2026-09-07T11:44:37+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6073.53,
-    "bezahlt": 5645.73,
+    "gesamt": 6126.7,
+    "bezahlt": 5698.9,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 41.32,
     "kasse_bestand": 175.88,
     "patrick_gezahlt": 3987.81,
-    "nora_gezahlt": 1657.92,
+    "nora_gezahlt": 1711.09,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5645.73,
-    "anteil_pro_person": 2822.87,
+    "saldo_basis": 5698.9,
+    "anteil_pro_person": 2849.45,
     "beitrag_patrick": 5987.81,
-    "beitrag_nora": -342.08,
-    "saldo_patrick": 3164.95
+    "beitrag_nora": -288.91,
+    "saldo_patrick": 3138.36
   },
   "kategorien": [
     {
@@ -35,12 +35,12 @@
       "betrag": 746.06
     },
     {
-      "name": "Lebensmittel",
-      "betrag": 234.63
+      "name": "Tanken",
+      "betrag": 284.94
     },
     {
-      "name": "Tanken",
-      "betrag": 231.77
+      "name": "Lebensmittel",
+      "betrag": 234.63
     },
     {
       "name": "Restaurant",
@@ -366,6 +366,18 @@
       "waehrung": "NAD",
       "zahler": "Patrick",
       "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-07",
+      "zeit": "",
+      "kategorie": "Tanken",
+      "beschreibung": "Helmeringhausen",
+      "betrag": 53.17,
+      "betrag_fw": 980.01,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -734,12 +746,24 @@
         "verbrauch_l_100km": null,
         "zahler": "Nora",
         "anmerkung": "Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch - Volltanken von Patrick bestaetigt (06.09.)"
+      },
+      {
+        "datum": "2026-09-07",
+        "ort": "Helmeringhausen",
+        "liter": 34.29,
+        "preis_pro_liter_nad": 28.58,
+        "preis_pro_liter_eur": 1.551,
+        "betrag_eur": 53.17,
+        "kilometerstand": 21586.0,
+        "verbrauch_l_100km": null,
+        "zahler": "Nora",
+        "anmerkung": "Entspricht Blatt 02 Nr. 23 - erster Fill-up mit bekanntem Kilometerstand"
       }
     ],
     "summary": {
-      "gesamt_liter": null,
-      "gesamt_kosten": 231.77,
-      "avg_preis_liter_eur": null,
+      "gesamt_liter": 34.3,
+      "gesamt_kosten": 284.94,
+      "avg_preis_liter_eur": 1.551,
       "avg_verbrauch_l_100km": 11.2,
       "verbrauch_quelle": "bordcomputer",
       "fahrzeug_modell": "TBD",
@@ -799,29 +823,24 @@
     "planung": {
       "stand": "2026-09-07",
       "letzter_volltank": {
-        "ort": "Lüderitz",
-        "datum": "2026-09-06",
-        "kilometerstand": null
+        "ort": "Helmeringhausen",
+        "datum": "2026-09-07",
+        "kilometerstand": 21586
       },
       "aktueller_standort": {
-        "ort": "Aus",
+        "ort": "Helmeringhausen",
         "datum": "2026-09-07"
       },
-      "kilometerstand": {
-        "wert": 21474,
-        "datum": "2026-09-07",
-        "ort": "Aus (beim Checkout)"
-      },
-      "strecke_seit_volltank_km": 125,
+      "strecke_seit_volltank_km": 0,
       "naechster_pflicht_stopp": {
         "ort": "Solitaire",
         "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
       },
-      "strecke_bis_naechster_stopp_km": 348,
-      "empfehlung": "Reicht rechnerisch locker bis Solitaire. Trotzdem: in Aus volltanken, solange die Gelegenheit da ist – die nächste sichere Tankstelle kommt erst nach ~348 km über Sesriem. Wêreldend und das NamibRand-Gebiet dazwischen haben keine.",
-      "anmerkung": "Kilometerstand 21.474 km ist ein echter Messwert (Aus, 07.09. beim Checkout). Die 125 km seit dem Volltank sind weiterhin geschätzt (Straßenentfernung Lüderitz–Aus, B4), weil der Kilometerstand beim Volltanken in Lüderitz nicht notiert wurde – daraus folgt ein geschätzter Stand von ~21.349 km zum Tankzeitpunkt. Ab dem nächsten Tankvorgang mit notiertem Kilometerstand rechnet die Seite mit echten Werten statt mit dem Bordcomputer-Schnitt.",
-      "geschaetzte_rest_liter": 146.0,
-      "geschaetzte_restreichweite_km": 1304
+      "strecke_bis_naechster_stopp_km": "TBD",
+      "empfehlung": "Frisch volltanken (34,29 L bei 21.586 km) - reicht rechnerisch weit über Solitaire hinaus, auch ohne genaue km-Zahl. Nächste Pflicht-Gelegenheit bleibt Solitaire, da Wêreldend und das NamibRand-Gebiet dazwischen keine Tankstelle haben. Genaue Strecke Helmeringhausen–Solitaire noch nicht recherchiert (die bisherigen 348 km galten ab Aus, nicht ab hier).",
+      "anmerkung": "Neuer Nullpunkt: 21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (04_tanken.csv Nr. 4) - der erste Fill-up mit bekanntem Stand. Die vorherige Schätzung (Aus, 125 km seit Lüderitz) ist damit abgelöst. Da der vorangegangene Fill-up (Lüderitz) keinen Kilometerstand hat, kann der Verbrauch erst zwischen diesem und dem nächsten Fill-up mit km-Stand berechnet werden - bis dahin gilt weiter der Bordcomputer-Schnitt (11,2 L/100km).",
+      "geschaetzte_rest_liter": 160.0,
+      "geschaetzte_restreichweite_km": 1429
     }
   },
   "offene_punkte": [

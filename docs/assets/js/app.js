@@ -485,18 +485,24 @@
       card.innerHTML = '<div class="empty-state">Keine Tankplanung hinterlegt.</div>';
       return;
     }
+    var volltankKm = planung.letzter_volltank.kilometerstand;
+    var seitKm = planung.strecke_seit_volltank_km;
+    var bisStopp = planung.strecke_bis_naechster_stopp_km;
     var rows =
-      row("Letzter Volltank", planung.letzter_volltank.ort + " (" + fmtDate(planung.letzter_volltank.datum) + ")") +
+      row("Letzter Volltank", planung.letzter_volltank.ort +
+          (volltankKm != null ? " · " + volltankKm.toLocaleString("de-DE") + " km" : "") +
+          " (" + fmtDate(planung.letzter_volltank.datum) + ")") +
       row("Aktueller Standort", planung.aktueller_standort.ort + " (" + fmtDate(planung.aktueller_standort.datum) + ")") +
       (planung.kilometerstand
         ? row("Kilometerstand", planung.kilometerstand.wert.toLocaleString("de-DE") + " km · " +
               planung.kilometerstand.ort + ", " + fmtDate(planung.kilometerstand.datum))
         : "") +
-      row("Geschätzt gefahren seit Volltank", "~" + planung.strecke_seit_volltank_km + " km") +
+      row("Gefahren seit Volltank", typeof seitKm === "number" ? "~" + seitKm + " km" : "TBD") +
       (planung.geschaetzte_restreichweite_km != null
         ? row("Geschätzte Restreichweite", "~" + planung.geschaetzte_restreichweite_km + " km (~" + planung.geschaetzte_rest_liter + " L)")
         : "") +
-      row("Nächster Pflichtstopp", planung.naechster_pflicht_stopp.ort + " (~" + planung.strecke_bis_naechster_stopp_km + " km)");
+      row("Nächster Pflichtstopp", planung.naechster_pflicht_stopp.ort +
+          (typeof bisStopp === "number" ? " (~" + bisStopp + " km)" : " (Strecke noch offen)"));
 
     card.innerHTML = rows +
       '<div class="tankplanung-empfehlung"><span class="icon">💡</span>' + esc(planung.empfehlung) + "</div>" +

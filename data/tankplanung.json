@@ -1,18 +1,13 @@
 {
   "stand": "2026-09-07",
-  "letzter_volltank": {"ort": "Lüderitz", "datum": "2026-09-06", "kilometerstand": null},
-  "aktueller_standort": {"ort": "Aus", "datum": "2026-09-07"},
-  "kilometerstand": {
-    "wert": 21474,
-    "datum": "2026-09-07",
-    "ort": "Aus (beim Checkout)"
-  },
-  "strecke_seit_volltank_km": 125,
+  "letzter_volltank": {"ort": "Helmeringhausen", "datum": "2026-09-07", "kilometerstand": 21586},
+  "aktueller_standort": {"ort": "Helmeringhausen", "datum": "2026-09-07"},
+  "strecke_seit_volltank_km": 0,
   "naechster_pflicht_stopp": {
     "ort": "Solitaire",
     "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
   },
-  "strecke_bis_naechster_stopp_km": 348,
-  "empfehlung": "Reicht rechnerisch locker bis Solitaire. Trotzdem: in Aus volltanken, solange die Gelegenheit da ist – die nächste sichere Tankstelle kommt erst nach ~348 km über Sesriem. Wêreldend und das NamibRand-Gebiet dazwischen haben keine.",
-  "anmerkung": "Kilometerstand 21.474 km ist ein echter Messwert (Aus, 07.09. beim Checkout). Die 125 km seit dem Volltank sind weiterhin geschätzt (Straßenentfernung Lüderitz–Aus, B4), weil der Kilometerstand beim Volltanken in Lüderitz nicht notiert wurde – daraus folgt ein geschätzter Stand von ~21.349 km zum Tankzeitpunkt. Ab dem nächsten Tankvorgang mit notiertem Kilometerstand rechnet die Seite mit echten Werten statt mit dem Bordcomputer-Schnitt."
+  "strecke_bis_naechster_stopp_km": "TBD",
+  "empfehlung": "Frisch volltanken (34,29 L bei 21.586 km) - reicht rechnerisch weit über Solitaire hinaus, auch ohne genaue km-Zahl. Nächste Pflicht-Gelegenheit bleibt Solitaire, da Wêreldend und das NamibRand-Gebiet dazwischen keine Tankstelle haben. Genaue Strecke Helmeringhausen–Solitaire noch nicht recherchiert (die bisherigen 348 km galten ab Aus, nicht ab hier).",
+  "anmerkung": "Neuer Nullpunkt: 21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (04_tanken.csv Nr. 4) - der erste Fill-up mit bekanntem Stand. Die vorherige Schätzung (Aus, 125 km seit Lüderitz) ist damit abgelöst. Da der vorangegangene Fill-up (Lüderitz) keinen Kilometerstand hat, kann der Verbrauch erst zwischen diesem und dem nächsten Fill-up mit km-Stand berechnet werden - bis dahin gilt weiter der Bordcomputer-Schnitt (11,2 L/100km)."
 }
