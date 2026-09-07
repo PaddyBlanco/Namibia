@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-07T08:22:01+00:00",
+  "generated_at": "2026-09-07T10:41:27+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6032.86,
-    "bezahlt": 5605.06,
+    "gesamt": 6039.7,
+    "bezahlt": 5611.9,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
     "beitrag_patrick": 5985.13,
-    "beitrag_nora": 1619.93,
-    "anteil_pro_person": 3016.43,
-    "saldo_patrick": 2968.7,
+    "beitrag_nora": 1626.77,
+    "anteil_pro_person": 3019.85,
+    "saldo_patrick": 2965.28,
     "transfer_patrick_nora": 2000.0
   },
   "kategorien": [
@@ -31,12 +31,12 @@
       "betrag": 745.1
     },
     {
-      "name": "Tanken",
-      "betrag": 231.77
+      "name": "Lebensmittel",
+      "betrag": 234.55
     },
     {
-      "name": "Lebensmittel",
-      "betrag": 227.71
+      "name": "Tanken",
+      "betrag": 231.77
     },
     {
       "name": "Aktivitäten",
@@ -272,6 +272,15 @@
       "kategorie": "Restaurant",
       "beschreibung": "Klein-Aus Vista - Getränke",
       "betrag": 5.53,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-07",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Namib Garage",
+      "betrag": 6.84,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "status": "bezahlt"
