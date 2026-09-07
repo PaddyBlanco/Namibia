@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-07T11:34:08+00:00",
+  "generated_at": "2026-09-07T11:34:43+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6070.85,
-    "bezahlt": 5643.05,
+    "gesamt": 6073.53,
+    "bezahlt": 5645.73,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
-    "kasse_bar_ausgegeben": 38.64,
-    "kasse_bestand": 178.56,
-    "patrick_gezahlt": 3985.13,
+    "kasse_bar_ausgegeben": 41.32,
+    "kasse_bestand": 175.88,
+    "patrick_gezahlt": 3987.81,
     "nora_gezahlt": 1657.92,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5643.05,
-    "anteil_pro_person": 2821.53,
-    "beitrag_patrick": 5985.13,
+    "saldo_basis": 5645.73,
+    "anteil_pro_person": 2822.87,
+    "beitrag_patrick": 5987.81,
     "beitrag_nora": -342.08,
-    "saldo_patrick": 3163.61
+    "saldo_patrick": 3164.95
   },
   "kategorien": [
     {
@@ -44,7 +44,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 95.73
+      "betrag": 98.41
     },
     {
       "name": "Aktivitäten",
@@ -354,6 +354,18 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-07",
+      "zeit": "",
+      "kategorie": "Restaurant",
+      "beschreibung": "Helmeringhausen",
+      "betrag": 2.68,
+      "betrag_fw": 50.0,
+      "waehrung": "NAD",
+      "zahler": "Patrick",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
     {
