@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T10:41:27+00:00",
+  "generated_at": "2026-09-07T10:45:55+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -380,6 +380,53 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
       "betrag": 34.0,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    }
+  ],
+  "letzte_ausgaben": [
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Shopping",
+      "beschreibung": "Studio88 Lüderitz",
+      "betrag": 20.07,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "kategorie": "Tanken",
+      "beschreibung": "Lüderitz Fuel Center",
+      "betrag": 60.2,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-07",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Wereldend Mountain Campsite",
+      "betrag": 47.8,
+      "zahler": "TBD",
+      "zahlmittel": "Bargeld",
+      "status": "offen"
+    },
+    {
+      "datum": "2026-09-07",
+      "kategorie": "Restaurant",
+      "beschreibung": "Klein-Aus Vista - Getränke",
+      "betrag": 5.53,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-07",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Namib Garage",
+      "betrag": 6.84,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "status": "bezahlt"

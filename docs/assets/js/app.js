@@ -162,7 +162,7 @@
 
   // ---------------- Letzte Ausgaben ----------------
   function renderLetzteAusgaben(data) {
-    var letzte = data.ausgaben.slice(-5).reverse();
+    var letzte = (data.letzte_ausgaben || data.ausgaben).slice(-5).reverse();
     var list = document.getElementById("letzte-ausgaben-list");
     if (!letzte.length) {
       list.innerHTML = '<div class="empty-state">Noch keine Ausgaben erfasst.</div>';

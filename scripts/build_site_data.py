@@ -201,6 +201,14 @@ def main():
         })
     ausgaben.sort(key=lambda x: x["datum"])
 
+    # ---------- Letzte Ausgaben (fuer Home) ----------
+    # ausgaben enthaelt auch vorab bezahlte Unterkuenfte mit kuenftigem
+    # Check-in-Datum (Blatt 1) - nach datum sortiert wuerden die immer ans
+    # Ende rutschen und die echten aktuellen Ausgaben aus Blatt 2 verdraengen.
+    # Fuer "letzte Ausgaben" daher nur Eintraege bis heute beruecksichtigen.
+    heute = datetime.date.today().isoformat()
+    letzte_ausgaben = [a for a in ausgaben if a["datum"] <= heute][-5:]
+
     # ---------- Kategorien ----------
     kat = collections.Counter()
     for a in ausgaben:
@@ -278,6 +286,7 @@ def main():
         "summary": summary,
         "kategorien": kategorien,
         "ausgaben": ausgaben,
+        "letzte_ausgaben": letzte_ausgaben,
         "plan": plan,
         "tanken": tanken,
         "offene_punkte": offene_punkte,
