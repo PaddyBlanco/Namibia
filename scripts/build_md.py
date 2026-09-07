@@ -6,7 +6,7 @@ Rechenlogik (Summen, Saldo) liegt in kosten_core.py, gemeinsam mit build_site_da
 """
 import pathlib
 
-from kosten_core import compute, load, num
+from kosten_core import compute, load, num, pruefe, warne
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "kosten.md"
@@ -97,12 +97,11 @@ def main():
     nv = sum(num(r["bezahlt_eur"]) for r in b1 if r["zahler"] == "Nora")
     pl = k["patrick_gezahlt"] - pv
     nl = k["nora_gezahlt"] - nv
-    tbd_v = sum(num(r["bezahlt_eur"]) + num(r["offen_eur"]) for r in b1 if r["zahler"] == "TBD")
     lines.append(md_table(
         ["Person", "Vorab (Blatt 1)", "Laufend (Blatt 2)", "Gesamt"],
         [["Patrick", eur(pv), eur(pl), eur(k["patrick_gezahlt"])],
          ["Nora", eur(nv), eur(nl), eur(k["nora_gezahlt"])],
-         ["Noch offen (Zahler steht erst bei Bezahlung fest)", "–", "–", eur(tbd_v)]]))
+         ["Noch offen (zählt erst bei Bezahlung, dann beim Zahler)", "–", "–", eur(k["offen"])]]))
     lines.append("")
 
     lines.append("### Reisekasse (Bargeld)")
@@ -151,6 +150,7 @@ def main():
 
     OUT.write_text("\n".join(lines), encoding="utf-8")
     print("geschrieben:", OUT)
+    warne(pruefe(b1, b2))
 
 
 if __name__ == "__main__":

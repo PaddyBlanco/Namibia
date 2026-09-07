@@ -52,6 +52,13 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
    Abzug der Überweisung aus (Summe der Beiträge lag 2.000 € über dem Bezahlten).
    `build_md.py` und `build_site_data.py` rechnen **beide** über `kosten_core.compute()`
    — Zahlenlogik nie in einem der beiden Skripte allein ändern.
+9. **Bargeld gehört dem Abhebenden.** Die Reisekasse stammt aus Patricks
+   ATM-Abhebung — jede Zeile mit `zahlmittel = Bargeld` bekommt deshalb
+   `zahler = Patrick`, auch wenn Nora physisch bezahlt hat. Sonst würde
+   Patricks Geld Nora gutgeschrieben und der Saldo kippt. `kosten_core.pruefe()`
+   warnt bei beiden Build-Skripten auf stderr, wenn ein Barzahler nicht
+   abgehoben hat oder ein Zahler-Wert weder `Patrick`, `Nora` noch `TBD` ist
+   (Tippfehler wie `patrick` fallen sonst stillschweigend aus der Saldo-Basis).
 
 ## Kategorien (fix — nicht erweitern ohne Rücksprache)
 

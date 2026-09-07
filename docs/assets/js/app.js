@@ -28,7 +28,17 @@
     return data.ausgaben.filter(function (a) { return a.datum > t; });
   };
 
+  function zahlerPill(z) {
+    var name = z == null || z === "" ? "TBD" : String(z);
+    return '<span class="pill zahler-' + esc(name.toLowerCase()) + '">' + esc(name) + "</span>";
+  }
+
+  // Alte site-data.json aus dem localStorage-Cache kennt die Saldo-Felder
+  // noch nicht - dann lieber keinen Hinweis als "NaN €".
+  var hatSaldoFelder = function (s) { return s && typeof s.saldo_basis === "number"; };
+
   function saldoHint(s) {
+    if (!hatSaldoFelder(s)) return "";
     var txt = "50/50 auf Basis der bisher bezahlten " + euro(s.saldo_basis) + ". ";
     if (s.offen > 0) txt += "Noch offen: " + euro(s.offen) + " – zählt erst, wenn jemand sie bezahlt (dann beim Zahler). ";
     if (s.tbd_gezahlt > 0.005) txt += "Achtung: " + euro(s.tbd_gezahlt) + " bezahlt ohne bekannten Zahler (TBD) – nicht im Saldo. ";
@@ -124,11 +134,11 @@
 
     var saldoEl = document.getElementById("t-saldo");
     var labelEl = document.getElementById("saldo-label");
-    if (s.saldo_patrick > 0.5) {
+    if (s.saldo_patrick > 0.005) {
       labelEl.textContent = "Nora schuldet Patrick";
       saldoEl.textContent = euro(s.saldo_patrick);
       saldoEl.className = "value debt";
-    } else if (s.saldo_patrick < -0.5) {
+    } else if (s.saldo_patrick < -0.005) {
       labelEl.textContent = "Patrick schuldet Nora";
       saldoEl.textContent = euro(-s.saldo_patrick);
       saldoEl.className = "value debt";
@@ -198,7 +208,7 @@
           '<span class="card-amount">' + euro(a.betrag) + "</span>" +
         "</div>" +
         '<div class="card-meta">' +
-          '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
+          zahlerPill(a.zahler) +
           zahlungsPill +
           "<span>" + fmtDate(a.datum) + "</span>" +
         "</div>" +
@@ -258,7 +268,7 @@
       "</div>" +
       '<div class="card-meta">' +
         '<span class="pill">' + esc(a.kategorie) + "</span>" +
-        '<span class="pill zahler-' + a.zahler.toLowerCase() + '">' + esc(a.zahler) + "</span>" +
+        zahlerPill(a.zahler) +
         zahlungsPill + fw +
         "<span>" + fmtDate(a.datum) + "</span>" +
       "</div>" +
@@ -529,7 +539,7 @@
           "</div>" +
           '<div class="card-meta">' +
             (details.length ? details.map(function (d) { return '<span class="pill">' + esc(d) + "</span>"; }).join("") : '<span class="pill">Details fehlen noch</span>') +
-            '<span class="pill zahler-' + f.zahler.toLowerCase() + '">' + esc(f.zahler) + "</span>" +
+            zahlerPill(f.zahler) +
             "<span>" + fmtDate(f.datum) + "</span>" +
           "</div>" +
         "</div>";
@@ -573,6 +583,11 @@
 
     var s = data.summary;
     var vc = document.getElementById("verrechnung-cards");
+    if (!hatSaldoFelder(s)) {
+      vc.innerHTML = '<div class="empty-state">Verrechnung braucht aktuelle Daten – bitte online neu laden.</div>';
+      document.getElementById("verrechnung-hint").textContent = "";
+      return;
+    }
     vc.innerHTML =
       cardRow("Patrick gezahlt (Karte + Bargeld)", s.patrick_gezahlt) +
       cardRow("Nora gezahlt (Karte)", s.nora_gezahlt) +

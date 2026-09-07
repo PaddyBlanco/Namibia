@@ -6,6 +6,33 @@ importieren von hier, damit docs/kosten.md und die Website nie auseinanderlaufen
 import collections
 import csv
 import pathlib
+import sys
+
+PERSONEN = ("Patrick", "Nora")
+
+
+def pruefe(b1, b2):
+    """Plausibilitaetscheck der CSVs. Gibt Warnungen zurueck, wirft nichts."""
+    warnungen = []
+    for blatt, rs in (("01_bezahlt.csv", b1), ("02_laufend.csv", b2)):
+        for r in rs:
+            z = (r.get("zahler") or "").strip()
+            if z not in PERSONEN + ("TBD",):
+                warnungen.append(f"{blatt} Nr. {r['nr']}: unbekannter Zahler {z!r} - "
+                                 "faellt stillschweigend aus der Saldo-Basis")
+    # Bargeld gehoert dem, der es abgehoben hat. Zahlt jemand anderes "bar",
+    # wuerde fremdes Geld ihm gutgeschrieben und der Saldo kippt.
+    abheber = {r["zahler"] for r in b2 if r["typ"] == "Abhebung"}
+    for r in b2:
+        if r["typ"] == "Ausgabe" and r["zahlmittel"] == "Bargeld" and r["zahler"] not in abheber:
+            warnungen.append(f"02_laufend.csv Nr. {r['nr']}: Barzahlung mit Zahler {r['zahler']!r}, "
+                             f"abgehoben hat aber {sorted(abheber)} - Zahler muss der Abhebende sein")
+    return warnungen
+
+
+def warne(warnungen):
+    for w in warnungen:
+        print("WARNUNG:", w, file=sys.stderr)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"

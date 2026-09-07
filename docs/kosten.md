@@ -81,7 +81,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|---|---|
 | Patrick | 3.673,78 € | 311,35 € | 3.985,13 € |
 | Nora | 1.201,33 € | 425,44 € | 1.626,77 € |
-| Noch offen (Zahler steht erst bei Bezahlung fest) | – | – | 382,80 € |
+| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 427,80 € |
 
 ### Reisekasse (Bargeld)
 

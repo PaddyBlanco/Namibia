@@ -13,7 +13,7 @@ import json
 import pathlib
 import re
 
-from kosten_core import compute, is_tbd, load, num, rows
+from kosten_core import compute, is_tbd, load, num, pruefe, rows, warne
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -268,6 +268,7 @@ def main():
     OUT.write_text(json.dumps(site_data, ensure_ascii=False, indent=2), encoding="utf-8")
     print("geschrieben:", OUT)
     stamp_asset_versions()
+    warne(pruefe(b1, b2))
 
 
 if __name__ == "__main__":
