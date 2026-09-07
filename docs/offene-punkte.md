@@ -7,10 +7,8 @@ Stand: 07.09.2026, 13:25 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 | # | Punkt | Warum es zählt |
 |---|---|---|
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
-| 2 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
+| 2 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. Ebenfalls vorläufig: **Desert-Horse-Anzahlung 460 NAD vom 23.04.** (Nora/N26, EUR mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen). | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 | 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
-| 4 | **Anzahlung Desert Horse Campsite** — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt vom 06.09. (Blatt 2 Nr. 12). **Wer hat die 460 NAD wann womit gezahlt?** Bis dahin fehlt der Posten (~25 €) in den Summen. | Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben |
-
 ## Nach der Reise
 
 - **card complete Rückforderung:** OGH-Urteil 01/2026, Rückzahlung unzulässiger
@@ -66,4 +64,7 @@ Stand: 07.09.2026, 13:25 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   24,96 € vom 06.09. (Blatt 2 Nr. 12, jetzt Kategorie `Eintritt`). Die 24 €
   in Blatt 1 waren also keine eigene Zahlung und sind gestrichen; die
   Unterkunfts-Zeile bleibt mit 0 € als Buchungsreferenz (Restzahlung 460 NAD
-  steht in Blatt 2 Nr. 11). Folgefrage zur 460-NAD-Anzahlung → Punkt 4 oben.
+  steht in Blatt 2 Nr. 11).
+- **Desert-Horse-Anzahlung 460 NAD (23.04.):** von Nora vorab per N26 gezahlt
+  (Patrick, 07.09.). In Blatt 1 Nr. 6 mit vorläufig 24,96 € erfasst (Kurs der
+  Restzahlung) — echter N26-Betrag noch nachzutragen, siehe Punkt 2.

@@ -71,9 +71,8 @@ Diese vier Punkte stehen auch in `docs/offene-punkte.md` und erscheinen auf der
 Website unter „Mehr":
 
 1. **Hoada-Anzahlung** — Höhe unbekannt, aktuell 45 € komplett als offen geführt
-2. **Anzahlung Desert Horse Campsite (460 NAD am 23.04.)** — Zahler und
-   EUR-Betrag unbekannt; die 24 €, die dafür standen, waren der Kolmanskop-
-   Eintritt. Bis zur Klärung fehlen ~25 € in den Summen
+2. **Anzahlung Desert Horse Campsite (460 NAD am 23.04., Nora/N26)** — EUR-Betrag
+   vorläufig mit 24,96 € angesetzt, echten N26-Betrag aus der App nachtragen
 3. **5 N26-Umsätze** standen beim Screenshot auf „wird bearbeitet" — Kurs kann
    sich noch leicht ändern
 4. **Tanken-Details** — Mietwagen-Modell, Herstellerverbrauch, sowie Liter/Preis/

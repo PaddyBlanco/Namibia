@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-07T11:24:51+00:00",
+  "generated_at": "2026-09-07T11:26:33+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6015.78,
-    "bezahlt": 5587.98,
+    "gesamt": 6040.74,
+    "bezahlt": 5612.94,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 38.64,
     "kasse_bestand": 178.56,
     "patrick_gezahlt": 3985.13,
-    "nora_gezahlt": 1602.85,
+    "nora_gezahlt": 1627.81,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5587.98,
-    "anteil_pro_person": 2793.99,
+    "saldo_basis": 5612.94,
+    "anteil_pro_person": 2806.47,
     "beitrag_patrick": 5985.13,
-    "beitrag_nora": -397.15,
-    "saldo_patrick": 3191.14
+    "beitrag_nora": -372.19,
+    "saldo_patrick": 3178.66
   },
   "kategorien": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 721.1
+      "betrag": 746.06
     },
     {
       "name": "Lebensmittel",
@@ -194,6 +194,18 @@
       "kategorie": "Lebensmittel",
       "beschreibung": "Spar Mariental",
       "betrag": 20.11,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-05",
+      "zeit": "",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Desert Horse Campsite Aus",
+      "betrag": 24.96,
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
@@ -794,16 +806,12 @@
       "warum": "Zahlungsstand"
     },
     {
-      "punkt": "Mehrere N26-Umsätze standen beim Screenshot noch auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig.",
+      "punkt": "Mehrere N26-Umsätze standen beim Screenshot noch auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. Ebenfalls vorläufig: Desert-Horse-Anzahlung 460 NAD vom 23.04. (Nora/N26, EUR mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen).",
       "warum": "Kleine Rundungsabweichungen möglich, sobald final gebucht"
     },
     {
       "punkt": "Tanken-Details: Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite.",
       "warum": "Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand)"
-    },
-    {
-      "punkt": "Anzahlung Desert Horse Campsite — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt vom 06.09. (Blatt 2 Nr. 12). Wer hat die 460 NAD wann womit gezahlt? Bis dahin fehlt der Posten (~25 €) in den Summen.",
-      "warum": "Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben"
     }
   ]
 }
