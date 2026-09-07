@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T11:17:34+00:00",
+  "generated_at": "2026-09-07T11:23:37+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -32,7 +32,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 745.1
+      "betrag": 721.1
     },
     {
       "name": "Lebensmittel",
@@ -49,6 +49,10 @@
     {
       "name": "Restaurant",
       "betrag": 65.62
+    },
+    {
+      "name": "Eintritt",
+      "betrag": 24.0
     },
     {
       "name": "Shopping",
@@ -200,18 +204,6 @@
       "datum": "2026-09-05",
       "zeit": "",
       "kategorie": "Unterkunft",
-      "beschreibung": "Desert Horse Campsite Aus",
-      "betrag": 24.0,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
-      "status": "bezahlt"
-    },
-    {
-      "datum": "2026-09-05",
-      "zeit": "",
-      "kategorie": "Unterkunft",
       "beschreibung": "Quivertree Forest Camping",
       "betrag": 38.64,
       "betrag_fw": 720.0,
@@ -252,6 +244,18 @@
       "betrag": 75.95,
       "betrag_fw": 1400.0,
       "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-06",
+      "zeit": "",
+      "kategorie": "Eintritt",
+      "beschreibung": "Kolmanskop Eintritt (vorab bezahlt)",
+      "betrag": 24.0,
+      "betrag_fw": null,
+      "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "status": "bezahlt"
@@ -667,6 +671,16 @@
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
       "fahrzeit": "ca. 2h30"
+    },
+    {
+      "start": "2026-09-06",
+      "ende": "2026-09-06",
+      "naechte": 0,
+      "kategorie": "Eintritt",
+      "beschreibung": "Kolmanskop Eintritt (vorab bezahlt)",
+      "status": "bezahlt",
+      "info_link": null,
+      "fahrzeit": null
     }
   ],
   "tanken": {
@@ -808,6 +822,10 @@
     {
       "punkt": "Tanken-Details: Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite.",
       "warum": "Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand)"
+    },
+    {
+      "punkt": "Anzahlung Desert Horse Campsite — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt. Wer hat die 460 NAD wann womit gezahlt? Bis dahin fehlt der Posten (~25 €) in den Summen.",
+      "warum": "Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben"
     }
   ]
 }

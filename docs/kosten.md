@@ -11,7 +11,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 3 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
 | 4 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | bezahlt | 36,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
-| 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,00 € | Deposit bezahlt - Rest siehe Blatt 02 | 24,00 € | 0,00 € | Nora | N26 Debit | Restzahlung 100.91 EUR am 05.09. an Klein Aus Vista Lodge - steht in Blatt 02 Nr. 11 |
+| 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 0,00 € | vor Ort bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Nora | N26 Debit | Restzahlung 460 NAD am 05.09. steht in Blatt 02 Nr. 11 (keine Doppelzaehlung). Die bis 07.09. hier gefuehrten 24 EUR waren laut Patrick der Kolmanskop-Eintritt - jetzt Nr. 19. Anzahlung 460 NAD vom 23.04. laut Rechnung 6483110: Zahler und EUR-Betrag unbekannt - siehe offene Punkte |
 | 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 47,80 € | offen - cash on arrival | 0,00 € | 47,80 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
 | 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,00 € | offen | 0,00 € | 84,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
 | 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 25,00 € | offen - cash on arrival | 0,00 € | 25,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
@@ -24,6 +24,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 16 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
 | 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
+| 19 | 2026-09-06 | Eintritt | Kolmanskop Eintritt (vorab bezahlt) | – | 24,00 € | bezahlt | 24,00 € | 0,00 € | Nora | N26 Debit | Bis 07.09. faelschlich als Desert-Horse-Anzahlung gefuehrt - laut Patrick war es der Kolmanskop-Eintritt. Ghost Town Tours 24.96 EUR vom 06.09. (Blatt 02 Nr. 12) ist eine separate Zahlung vor Ort |
 
 **Summe:** 5.302,91 € geplant · 4.875,11 € bezahlt · **427,80 € noch offen**
 
@@ -64,11 +65,12 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
-| Unterkunft | 745,10 € |
+| Unterkunft | 721,10 € |
 | Lebensmittel | 234,63 € |
 | Tanken | 231,77 € |
 | Aktivitäten | 100,91 € |
 | Restaurant | 65,62 € |
+| Eintritt | 24,00 € |
 | Shopping | 20,07 € |
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |

@@ -1,6 +1,6 @@
 # Offene Punkte
 
-Stand: 07.09.2026, 10:15 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
+Stand: 07.09.2026, 13:25 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
 
 ## Blockierend für korrekte Zahlen
 
@@ -9,6 +9,7 @@ Stand: 07.09.2026, 10:15 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
 | 2 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 | 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
+| 4 | **Anzahlung Desert Horse Campsite** — laut Rechnung 6483110 wurden am 23.04. 460 NAD angezahlt. Die 24 €, die dafür in Blatt 1 standen, waren laut Patrick (07.09.) der Kolmanskop-Eintritt. **Wer hat die 460 NAD wann womit gezahlt?** Bis dahin fehlt der Posten (~25 €) in den Summen. | Gesamtsumme ~25 € zu niedrig, Saldo je nach Zahler um ~12 € verschoben |
 
 ## Nach der Reise
 
@@ -24,8 +25,9 @@ Stand: 07.09.2026, 10:15 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   (je 947,63 €), beide Anteile bereits bezahlt. Zahlmittel je Anteil noch
   unbekannt (`TBD`). Vorherige Annahme „komplett Nora" war falsch.
 - Unterkünfte: Patrick hat keine davon direkt bezahlt — vorab bezahlte Camps
-  (Okaukuejo, Halali, Waterberg, Omatozu, Desert-Horse-Deposit, Hoada-Anzahlung)
-  liefen über Nora.
+  (Okaukuejo, Halali, Waterberg, Omatozu, Hoada-Anzahlung) liefen über Nora.
+  *(Korrektur 07.09.: das vermeintliche „Desert-Horse-Deposit" von 24 € war
+  der Kolmanskop-Eintritt, siehe unten.)*
 - Quiver Tree Camping: 720 NAD bar von Patrick bezahlt, in Blatt 02 verbucht
   (Blatt-1-Zeile auf 0 € gesetzt, um Doppelzählung zu vermeiden).
 - 9 neue N26-Umsätze von Nora aus Screenshots erfasst (04.–06.09.).
@@ -59,3 +61,7 @@ Stand: 07.09.2026, 10:15 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   eine bisher unbekannte Aktivität, kein Fehler.
 - **Getränke Klein-Aus Vista (102 NAD ≈ 5,53 €)** beim Auschecken am 07.09. von
   Nora per N26 bezahlt — war der Restsaldo derselben Rechnung.
+- **„Desert Horse Campsite 24 €" (Blatt 1 Nr. 6) war der Kolmanskop-Eintritt**
+  (Patrick, 07.09.): jetzt eigene Zeile Nr. 19, Kategorie `Eintritt`, Nora/N26.
+  Die Unterkunfts-Zeile bleibt mit 0 € als Buchungsreferenz stehen (Restzahlung
+  460 NAD steht in Blatt 2 Nr. 11). Folgefrage zur 460-NAD-Anzahlung → Punkt 4 oben.
