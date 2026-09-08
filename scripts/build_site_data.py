@@ -200,6 +200,7 @@ def main():
         if betrag <= 0:
             continue  # z.B. Quiver Tree: steht schon in Blatt 2, hier nur Referenz
         ausgaben.append({
+            "id": "b1-" + r["nr"],
             "datum": r["datum"],
             "zeit": "",
             "kategorie": r["kategorie"],
@@ -215,6 +216,7 @@ def main():
         if r["typ"] != "Ausgabe":
             continue
         ausgaben.append({
+            "id": "b2-" + r["nr"],
             "datum": r["datum"],
             "zeit": r["zeit"] or "",
             "kategorie": r["kategorie"] or "Sonstiges",
@@ -260,6 +262,10 @@ def main():
             eintrag["betrag"] = round(eintrag["betrag"] + betrag, 2)
             if r["zahler"] not in eintrag["zahler"].split(" + "):
                 eintrag["zahler"] += " + " + r["zahler"]
+            if r["zahlmittel"] not in eintrag["zahlmittel"].split(" + "):
+                eintrag["zahlmittel"] += " + " + r["zahlmittel"]
+            if num(r["offen_eur"]) > 0 and betrag > 0:
+                eintrag["status"] = "offen"
             continue
         start = datetime.date.fromisoformat(r["datum"])
         naechte = int(float(r["naechte"])) if r["naechte"] else 0

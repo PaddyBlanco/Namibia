@@ -85,6 +85,9 @@
 }
 
 * { box-sizing: border-box; }
+/* hidden-Attribut muss jede display:-Regel schlagen (sonst waren Badge und
+   Home-Link trotz hidden sichtbar/tappbar - Review 08.09.2026). */
+[hidden] { display: none !important; }
 
 body {
   background: var(--bg);
@@ -473,6 +476,40 @@ body.sheet-open { overflow: hidden; }
   font-size: var(--fs-sm);
   cursor: pointer;
 }
+
+/* ---------- Aktions-Sheet (Bearbeiten / Loeschen) ---------- */
+.action-sheet { padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+.action-title { font-weight: 600; font-size: var(--fs-lg); margin-top: 4px; }
+.action-sub { font-size: var(--fs-sm); color: var(--text-dim); margin: 2px 0 14px; }
+.action-btn {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin-bottom: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  cursor: pointer;
+}
+.action-btn.danger { color: var(--debt); }
+.action-sheet .ghost-button { width: 100%; margin-top: 4px; }
+.card.tappable { cursor: pointer; }
+.card.tappable:active { transform: scale(0.99); border-color: var(--accent); }
+.pill.status-pending { background: var(--accent-soft); color: var(--accent); }
+.pending-op {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-right: 6px;
+}
+.pending-row.op-delete .pending-op { color: var(--debt); }
+.pending-row.op-delete .pending-title { text-decoration: line-through; text-decoration-color: var(--debt); }
 
 /* ---------- Toast ---------- */
 .toast {

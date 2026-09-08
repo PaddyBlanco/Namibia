@@ -53,9 +53,11 @@ Mobile-first, ohne externe Bibliotheken, **offlinefähig per Service Worker**
    hervorgehoben
 5. **Mehr** — Verrechnung Patrick | Nora, offene Punkte
 
-**Offline erfassen:** „+" antippen → Betrag, Ort, wer/womit, Kategorie →
-Speichern. Bleibt auf dem Handy; bei Netz in der Ausgabenliste „An Claude
-übergeben" → Text im Chat einfügen → Claude verbucht → „Leeren".
+**Offline erfassen, ändern, löschen:** „+" antippen → Betrag, Ort, wer/womit,
+Kategorie → Speichern. Tipp auf eine bestehende Karte → Bearbeiten oder
+Löschen. Alles bleibt lokal auf dem Handy und ist in den Listen sofort
+sichtbar („wartet"); bei Netz in der Ausgabenliste „An Claude übergeben" →
+Text im Chat einfügen → Claude schreibt es in die CSVs → „Leeren".
 
 Dark Mode „Sternenhimmel über der Namib" (Nachtblau, Sand-Akzent, kein Hintergrundbild).
 Getestet auf iPhone-15-Größe (393 × 852) in hell und dunkel.

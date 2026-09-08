@@ -7,7 +7,7 @@
 <title>Namibia 2026</title>
 <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="assets/css/style.css?v=ade3a813">
+<link rel="stylesheet" href="assets/css/style.css?v=f58a9ccc">
 </head>
 <body>
 
@@ -212,12 +212,20 @@
     </details>
 
     <div class="field-error" id="ef-error" hidden></div>
-    <button type="submit" class="primary-button">Speichern</button>
-    <div class="field-note">Bleibt auf diesem Handy, bis du die Einträge in der Ausgabenliste an Claude übergibst.</div>
+    <button type="submit" class="primary-button" id="ef-submit">Speichern</button>
+    <div class="field-note">Bleibt auf diesem Handy, bis du die Änderungen in der Ausgabenliste an Claude übergibst.</div>
   </form>
+</div>
+<div class="sheet action-sheet" id="sheet-aktion" role="dialog" aria-modal="true" aria-labelledby="aktion-title" hidden>
+  <div class="sheet-handle" aria-hidden="true"></div>
+  <div class="action-title" id="aktion-title"></div>
+  <div class="action-sub" id="aktion-sub"></div>
+  <button type="button" class="action-btn" id="aktion-edit">Bearbeiten</button>
+  <button type="button" class="action-btn danger" id="aktion-delete">Löschen</button>
+  <button type="button" class="ghost-button" id="aktion-cancel">Abbrechen</button>
 </div>
 <div class="toast" id="toast" hidden></div>
 
-<script src="assets/js/app.js?v=6d6fe6b0"></script>
+<script src="assets/js/app.js?v=b744a714"></script>
 </body>
 </html>

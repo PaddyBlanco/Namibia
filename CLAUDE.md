@@ -254,21 +254,51 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
        Kredit — wird nach Zahler vorbelegt: Nora→N26, Patrick→Bar, bleibt
        änderbar), Kategorie als Chip-Raster, Datum/Anmerkung eingeklappt.
        `Bargeld` erzwingt Zahler `Patrick` und sperrt das Segment
-       (Grundregel 9). Speichern → Toast, Sheet schließt. Einträge liegen
-       ausschließlich lokal (`localStorage`, Key `namibia2026:pending-entries`)
-       und erscheinen in der Ausgabenliste oben als Karte „Noch nicht
-       übergeben (n)" mit „An Claude übergeben" (kopiert Klartext in die
-       Zwischenablage, `formatPendingEntry()`) und „Leeren" (mit `confirm()`).
-       Auf Home zeigt ein Link „n Einträge warten auf Übergabe →" darauf.
-       **Kein** automatischer Schreibzugriff aufs Repo (Entscheidung
-       08.09.2026: ein GitHub-Token im Browser eines Handys, das verloren
-       gehen oder geteilt werden kann, wäre bei einem öffentlichen Repo ein
-       Sicherheitsrisiko und würde alle Prüfungen beim Verbuchen umgehen).
-       Wenn der Nutzer den kopierten Text im Chat einfügt („Offline erfasste
-       Kosten: …"), jede Zeile wie einen normalen Beleg verbuchen.
-       CSS-Fallstrick: Elemente, die per `hidden`-Attribut gesteuert werden,
-       dürfen keine eigene `display:`-Regel bekommen (sonst schlägt die
-       Author-Regel das UA-Default) — deshalb `.badge[hidden] { display: none }`.
+       (Grundregel 9). `parseBetrag()` versteht „1.250,00" und „980.01"
+       (Review-Bug 08.09.: vorher wurde 1.250,00 zu 1,25).
+     - **CUD — Bearbeiten und Löschen bestehender Einträge (seit 08.09.2026):**
+       Tipp auf eine Ausgabenkarte (Liste oder Home) öffnet ein Aktions-Sheet
+       (`#sheet-aktion`: Bearbeiten | Löschen | Abbrechen). Dafür trägt jede
+       Zeile in `site-data.json` eine stabile `id` (`b1-<nr>` / `b2-<nr>`,
+       aus `build_site_data.py`). Bearbeiten öffnet dasselbe Formular
+       vorbelegt (Titel „Ausgabe bearbeiten"); Speichern erzeugt eine lokale
+       Änderung `{op: "update", id, ref, original, entry}` — nur wirklich
+       geänderte Felder zählen (`diffText()`), ohne Diff wird nichts
+       gespeichert. Löschen (mit `confirm()`) erzeugt `{op: "delete", id,
+       ref}`. Neue Einträge sind `{op: "create", entry}`; ein altes Schema
+       ohne `op` wird beim Laden als `create` interpretiert. Alle lokalen
+       Änderungen liegen unter `localStorage["namibia2026:pending-entries"]`.
+       **Overlay:** `ausgabenAktuell(data)` legt die lokalen Änderungen über
+       `data.ausgaben` — gelöschte Zeilen verschwinden aus der Liste,
+       geänderte zeigen die neuen Werte mit Pille „geändert · wartet", neue
+       erscheinen an ihrem Datum mit „neu · wartet" (Betrag in der erfassten
+       Währung; EUR bleibt bei NAD-Neueinträgen unbekannt und wird in Summen
+       als „+ n in NAD" ausgewiesen, nie geschätzt). **Die Kacheln im
+       Kosten-Tab und Home-Donut zeigen weiterhin den Repo-Stand** — nur die
+       Listen (Ausgabenliste, Letzte Ausgaben) das Overlay; die Summenzeile
+       nennt „n lokal". Lokale Einträge lassen sich ebenfalls antippen und
+       bearbeiten/verwerfen (`pendingIndex`).
+       **Übergabe:** Karte „Noch nicht übergeben (n)" oben in der Liste mit
+       „An Claude übergeben" — kopiert Klartext mit Präfixen `NEU:` /
+       `ÄNDERN [id · Titel · Datum · Betrag]: Feld alt → neu; …` /
+       `LÖSCHEN [id · …]` (`formatPending()`), plus „Leeren" (mit
+       `confirm()`) und × je Zeile zum Verwerfen. Auf Home ein Link „n lokale
+       Änderungen warten auf Übergabe →". **Wenn der Nutzer diesen Text im
+       Chat einfügt:** `ÄNDERN`/`LÖSCHEN` beziehen sich über die id auf
+       `01_bezahlt.csv` (`b1-`) bzw. `02_laufend.csv` (`b2-`) — Zeile per `nr`
+       finden, Felder ändern bzw. Zeile entfernen (bei Blatt-1-Unterkünften
+       nicht löschen, sondern nach Regel 6 auf 0 setzen, falls es um eine
+       Vor-Ort-Zahlung geht — nachfragen, wenn unklar), danach normal bauen
+       und pushen; `NEU` wie jeden Beleg verbuchen. **Kein** automatischer
+       Schreibzugriff aufs Repo (Entscheidung 08.09.2026: ein GitHub-Token im
+       Browser eines Handys, das verloren gehen oder geteilt werden kann,
+       wäre bei einem öffentlichen Repo ein Sicherheitsrisiko und würde alle
+       Prüfungen beim Verbuchen umgehen).
+       CSS-Fallstrick: `[hidden] { display: none !important }` steht global
+       in `style.css`, weil Author-Regeln mit `display:` (z. B. `.link-button
+       { display: block }`, `.badge { display: inline-block }`) das UA-Default
+       fürs `hidden`-Attribut sonst schlagen — Review 08.09.2026 fand einen
+       unsichtbaren, aber tappbaren Home-Link.
   3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
      Tankvorgänge, Tankstellen-Planung
   4. **Reiseplan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem

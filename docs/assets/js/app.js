@@ -21,11 +21,11 @@
   // Ausgabe" erscheinen, wird gegen das Geraetedatum getrennt.
   var bisherigeAusgaben = function (data) {
     var t = todayISO();
-    return data.ausgaben.filter(function (a) { return a.datum <= t; });
+    return ausgabenAktuell(data).filter(function (a) { return a.datum <= t; });
   };
   var kommendeAusgaben = function (data) {
     var t = todayISO();
-    return data.ausgaben.filter(function (a) { return a.datum > t; });
+    return ausgabenAktuell(data).filter(function (a) { return a.datum > t; });
   };
 
   function zahlerPill(z) {
@@ -68,32 +68,117 @@
       });
   }
 
-  // ---------------- Offline-Erfassung (lokale Warteschlange) ----------------
-  // Eintraege werden nur auf diesem Handy gespeichert (localStorage) - kein
-  // Netz noetig und kein Schreibzugriff aufs Repo. Uebergabe an Claude per
-  // Zwischenablage; Claude verbucht mit denselben Pruefungen wie sonst
-  // (Bargeld-Zahler-Regel, Kategorien, CSV-Quoting) - siehe CLAUDE.md.
+  // ---------------- Lokale Aenderungen: Create / Update / Delete ----------------
+  // Alle Aenderungen (neu, geaendert, geloescht) werden nur auf diesem Handy
+  // gespeichert (localStorage) und in den Listen sofort als Overlay gezeigt.
+  // Kein Schreibzugriff aufs Repo: "An Claude uebergeben" kopiert die
+  // Aenderungen als Klartext, Claude schreibt sie in die CSVs - mit denselben
+  // Pruefungen wie bei jedem Beleg (siehe CLAUDE.md). Die Kacheln im
+  // Kosten-Tab zeigen weiterhin den Repo-Stand, nur die Liste das Overlay.
   var PENDING_KEY = "namibia2026:pending-entries";
   var KATEGORIEN = ["Lebensmittel", "Restaurant", "Tanken", "Eintritt", "Aktivitäten", "Unterkunft",
                     "Shopping", "Ausrüstung", "Gebühren", "Sonstiges", "Flug", "Mietwagen"];
   var ZAHLMITTEL_DEFAULT = { Nora: "N26 Debit", Patrick: "Bargeld" };
+  var FELD_LABEL = { datum: "Datum", kategorie: "Kategorie", beschreibung: "Beschreibung", betrag: "Betrag",
+                     zahler: "Zahler", zahlmittel: "Zahlmittel", anmerkung: "Anmerkung" };
+  var currentData = null;
 
   var fmtBetrag = function (n) {
-    return n.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return Number(n).toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
   function loadPending() {
-    try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "[]"); }
-    catch (e) { return []; }
+    try {
+      var list = JSON.parse(localStorage.getItem(PENDING_KEY) || "[]");
+      // Altes Schema (reine Eintragsobjekte) -> als "create" behandeln.
+      return list.map(function (p) { return p && p.op ? p : { op: "create", entry: p, ts: 0 }; });
+    } catch (e) { return []; }
   }
   function savePending(list) {
     try { localStorage.setItem(PENDING_KEY, JSON.stringify(list)); } catch (e) {}
   }
 
-  function formatPendingEntry(e) {
+  function refText(a) {
+    return (a.id ? a.id + " · " : "") + a.beschreibung + " · " + fmtDate(a.datum) + " · " +
+      (a.betrag != null ? euro(a.betrag) : fmtBetrag(a.betrag_fw) + " NAD");
+  }
+  function entryLine(e) {
     return fmtDate(e.datum) + " · " + e.kategorie + " · " + e.beschreibung + " · " +
       fmtBetrag(e.betrag) + " " + e.waehrung + " · Zahler: " + e.zahler + " (" + e.zahlmittel + ")" +
       (e.anmerkung ? " · " + e.anmerkung : "");
+  }
+  function diffText(p) {
+    var parts = [];
+    Object.keys(FELD_LABEL).forEach(function (k) {
+      var alt = p.original[k], neu = p.entry[k];
+      if (k === "betrag") {
+        alt = fmtBetrag(p.original.betrag) + " " + p.original.waehrung;
+        neu = fmtBetrag(p.entry.betrag) + " " + p.entry.waehrung;
+      }
+      if ((alt || "") === (neu || "")) return;
+      parts.push(FELD_LABEL[k] + " " + (alt || "–") + " → " + (neu || "–"));
+    });
+    return parts.join("; ");
+  }
+  function formatPending(p) {
+    if (p.op === "create") return "NEU: " + entryLine(p.entry);
+    if (p.op === "delete") return "LÖSCHEN [" + p.ref + "]";
+    return "ÄNDERN [" + p.ref + "]: " + (diffText(p) || "keine Feldänderung");
+  }
+
+  // Overlay: Repo-Daten + lokale Aenderungen, wie die Liste sie zeigen soll.
+  function ausgabenAktuell(data) {
+    var pend = loadPending();
+    var byId = {};
+    pend.forEach(function (p) { if (p.id) byId[p.id] = p; });
+    var out = [];
+    (data.ausgaben || []).forEach(function (a) {
+      var p = a.id ? byId[a.id] : null;
+      if (p && p.op === "delete") return;
+      out.push(p && p.op === "update" ? mitAenderung(a, p.entry) : a);
+    });
+    pend.forEach(function (p, i) {
+      if (p.op !== "create") return;
+      var e = p.entry;
+      out.push({
+        id: null, pending: "create", pendingIndex: i,
+        datum: e.datum, zeit: "", kategorie: e.kategorie, beschreibung: e.beschreibung,
+        betrag: e.waehrung === "EUR" ? e.betrag : null,
+        betrag_fw: e.waehrung === "NAD" ? e.betrag : null,
+        waehrung: e.waehrung, zahler: e.zahler, zahlmittel: e.zahlmittel, status: "bezahlt"
+      });
+    });
+    out.sort(function (x, y) {
+      var kx = x.datum + (x.zeit || ""), ky = y.datum + (y.zeit || "");
+      return kx < ky ? -1 : kx > ky ? 1 : 0;
+    });
+    return out;
+  }
+  function mitAenderung(a, e) {
+    var n = Object.assign({}, a, {
+      pending: "update", datum: e.datum, kategorie: e.kategorie, beschreibung: e.beschreibung,
+      zahler: e.zahler, zahlmittel: e.zahlmittel
+    });
+    if (e.waehrung === "EUR") {
+      n.betrag = e.betrag;
+      if (a.waehrung !== "NAD") n.betrag_fw = null;
+    } else {
+      n.betrag_fw = e.betrag;
+      n.waehrung = "NAD";
+      // EUR nur ueber den eigenen Kurs der Zeile umrechnen - sonst unbekannt lassen.
+      n.betrag = (a.betrag_fw && a.betrag) ? Math.round(e.betrag / (a.betrag_fw / a.betrag) * 100) / 100 : null;
+    }
+    return n;
+  }
+  function formWerte(a) {
+    var nad = a.betrag_fw != null && a.waehrung === "NAD";
+    return {
+      datum: a.datum, kategorie: a.kategorie, beschreibung: a.beschreibung,
+      betrag: nad ? a.betrag_fw : a.betrag, waehrung: nad ? "NAD" : "EUR",
+      zahler: (a.zahler === "Patrick" || a.zahler === "Nora") ? a.zahler : "",
+      zahlmittel: a.zahlmittel === "TBD" ? "" : (a.zahlmittel || ""),
+      anmerkung: a.anmerkung || ""
+    };
   }
 
   var toastTimer = null;
@@ -123,46 +208,63 @@
     return Promise.resolve();
   }
 
+  function rerenderLokal() {
+    renderPendingBlock();
+    if (currentData) {
+      renderAusgaben(currentData);
+      renderLetzteAusgaben(currentData);
+    }
+  }
+
   function renderPendingBlock() {
     var list = loadPending();
     var el = document.getElementById("pending-block");
     var homeNote = document.getElementById("home-pending-note");
+    var OP = { create: "Neu", update: "Geändert", delete: "Gelöscht" };
 
     if (!list.length) {
       el.innerHTML = "";
       homeNote.hidden = true;
       return;
     }
-
     homeNote.hidden = false;
-    homeNote.textContent = list.length === 1
-      ? "1 Eintrag wartet auf Übergabe an Claude →"
-      : list.length + " Einträge warten auf Übergabe an Claude →";
+    homeNote.textContent = (list.length === 1 ? "1 lokale Änderung wartet" : list.length + " lokale Änderungen warten") + " auf Übergabe an Claude →";
 
     el.innerHTML =
       '<div class="pending-card">' +
         '<div class="pending-head"><span>Noch nicht übergeben</span><span class="badge">' + list.length + "</span></div>" +
-        list.map(function (e, i) {
-          return '<div class="pending-row">' +
+        list.map(function (p, i) {
+          var titel, meta, betrag = "";
+          if (p.op === "create") {
+            titel = p.entry.beschreibung;
+            meta = fmtDate(p.entry.datum) + " · " + p.entry.kategorie + " · " + p.entry.zahler + " · " + mapZahlmittel(p.entry.zahlmittel);
+            betrag = fmtBetrag(p.entry.betrag) + " " + p.entry.waehrung;
+          } else if (p.op === "update") {
+            titel = p.entry.beschreibung;
+            meta = diffText(p) || "keine Feldänderung";
+          } else {
+            titel = p.ref.split(" · ").slice(1, 2).join("") || p.ref;
+            meta = p.ref;
+          }
+          return '<div class="pending-row op-' + p.op + '">' +
             '<div class="pending-main">' +
-              '<div class="pending-title">' + esc(e.beschreibung) + "</div>" +
-              '<div class="pending-meta">' + esc(fmtDate(e.datum)) + " · " + esc(e.kategorie) + " · " +
-                esc(e.zahler) + " · " + esc(mapZahlmittel(e.zahlmittel)) + "</div>" +
+              '<div class="pending-title"><span class="pending-op">' + OP[p.op] + "</span>" + esc(titel) + "</div>" +
+              '<div class="pending-meta">' + esc(meta) + "</div>" +
             "</div>" +
-            '<div class="pending-amount">' + esc(fmtBetrag(e.betrag)) + " " + esc(e.waehrung) + "</div>" +
-            '<button type="button" class="icon-button small pending-remove" data-index="' + i + '" aria-label="Eintrag löschen">×</button>' +
+            (betrag ? '<div class="pending-amount">' + esc(betrag) + "</div>" : "") +
+            '<button type="button" class="icon-button small pending-remove" data-index="' + i + '" aria-label="Lokale Änderung verwerfen">×</button>' +
           "</div>";
         }).join("") +
         '<div class="pending-actions">' +
           '<button type="button" class="primary-button" id="pending-copy">An Claude übergeben</button>' +
           '<button type="button" class="ghost-button" id="pending-clear">Leeren</button>' +
         "</div>" +
-        '<div class="field-note">Kopiert alle Einträge als Text – im Chat einfügen, danach hier leeren.</div>' +
+        '<div class="field-note">Kopiert alle Änderungen als Text – im Chat einfügen, danach hier leeren. × verwirft eine lokale Änderung.</div>' +
       "</div>";
 
     document.getElementById("pending-copy").addEventListener("click", function (ev) {
       var b = ev.currentTarget;
-      var text = "Offline erfasste Kosten:\n" + loadPending().map(formatPendingEntry).join("\n");
+      var text = "Offline erfasste Änderungen:\n" + loadPending().map(formatPending).join("\n");
       copyText(text).then(function () {
         b.textContent = "✓ Kopiert – im Chat einfügen";
         toast("In die Zwischenablage kopiert");
@@ -170,15 +272,17 @@
       }).catch(function () { toast("Kopieren nicht möglich – bitte Einträge abtippen"); });
     });
     document.getElementById("pending-clear").addEventListener("click", function () {
-      if (!confirm("Alle " + list.length + " Einträge löschen? Nur, wenn sie im Chat angekommen sind.")) return;
+      var n = loadPending().length;
+      if (!confirm("Alle " + n + " lokalen Änderungen verwerfen? Nur, wenn sie im Chat angekommen sind.")) return;
       savePending([]);
-      renderPendingBlock();
+      rerenderLokal();
       toast("Liste geleert");
     });
   }
 
-  // --- Bottom-Sheet ---
-  var sheetState = { waehrung: "NAD", zahler: "", zahlmittel: "", kategorie: "" };
+  // --- Sheets ---
+  var sheetState = { mode: "create", waehrung: "NAD", zahler: "", zahlmittel: "", kategorie: "" };
+  var aktionZiel = null;
 
   function setSegmented(groupId, value) {
     document.querySelectorAll("#" + groupId + " .seg").forEach(function (b) {
@@ -188,21 +292,21 @@
     });
   }
 
-  function openSheet() {
+  function openSheet(id) {
     document.getElementById("sheet-backdrop").hidden = false;
-    var sheet = document.getElementById("sheet-erfassen");
+    var sheet = document.getElementById(id);
     sheet.hidden = false;
     document.body.classList.add("sheet-open");
     requestAnimationFrame(function () { sheet.classList.add("open"); });
-    setTimeout(function () { document.getElementById("ef-betrag").focus(); }, 250);
+    if (id === "sheet-erfassen") setTimeout(function () { document.getElementById("ef-betrag").focus(); }, 250);
   }
 
-  function closeSheet() {
-    var sheet = document.getElementById("sheet-erfassen");
-    sheet.classList.remove("open");
+  function closeSheets() {
+    var offen = Array.prototype.slice.call(document.querySelectorAll(".sheet.open"));
+    offen.forEach(function (s) { s.classList.remove("open"); });
     document.body.classList.remove("sheet-open");
     setTimeout(function () {
-      sheet.hidden = true;
+      offen.forEach(function (s) { s.hidden = true; });
       document.getElementById("sheet-backdrop").hidden = true;
     }, 220);
   }
@@ -210,7 +314,7 @@
   function resetSheet() {
     document.getElementById("erfassen-form").reset();
     document.getElementById("ef-datum").value = todayISO();
-    sheetState = { waehrung: "NAD", zahler: "", zahlmittel: "", kategorie: "" };
+    sheetState = { mode: "create", waehrung: "NAD", zahler: "", zahlmittel: "", kategorie: "" };
     setSegmented("ef-waehrung", "NAD");
     setSegmented("ef-zahler", "");
     setSegmented("ef-zahlmittel", "");
@@ -218,11 +322,86 @@
     document.getElementById("ef-zahler").classList.remove("locked");
     document.getElementById("ef-bargeld-hint").hidden = true;
     document.getElementById("ef-error").hidden = true;
+    document.getElementById("sheet-title").textContent = "Ausgabe erfassen";
+    document.getElementById("ef-submit").textContent = "Speichern";
+  }
+
+  function fillSheet(w) {
+    document.getElementById("ef-betrag").value = w.betrag != null ? String(w.betrag).replace(".", ",") : "";
+    document.getElementById("ef-beschreibung").value = w.beschreibung || "";
+    document.getElementById("ef-datum").value = w.datum || todayISO();
+    document.getElementById("ef-anmerkung").value = w.anmerkung || "";
+    sheetState.waehrung = w.waehrung || "NAD";
+    sheetState.zahler = w.zahler || "";
+    sheetState.zahlmittel = w.zahlmittel || "";
+    sheetState.kategorie = w.kategorie || "";
+    setSegmented("ef-waehrung", sheetState.waehrung);
+    setSegmented("ef-zahler", sheetState.zahler);
+    setSegmented("ef-zahlmittel", sheetState.zahlmittel);
+    setSegmented("ef-kategorie", sheetState.kategorie);
+    var bar = sheetState.zahlmittel === "Bargeld";
+    document.getElementById("ef-zahler").classList.toggle("locked", bar);
+    document.getElementById("ef-bargeld-hint").hidden = !bar;
+    document.getElementById("sheet-title").textContent = "Ausgabe bearbeiten";
+    document.getElementById("ef-submit").textContent = "Änderung speichern";
   }
 
   function parseBetrag(s) {
-    var n = parseFloat(String(s).replace(/\s/g, "").replace(",", "."));
+    var t = String(s).replace(/\s/g, "");
+    if (t.indexOf(",") !== -1) t = t.replace(/\./g, "").replace(",", ".");   // 1.250,00 -> 1250.00
+    else if ((t.match(/\./g) || []).length > 1) return NaN;                 // 1.250.00 ist mehrdeutig
+    if (!/^\d+(\.\d+)?$/.test(t)) return NaN;
+    var n = parseFloat(t);
     return isFinite(n) ? Math.round(n * 100) / 100 : NaN;
+  }
+
+  // Aktions-Sheet fuer eine Karte (Repo-Zeile per id oder lokaler Eintrag per pendingIndex)
+  function openAktion(ziel) {
+    aktionZiel = ziel;
+    document.getElementById("aktion-title").textContent = ziel.row.beschreibung;
+    document.getElementById("aktion-sub").textContent = fmtDate(ziel.row.datum) + " · " +
+      (ziel.row.betrag != null ? euro(ziel.row.betrag) : fmtBetrag(ziel.row.betrag_fw) + " NAD") +
+      (ziel.row.pending ? " · lokale Änderung" : "");
+    openSheet("sheet-aktion");
+  }
+
+  function starteBearbeiten() {
+    var z = aktionZiel; if (!z) return;
+    resetSheet();
+    var list = loadPending();
+    if (z.pendingIndex != null) {
+      sheetState.mode = "edit-pending";
+      sheetState.pendingIndex = z.pendingIndex;
+      fillSheet(list[z.pendingIndex].entry);
+    } else {
+      var vorhanden = list.find(function (p) { return p.id === z.id; });
+      var serverRow = (currentData.ausgaben || []).find(function (a) { return a.id === z.id; });
+      sheetState.mode = "edit";
+      sheetState.editId = z.id;
+      sheetState.editRef = refText(serverRow || z.row);
+      sheetState.original = vorhanden && vorhanden.original ? vorhanden.original : formWerte(serverRow || z.row);
+      fillSheet(vorhanden && vorhanden.op === "update" ? vorhanden.entry : sheetState.original);
+    }
+    closeSheets();
+    setTimeout(function () { openSheet("sheet-erfassen"); }, 230);
+  }
+
+  function starteLoeschen() {
+    var z = aktionZiel; if (!z) return;
+    if (!confirm('"' + z.row.beschreibung + '" löschen? Wird beim nächsten Übergeben an Claude entfernt.')) return;
+    var list = loadPending();
+    if (z.pendingIndex != null) {
+      list.splice(z.pendingIndex, 1);
+    } else {
+      var serverRow = (currentData.ausgaben || []).find(function (a) { return a.id === z.id; });
+      var item = { op: "delete", id: z.id, ref: refText(serverRow || z.row), ts: Date.now() };
+      var idx = list.findIndex(function (p) { return p.id === z.id; });
+      if (idx >= 0) list[idx] = item; else list.push(item);
+    }
+    savePending(list);
+    closeSheets();
+    rerenderLokal();
+    toast("Löschung vorgemerkt");
   }
 
   function initErfassen() {
@@ -240,22 +419,6 @@
     var zahlerEl = document.getElementById("ef-zahler");
     var bargeldHint = document.getElementById("ef-bargeld-hint");
 
-    zahlerEl.addEventListener("click", function (ev) {
-      var b = ev.target.closest(".seg"); if (!b) return;
-      if (zahlerEl.classList.contains("locked")) {
-        toast("Bei Bargeld ist der Zahler immer Patrick");
-        return;
-      }
-      sheetState.zahler = b.dataset.value;
-      setSegmented("ef-zahler", sheetState.zahler);
-      if (!sheetState.zahlmittel) {
-        // Sinnvoller Vorschlag laut Kartenregel, bleibt aenderbar.
-        sheetState.zahlmittel = ZAHLMITTEL_DEFAULT[sheetState.zahler] || "";
-        setSegmented("ef-zahlmittel", sheetState.zahlmittel);
-        applyBargeldRule();
-      }
-    });
-
     function applyBargeldRule() {
       var bar = sheetState.zahlmittel === "Bargeld";
       bargeldHint.hidden = !bar;
@@ -265,6 +428,22 @@
         setSegmented("ef-zahler", "Patrick");
       }
     }
+
+    zahlerEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest(".seg"); if (!b) return;
+      if (zahlerEl.classList.contains("locked")) {
+        toast("Bei Bargeld ist der Zahler immer Patrick");
+        return;
+      }
+      sheetState.zahler = b.dataset.value;
+      setSegmented("ef-zahler", sheetState.zahler);
+      if (!sheetState.zahlmittel) {
+        // Vorschlag laut Kartenregel, bleibt aenderbar.
+        sheetState.zahlmittel = ZAHLMITTEL_DEFAULT[sheetState.zahler] || "";
+        setSegmented("ef-zahlmittel", sheetState.zahlmittel);
+        applyBargeldRule();
+      }
+    });
 
     document.getElementById("ef-zahlmittel").addEventListener("click", function (ev) {
       var b = ev.target.closest(".seg"); if (!b) return;
@@ -304,21 +483,42 @@
         return;
       }
       var list = loadPending();
-      list.push(entry);
+      var msg;
+      if (sheetState.mode === "edit-pending") {
+        list[sheetState.pendingIndex].entry = entry;
+        msg = "Lokalen Eintrag aktualisiert";
+      } else if (sheetState.mode === "edit") {
+        var item = { op: "update", id: sheetState.editId, ref: sheetState.editRef, original: sheetState.original, entry: entry, ts: Date.now() };
+        var idx = list.findIndex(function (p) { return p.id === sheetState.editId; });
+        if (!diffText(item)) {
+          if (idx >= 0) { list.splice(idx, 1); }
+          msg = "Keine Änderung";
+        } else {
+          if (idx >= 0) list[idx] = item; else list.push(item);
+          msg = "Änderung vorgemerkt";
+        }
+      } else {
+        list.push({ op: "create", entry: entry, ts: Date.now() });
+        msg = "Gespeichert";
+      }
       savePending(list);
-      renderPendingBlock();
       resetSheet();
-      closeSheet();
-      toast("Gespeichert · " + list.length + (list.length === 1 ? " Eintrag wartet" : " Einträge warten") + " auf Übergabe");
+      closeSheets();
+      rerenderLokal();
+      var n = loadPending().length;
+      toast(msg + (n ? " · " + n + (n === 1 ? " Änderung wartet" : " Änderungen warten") + " auf Übergabe" : ""));
     });
 
     ["home-add-btn", "add-ausgabe-btn"].forEach(function (id) {
-      document.getElementById(id).addEventListener("click", function () { resetSheet(); openSheet(); });
+      document.getElementById(id).addEventListener("click", function () { resetSheet(); openSheet("sheet-erfassen"); });
     });
-    document.getElementById("sheet-close").addEventListener("click", closeSheet);
-    document.getElementById("sheet-backdrop").addEventListener("click", closeSheet);
+    document.getElementById("sheet-close").addEventListener("click", closeSheets);
+    document.getElementById("sheet-backdrop").addEventListener("click", closeSheets);
+    document.getElementById("aktion-cancel").addEventListener("click", closeSheets);
+    document.getElementById("aktion-edit").addEventListener("click", starteBearbeiten);
+    document.getElementById("aktion-delete").addEventListener("click", starteLoeschen);
     document.addEventListener("keydown", function (ev) {
-      if (ev.key === "Escape" && !document.getElementById("sheet-erfassen").hidden) closeSheet();
+      if (ev.key === "Escape" && document.querySelector(".sheet.open")) closeSheets();
     });
     document.getElementById("home-pending-note").addEventListener("click", function () {
       showView("kosten");
@@ -329,7 +529,20 @@
       var l = loadPending();
       l.splice(Number(b.dataset.index), 1);
       savePending(l);
-      renderPendingBlock();
+      rerenderLokal();
+    });
+    // Tipp auf eine Ausgabenkarte -> Aktions-Sheet (Bearbeiten / Loeschen)
+    ["ausgaben-list", "letzte-ausgaben-list"].forEach(function (id) {
+      document.getElementById(id).addEventListener("click", function (ev) {
+        var card = ev.target.closest(".card.ausgabe"); if (!card || !currentData) return;
+        var pendingIndex = card.dataset.pendingIndex !== undefined ? Number(card.dataset.pendingIndex) : null;
+        var rowId = card.dataset.id || null;
+        if (pendingIndex == null && !rowId) return;
+        var row = ausgabenAktuell(currentData).find(function (a) {
+          return pendingIndex != null ? a.pendingIndex === pendingIndex : a.id === rowId;
+        });
+        if (row) openAktion({ id: rowId, pendingIndex: pendingIndex, row: row });
+      });
     });
 
     document.getElementById("ef-datum").value = todayISO();
@@ -389,7 +602,7 @@
     else if (dayNum > totalDays) tagText = "Reise beendet · " + totalDays + " Tage";
     else tagText = "Tag " + dayNum + " von " + totalDays;
     document.getElementById("header-subline").textContent =
-      tagText + " · " + fmtDate(data.trip.start) + " – " + fmtDate(data.trip.end) + "2026";
+      tagText + " · " + fmtDate(data.trip.start) + " – " + fmtDate(data.trip.end) + parseISO(data.trip.end).getFullYear();
 
     var s = data.summary;
     document.getElementById("t-gesamt").textContent = euro(s.gesamt);
@@ -479,6 +692,7 @@
   var activeKat = "Alle", activeZahler = "Alle";
 
   function renderAusgaben(data) {
+    currentData = data;
     var kats = ["Alle"].concat(uniq(data.ausgaben.map(function (a) { return a.kategorie; })));
     var zahler = ["Alle"].concat(uniq(data.ausgaben.map(function (a) { return a.zahler; })));
 
@@ -496,9 +710,13 @@
     if (!bisher.length) {
       html = '<div class="empty-state">Keine Ausgaben in dieser Ansicht.</div>';
     } else {
-      var gesamt = bisher.reduce(function (acc, a) { return acc + a.betrag; }, 0);
-      html += '<div class="list-summary"><span>' + bisher.length + (bisher.length === 1 ? " Posten" : " Posten") +
-        (activeKat !== "Alle" || activeZahler !== "Alle" ? " (gefiltert)" : "") + "</span><span>" + euro(gesamt) + "</span></div>";
+      var gesamt = bisher.reduce(function (acc, a) { return acc + (a.betrag || 0); }, 0);
+      var ohneEur = bisher.filter(function (a) { return a.betrag == null; }).length;
+      var lokal = loadPending().length;
+      html += '<div class="list-summary"><span>' + bisher.length + " Posten" +
+        (activeKat !== "Alle" || activeZahler !== "Alle" ? " (gefiltert)" : "") +
+        (lokal ? " · " + lokal + " lokal" : "") + "</span><span>" + euro(gesamt) +
+        (ohneEur ? " + " + ohneEur + " in NAD" : "") + "</span></div>";
       var tag = null, tagSumme = 0, tagItems = [];
       var flush = function () {
         if (!tagItems.length) return;
@@ -512,7 +730,7 @@
       bisher.forEach(function (a) {
         if (a.datum !== tag) { flush(); tag = a.datum; }
         tagItems.push(ausgabeCard(a, false));
-        tagSumme += a.betrag;
+        tagSumme += a.betrag || 0;
       });
       flush();
     }
@@ -538,15 +756,20 @@
   // WOMIT; rechts Betrag, darunter der NAD-Originalbetrag. Nur "offen"/TBD
   // bleiben Warnpillen - alles andere ist ruhiger Text.
   function ausgabeCard(a, showDate) {
-    var fw = a.betrag_fw && a.waehrung && a.waehrung !== "EUR"
+    var fw = a.betrag != null && a.betrag_fw && a.waehrung && a.waehrung !== "EUR"
       ? '<div class="card-fw">' + esc(fmtBetrag(a.betrag_fw)) + " " + esc(a.waehrung) + "</div>"
       : "";
+    var betrag = a.betrag != null ? euro(a.betrag) : fmtBetrag(a.betrag_fw) + " NAD";
     var womit = a.status === "offen"
       ? '<span class="pill status-offen">offen</span>'
       : (mapZahlmittel(a.zahlmittel) === "TBD"
           ? '<span class="pill">Karte TBD</span>'
           : '<span class="card-womit">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>");
-    return '<div class="card ausgabe">' +
+    var pend = a.pending === "create" ? '<span class="pill status-pending">neu · wartet</span>'
+      : a.pending === "update" ? '<span class="pill status-pending">geändert · wartet</span>' : "";
+    var attrs = a.pendingIndex != null ? ' data-pending-index="' + a.pendingIndex + '"' : (a.id ? ' data-id="' + esc(a.id) + '"' : "");
+    var tappable = a.pendingIndex != null || a.id;
+    return '<div class="card ausgabe' + (tappable ? " tappable" : "") + '"' + attrs + (tappable ? ' role="button" tabindex="0"' : "") + ">" +
       '<div class="card-row">' +
         '<div class="card-main">' +
           '<div class="card-title">' + esc(a.beschreibung) + "</div>" +
@@ -554,12 +777,12 @@
             '<span class="kat-dot" style="background: var(' + katColorVar(a.kategorie) + ')"></span>' +
             '<span class="card-kat">' + esc(a.kategorie) + "</span>" +
             '<span class="card-sep">·</span>' +
-            zahlerPill(a.zahler) + womit +
+            zahlerPill(a.zahler) + womit + pend +
             (showDate ? '<span class="card-sep">·</span><span>' + fmtDate(a.datum) + "</span>" : "") +
           "</div>" +
         "</div>" +
         '<div class="card-right">' +
-          '<div class="card-amount">' + euro(a.betrag) + "</div>" + fw +
+          '<div class="card-amount">' + esc(betrag) + "</div>" + fw +
         "</div>" +
       "</div>" +
     "</div>";
@@ -624,7 +847,8 @@
       var range = p.naechte > 1
         ? fmtDate(p.start) + " – " + fmtDate(p.ende) + " · " + p.naechte + " Nächte"
         : fmtDate(p.start);
-      var bezahltVon = p.status !== "offen" && p.betrag > 0 && p.zahler && p.zahler !== "TBD"
+      var hatBetrag = typeof p.betrag === "number";
+      var bezahltVon = p.status !== "offen" && hatBetrag && p.betrag > 0 && p.zahler && p.zahler !== "TBD"
         ? zahlerPill(p.zahler) + '<span class="pill">' + esc(mapZahlmittel(p.zahlmittel)) + "</span>"
         : "";
       item.innerHTML =
@@ -632,13 +856,13 @@
         '<div class="card">' +
           '<div class="card-row">' +
             '<span class="card-title">' + esc(p.beschreibung) + "</span>" +
-            (p.betrag > 0 ? '<span class="card-amount">' + euro(p.betrag) + "</span>" : "") +
+            (hatBetrag && p.betrag > 0 ? '<span class="card-amount">' + euro(p.betrag) + "</span>" : "") +
           "</div>" +
           '<div class="card-meta">' +
             '<span class="pill">' + esc(p.kategorie) + "</span>" +
             (p.fahrzeit ? '<span class="pill">Anfahrt ' + esc(p.fahrzeit) + "</span>" : "") +
             (p.status === "offen" ? '<span class="pill status-offen">offen</span>' : bezahltVon) +
-            (p.status !== "offen" && !(p.betrag > 0) ? '<span class="pill">vor Ort bezahlt</span>' : "") +
+            (p.status !== "offen" && hatBetrag && p.betrag <= 0 ? '<span class="pill">vor Ort bezahlt</span>' : "") +
           "</div>" +
         "</div>";
       el.appendChild(item);
@@ -895,8 +1119,7 @@
     if (!hatSaldoFelder(s)) {
       vc.innerHTML = '<div class="empty-state">Verrechnung braucht aktuelle Daten – bitte online neu laden.</div>';
       document.getElementById("verrechnung-hint").textContent = "";
-      return;
-    }
+    } else {
     var saldoText = s.saldo_patrick > 0.005 ? "Nora schuldet Patrick " + euro(s.saldo_patrick)
       : s.saldo_patrick < -0.005 ? "Patrick schuldet Nora " + euro(-s.saldo_patrick) : "Ausgeglichen";
     var cell = function (v, cls) { return '<div class="verr-num' + (cls ? " " + cls : "") + '">' + euro(v) + "</div>"; };
@@ -914,6 +1137,7 @@
     document.getElementById("verrechnung-hint").textContent =
       (s.beitrag_nora < 0 ? "Negativ bei Nora: von der Überweisung ist noch mehr übrig, als sie selbst beigesteuert hat. " : "") +
       saldoHint(s);
+    }
 
     var op = document.getElementById("offene-punkte-list");
     if (!data.offene_punkte.length) {
@@ -922,7 +1146,7 @@
       op.innerHTML = data.offene_punkte.map(function (o) {
         // Erster Satz/Halbsatz als Titel, der Rest aufklappbar - die Texte
         // stammen aus docs/offene-punkte.md und sind dort bewusst ausfuehrlich.
-        var m = /^(.{12,120}?)(?:\s+[—–-]\s+|\.\s+|:\s+)([\s\S]+)$/.exec(o.punkt);
+        var m = /^(.{12,120}?)(?:\s+[—–]\s+|:\s+)([\s\S]+)$/.exec(o.punkt);
         var titel = m ? m[1] : o.punkt;
         var rest = m ? m[2] : "";
         if (!m && o.punkt.length > 90) {
