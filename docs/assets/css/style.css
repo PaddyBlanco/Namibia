@@ -250,6 +250,57 @@ main {
   cursor: pointer;
 }
 
+/* ---------- Offline-Erfassungsformular ---------- */
+.entry-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.entry-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.entry-form input, .entry-form select {
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  width: 100%;
+}
+.entry-form input:focus, .entry-form select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.entry-form-row { display: flex; gap: 10px; }
+.entry-form-row label { flex: 1; }
+.primary-button {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.entry-form-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.entry-remove { padding: 8px 0 0; text-align: right; font-size: 0.78rem; }
+.badge {
+  display: inline-block;
+  min-width: 16px;
+  margin-left: 5px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: var(--debt);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.badge[hidden] { display: none; }
+
 /* ---------- Lists / cards ---------- */
 .card-list { display: flex; flex-direction: column; gap: 8px; }
 .card {

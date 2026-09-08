@@ -230,15 +230,37 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   keine Unterpunkte voneinander** (Nutzer hat das ausdrücklich korrigiert,
   nachdem Home zuerst nur eine Umbenennung des Kosten-Tabs war):
   1. **Home** (`home`, 🏠) — der Startbildschirm, genau drei Blöcke, siehe unten
-  2. **Kosten** (`kosten`, 💶) — Sub-Nav „Kostenübersicht" (Gesamt-Kacheln,
-     Reisekasse, Saldo + Hinweis zur Saldo-Basis) und „Ausgabenliste"
-     (filterbar). **Die Ausgabenliste trennt nach Gerätedatum:** oben alles
-     bis heute, neueste zuerst; darunter ein eingeklappter Block „Kommende
-     Buchungen (n · Summe)" mit den Blatt-1-Zeilen, deren Check-in-Datum in
-     der Zukunft liegt. Grund (Bug 07.09.2026): Blatt-1-Zeilen tragen das
-     Check-in-, nicht das Zahldatum — ohne Trennung standen 11 vorausbezahlte
-     Unterkünfte über den echten Einträgen von heute, die dadurch „fehlten".
-     NAD-Originalbetrag wird in der Zeile mit angezeigt (`betrag_fw`/`waehrung`).
+  2. **Kosten** (`kosten`, 💶) — Sub-Nav mit **drei** Reitern: „Kostenübersicht"
+     (Gesamt-Kacheln, Reisekasse, Saldo + Hinweis zur Saldo-Basis),
+     „Ausgabenliste" und „Erfassen" (siehe unten). **Die Ausgabenliste trennt
+     nach Gerätedatum:** oben alles bis heute, neueste zuerst; darunter ein
+     eingeklappter Block „Kommende Buchungen (n · Summe)" mit den Blatt-1-
+     Zeilen, deren Check-in-Datum in der Zukunft liegt. Grund (Bug 07.09.2026):
+     Blatt-1-Zeilen tragen das Check-in-, nicht das Zahldatum — ohne Trennung
+     standen 11 vorausbezahlte Unterkünfte über den echten Einträgen von
+     heute, die dadurch „fehlten". NAD-Originalbetrag wird in der Zeile mit
+     angezeigt (`betrag_fw`/`waehrung`).
+     - **„Erfassen" (seit 08.09.2026):** Formular für Kosten ohne Netz.
+       Speichert Einträge ausschließlich lokal (`localStorage`, Key
+       `namibia2026:pending-entries`) — **kein** automatischer Schreibzugriff
+       aufs Repo (bewusste Entscheidung 08.09.2026: ein im Browser
+       gespeicherter GitHub-Token auf einem Handy, das verloren gehen oder
+       geteilt werden kann, wäre ein Sicherheitsrisiko bei einem öffentlichen
+       Repo, und würde außerdem alle Prüfungen umgehen, die sonst beim
+       Verbuchen laufen — Bargeld-Zahler-Regel, Kategorie-Validierung,
+       CSV-Komma-Fallstrick). Stattdessen: Button „An Claude übergeben"
+       kopiert alle offenen Einträge als Klartext in die Zwischenablage
+       (`formatPendingEntry()` in `app.js`); der Nutzer fügt den Text im
+       Chat ein, Claude trägt ihn wie jeden anderen Beleg ein und wendet
+       dabei dieselben Prüfungen an wie sonst auch. „Liste leeren" erst
+       danach antippen (fragt zur Sicherheit nach, per `confirm()`).
+       Zahlmittel `Bargeld` setzt den Zahler automatisch auf `Patrick` und
+       sperrt das Feld (Grundregel 9) — nicht von Hand aushebeln. Ein roter
+       Zähler-Badge auf dem Reiter „Erfassen" zeigt, wie viele Einträge noch
+       nicht übergeben sind (`[hidden]`-Sichtbarkeit: `.badge[hidden] {
+       display: none }` explizit nötig, weil `.badge { display: inline-block
+       }` sonst das UA-Default fürs `hidden`-Attribut per Kaskade schlägt —
+       am 08.09.2026 genau darüber gestolpert, siehe Playwright-Test).
   3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
      Tankvorgänge, Tankstellen-Planung
   4. **Reiseplan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem

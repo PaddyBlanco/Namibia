@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Namibia 2026</title>
-<link rel="stylesheet" href="assets/css/style.css?v=7321e3fd">
+<link rel="stylesheet" href="assets/css/style.css?v=dafaf8e2">
 </head>
 <body>
 
@@ -62,6 +62,7 @@
     <div class="subnav">
       <button class="subnav-btn active" data-subview="uebersicht">Kostenübersicht</button>
       <button class="subnav-btn" data-subview="ausgaben">Ausgabenliste</button>
+      <button class="subnav-btn" data-subview="erfassen">Erfassen<span class="badge" id="erfassen-badge" hidden>0</span></button>
     </div>
 
     <div class="subview active" id="subview-uebersicht">
@@ -112,6 +113,85 @@
       <div class="chip-row" id="filter-zahler"></div>
       <div class="card-list" id="ausgaben-list"></div>
     </div>
+
+    <div class="subview" id="subview-erfassen">
+      <div class="hint">
+        Für unterwegs ohne Netz: Eintrag hier speichern (bleibt nur auf diesem
+        Handy). Sobald wieder Internet da ist, unten „An Claude übergeben"
+        antippen – der Text landet in der Zwischenablage, einfach in den Chat
+        einfügen. Für Abhebungen, Überweisungen oder Rückfragen einfach
+        normal im Chat schreiben.
+      </div>
+
+      <form id="erfassen-form" class="entry-form">
+        <label>Datum
+          <input type="date" id="ef-datum" required>
+        </label>
+        <label>Kategorie
+          <select id="ef-kategorie" required>
+            <option value="">– wählen –</option>
+            <option>Flug</option>
+            <option>Mietwagen</option>
+            <option>Unterkunft</option>
+            <option>Tanken</option>
+            <option>Lebensmittel</option>
+            <option>Restaurant</option>
+            <option>Eintritt</option>
+            <option>Aktivitäten</option>
+            <option>Ausrüstung</option>
+            <option>Gebühren</option>
+            <option>Shopping</option>
+            <option>Sonstiges</option>
+          </select>
+        </label>
+        <label>Ort / Beschreibung
+          <input type="text" id="ef-beschreibung" placeholder="z. B. Spar Solitaire" required>
+        </label>
+        <div class="entry-form-row">
+          <label>Betrag
+            <input type="number" id="ef-betrag" inputmode="decimal" step="0.01" min="0" required>
+          </label>
+          <label>Währung
+            <select id="ef-waehrung">
+              <option>NAD</option>
+              <option>EUR</option>
+            </select>
+          </label>
+        </div>
+        <label>Zahlmittel
+          <select id="ef-zahlmittel" required>
+            <option value="">– wählen –</option>
+            <option>Bargeld</option>
+            <option>N26 Debit</option>
+            <option>Oberbank Debit</option>
+            <option>card complete</option>
+            <option>TBD</option>
+          </select>
+        </label>
+        <label>Zahler
+          <select id="ef-zahler" required>
+            <option value="">– wählen –</option>
+            <option>Patrick</option>
+            <option>Nora</option>
+            <option>TBD</option>
+          </select>
+        </label>
+        <div class="hint" id="ef-bargeld-hint" hidden>
+          Bargeld gehört immer Patrick (Grundregel 9) – Zahler automatisch gesetzt.
+        </div>
+        <label>Anmerkung (optional)
+          <input type="text" id="ef-anmerkung" placeholder="z. B. 2 Portionen">
+        </label>
+        <button type="submit" class="primary-button">Eintrag speichern</button>
+      </form>
+
+      <h3>Gespeichert, noch nicht übergeben</h3>
+      <div class="card-list" id="erfassen-liste"></div>
+      <div class="entry-form-actions" id="erfassen-actions" hidden>
+        <button type="button" class="primary-button" id="erfassen-kopieren">An Claude übergeben (kopieren)</button>
+        <button type="button" class="link-button" id="erfassen-leeren">Liste leeren (nach dem Einfügen)</button>
+      </div>
+    </div>
   </section>
 
   <!-- ============ REISEPLAN ============ -->
@@ -160,6 +240,6 @@
   <button class="nav-btn" data-view="mehr"><span class="icon">⋯</span>Mehr</button>
 </nav>
 
-<script src="assets/js/app.js?v=fd5f666c"></script>
+<script src="assets/js/app.js?v=2765a306"></script>
 </body>
 </html>

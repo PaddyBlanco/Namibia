@@ -67,6 +67,147 @@
       });
   }
 
+  // ---------------- Offline-Erfassung (lokale Warteschlange) ----------------
+  // Speichert Eintraege nur auf diesem Handy (localStorage) - kein Netz noetig.
+  // Kein automatischer Schreibzugriff aufs Repo: der Text wird in die
+  // Zwischenablage kopiert und im Chat an Claude uebergeben, die dieselben
+  // Pruefungen anwendet wie bei jedem anderen Beleg (Bargeld-Zahler-Regel,
+  // Kategorie-Validierung, CSV-Komma-Fallstrick etc.) - siehe CLAUDE.md.
+  var PENDING_KEY = "namibia2026:pending-entries";
+
+  function loadPending() {
+    try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "[]"); }
+    catch (e) { return []; }
+  }
+  function savePending(list) {
+    try { localStorage.setItem(PENDING_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+
+  function formatPendingEntry(e) {
+    var betrag = e.betrag.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return fmtDate(e.datum) + " · " + e.kategorie + " · " + e.beschreibung + " · " +
+      betrag + " " + e.waehrung + " · Zahler: " + e.zahler + " (" + e.zahlmittel + ")" +
+      (e.anmerkung ? " · " + e.anmerkung : "");
+  }
+
+  function renderPendingList() {
+    var list = loadPending();
+    var el = document.getElementById("erfassen-liste");
+    var actions = document.getElementById("erfassen-actions");
+    var badge = document.getElementById("erfassen-badge");
+
+    if (!list.length) {
+      el.innerHTML = '<div class="empty-state">Noch nichts Offline erfasst.</div>';
+      actions.hidden = true;
+    } else {
+      el.innerHTML = list.map(function (e, i) {
+        return '<div class="card"><div class="card-row">' +
+          '<span class="card-title">' + esc(e.beschreibung) + "</span>" +
+          '<span class="card-amount">' + esc(e.betrag.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })) + " " + esc(e.waehrung) + "</span>" +
+          "</div>" +
+          '<div class="card-meta">' +
+            '<span class="pill">' + esc(e.kategorie) + "</span>" +
+            zahlerPill(e.zahler) +
+            '<span class="pill">' + esc(e.zahlmittel) + "</span>" +
+            "<span>" + fmtDate(e.datum) + "</span>" +
+          "</div>" +
+          '<button type="button" class="link-button entry-remove" data-index="' + i + '">Löschen</button>' +
+          "</div>";
+      }).join("");
+      actions.hidden = false;
+    }
+
+    badge.hidden = !list.length;
+    badge.textContent = String(list.length);
+
+    el.querySelectorAll(".entry-remove").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var l = loadPending();
+        l.splice(Number(btn.dataset.index), 1);
+        savePending(l);
+        renderPendingList();
+      });
+    });
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback fuer aeltere/eingeschraenkte Browser ohne Clipboard-API.
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } finally { document.body.removeChild(ta); }
+    return Promise.resolve();
+  }
+
+  function initErfassen() {
+    document.getElementById("ef-datum").value = todayISO();
+
+    var zahlmittelEl = document.getElementById("ef-zahlmittel");
+    var zahlerEl = document.getElementById("ef-zahler");
+    var bargeldHint = document.getElementById("ef-bargeld-hint");
+    zahlmittelEl.addEventListener("change", function () {
+      var istBargeld = zahlmittelEl.value === "Bargeld";
+      bargeldHint.hidden = !istBargeld;
+      if (istBargeld) {
+        zahlerEl.value = "Patrick";
+        zahlerEl.disabled = true;
+      } else {
+        zahlerEl.disabled = false;
+      }
+    });
+
+    document.getElementById("erfassen-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var entry = {
+        datum: document.getElementById("ef-datum").value,
+        kategorie: document.getElementById("ef-kategorie").value,
+        beschreibung: document.getElementById("ef-beschreibung").value.trim(),
+        betrag: parseFloat(document.getElementById("ef-betrag").value),
+        waehrung: document.getElementById("ef-waehrung").value,
+        zahlmittel: zahlmittelEl.value,
+        zahler: zahlerEl.value,
+        anmerkung: document.getElementById("ef-anmerkung").value.trim(),
+      };
+      if (!entry.kategorie || !entry.beschreibung || !entry.zahlmittel || !entry.zahler || !(entry.betrag > 0)) return;
+
+      var list = loadPending();
+      list.push(entry);
+      savePending(list);
+      renderPendingList();
+
+      ev.target.reset();
+      document.getElementById("ef-datum").value = todayISO();
+      zahlerEl.disabled = false;
+      bargeldHint.hidden = true;
+    });
+
+    document.getElementById("erfassen-kopieren").addEventListener("click", function (ev) {
+      var list = loadPending();
+      if (!list.length) return;
+      var text = "Offline erfasste Kosten:\n" + list.map(formatPendingEntry).join("\n");
+      var b = ev.currentTarget;
+      var original = b.textContent;
+      copyText(text).then(function () {
+        b.textContent = "✓ kopiert – jetzt in den Chat einfügen";
+        setTimeout(function () { b.textContent = original; }, 3000);
+      });
+    });
+
+    document.getElementById("erfassen-leeren").addEventListener("click", function () {
+      if (!confirm("Liste wirklich leeren? Nur machen, nachdem der Text im Chat angekommen ist.")) return;
+      savePending([]);
+      renderPendingList();
+    });
+
+    renderPendingList();
+  }
+
   // ---------------- Navigation ----------------
   function initNav() {
     var buttons = document.querySelectorAll(".nav-btn");
@@ -639,6 +780,7 @@
 
   // ---------------- Start ----------------
   initNav();
+  initErfassen();
   loadData().then(function (data) {
     document.getElementById("header-subline").textContent =
       "02.09. – 21.09.2026 · Patrick & Nora";
