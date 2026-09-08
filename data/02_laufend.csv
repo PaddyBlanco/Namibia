@@ -22,3 +22,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 21,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Restaurant,,EUR,30.11,Nora,N26 Debit,Essen + Kaffee/Kuchen
 22,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Restaurant,50.00,NAD,2.68,Patrick,Bargeld,Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender)
 23,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Tanken,980.01,NAD,53.17,Nora,N26 Debit,Volltanken - 34.29 Liter a 28.58 NAD/Liter bei km-Stand 21586 (siehe 04_tanken.csv Nr. 4)
+24,2026-09-08,,Ausgabe,Little Sossus Campsite,Little Sossus Campsite,Lebensmittel,,EUR,5.41,Nora,N26 Debit,Wasser

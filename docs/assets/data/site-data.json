@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-08T10:46:04+00:00",
+  "generated_at": "2026-09-08T10:47:17+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6126.7,
-    "bezahlt": 5698.9,
+    "gesamt": 6132.11,
+    "bezahlt": 5704.31,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 41.32,
     "kasse_bestand": 175.88,
     "patrick_gezahlt": 3987.81,
-    "nora_gezahlt": 1711.09,
+    "nora_gezahlt": 1716.5,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5698.9,
-    "anteil_pro_person": 2849.45,
+    "saldo_basis": 5704.31,
+    "anteil_pro_person": 2852.16,
     "beitrag_patrick": 5987.81,
-    "beitrag_nora": -288.91,
-    "saldo_patrick": 3138.36
+    "beitrag_nora": -283.5,
+    "saldo_patrick": 3135.66
   },
   "kategorien": [
     {
@@ -40,7 +40,7 @@
     },
     {
       "name": "Lebensmittel",
-      "betrag": 234.63
+      "betrag": 240.04
     },
     {
       "name": "Restaurant",
@@ -415,6 +415,18 @@
       "zahler": "TBD",
       "zahlmittel": "TBD",
       "status": "offen"
+    },
+    {
+      "datum": "2026-09-08",
+      "zeit": "",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Little Sossus Campsite",
+      "betrag": 5.41,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
     },
     {
       "datum": "2026-09-10",
