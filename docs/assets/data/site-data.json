@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-08T10:47:17+00:00",
+  "generated_at": "2026-09-08T14:08:44+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6132.11,
-    "bezahlt": 5704.31,
+    "gesamt": 6220.56,
+    "bezahlt": 5792.76,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 41.32,
     "kasse_bestand": 175.88,
     "patrick_gezahlt": 3987.81,
-    "nora_gezahlt": 1716.5,
+    "nora_gezahlt": 1804.95,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5704.31,
-    "anteil_pro_person": 2852.16,
+    "saldo_basis": 5792.76,
+    "anteil_pro_person": 2896.38,
     "beitrag_patrick": 5987.81,
-    "beitrag_nora": -283.5,
-    "saldo_patrick": 3135.66
+    "beitrag_nora": -195.05,
+    "saldo_patrick": 3091.43
   },
   "kategorien": [
     {
@@ -44,15 +44,15 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 98.41
+      "betrag": 119.78
+    },
+    {
+      "name": "Eintritt",
+      "betrag": 92.04
     },
     {
       "name": "Aktivitäten",
       "betrag": 75.95
-    },
-    {
-      "name": "Eintritt",
-      "betrag": 24.96
     },
     {
       "name": "Shopping",
@@ -422,6 +422,30 @@
       "kategorie": "Lebensmittel",
       "beschreibung": "Little Sossus Campsite",
       "betrag": 5.41,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-08",
+      "zeit": "",
+      "kategorie": "Restaurant",
+      "beschreibung": "Tankstelle Sesriem",
+      "betrag": 21.37,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "datum": "2026-09-08",
+      "zeit": "",
+      "kategorie": "Eintritt",
+      "beschreibung": "NWR Sesriem",
+      "betrag": 67.08,
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
