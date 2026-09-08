@@ -627,6 +627,16 @@
       "</div></div>";
   }
 
+  // ---------------- Offline-Faehigkeit ----------------
+  // Ohne Service Worker laedt die Seite bei komplett fehlendem Netz oft gar
+  // nicht erst (GitHub Pages cached Assets nur 10 Min. im Browser-HTTP-Cache).
+  // Der Worker haelt HTML/CSS/JS/Daten dauerhaft im Cache Storage.
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+
   // ---------------- Start ----------------
   initNav();
   loadData().then(function (data) {

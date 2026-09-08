@@ -85,6 +85,7 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `scripts/build_sheet.py`   | Baut zusätzlich eine .xlsx mit 3 Tabs – nur auf Zuruf, siehe unten |
 | `scripts/build_site_data.py` | Baut `docs/assets/data/site-data.json` für die GitHub-Pages-Seite und stempelt `?v=<hash>` an `app.js`/`style.css` in `index.html` (Cache-Busting, s. Website) |
 | `docs/index.html` + `docs/assets/` | GitHub-Pages-Seite (Mobile-App-Stil), siehe Abschnitt „Website" unten |
+| `docs/sw.js`               | Service Worker für Offline-Fähigkeit (App-Shell + Kostendaten aus dem Cache) - `CACHE_VERSION`/Dateinamen werden von `build_site_data.py` gestempelt, nicht von Hand editieren |
 
 ## Workflow bei neuen Belegen
 
@@ -201,6 +202,29 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
 - Mobile-first Single-Page-App, reines HTML/CSS/JS, **keine externen Libraries/CDNs**
   (funktioniert auch bei schlechtem Netz in Namibia; JSON wird zusätzlich in
   `localStorage` gecacht, damit die Seite auch offline zuletzt geladene Daten zeigt).
+- **Offline-fähig per Service Worker (`docs/sw.js`, seit 08.09.2026).** Grund:
+  Ohne Worker lädt die Seite bei komplett fehlendem Netz oft gar nicht erst -
+  GitHub Pages cached Assets nur 10 Min. im Browser-HTTP-Cache, danach
+  scheitert ein Ladeversuch ohne Empfang ganz. Der Worker hält HTML/CSS/JS
+  dauerhaft im Cache Storage (stale-while-revalidate: sofort aus dem Cache
+  antworten, im Hintergrund auffrischen) und `site-data.json` network-first
+  mit Cache-Fallback (immer die frischeste Version, wenn online; zuletzt
+  bekannte, wenn nicht). Damit öffnet die Seite auch im Flugmodus/ohne
+  Empfang normal, mit dem letzten Stand.
+  - `scripts/build_site_data.py::stamp_asset_versions()` pflegt `CACHE_VERSION`
+    und die versionierten Dateinamen in `sw.js` automatisch mit (gleicher
+    Hash-Mechanismus wie die `?v=`-Stempel in `index.html`) - **nie von Hand
+    editieren**, außer neue Dateien zur `PRECACHE_URLS`-Liste hinzuzufügen.
+  - Registrierung in `app.js` (`navigator.serviceWorker.register("sw.js")`),
+    nur wenn der Browser Service Worker unterstützt - kein Blocker auf
+    älteren/eingeschränkten Browsern.
+  - **Getestet 08.09.2026:** Playwright mit echtem Server-Stopp (nicht
+    `context.setOffline()` - das blockiert in Chromium/CDP die Anfrage schon
+    vor der Service-Worker-Interception und liefert immer `ERR_FAILED`,
+    unabhängig vom Worker; ein wirklich abgeschalteter Server ist der
+    realistischere Test). Ergebnis: App-Shell und letzte `site-data.json`
+    wurden korrekt aus dem Cache Storage bedient, Zahlen stimmten mit dem
+    letzten Online-Stand überein.
 - **5 gleichwertige Tabs unten** (Stand 06.09.2026, `id`/`data-view`/Hash
   in Klammern) — **Home, Kosten und Tanken sind bewusst eigene Kategorien,
   keine Unterpunkte voneinander** (Nutzer hat das ausdrücklich korrigiert,

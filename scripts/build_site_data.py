@@ -25,23 +25,41 @@ TRIP_END = "2026-09-21"
 
 
 INDEX_HTML = ROOT / "docs" / "index.html"
+SERVICE_WORKER = ROOT / "docs" / "sw.js"
 VERSIONED_ASSETS = ("assets/css/style.css", "assets/js/app.js")
 
 
 def stamp_asset_versions():
-    """Haengt ?v=<Inhalts-Hash> an style.css und app.js in index.html.
+    """Haengt ?v=<Inhalts-Hash> an style.css/app.js in index.html UND sw.js,
+    und aktualisiert CACHE_VERSION im Service Worker.
 
     GitHub Pages liefert Assets mit Cache-Control max-age=600. Ohne Stempel
     laeuft nach einem Push bis zu 10 Minuten lang das alte app.js gegen die
     neue site-data.json (die selbst mit cache: no-store geladen wird). Der
     Hash aendert sich nur, wenn sich die Datei aendert - reine Datenupdates
-    erzeugen also kein Diff in index.html.
+    erzeugen also kein Diff in index.html/sw.js.
+
+    Der Service Worker cached die App-Shell dauerhaft (siehe docs/sw.js) -
+    CACHE_VERSION muss sich bei jeder Aenderung an style.css/app.js/sw.js
+    selbst oder site-data.json aendern, sonst bleibt eine veraltete Version
+    im Cache Storage der Nutzer haengen.
     """
     html = INDEX_HTML.read_text(encoding="utf-8")
+    sw = SERVICE_WORKER.read_text(encoding="utf-8")
+    digests = []
     for rel in VERSIONED_ASSETS:
         digest = hashlib.sha1((ROOT / "docs" / rel).read_bytes()).hexdigest()[:8]
-        html = re.sub(re.escape(rel) + r"(\?v=[0-9a-f]+)?", rel + "?v=" + digest, html)
+        digests.append(digest)
+        pattern = re.escape(rel) + r"(\?v=[0-9a-f]+)?"
+        html = re.sub(pattern, rel + "?v=" + digest, html)
+        sw = re.sub(pattern, rel + "?v=" + digest, sw)
     INDEX_HTML.write_text(html, encoding="utf-8")
+
+    cache_version = hashlib.sha1(
+        (",".join(digests) + hashlib.sha1(OUT.read_bytes()).hexdigest()).encode()
+    ).hexdigest()[:8]
+    sw = re.sub(r'const CACHE_VERSION = "[^"]*";', f'const CACHE_VERSION = "{cache_version}";', sw)
+    SERVICE_WORKER.write_text(sw, encoding="utf-8")
 
 
 def parse_tanken():
