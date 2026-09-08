@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T14:08:44+00:00",
+  "generated_at": "2026-09-08T14:30:04+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -580,6 +580,9 @@
       "naechte": 0,
       "kategorie": "Flug",
       "beschreibung": "Flug Wien - Muenchen - Windhoek (2 Pers.)",
+      "betrag": 1895.26,
+      "zahler": "Patrick + Nora",
+      "zahlmittel": "TBD",
       "status": "bezahlt",
       "info_link": null,
       "fahrzeit": null
@@ -590,6 +593,9 @@
       "naechte": 0,
       "kategorie": "Mietwagen",
       "beschreibung": "Mietwagen inkl. Camping-Ausstattung 03.-21.09.",
+      "betrag": 2726.15,
+      "zahler": "Patrick",
+      "zahlmittel": "TBD",
       "status": "bezahlt",
       "info_link": null,
       "fahrzeit": null
@@ -600,6 +606,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Kalahari Anib Campsite",
+      "betrag": 36.0,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Kalahari%20Anib%20Campsite%2C%20Namibia",
       "fahrzeit": "3h"
@@ -610,6 +619,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Quiver Tree Camping",
+      "betrag": 0.0,
+      "zahler": "Patrick",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Quiver%20Tree%20Camping%2C%20Namibia",
       "fahrzeit": "3h"
@@ -620,6 +632,9 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
+      "betrag": 24.96,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia",
       "fahrzeit": "2h"
@@ -630,6 +645,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Wereldend Mountain Campsite",
+      "betrag": 47.8,
+      "zahler": "TBD",
+      "zahlmittel": "Bargeld",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Wereldend%20Mountain%20Campsite%2C%20Namibia",
       "fahrzeit": "4h"
@@ -640,6 +658,9 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Little Sossus Campsite",
+      "betrag": 84.0,
+      "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia",
       "fahrzeit": "1h15"
@@ -650,6 +671,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
+      "betrag": 25.0,
+      "zahler": "TBD",
+      "zahlmittel": "Bargeld",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia",
       "fahrzeit": "5–7h"
@@ -660,6 +684,9 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
+      "betrag": 62.0,
+      "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
       "fahrzeit": "2h"
@@ -670,6 +697,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Granietkop Campsite Damaraland",
+      "betrag": 48.0,
+      "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Granietkop%20Campsite%20Damaraland%2C%20Namibia",
       "fahrzeit": "3h"
@@ -680,6 +710,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
+      "betrag": 45.0,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Hoada%20Campsite%20%28statt%20Ugab%20Terrace%29%2C%20Namibia",
       "fahrzeit": "2h"
@@ -690,6 +723,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Okaukuejo Campsite Etosha",
+      "betrag": 58.0,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Okaukuejo%20Campsite%20Etosha%2C%20Namibia",
       "fahrzeit": "ca. 3h30"
@@ -700,6 +736,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Halali Campsite Etosha",
+      "betrag": 57.0,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Halali%20Campsite%20Etosha%2C%20Namibia",
       "fahrzeit": "2h"
@@ -710,6 +749,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti",
+      "betrag": 58.0,
+      "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%2C%20Namibia",
       "fahrzeit": "3h"
@@ -720,6 +762,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
+      "betrag": 58.0,
+      "zahler": "TBD",
+      "zahlmittel": "TBD",
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia",
       "fahrzeit": null
@@ -730,6 +775,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Waterberg Campsite",
+      "betrag": 44.7,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Waterberg%20Campsite%2C%20Namibia",
       "fahrzeit": "4h30"
@@ -740,6 +788,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
+      "betrag": 34.0,
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
       "fahrzeit": "ca. 2h30"
@@ -857,26 +908,26 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-07",
+      "stand": "2026-09-08",
       "letzter_volltank": {
         "ort": "Helmeringhausen",
         "datum": "2026-09-07",
         "kilometerstand": 21586
       },
       "aktueller_standort": {
-        "ort": "Helmeringhausen",
-        "datum": "2026-09-07"
+        "ort": "Little Sossus Campsite (Sesriem)",
+        "datum": "2026-09-08"
       },
-      "strecke_seit_volltank_km": 0,
+      "strecke_seit_volltank_km": 280,
       "naechster_pflicht_stopp": {
         "ort": "Solitaire",
         "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
       },
-      "strecke_bis_naechster_stopp_km": "TBD",
-      "empfehlung": "Frisch volltanken (34,29 L bei 21.586 km) - reicht rechnerisch weit über Solitaire hinaus, auch ohne genaue km-Zahl. Nächste Pflicht-Gelegenheit bleibt Solitaire, da Wêreldend und das NamibRand-Gebiet dazwischen keine Tankstelle haben. Genaue Strecke Helmeringhausen–Solitaire noch nicht recherchiert (die bisherigen 348 km galten ab Aus, nicht ab hier).",
-      "anmerkung": "Neuer Nullpunkt: 21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (04_tanken.csv Nr. 4) - der erste Fill-up mit bekanntem Stand. Die vorherige Schätzung (Aus, 125 km seit Lüderitz) ist damit abgelöst. Da der vorangegangene Fill-up (Lüderitz) keinen Kilometerstand hat, kann der Verbrauch erst zwischen diesem und dem nächsten Fill-up mit km-Stand berechnet werden - bis dahin gilt weiter der Bordcomputer-Schnitt (11,2 L/100km).",
-      "geschaetzte_rest_liter": 160.0,
-      "geschaetzte_restreichweite_km": 1429
+      "strecke_bis_naechster_stopp_km": 80,
+      "empfehlung": "Tank reicht locker: Seit dem Volltanken in Helmeringhausen sind es rund 280 km (C27 nach Sesriem plus Ausflug zum Canyon), bis Solitaire noch etwa 80 km. Dort trotzdem auffüllen – es ist die einzige Tankstelle zwischen Sesriem-Gebiet und Küste, und ab Sossusvlei geht es 340 km bis Walvis Bay.",
+      "anmerkung": "21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (07.09.). Die 280 km seither sind geschätzt: C27 Helmeringhausen–Sesriem 237 km (Wikipedia) plus ca. 40 km Sesriem/Little Sossus und Canyon-Ausflug. Sesriem–Solitaire ca. 80 km (C19, Reiseführer-Angaben 78–83 km). Verbrauch bis zum nächsten Volltank mit Kilometerstand weiter vom Bordcomputer (11,2 L/100 km).",
+      "geschaetzte_rest_liter": 128.6,
+      "geschaetzte_restreichweite_km": 1149
     }
   },
   "offene_punkte": [
@@ -885,7 +936,7 @@
       "warum": "Zahlungsstand"
     },
     {
-      "punkt": "Mehrere N26-Umsätze standen beim Screenshot noch auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. Ebenfalls vorläufig: Desert-Horse-Anzahlung 460 NAD vom 23.04. (Nora/N26, EUR mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen).",
+      "punkt": "N26-Kurse noch vorläufig — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern. Ebenfalls vorläufig: Desert-Horse-Anzahlung 460 NAD vom 23.04. (Nora/N26, mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen).",
       "warum": "Kleine Rundungsabweichungen möglich, sobald final gebucht"
     },
     {

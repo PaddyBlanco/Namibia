@@ -18,6 +18,20 @@
   --nav-height: 64px;
   --radius: 14px;
 
+  /* Typografie-Skala (5 Stufen) - keine weiteren Zwischenwerte einfuehren. */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-md: 0.9375rem;
+  --fs-lg: 1.0625rem;
+  --fs-xl: 1.5rem;
+
+  /* Personenfarben: nur fuer Patrick/Nora, sonst nirgends - damit "wer hat
+     gezahlt" auf einen Blick lesbar ist und nicht mit dem Akzent verschwimmt. */
+  --person-p: #2b6cb0;
+  --person-p-soft: #dde9f7;
+  --person-n: #8a3f8f;
+  --person-n-soft: #f0e0f1;
+
   /* Kategorie-Farben: fest der Kategorie zugeordnet (nie nach Rang/Betrag),
      Reihenfolge + Werte aus der validierten Dataviz-Standardpalette. */
   --series-mietwagen: #2a78d6;
@@ -31,22 +45,29 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* "Namibia bei Nacht": warmes Wüstenschwarz statt neutralem Grau,
-       satteres Sonnenuntergangs-Terrakotta als Akzent. */
-    --bg: #14100c;
-    --bg-elevated: #241c14;
-    --text: #f5ecdf;
-    --text-dim: #b8a693;
-    --border: #3d2f22;
-    --accent: #e2793d;
-    --accent-contrast: #180f08;
-    --accent-soft: #402919;
-    --ok: #8cc79a;
-    --ok-soft: #223226;
-    --warn: #e8bd5e;
-    --warn-soft: #3a2f1a;
-    --debt: #e2836a;
-    --shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    /* "Sternenhimmel ueber der Namib" (NamibRand Dark-Sky-Reserve):
+       tiefes, kuehles Nachtblau als Grund, Karten eine Stufe heller und
+       blaeulicher, warmes Sand-/Amber-Gelb als Akzent (Duenen im letzten
+       Licht). Kein Hintergrundbild - Flaechen, Kontrast, Typografie tragen.
+       Text bewusst nicht reinweiss (leicht warm getoent).
+       Kontraste (WCAG): text/bg 15.3, text/bg-elevated 13.8, text-dim/bg 8.6,
+       accent/bg 9.9, accent-contrast/accent 9.7, ok/ok-soft 7.6,
+       warn/warn-soft 6.9, debt/bg 7.8 - alle Serienfarben >= 4.4:1 auf bg,
+       Palette per dataviz-Validator (Lightness-Band, CVD, Normalsicht) geprueft. */
+    --bg: #0b1220;
+    --bg-elevated: #141d2f;
+    --text: #ece8df;
+    --text-dim: #a9b0bf;
+    --border: #2a364f;
+    --accent: #e8b45a;
+    --accent-contrast: #1b1405;
+    --accent-soft: #2c2a22;
+    --ok: #7fcf9a;
+    --ok-soft: #16302a;
+    --warn: #f0a05a;
+    --warn-soft: #342519;
+    --debt: #f08c80;
+    --shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 
     --series-mietwagen: #3987e5;
     --series-flug: #d95926;
@@ -56,15 +77,10 @@
     --series-restaurant: #008300;
   }
 
-  /* Duenensilhouette am unteren Bildschirmrand, sehr dezent - eine Ebene
-     heller als der Grund, wiederholt sich nahtlos. Auf body, nicht :root,
-     sonst wird sie vom deckenden body-Hintergrund darueber verdeckt. */
+  /* Kein Hintergrundbild mehr (Duenen-SVG entfernt, 08.09.2026) -
+     der Grund ist eine ruhige, einfarbige Nachtblau-Flaeche. */
   :root:not([data-theme="light"]) body {
     background-color: var(--bg);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 160'%3E%3Cpath fill='%231d1610' d='M0,120 C100,60 200,140 300,90 C400,40 500,130 600,80 C700,30 750,100 800,120 L800,160 L0,160 Z'/%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-    background-position: bottom;
-    background-size: 800px 160px;
   }
 }
 
@@ -130,7 +146,7 @@ main {
 @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
 
 .view h2 {
-  font-size: 1.05rem;
+  font-size: var(--fs-sm);
   margin: 24px 0 10px;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -152,7 +168,7 @@ main {
   box-shadow: var(--shadow);
 }
 .tile .label {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -166,6 +182,7 @@ main {
 .tile.wide { grid-column: 1 / -1; }
 .tile .value.debt { color: var(--debt); }
 .tile .value.ok { color: var(--ok); }
+.tile .tile-note { font-size: var(--fs-xs); color: var(--text-dim); margin-top: 4px; }
 
 .day-badge {
   display: inline-flex;
@@ -206,16 +223,18 @@ main {
 .reise-status-value { font-size: 0.86rem; font-weight: 600; }
 .unterkuenfte-details { margin-top: 4px; border-top: 1px solid var(--border); }
 .unterkuenfte-details summary {
-  padding: 8px 0;
-  font-size: 0.8rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--accent);
   cursor: pointer;
   list-style: none;
 }
 .unterkuenfte-details summary::-webkit-details-marker { display: none; }
-.unterkuenfte-details summary::after { content: " ▾"; }
-.unterkuenfte-details[open] summary::after { content: " ▴"; }
+.unterkuenfte-details summary::after { content: "▾"; margin-left: 5px; }
+.unterkuenfte-details[open] summary::after { content: "▴"; margin-left: 5px; }
 .unterkuenfte-row {
   display: flex;
   justify-content: space-between;
@@ -230,9 +249,15 @@ main {
 .unterkuenfte-row a {
   color: var(--accent);
   text-decoration: none;
-  font-size: 0.78rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
   white-space: nowrap;
+  padding: 12px 0 12px 12px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
+.reise-status-sub { font-size: var(--fs-xs); color: var(--text-dim); font-weight: 400; margin-top: 1px; }
 
 /* ---------- Kompakte Kartenliste + Link-Button ---------- */
 .card-list-compact .card { padding: 10px 14px; }
@@ -250,56 +275,296 @@ main {
   cursor: pointer;
 }
 
-/* ---------- Offline-Erfassungsformular ---------- */
-.entry-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+/* ---------- Abschnittskopf mit Aktion, Icon-Buttons ---------- */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 24px 0 10px;
+}
+.section-head:first-child { margin-top: 0; }
+.section-head h2 { margin: 0; }
+.icon-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  flex: 0 0 auto;
+}
+.icon-button.small { width: 36px; height: 36px; font-size: 1.15rem; color: var(--text-dim); box-shadow: none; }
+.icon-button:active { transform: scale(0.96); }
+
+/* ---------- Bottom-Sheet: Ausgabe erfassen ---------- */
+.sheet-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 40;
+}
+.sheet {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--bg);
+  border-radius: 20px 20px 0 0;
+  padding: 8px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  transform: translateY(100%);
+  transition: transform .22s ease-out;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+}
+.sheet.open { transform: translateY(0); }
+.sheet-handle {
+  width: 40px; height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  margin: 4px auto 10px;
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.sheet-head h2 { margin: 0; font-size: var(--fs-lg); }
+body.sheet-open { overflow: hidden; }
+
+.entry-form { display: flex; flex-direction: column; gap: 12px; }
 .entry-form label {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-size: 0.78rem;
+  font-size: var(--fs-xs);
   color: var(--text-dim);
   font-weight: 600;
 }
-.entry-form input, .entry-form select {
+.entry-form input, .entry-form .text-input {
   font: inherit;
-  font-size: 0.95rem;
+  font-size: var(--fs-md);
   font-weight: 400;
   color: var(--text);
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 12px;
+  padding: 0 14px;
+  min-height: 46px;
   width: 100%;
 }
-.entry-form input:focus, .entry-form select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-.entry-form-row { display: flex; gap: 10px; }
-.entry-form-row label { flex: 1; }
+.entry-form input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.amount-row { display: flex; gap: 10px; align-items: stretch; }
+.amount-row input {
+  flex: 1;
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-height: 56px;
+}
+.amount-row .segmented { flex: 0 0 auto; width: 128px; }
+.field-label {
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-top: 2px;
+}
+.field-note { font-size: var(--fs-xs); color: var(--text-dim); line-height: 1.45; }
+.field-error {
+  font-size: var(--fs-sm);
+  color: var(--debt);
+  font-weight: 600;
+}
+.segmented {
+  display: flex;
+  gap: 4px;
+  background: var(--border);
+  border-radius: 12px;
+  padding: 3px;
+}
+.segmented .seg {
+  flex: 1;
+  min-height: 40px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 6px;
+}
+.segmented .seg.active { background: var(--bg-elevated); color: var(--text); box-shadow: var(--shadow); }
+#ef-zahler .seg[data-value="Patrick"].active { color: var(--person-p); }
+#ef-zahler .seg[data-value="Nora"].active { color: var(--person-n); }
+.segmented.locked { opacity: 0.7; }
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.chip-grid .seg {
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  padding: 0 4px;
+}
+.chip-grid .seg.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+.more-fields {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0 12px;
+}
+.more-fields summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-dim);
+  cursor: pointer;
+  list-style: none;
+}
+.more-fields summary::-webkit-details-marker { display: none; }
+.more-fields summary::after { content: "▾"; margin-left: auto; }
+.more-fields[open] summary::after { content: "▴"; }
+.more-fields label { margin-bottom: 12px; }
 .primary-button {
   background: var(--accent);
   color: var(--accent-contrast);
   border: none;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  min-height: 48px;
+  padding: 0 16px;
   font: inherit;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: var(--fs-md);
   cursor: pointer;
 }
-.entry-form-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-.entry-remove { padding: 8px 0 0; text-align: right; font-size: 0.78rem; }
+.primary-button:active { filter: brightness(0.95); }
+.ghost-button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--nav-height) + 16px + env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 10px);
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  z-index: 60;
+  opacity: 0;
+  transition: opacity .2s ease, transform .2s ease;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- Noch nicht uebergebene Eintraege ---------- */
+.pending-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.pending-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+.pending-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+.pending-main { flex: 1; min-width: 0; }
+.pending-title { font-weight: 600; font-size: var(--fs-md); }
+.pending-meta { font-size: var(--fs-xs); color: var(--text-dim); margin-top: 2px; }
+.pending-amount { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; font-size: var(--fs-md); }
+.pending-actions { display: flex; gap: 8px; margin-top: 10px; }
+.pending-actions .primary-button { flex: 1; }
+.pending-card .field-note { margin-top: 8px; }
 .badge {
   display: inline-block;
-  min-width: 16px;
-  margin-left: 5px;
-  padding: 1px 5px;
+  min-width: 18px;
+  margin-left: 6px;
+  padding: 1px 6px;
   border-radius: 999px;
   background: var(--debt);
   color: #fff;
-  font-size: 0.68rem;
+  font-size: var(--fs-xs);
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.5;
+  text-align: center;
 }
 .badge[hidden] { display: none; }
+
+/* ---------- Ausgabenliste: Summenzeile + Tagesgruppen ---------- */
+.list-summary {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  font-weight: 600;
+  padding: 2px 2px 8px;
+  font-variant-numeric: tabular-nums;
+}
+.day-group { margin-bottom: 14px; }
+.day-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  padding: 6px 2px;
+  font-variant-numeric: tabular-nums;
+}
 
 /* ---------- Lists / cards ---------- */
 .card-list { display: flex; flex-direction: column; gap: 8px; }
@@ -313,14 +578,29 @@ main {
 .card-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 12px;
 }
-.card-title { font-weight: 600; font-size: 0.95rem; }
-.card-amount { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.card-main { flex: 1; min-width: 0; }
+.card-right { text-align: right; flex: 0 0 auto; }
+.card-title { font-weight: 600; font-size: var(--fs-md); line-height: 1.3; }
+.card-amount { font-weight: 600; font-size: var(--fs-md); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.card-fw { font-size: var(--fs-xs); color: var(--text-dim); font-variant-numeric: tabular-nums; margin-top: 2px; }
+.card-sub {
+  margin-top: 4px;
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.card-sep { opacity: 0.6; }
+.card-womit { font-weight: 600; }
+.kat-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: 0 0 auto; }
 .card-meta {
   margin-top: 4px;
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   color: var(--text-dim);
   display: flex;
   flex-wrap: wrap;
@@ -330,16 +610,16 @@ main {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: var(--fs-xs);
   font-weight: 600;
   background: var(--border);
   color: var(--text-dim);
 }
 .pill.status-offen { background: var(--warn-soft); color: var(--warn); }
 .pill.status-bezahlt { background: var(--ok-soft); color: var(--ok); }
-.pill.zahler-patrick { background: var(--accent-soft); color: var(--accent); }
-.pill.zahler-nora { background: var(--ok-soft); color: var(--ok); }
-.pill.fahrzeit { background: var(--accent-soft); color: var(--accent); }
+.pill.zahler-patrick { background: var(--person-p-soft); color: var(--person-p); }
+.pill.zahler-nora { background: var(--person-n-soft); color: var(--person-n); }
+.pill.zahler-tbd { background: var(--warn-soft); color: var(--warn); }
 
 /* ---------- Sub-navigation (innerhalb eines Tabs) ---------- */
 .subnav {
@@ -352,12 +632,13 @@ main {
 }
 .subnav-btn {
   flex: 1;
+  min-height: 44px;
   border: none;
   background: none;
   color: var(--text-dim);
   font: inherit;
   font-weight: 600;
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
   padding: 8px 4px;
   border-radius: 999px;
   cursor: pointer;
@@ -386,8 +667,9 @@ main {
   background: var(--bg-elevated);
   color: var(--text);
   border-radius: 999px;
-  padding: 6px 13px;
-  font-size: 0.82rem;
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: var(--fs-sm);
   cursor: pointer;
 }
 .chip.active {
@@ -430,7 +712,8 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 4px;
+  min-height: 44px;
+  padding: 4px 6px;
   border-radius: 10px;
   cursor: pointer;
   transition: opacity .15s ease, background .15s ease;
@@ -491,7 +774,40 @@ main {
   margin-bottom: 8px;
   font-size: 0.88rem;
 }
-.open-item .warum { color: var(--text-dim); font-size: 0.78rem; margin-top: 4px; }
+.open-item .open-title { font-weight: 600; font-size: var(--fs-md); }
+.open-item .warum { color: var(--text-dim); font-size: var(--fs-sm); margin-top: 4px; }
+.open-more { margin-top: 6px; font-size: var(--fs-sm); }
+.open-more summary { cursor: pointer; color: var(--accent); font-weight: 600; min-height: 32px; display: flex; align-items: center; list-style: none; }
+.open-more summary::-webkit-details-marker { display: none; }
+.open-more summary::after { content: " ▾"; margin-left: 4px; }
+.open-more[open] summary::after { content: " ▴"; }
+.open-more div { color: var(--text-dim); line-height: 1.45; padding-bottom: 4px; }
+
+.verr-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 8px 6px;
+  font-size: var(--fs-sm);
+  align-items: baseline;
+}
+.verr-grid > div:nth-child(3n+1) { color: var(--text-dim); }
+.verr-h { font-weight: 700; font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.04em; text-align: right; }
+.verr-h.person-p { color: var(--person-p); }
+.verr-h.person-n { color: var(--person-n); }
+.verr-num { text-align: right; font-variant-numeric: tabular-nums; }
+.verr-num.strong { font-weight: 700; }
+.verr-num.plus { color: var(--ok); }
+.verr-num.minus { color: var(--debt); }
+.verr-result {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  text-align: center;
+}
+.verr-result.debt { color: var(--debt); }
+.verr-result.ok { color: var(--ok); }
 
 .empty-state { color: var(--text-dim); font-size: 0.88rem; padding: 20px 0; text-align: center; }
 
@@ -522,9 +838,14 @@ main {
   line-height: 1.4;
 }
 .tankplanung-empfehlung .icon { margin-right: 4px; }
+.tp-details { margin-top: 8px; }
+.tp-details summary { font-size: var(--fs-xs); color: var(--accent); font-weight: 600; cursor: pointer; min-height: 32px; display: flex; align-items: center; list-style: none; }
+.tp-details summary::-webkit-details-marker { display: none; }
+.tp-details summary::after { content: " ▾"; margin-left: 4px; }
+.tp-details[open] summary::after { content: " ▴"; }
 .tankplanung-anmerkung {
-  margin-top: 8px;
-  font-size: 0.72rem;
+  margin-top: 4px;
+  font-size: var(--fs-xs);
   color: var(--text-dim);
   line-height: 1.4;
 }
@@ -546,9 +867,12 @@ main {
   overflow: hidden;
 }
 .tankstellen-details summary, .collapse-block summary {
-  padding: 12px 14px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: var(--fs-md);
   cursor: pointer;
   background: var(--bg-elevated);
   list-style: none;
@@ -556,7 +880,7 @@ main {
 .tankstellen-details summary::-webkit-details-marker,
 .collapse-block summary::-webkit-details-marker { display: none; }
 .tankstellen-details summary::after,
-.collapse-block summary::after { content: "▾"; float: right; color: var(--text-dim); }
+.collapse-block summary::after { content: "▾"; margin-left: auto; color: var(--text-dim); }
 .tankstellen-details[open] summary::after,
 .collapse-block[open] summary::after { content: "▴"; }
 .collapse-block { margin: 8px 0 0; }
@@ -597,7 +921,7 @@ main {
   background: none;
   border: none;
   color: var(--text-dim);
-  font-size: 0.68rem;
+  font-size: var(--fs-xs);
   font-family: inherit;
   padding: 6px 0;
 }
@@ -614,4 +938,59 @@ main {
 @media (min-width: 600px) {
   .tile-grid { grid-template-columns: repeat(3, 1fr); }
   .tile.wide { grid-column: auto; }
+}
+
+/* ---------- Dark-Theme Sternenhimmel (Zusatzregeln) ---------- */
+/* Korrekturen fuer fest codierte Farben, die im Nachtblau-Theme stoeren.
+   Beide Scopes (OS-Dark ohne Light-Stempel, expliziter Dark-Stempel),
+   damit die Regeln in jeder Theme-Konstellation greifen. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Native Form-Controls (select-Dropdown, Datumspicker) im Dark-Look
+       rendern statt mit weissem UA-Default. */
+    color-scheme: dark;
+  }
+  /* .badge { color: #fff } auf dem helleren Korallrot --debt laege bei
+     ~2.4:1 - dunkle Schrift wie auf dem Akzent-Button (>= 9:1). */
+  :root:not([data-theme="light"]) .badge { color: var(--accent-contrast); }
+  /* Karten: Schatten ist auf Nachtblau kaum sichtbar - ein sehr leiser
+     innerer Lichtsaum oben laesst Kacheln als eigene Ebene lesen. */
+  :root:not([data-theme="light"]) .tile,
+  :root:not([data-theme="light"]) .card,
+  :root:not([data-theme="light"]) .reise-status,
+  :root:not([data-theme="light"]) .tankplanung-card {
+    box-shadow: inset 0 1px 0 rgba(236, 232, 223, 0.04), var(--shadow);
+  }
+  /* Unterlegte Pille/Sub-Nav auf --border: Text-dim bleibt >= 4.5:1
+     (gemessen 5.0:1), Aktiv-Reiter bekommt zusaetzlich einen Rand. */
+  :root:not([data-theme="light"]) .subnav-btn.active { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+  /* Header trennt sich vom Grund nur per Linie - leise, aber vorhanden. */
+  :root:not([data-theme="light"]) .app-header { border-bottom-color: var(--border); }
+  /* Offene Punkte: statt grosser brauner Warnflaechen (wirkte im Nachtblau
+     schwer) eine normale Karte mit Warn-Kante links - ruhiger, gleiche
+     Bedeutung, Text bleibt in --text (>= 13:1). */
+  :root:not([data-theme="light"]) .open-item {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--warn);
+    box-shadow: var(--shadow);
+  }
+}
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="dark"] .badge { color: var(--accent-contrast); }
+
+/* ---------- Personenfarben im Dark-Theme ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --person-p: #8fbcff;
+    --person-p-soft: #1a2b45;
+    --person-n: #e2a6e6;
+    --person-n-soft: #3a2340;
+  }
+}
+:root[data-theme="dark"] {
+  --person-p: #8fbcff;
+  --person-p-soft: #1a2b45;
+  --person-n: #e2a6e6;
+  --person-n-soft: #3a2340;
 }

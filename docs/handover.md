@@ -1,7 +1,7 @@
 # Handover — Namibia 2026
 
-**Stand:** 06.09.2026, 23:05 Uhr (Windhoek = Wien) · Reisetag 5 von 20
-**Branch:** `claude/namibia-2026-bkm6h4` · 18 Commits · alles gepusht
+**Stand:** 08.09.2026, 16:50 Uhr (Windhoek = Wien) · Reisetag 7 von 20
+**Branch:** `claude/namibia-2026-bkm6h4` · alles gepusht
 
 Dieses Dokument beschreibt, **wo das Projekt steht und wie es weitergeht**.
 Die technischen Regeln (Datenmodell, Konventionen, Fallstricke) stehen in
@@ -19,12 +19,12 @@ Vollständiges Datenmodell in `data/*.csv`, aus dem zwei Ansichten erzeugt werde
 
 | | |
 |---|---|
-| Gesamtausgaben | 6.039,70 € |
-| davon bezahlt | 5.611,90 € |
+| Gesamtausgaben | 6.220,56 € |
+| davon bezahlt | 5.792,76 € |
 | noch offen | 427,80 € |
-| Kassenbestand (Bargeld) | 178,56 € |
-| Saldo | Nora schuldet Patrick 3.179,18 € |
-| erfasste Ausgaben | 36 Einträge |
+| Kassenbestand (Bargeld) | 175,88 € |
+| Saldo | Nora schuldet Patrick 3.091,43 € |
+| erfasste Ausgaben | 42 Einträge |
 
 Der Saldo ist hoch, weil Patrick vor der Reise 2.000 € an Nora überwiesen hat,
 die sie größtenteils noch nicht für gemeinsame Kosten ausgegeben hat. Sobald
@@ -37,19 +37,27 @@ offenen Posten, und den Saldo um 213,90 € zu niedrig gezeigt). Rechenlogik
 liegt zentral in `scripts/kosten_core.py`, siehe CLAUDE.md Grundregel 8.
 
 ### Website (GitHub Pages)
-Mobile-first, ohne externe Bibliotheken, offlinefähig. **5 Tabs:**
+Mobile-first, ohne externe Bibliotheken, **offlinefähig per Service Worker**
+(öffnet auch ohne Empfang mit dem letzten Stand). **5 Tabs:**
 
-1. **Home** — Reise-Status (aktuelle Unterkunft, nächstes Ziel, alle Unterkünfte
-   mit Google-Maps-Links), letzte 5 Ausgaben, Gesamtkosten-Tortendiagramm
-2. **Kosten** — Untermenü: Kostenübersicht (Kacheln, Reisekasse, Saldo) und
-   Ausgabenliste (filterbar nach Kategorie und Zahler; oben alles bis heute,
-   neueste zuerst, darunter eingeklappt „Kommende Buchungen")
+1. **Home** — Kopfzeile mit „Tag X von 20", Reise-Status (aktuelle Unterkunft,
+   nächstes Ziel mit Anfahrt, alle Unterkünfte mit Google-Maps-Links), letzte
+   5 Ausgaben mit „+"-Button, Gesamtkosten-Tortendiagramm
+2. **Kosten** — „Übersicht" (Kacheln, Reisekasse, Saldo) und „Ausgaben"
+   (nach Tagen gruppiert mit Tagessummen, filterbar; „+" öffnet das
+   Erfassungs-Sheet; oben ggf. „Noch nicht übergeben" mit Übergabe an Claude
+   per Zwischenablage; unten eingeklappt „Kommende Buchungen")
 3. **Tanken** — Tankplanung („wo als nächstes tanken"), Verbrauch/Reichweite,
    Tankvorgänge, recherchierte Tankstellen entlang der Route
-4. **Reiseplan** — Zeitleiste, heutiger Tag hervorgehoben
-5. **Mehr** — Verrechnung, offene Punkte
+4. **Reiseplan** — Zeitleiste mit Betrag und Zahler je Station, heutiger Tag
+   hervorgehoben
+5. **Mehr** — Verrechnung Patrick | Nora, offene Punkte
 
-Dark Mode im Namibia-Stil (Wüstenschwarz, Terrakotta-Akzent, Dünensilhouette).
+**Offline erfassen:** „+" antippen → Betrag, Ort, wer/womit, Kategorie →
+Speichern. Bleibt auf dem Handy; bei Netz in der Ausgabenliste „An Claude
+übergeben" → Text im Chat einfügen → Claude verbucht → „Leeren".
+
+Dark Mode „Sternenhimmel über der Namib" (Nachtblau, Sand-Akzent, kein Hintergrundbild).
 Getestet auf iPhone-15-Größe (393 × 852) in hell und dunkel.
 
 ### Recherchiert und dokumentiert
@@ -67,16 +75,15 @@ Getestet auf iPhone-15-Größe (393 × 852) in hell und dunkel.
 ## 2. Was noch offen ist
 
 ### Daten, die nur Patrick/Nora liefern können
-Diese vier Punkte stehen auch in `docs/offene-punkte.md` und erscheinen auf der
+Diese drei Punkte stehen auch in `docs/offene-punkte.md` und erscheinen auf der
 Website unter „Mehr":
 
 1. **Hoada-Anzahlung** — Höhe unbekannt, aktuell 45 € komplett als offen geführt
-2. **Anzahlung Desert Horse Campsite (460 NAD am 23.04., Nora/N26)** — EUR-Betrag
-   vorläufig mit 24,96 € angesetzt, echten N26-Betrag aus der App nachtragen
-3. **5 N26-Umsätze** standen beim Screenshot auf „wird bearbeitet" — Kurs kann
-   sich noch leicht ändern
-4. **Tanken-Details** — Mietwagen-Modell, Herstellerverbrauch, sowie Liter/Preis/
-   Kilometerstand der drei bisherigen Tankvorgänge
+2. **N26-Kurse noch vorläufig** — fünf Umsätze standen bei der Erfassung auf
+   „wird bearbeitet"; dazu die Desert-Horse-Anzahlung (460 NAD am 23.04.,
+   Nora/N26) mit vorläufig 24,96 € — echten N26-Betrag aus der App nachtragen
+3. **Tanken-Details** — Mietwagen-Modell, Herstellerverbrauch, sowie Liter/Preis/
+   Kilometerstand der ersten drei Tankvorgänge (Helmeringhausen ist vollständig)
 
 ### Nicht verifiziert
 - **Die Live-Website konnte ich nicht selbst prüfen.** GitHub Pages ist laut
@@ -129,9 +136,13 @@ sonst zeigt die Tankplanung eine veraltete Position.
 
 ## 4. Nächster konkreter Schritt
 
-**Morgen früh, Montag 07.09.:**
-- Check-out Desert Horse Campsite Aus um **10:00 Uhr** (öffentliche Angabe von
-  Klein-Aus Vista, nicht aus eurer Buchungsbestätigung)
-- **In Aus volltanken** — danach kommt bis Solitaire (~348 km) keine sichere
-  Tankstelle mehr
-- Weiter zu Wêreldend Mountain Campsite, **47,80 € bar vor Ort** fällig
+**Stand Dienstag 08.09., Little Sossus Campsite (bis 10.09.):**
+- Park-Permit für Sesriem/Sossusvlei ist bezahlt (67,08 €, gilt 24 h ab
+  Einfahrt) — Sonnenaufgang Sossusvlei/Deadvlei am 09.09. ggf. noch im
+  selben Permit, sonst neues Tagespermit (2 × 280 NAD + 50 NAD Fahrzeug)
+- **Little Sossus 84 € vor Ort fällig** (steht als „offen")
+- Weiterfahrt 10.09. nach Moonvalley (Swakopmund), **Anfahrt 5–7 h**:
+  **in Solitaire volltanken** (~80 km ab Sesriem) — danach 340 km ohne
+  Tankstelle bis Walvis Bay
+- Unterwegs ohne Netz: Ausgaben über „+" in der App erfassen, bei Netz
+  „An Claude übergeben"

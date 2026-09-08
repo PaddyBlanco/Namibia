@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Namibia 2026</title>
-<link rel="stylesheet" href="assets/css/style.css?v=dafaf8e2">
+<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="assets/css/style.css?v=ade3a813">
 </head>
 <body>
 
@@ -20,8 +22,6 @@
 
   <!-- ============ HOME ============ -->
   <section class="view active" id="view-home">
-    <div class="day-badge" id="day-badge">–</div>
-
     <!-- 1. Reise-Status: klein, kompakt -->
     <div class="reise-status" id="reise-status">
       <div class="reise-status-row">
@@ -45,9 +45,13 @@
     </div>
 
     <!-- 2. Letzte 5 Ausgaben -->
-    <h2>Letzte Ausgaben</h2>
+    <div class="section-head">
+      <h2>Letzte Ausgaben</h2>
+      <button type="button" class="icon-button" id="home-add-btn" aria-label="Ausgabe erfassen">+</button>
+    </div>
     <div class="card-list card-list-compact" id="letzte-ausgaben-list"></div>
-    <button class="link-button" id="alle-ausgaben-btn">Alle Ausgaben anzeigen →</button>
+    <button type="button" class="link-button" id="home-pending-note" hidden></button>
+    <button type="button" class="link-button" id="alle-ausgaben-btn">Alle Ausgaben anzeigen →</button>
 
     <!-- 3. Gesamtkosten als Tortendiagramm -->
     <h2>Gesamtkosten</h2>
@@ -60,9 +64,8 @@
   <!-- ============ KOSTEN ============ -->
   <section class="view" id="view-kosten">
     <div class="subnav">
-      <button class="subnav-btn active" data-subview="uebersicht">Kostenübersicht</button>
-      <button class="subnav-btn" data-subview="ausgaben">Ausgabenliste</button>
-      <button class="subnav-btn" data-subview="erfassen">Erfassen<span class="badge" id="erfassen-badge" hidden>0</span></button>
+      <button class="subnav-btn active" data-subview="uebersicht">Übersicht</button>
+      <button class="subnav-btn" data-subview="ausgaben">Ausgaben</button>
     </div>
 
     <div class="subview active" id="subview-uebersicht">
@@ -109,88 +112,14 @@
     </div>
 
     <div class="subview" id="subview-ausgaben">
+      <div class="section-head">
+        <h2>Ausgaben</h2>
+        <button type="button" class="icon-button" id="add-ausgabe-btn" aria-label="Ausgabe erfassen">+</button>
+      </div>
+      <div id="pending-block"></div>
       <div class="chip-row" id="filter-kategorie"></div>
       <div class="chip-row" id="filter-zahler"></div>
       <div class="card-list" id="ausgaben-list"></div>
-    </div>
-
-    <div class="subview" id="subview-erfassen">
-      <div class="hint">
-        Für unterwegs ohne Netz: Eintrag hier speichern (bleibt nur auf diesem
-        Handy). Sobald wieder Internet da ist, unten „An Claude übergeben"
-        antippen – der Text landet in der Zwischenablage, einfach in den Chat
-        einfügen. Für Abhebungen, Überweisungen oder Rückfragen einfach
-        normal im Chat schreiben.
-      </div>
-
-      <form id="erfassen-form" class="entry-form">
-        <label>Datum
-          <input type="date" id="ef-datum" required>
-        </label>
-        <label>Kategorie
-          <select id="ef-kategorie" required>
-            <option value="">– wählen –</option>
-            <option>Flug</option>
-            <option>Mietwagen</option>
-            <option>Unterkunft</option>
-            <option>Tanken</option>
-            <option>Lebensmittel</option>
-            <option>Restaurant</option>
-            <option>Eintritt</option>
-            <option>Aktivitäten</option>
-            <option>Ausrüstung</option>
-            <option>Gebühren</option>
-            <option>Shopping</option>
-            <option>Sonstiges</option>
-          </select>
-        </label>
-        <label>Ort / Beschreibung
-          <input type="text" id="ef-beschreibung" placeholder="z. B. Spar Solitaire" required>
-        </label>
-        <div class="entry-form-row">
-          <label>Betrag
-            <input type="number" id="ef-betrag" inputmode="decimal" step="0.01" min="0" required>
-          </label>
-          <label>Währung
-            <select id="ef-waehrung">
-              <option>NAD</option>
-              <option>EUR</option>
-            </select>
-          </label>
-        </div>
-        <label>Zahlmittel
-          <select id="ef-zahlmittel" required>
-            <option value="">– wählen –</option>
-            <option>Bargeld</option>
-            <option>N26 Debit</option>
-            <option>Oberbank Debit</option>
-            <option>card complete</option>
-            <option>TBD</option>
-          </select>
-        </label>
-        <label>Zahler
-          <select id="ef-zahler" required>
-            <option value="">– wählen –</option>
-            <option>Patrick</option>
-            <option>Nora</option>
-            <option>TBD</option>
-          </select>
-        </label>
-        <div class="hint" id="ef-bargeld-hint" hidden>
-          Bargeld gehört immer Patrick (Grundregel 9) – Zahler automatisch gesetzt.
-        </div>
-        <label>Anmerkung (optional)
-          <input type="text" id="ef-anmerkung" placeholder="z. B. 2 Portionen">
-        </label>
-        <button type="submit" class="primary-button">Eintrag speichern</button>
-      </form>
-
-      <h3>Gespeichert, noch nicht übergeben</h3>
-      <div class="card-list" id="erfassen-liste"></div>
-      <div class="entry-form-actions" id="erfassen-actions" hidden>
-        <button type="button" class="primary-button" id="erfassen-kopieren">An Claude übergeben (kopieren)</button>
-        <button type="button" class="link-button" id="erfassen-leeren">Liste leeren (nach dem Einfügen)</button>
-      </div>
     </div>
   </section>
 
@@ -240,6 +169,55 @@
   <button class="nav-btn" data-view="mehr"><span class="icon">⋯</span>Mehr</button>
 </nav>
 
-<script src="assets/js/app.js?v=2765a306"></script>
+<!-- Bottom-Sheet: Ausgabe erfassen (offline, lokale Warteschlange) -->
+<div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+<div class="sheet" id="sheet-erfassen" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+  <div class="sheet-handle" aria-hidden="true"></div>
+  <div class="sheet-head">
+    <h2 id="sheet-title">Ausgabe erfassen</h2>
+    <button type="button" class="icon-button" id="sheet-close" aria-label="Schließen">×</button>
+  </div>
+  <form id="erfassen-form" class="entry-form" novalidate>
+    <div class="amount-row">
+      <input type="text" id="ef-betrag" inputmode="decimal" placeholder="0,00" autocomplete="off" aria-label="Betrag">
+      <div class="segmented" id="ef-waehrung" role="radiogroup" aria-label="Währung">
+        <button type="button" class="seg active" data-value="NAD" role="radio" aria-checked="true">NAD</button>
+        <button type="button" class="seg" data-value="EUR" role="radio" aria-checked="false">EUR</button>
+      </div>
+    </div>
+    <input type="text" id="ef-beschreibung" class="text-input" placeholder="Wo / was? z. B. Spar Solitaire" autocomplete="off" aria-label="Ort oder Beschreibung">
+
+    <div class="field-label">Wer hat gezahlt?</div>
+    <div class="segmented" id="ef-zahler" role="radiogroup" aria-label="Zahler">
+      <button type="button" class="seg" data-value="Patrick" role="radio" aria-checked="false">Patrick</button>
+      <button type="button" class="seg" data-value="Nora" role="radio" aria-checked="false">Nora</button>
+    </div>
+
+    <div class="field-label">Womit?</div>
+    <div class="segmented" id="ef-zahlmittel" role="radiogroup" aria-label="Zahlmittel">
+      <button type="button" class="seg" data-value="N26 Debit" role="radio" aria-checked="false">N26</button>
+      <button type="button" class="seg" data-value="Oberbank Debit" role="radio" aria-checked="false">Debit</button>
+      <button type="button" class="seg" data-value="Bargeld" role="radio" aria-checked="false">Bar</button>
+      <button type="button" class="seg" data-value="card complete" role="radio" aria-checked="false">Kredit</button>
+    </div>
+    <div class="field-note" id="ef-bargeld-hint" hidden>Bargeld stammt aus Patricks Abhebung – zählt deshalb bei Patrick.</div>
+
+    <div class="field-label">Kategorie</div>
+    <div class="chip-grid" id="ef-kategorie" role="radiogroup" aria-label="Kategorie"></div>
+
+    <details class="more-fields">
+      <summary>Datum &amp; Anmerkung</summary>
+      <label>Datum <input type="date" id="ef-datum"></label>
+      <label>Anmerkung <input type="text" id="ef-anmerkung" placeholder="optional" autocomplete="off"></label>
+    </details>
+
+    <div class="field-error" id="ef-error" hidden></div>
+    <button type="submit" class="primary-button">Speichern</button>
+    <div class="field-note">Bleibt auf diesem Handy, bis du die Einträge in der Ausgabenliste an Claude übergibst.</div>
+  </form>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="assets/js/app.js?v=6d6fe6b0"></script>
 </body>
 </html>

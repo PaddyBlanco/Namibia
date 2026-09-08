@@ -1,14 +1,15 @@
 # Offene Punkte
 
-Stand: 07.09.2026, 13:25 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
+Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — alles offen markiert.
 
 ## Blockierend für korrekte Zahlen
 
 | # | Punkt | Warum es zählt |
 |---|---|---|
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
-| 2 | Mehrere N26-Umsätze standen beim Screenshot noch auf **„Wird bearbeitet"** (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman) — Kurs kann sich laut N26 noch ändern. EUR-Beträge sind vorläufig. Ebenfalls vorläufig: **Desert-Horse-Anzahlung 460 NAD vom 23.04.** (Nora/N26, EUR mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen). | Kleine Rundungsabweichungen möglich, sobald final gebucht |
+| 2 | **N26-Kurse noch vorläufig** — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern. Ebenfalls vorläufig: Desert-Horse-Anzahlung 460 NAD vom 23.04. (Nora/N26, mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen). | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 | 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
+
 ## Nach der Reise
 
 - **card complete Rückforderung:** OGH-Urteil 01/2026, Rückzahlung unzulässiger

@@ -30,7 +30,8 @@
 
   function zahlerPill(z) {
     var name = z == null || z === "" ? "TBD" : String(z);
-    return '<span class="pill zahler-' + esc(name.toLowerCase()) + '">' + esc(name) + "</span>";
+    var cls = name.indexOf("+") !== -1 ? "beide" : name.toLowerCase().replace(/[^a-z]/g, "");
+    return '<span class="pill zahler-' + esc(cls) + '">' + esc(name) + "</span>";
   }
 
   // Alte site-data.json aus dem localStorage-Cache kennt die Saldo-Felder
@@ -68,12 +69,18 @@
   }
 
   // ---------------- Offline-Erfassung (lokale Warteschlange) ----------------
-  // Speichert Eintraege nur auf diesem Handy (localStorage) - kein Netz noetig.
-  // Kein automatischer Schreibzugriff aufs Repo: der Text wird in die
-  // Zwischenablage kopiert und im Chat an Claude uebergeben, die dieselben
-  // Pruefungen anwendet wie bei jedem anderen Beleg (Bargeld-Zahler-Regel,
-  // Kategorie-Validierung, CSV-Komma-Fallstrick etc.) - siehe CLAUDE.md.
+  // Eintraege werden nur auf diesem Handy gespeichert (localStorage) - kein
+  // Netz noetig und kein Schreibzugriff aufs Repo. Uebergabe an Claude per
+  // Zwischenablage; Claude verbucht mit denselben Pruefungen wie sonst
+  // (Bargeld-Zahler-Regel, Kategorien, CSV-Quoting) - siehe CLAUDE.md.
   var PENDING_KEY = "namibia2026:pending-entries";
+  var KATEGORIEN = ["Lebensmittel", "Restaurant", "Tanken", "Eintritt", "Aktivitäten", "Unterkunft",
+                    "Shopping", "Ausrüstung", "Gebühren", "Sonstiges", "Flug", "Mietwagen"];
+  var ZAHLMITTEL_DEFAULT = { Nora: "N26 Debit", Patrick: "Bargeld" };
+
+  var fmtBetrag = function (n) {
+    return n.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
 
   function loadPending() {
     try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "[]"); }
@@ -84,57 +91,28 @@
   }
 
   function formatPendingEntry(e) {
-    var betrag = e.betrag.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     return fmtDate(e.datum) + " · " + e.kategorie + " · " + e.beschreibung + " · " +
-      betrag + " " + e.waehrung + " · Zahler: " + e.zahler + " (" + e.zahlmittel + ")" +
+      fmtBetrag(e.betrag) + " " + e.waehrung + " · Zahler: " + e.zahler + " (" + e.zahlmittel + ")" +
       (e.anmerkung ? " · " + e.anmerkung : "");
   }
 
-  function renderPendingList() {
-    var list = loadPending();
-    var el = document.getElementById("erfassen-liste");
-    var actions = document.getElementById("erfassen-actions");
-    var badge = document.getElementById("erfassen-badge");
-
-    if (!list.length) {
-      el.innerHTML = '<div class="empty-state">Noch nichts Offline erfasst.</div>';
-      actions.hidden = true;
-    } else {
-      el.innerHTML = list.map(function (e, i) {
-        return '<div class="card"><div class="card-row">' +
-          '<span class="card-title">' + esc(e.beschreibung) + "</span>" +
-          '<span class="card-amount">' + esc(e.betrag.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })) + " " + esc(e.waehrung) + "</span>" +
-          "</div>" +
-          '<div class="card-meta">' +
-            '<span class="pill">' + esc(e.kategorie) + "</span>" +
-            zahlerPill(e.zahler) +
-            '<span class="pill">' + esc(e.zahlmittel) + "</span>" +
-            "<span>" + fmtDate(e.datum) + "</span>" +
-          "</div>" +
-          '<button type="button" class="link-button entry-remove" data-index="' + i + '">Löschen</button>' +
-          "</div>";
-      }).join("");
-      actions.hidden = false;
-    }
-
-    badge.hidden = !list.length;
-    badge.textContent = String(list.length);
-
-    el.querySelectorAll(".entry-remove").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var l = loadPending();
-        l.splice(Number(btn.dataset.index), 1);
-        savePending(l);
-        renderPendingList();
-      });
-    });
+  var toastTimer = null;
+  function toast(msg) {
+    var el = document.getElementById("toast");
+    el.textContent = msg;
+    el.hidden = false;
+    requestAnimationFrame(function () { el.classList.add("show"); });
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      el.classList.remove("show");
+      setTimeout(function () { el.hidden = true; }, 250);
+    }, 2600);
   }
 
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       return navigator.clipboard.writeText(text);
     }
-    // Fallback fuer aeltere/eingeschraenkte Browser ohne Clipboard-API.
     var ta = document.createElement("textarea");
     ta.value = text;
     ta.style.position = "fixed";
@@ -145,67 +123,217 @@
     return Promise.resolve();
   }
 
-  function initErfassen() {
-    document.getElementById("ef-datum").value = todayISO();
+  function renderPendingBlock() {
+    var list = loadPending();
+    var el = document.getElementById("pending-block");
+    var homeNote = document.getElementById("home-pending-note");
 
-    var zahlmittelEl = document.getElementById("ef-zahlmittel");
+    if (!list.length) {
+      el.innerHTML = "";
+      homeNote.hidden = true;
+      return;
+    }
+
+    homeNote.hidden = false;
+    homeNote.textContent = list.length === 1
+      ? "1 Eintrag wartet auf Übergabe an Claude →"
+      : list.length + " Einträge warten auf Übergabe an Claude →";
+
+    el.innerHTML =
+      '<div class="pending-card">' +
+        '<div class="pending-head"><span>Noch nicht übergeben</span><span class="badge">' + list.length + "</span></div>" +
+        list.map(function (e, i) {
+          return '<div class="pending-row">' +
+            '<div class="pending-main">' +
+              '<div class="pending-title">' + esc(e.beschreibung) + "</div>" +
+              '<div class="pending-meta">' + esc(fmtDate(e.datum)) + " · " + esc(e.kategorie) + " · " +
+                esc(e.zahler) + " · " + esc(mapZahlmittel(e.zahlmittel)) + "</div>" +
+            "</div>" +
+            '<div class="pending-amount">' + esc(fmtBetrag(e.betrag)) + " " + esc(e.waehrung) + "</div>" +
+            '<button type="button" class="icon-button small pending-remove" data-index="' + i + '" aria-label="Eintrag löschen">×</button>' +
+          "</div>";
+        }).join("") +
+        '<div class="pending-actions">' +
+          '<button type="button" class="primary-button" id="pending-copy">An Claude übergeben</button>' +
+          '<button type="button" class="ghost-button" id="pending-clear">Leeren</button>' +
+        "</div>" +
+        '<div class="field-note">Kopiert alle Einträge als Text – im Chat einfügen, danach hier leeren.</div>' +
+      "</div>";
+
+    document.getElementById("pending-copy").addEventListener("click", function (ev) {
+      var b = ev.currentTarget;
+      var text = "Offline erfasste Kosten:\n" + loadPending().map(formatPendingEntry).join("\n");
+      copyText(text).then(function () {
+        b.textContent = "✓ Kopiert – im Chat einfügen";
+        toast("In die Zwischenablage kopiert");
+        setTimeout(function () { b.textContent = "An Claude übergeben"; }, 3000);
+      }).catch(function () { toast("Kopieren nicht möglich – bitte Einträge abtippen"); });
+    });
+    document.getElementById("pending-clear").addEventListener("click", function () {
+      if (!confirm("Alle " + list.length + " Einträge löschen? Nur, wenn sie im Chat angekommen sind.")) return;
+      savePending([]);
+      renderPendingBlock();
+      toast("Liste geleert");
+    });
+  }
+
+  // --- Bottom-Sheet ---
+  var sheetState = { waehrung: "NAD", zahler: "", zahlmittel: "", kategorie: "" };
+
+  function setSegmented(groupId, value) {
+    document.querySelectorAll("#" + groupId + " .seg").forEach(function (b) {
+      var on = b.dataset.value === value;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
+    });
+  }
+
+  function openSheet() {
+    document.getElementById("sheet-backdrop").hidden = false;
+    var sheet = document.getElementById("sheet-erfassen");
+    sheet.hidden = false;
+    document.body.classList.add("sheet-open");
+    requestAnimationFrame(function () { sheet.classList.add("open"); });
+    setTimeout(function () { document.getElementById("ef-betrag").focus(); }, 250);
+  }
+
+  function closeSheet() {
+    var sheet = document.getElementById("sheet-erfassen");
+    sheet.classList.remove("open");
+    document.body.classList.remove("sheet-open");
+    setTimeout(function () {
+      sheet.hidden = true;
+      document.getElementById("sheet-backdrop").hidden = true;
+    }, 220);
+  }
+
+  function resetSheet() {
+    document.getElementById("erfassen-form").reset();
+    document.getElementById("ef-datum").value = todayISO();
+    sheetState = { waehrung: "NAD", zahler: "", zahlmittel: "", kategorie: "" };
+    setSegmented("ef-waehrung", "NAD");
+    setSegmented("ef-zahler", "");
+    setSegmented("ef-zahlmittel", "");
+    setSegmented("ef-kategorie", "");
+    document.getElementById("ef-zahler").classList.remove("locked");
+    document.getElementById("ef-bargeld-hint").hidden = true;
+    document.getElementById("ef-error").hidden = true;
+  }
+
+  function parseBetrag(s) {
+    var n = parseFloat(String(s).replace(/\s/g, "").replace(",", "."));
+    return isFinite(n) ? Math.round(n * 100) / 100 : NaN;
+  }
+
+  function initErfassen() {
+    var katEl = document.getElementById("ef-kategorie");
+    katEl.innerHTML = KATEGORIEN.map(function (k) {
+      return '<button type="button" class="seg" data-value="' + esc(k) + '" role="radio" aria-checked="false">' + esc(k) + "</button>";
+    }).join("");
+
+    document.getElementById("ef-waehrung").addEventListener("click", function (ev) {
+      var b = ev.target.closest(".seg"); if (!b) return;
+      sheetState.waehrung = b.dataset.value;
+      setSegmented("ef-waehrung", sheetState.waehrung);
+    });
+
     var zahlerEl = document.getElementById("ef-zahler");
     var bargeldHint = document.getElementById("ef-bargeld-hint");
-    zahlmittelEl.addEventListener("change", function () {
-      var istBargeld = zahlmittelEl.value === "Bargeld";
-      bargeldHint.hidden = !istBargeld;
-      if (istBargeld) {
-        zahlerEl.value = "Patrick";
-        zahlerEl.disabled = true;
-      } else {
-        zahlerEl.disabled = false;
+
+    zahlerEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest(".seg"); if (!b) return;
+      if (zahlerEl.classList.contains("locked")) {
+        toast("Bei Bargeld ist der Zahler immer Patrick");
+        return;
       }
+      sheetState.zahler = b.dataset.value;
+      setSegmented("ef-zahler", sheetState.zahler);
+      if (!sheetState.zahlmittel) {
+        // Sinnvoller Vorschlag laut Kartenregel, bleibt aenderbar.
+        sheetState.zahlmittel = ZAHLMITTEL_DEFAULT[sheetState.zahler] || "";
+        setSegmented("ef-zahlmittel", sheetState.zahlmittel);
+        applyBargeldRule();
+      }
+    });
+
+    function applyBargeldRule() {
+      var bar = sheetState.zahlmittel === "Bargeld";
+      bargeldHint.hidden = !bar;
+      zahlerEl.classList.toggle("locked", bar);
+      if (bar) {
+        sheetState.zahler = "Patrick";
+        setSegmented("ef-zahler", "Patrick");
+      }
+    }
+
+    document.getElementById("ef-zahlmittel").addEventListener("click", function (ev) {
+      var b = ev.target.closest(".seg"); if (!b) return;
+      sheetState.zahlmittel = b.dataset.value;
+      setSegmented("ef-zahlmittel", sheetState.zahlmittel);
+      applyBargeldRule();
+    });
+
+    katEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest(".seg"); if (!b) return;
+      sheetState.kategorie = b.dataset.value;
+      setSegmented("ef-kategorie", sheetState.kategorie);
     });
 
     document.getElementById("erfassen-form").addEventListener("submit", function (ev) {
       ev.preventDefault();
       var entry = {
-        datum: document.getElementById("ef-datum").value,
-        kategorie: document.getElementById("ef-kategorie").value,
+        datum: document.getElementById("ef-datum").value || todayISO(),
+        kategorie: sheetState.kategorie,
         beschreibung: document.getElementById("ef-beschreibung").value.trim(),
-        betrag: parseFloat(document.getElementById("ef-betrag").value),
-        waehrung: document.getElementById("ef-waehrung").value,
-        zahlmittel: zahlmittelEl.value,
-        zahler: zahlerEl.value,
+        betrag: parseBetrag(document.getElementById("ef-betrag").value),
+        waehrung: sheetState.waehrung,
+        zahlmittel: sheetState.zahlmittel,
+        zahler: sheetState.zahler,
         anmerkung: document.getElementById("ef-anmerkung").value.trim(),
       };
-      if (!entry.kategorie || !entry.beschreibung || !entry.zahlmittel || !entry.zahler || !(entry.betrag > 0)) return;
-
+      var fehlt = [];
+      if (!(entry.betrag > 0)) fehlt.push("Betrag");
+      if (!entry.beschreibung) fehlt.push("Ort/Beschreibung");
+      if (!entry.zahler) fehlt.push("Zahler");
+      if (!entry.zahlmittel) fehlt.push("Zahlmittel");
+      if (!entry.kategorie) fehlt.push("Kategorie");
+      var err = document.getElementById("ef-error");
+      if (fehlt.length) {
+        err.textContent = "Bitte noch ausfüllen: " + fehlt.join(", ");
+        err.hidden = false;
+        return;
+      }
       var list = loadPending();
       list.push(entry);
       savePending(list);
-      renderPendingList();
-
-      ev.target.reset();
-      document.getElementById("ef-datum").value = todayISO();
-      zahlerEl.disabled = false;
-      bargeldHint.hidden = true;
+      renderPendingBlock();
+      resetSheet();
+      closeSheet();
+      toast("Gespeichert · " + list.length + (list.length === 1 ? " Eintrag wartet" : " Einträge warten") + " auf Übergabe");
     });
 
-    document.getElementById("erfassen-kopieren").addEventListener("click", function (ev) {
-      var list = loadPending();
-      if (!list.length) return;
-      var text = "Offline erfasste Kosten:\n" + list.map(formatPendingEntry).join("\n");
-      var b = ev.currentTarget;
-      var original = b.textContent;
-      copyText(text).then(function () {
-        b.textContent = "✓ kopiert – jetzt in den Chat einfügen";
-        setTimeout(function () { b.textContent = original; }, 3000);
-      });
+    ["home-add-btn", "add-ausgabe-btn"].forEach(function (id) {
+      document.getElementById(id).addEventListener("click", function () { resetSheet(); openSheet(); });
+    });
+    document.getElementById("sheet-close").addEventListener("click", closeSheet);
+    document.getElementById("sheet-backdrop").addEventListener("click", closeSheet);
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && !document.getElementById("sheet-erfassen").hidden) closeSheet();
+    });
+    document.getElementById("home-pending-note").addEventListener("click", function () {
+      showView("kosten");
+      showSubView("ausgaben");
+    });
+    document.getElementById("pending-block").addEventListener("click", function (ev) {
+      var b = ev.target.closest(".pending-remove"); if (!b) return;
+      var l = loadPending();
+      l.splice(Number(b.dataset.index), 1);
+      savePending(l);
+      renderPendingBlock();
     });
 
-    document.getElementById("erfassen-leeren").addEventListener("click", function () {
-      if (!confirm("Liste wirklich leeren? Nur machen, nachdem der Text im Chat angekommen ist.")) return;
-      savePending([]);
-      renderPendingList();
-    });
-
-    renderPendingList();
+    document.getElementById("ef-datum").value = todayISO();
+    renderPendingBlock();
   }
 
   // ---------------- Navigation ----------------
@@ -256,14 +384,12 @@
     var totalDays = Math.round((end - start) / 86400000) + 1;
     var dayNum = Math.round((today - start) / 86400000) + 1;
 
-    var badge = document.getElementById("day-badge");
-    if (dayNum < 1) {
-      badge.textContent = "Reise startet am " + fmtDate(data.trip.start);
-    } else if (dayNum > totalDays) {
-      badge.textContent = "Reise beendet – " + totalDays + " Tage";
-    } else {
-      badge.textContent = "Tag " + dayNum + " von " + totalDays;
-    }
+    var tagText;
+    if (dayNum < 1) tagText = "Reise startet am " + fmtDate(data.trip.start);
+    else if (dayNum > totalDays) tagText = "Reise beendet · " + totalDays + " Tage";
+    else tagText = "Tag " + dayNum + " von " + totalDays;
+    document.getElementById("header-subline").textContent =
+      tagText + " · " + fmtDate(data.trip.start) + " – " + fmtDate(data.trip.end) + "2026";
 
     var s = data.summary;
     document.getElementById("t-gesamt").textContent = euro(s.gesamt);
@@ -311,8 +437,8 @@
     var naechstesEl = document.getElementById("status-naechstes");
     if (naechstes) {
       var zusatz = "ab " + fmtDate(naechstes.start);
-      if (naechstes.fahrzeit) zusatz += " · 🚗 " + naechstes.fahrzeit;
-      naechstesEl.textContent = naechstes.beschreibung + " (" + zusatz + ")";
+      if (naechstes.fahrzeit) zusatz += " · Anfahrt " + naechstes.fahrzeit;
+      naechstesEl.innerHTML = esc(naechstes.beschreibung) + '<div class="reise-status-sub">' + esc(zusatz) + "</div>";
     } else {
       naechstesEl.textContent = "Reise beendet";
     }
@@ -320,7 +446,7 @@
     var list = document.getElementById("unterkuenfte-list");
     list.innerHTML = unterkuenfte.map(function (u) {
       var range = u.naechte > 1 ? fmtDate(u.start) + "–" + fmtDate(u.ende) : fmtDate(u.start);
-      if (u.fahrzeit) range += " · 🚗 " + u.fahrzeit;
+      if (u.fahrzeit) range += " · Anfahrt " + u.fahrzeit;
       var link = u.info_link
         ? '<a href="' + esc(u.info_link) + '" target="_blank" rel="noopener">Google Maps ↗</a>'
         : "";
@@ -339,22 +465,7 @@
       list.innerHTML = '<div class="empty-state">Noch keine Ausgaben erfasst.</div>';
       return;
     }
-    list.innerHTML = letzte.map(function (a) {
-      var zahlungsPill = a.status === "offen"
-        ? '<span class="pill status-offen">offen</span>'
-        : '<span class="pill">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>";
-      return '<div class="card">' +
-        '<div class="card-row">' +
-          '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
-          '<span class="card-amount">' + euro(a.betrag) + "</span>" +
-        "</div>" +
-        '<div class="card-meta">' +
-          zahlerPill(a.zahler) +
-          zahlungsPill +
-          "<span>" + fmtDate(a.datum) + "</span>" +
-        "</div>" +
-      "</div>";
-    }).join("");
+    list.innerHTML = letzte.map(function (a) { return ausgabeCard(a, true); }).join("");
 
     // Ausgabenliste liegt seit 06.09.2026 im eigenen Kosten-Tab, nicht mehr
     // als Sub-View von Home - deshalb Tab UND Sub-View umschalten.
@@ -381,39 +492,82 @@
     var bisher = bisherigeAusgaben(data).filter(match).reverse();
     var kommend = kommendeAusgaben(data).filter(match);
 
-    var html = bisher.length
-      ? bisher.map(ausgabeCard).join("")
-      : '<div class="empty-state">Keine Ausgaben in dieser Ansicht.</div>';
+    var html = "";
+    if (!bisher.length) {
+      html = '<div class="empty-state">Keine Ausgaben in dieser Ansicht.</div>';
+    } else {
+      var gesamt = bisher.reduce(function (acc, a) { return acc + a.betrag; }, 0);
+      html += '<div class="list-summary"><span>' + bisher.length + (bisher.length === 1 ? " Posten" : " Posten") +
+        (activeKat !== "Alle" || activeZahler !== "Alle" ? " (gefiltert)" : "") + "</span><span>" + euro(gesamt) + "</span></div>";
+      var tag = null, tagSumme = 0, tagItems = [];
+      var flush = function () {
+        if (!tagItems.length) return;
+        html += '<div class="day-group">' +
+          '<div class="day-head"><span>' + fmtDayHead(tag) + "</span><span>" +
+            tagItems.length + (tagItems.length === 1 ? " Posten · " : " Posten · ") + euro(tagSumme) + "</span></div>" +
+          '<div class="card-list">' + tagItems.join("") + "</div>" +
+        "</div>";
+        tagItems = []; tagSumme = 0;
+      };
+      bisher.forEach(function (a) {
+        if (a.datum !== tag) { flush(); tag = a.datum; }
+        tagItems.push(ausgabeCard(a, false));
+        tagSumme += a.betrag;
+      });
+      flush();
+    }
     if (kommend.length) {
       var summe = kommend.reduce(function (acc, a) { return acc + a.betrag; }, 0);
       html += '<details class="collapse-block">' +
         "<summary>Kommende Buchungen (" + kommend.length + " · " + euro(summe) + ")</summary>" +
-        '<div class="collapse-body card-list">' + kommend.map(ausgabeCard).join("") + "</div>" +
+        '<div class="collapse-body card-list">' + kommend.map(function (a) { return ausgabeCard(a, true); }).join("") + "</div>" +
         "</details>";
     }
     document.getElementById("ausgaben-list").innerHTML = html;
   }
 
-  function ausgabeCard(a) {
-    var zahlungsPill = a.status === "offen"
-      ? '<span class="pill status-offen">offen</span>'
-      : '<span class="pill">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>";
+  function katColorVar(name) {
+    for (var i = 0; i < CATEGORY_COLORS.length; i++) {
+      if (CATEGORY_COLORS[i][0] === name) return CATEGORY_COLORS[i][1];
+    }
+    return "--series-other";
+  }
+
+  // Einheitliche Ausgabenkarte fuer Home und Ausgabenliste: links Kategorie
+  // (Farbpunkt wie im Donut) + Titel, darunter WER (farbige Person) und
+  // WOMIT; rechts Betrag, darunter der NAD-Originalbetrag. Nur "offen"/TBD
+  // bleiben Warnpillen - alles andere ist ruhiger Text.
+  function ausgabeCard(a, showDate) {
     var fw = a.betrag_fw && a.waehrung && a.waehrung !== "EUR"
-      ? "<span>" + a.betrag_fw.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) +
-        " " + esc(a.waehrung) + "</span>"
+      ? '<div class="card-fw">' + esc(fmtBetrag(a.betrag_fw)) + " " + esc(a.waehrung) + "</div>"
       : "";
-    return '<div class="card">' +
+    var womit = a.status === "offen"
+      ? '<span class="pill status-offen">offen</span>'
+      : (mapZahlmittel(a.zahlmittel) === "TBD"
+          ? '<span class="pill">Karte TBD</span>'
+          : '<span class="card-womit">' + esc(mapZahlmittel(a.zahlmittel)) + "</span>");
+    return '<div class="card ausgabe">' +
       '<div class="card-row">' +
-        '<span class="card-title">' + esc(a.beschreibung) + "</span>" +
-        '<span class="card-amount">' + euro(a.betrag) + "</span>" +
-      "</div>" +
-      '<div class="card-meta">' +
-        '<span class="pill">' + esc(a.kategorie) + "</span>" +
-        zahlerPill(a.zahler) +
-        zahlungsPill + fw +
-        "<span>" + fmtDate(a.datum) + "</span>" +
+        '<div class="card-main">' +
+          '<div class="card-title">' + esc(a.beschreibung) + "</div>" +
+          '<div class="card-sub">' +
+            '<span class="kat-dot" style="background: var(' + katColorVar(a.kategorie) + ')"></span>' +
+            '<span class="card-kat">' + esc(a.kategorie) + "</span>" +
+            '<span class="card-sep">·</span>' +
+            zahlerPill(a.zahler) + womit +
+            (showDate ? '<span class="card-sep">·</span><span>' + fmtDate(a.datum) + "</span>" : "") +
+          "</div>" +
+        "</div>" +
+        '<div class="card-right">' +
+          '<div class="card-amount">' + euro(a.betrag) + "</div>" + fw +
+        "</div>" +
       "</div>" +
     "</div>";
+  }
+
+  var WOCHENTAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+  function fmtDayHead(iso) {
+    return WOCHENTAGE[parseISO(iso).getDay()] + ", " + fmtDate(iso);
   }
 
   function renderChips(containerId, options, active, onPick) {
@@ -470,16 +624,21 @@
       var range = p.naechte > 1
         ? fmtDate(p.start) + " – " + fmtDate(p.ende) + " · " + p.naechte + " Nächte"
         : fmtDate(p.start);
+      var bezahltVon = p.status !== "offen" && p.betrag > 0 && p.zahler && p.zahler !== "TBD"
+        ? zahlerPill(p.zahler) + '<span class="pill">' + esc(mapZahlmittel(p.zahlmittel)) + "</span>"
+        : "";
       item.innerHTML =
         '<div class="timeline-date">' + range + "</div>" +
         '<div class="card">' +
           '<div class="card-row">' +
             '<span class="card-title">' + esc(p.beschreibung) + "</span>" +
+            (p.betrag > 0 ? '<span class="card-amount">' + euro(p.betrag) + "</span>" : "") +
           "</div>" +
           '<div class="card-meta">' +
             '<span class="pill">' + esc(p.kategorie) + "</span>" +
-            (p.fahrzeit ? '<span class="pill fahrzeit">🚗 ' + esc(p.fahrzeit) + "</span>" : "") +
-            (p.status === "offen" ? '<span class="pill status-offen">offen</span>' : "") +
+            (p.fahrzeit ? '<span class="pill">Anfahrt ' + esc(p.fahrzeit) + "</span>" : "") +
+            (p.status === "offen" ? '<span class="pill status-offen">offen</span>' : bezahltVon) +
+            (p.status !== "offen" && !(p.betrag > 0) ? '<span class="pill">vor Ort bezahlt</span>' : "") +
           "</div>" +
         "</div>";
       el.appendChild(item);
@@ -647,7 +806,8 @@
 
     card.innerHTML = rows +
       '<div class="tankplanung-empfehlung"><span class="icon">💡</span>' + esc(planung.empfehlung) + "</div>" +
-      '<div class="tankplanung-anmerkung">' + esc(planung.anmerkung) + "</div>";
+      '<details class="tp-details"><summary>Hintergrund zur Schätzung</summary>' +
+        '<div class="tankplanung-anmerkung">' + esc(planung.anmerkung) + "</div></details>";
 
     function row(label, value) {
       return '<div class="tankplanung-row"><span class="tp-label">' + esc(label) + '</span><span class="tp-value">' + esc(value) + "</span></div>";
@@ -659,15 +819,16 @@
     var s = t.summary || {};
     renderTankplanung(t.planung);
 
-    var quelleLabel = { fillups: "gemessen", bordcomputer: "Bordcomputer", hersteller: "Hersteller" }[s.verbrauch_quelle];
-    var verbrauchLabel = "⌀ Verbrauch" + (quelleLabel ? " (" + quelleLabel + ")" : "");
+    var quelleLabel = { fillups: "aus Tankvorgängen gemessen", bordcomputer: "laut Bordcomputer", hersteller: "Herstellerangabe" }[s.verbrauch_quelle];
 
     var tiles = document.getElementById("tanken-tiles");
     tiles.innerHTML =
-      tile("Gesamt getankt", s.gesamt_liter != null ? s.gesamt_liter.toLocaleString("de-DE") + " L" : "noch offen") +
-      tile("⌀ Preis / Liter", s.avg_preis_liter_eur != null ? euro(s.avg_preis_liter_eur) : "noch offen") +
-      tile(verbrauchLabel, s.avg_verbrauch_l_100km != null ? s.avg_verbrauch_l_100km.toLocaleString("de-DE") + " L/100km" : "noch offen") +
-      tile("Reichweite (voll)", s.reichweite_km != null ? "~" + s.reichweite_km + " km" : "Tankgröße fehlt noch", true);
+      tile("Getankt gesamt", s.gesamt_liter != null ? s.gesamt_liter.toLocaleString("de-DE") + " L" : "–") +
+      tile("⌀ Preis je Liter", s.avg_preis_liter_eur != null ? euro(s.avg_preis_liter_eur) : "–") +
+      tile("⌀ Verbrauch", s.avg_verbrauch_l_100km != null ? s.avg_verbrauch_l_100km.toLocaleString("de-DE") + " L" : "–", false,
+           "je 100 km" + (quelleLabel ? " · " + quelleLabel : "")) +
+      tile("Reichweite voll", s.reichweite_km != null ? "~" + s.reichweite_km.toLocaleString("de-DE") + " km" : "–", false,
+           s.tankgroesse_liter ? s.tankgroesse_liter + " L Tank" : "Tankgröße fehlt");
 
     var list = document.getElementById("tanken-list");
     if (!t.fillups.length) {
@@ -678,16 +839,16 @@
         if (f.liter != null) details.push(f.liter.toLocaleString("de-DE") + " L");
         if (f.preis_pro_liter_nad != null) details.push(f.preis_pro_liter_nad.toLocaleString("de-DE") + " NAD/L");
         if (f.verbrauch_l_100km != null) details.push(f.verbrauch_l_100km.toLocaleString("de-DE") + " L/100km");
-        if (f.kilometerstand != null) details.push(Math.round(f.kilometerstand).toLocaleString("de-DE") + " km-Stand");
+        if (f.kilometerstand != null) details.push("km " + Math.round(f.kilometerstand).toLocaleString("de-DE"));
         return '<div class="card">' +
           '<div class="card-row">' +
-            '<span class="card-title">' + esc(f.ort) + "</span>" +
-            '<span class="card-amount">' + euro(f.betrag_eur) + "</span>" +
-          "</div>" +
-          '<div class="card-meta">' +
-            (details.length ? details.map(function (d) { return '<span class="pill">' + esc(d) + "</span>"; }).join("") : '<span class="pill">Details fehlen noch</span>') +
-            zahlerPill(f.zahler) +
-            "<span>" + fmtDate(f.datum) + "</span>" +
+            '<div class="card-main">' +
+              '<div class="card-title">' + esc(f.ort) + "</div>" +
+              '<div class="card-sub">' + zahlerPill(f.zahler) + '<span class="card-sep">·</span><span>' + fmtDate(f.datum) + "</span>" +
+                (details.length ? '<span class="card-sep">·</span><span>' + esc(details.join(" · ")) + "</span>" : "") +
+              "</div>" +
+            "</div>" +
+            '<div class="card-right"><div class="card-amount">' + euro(f.betrag_eur) + "</div></div>" +
           "</div>" +
         "</div>";
       }).join("");
@@ -712,10 +873,11 @@
     }).join("");
   }
 
-  function tile(label, value, wide) {
+  function tile(label, value, wide, note) {
     return '<div class="tile' + (wide ? " wide" : "") + '">' +
       '<div class="label">' + esc(label) + "</div>" +
       '<div class="value">' + esc(value) + "</div>" +
+      (note ? '<div class="tile-note">' + esc(note) + "</div>" : "") +
     "</div>";
   }
 
@@ -735,16 +897,22 @@
       document.getElementById("verrechnung-hint").textContent = "";
       return;
     }
+    var saldoText = s.saldo_patrick > 0.005 ? "Nora schuldet Patrick " + euro(s.saldo_patrick)
+      : s.saldo_patrick < -0.005 ? "Patrick schuldet Nora " + euro(-s.saldo_patrick) : "Ausgeglichen";
+    var cell = function (v, cls) { return '<div class="verr-num' + (cls ? " " + cls : "") + '">' + euro(v) + "</div>"; };
     vc.innerHTML =
-      cardRow("Patrick gezahlt (Karte + Bargeld)", s.patrick_gezahlt) +
-      cardRow("Nora gezahlt (Karte)", s.nora_gezahlt) +
-      cardRow("Überweisung Patrick → Nora", s.transfer_patrick_nora) +
-      cardRow("Anteil je Person (50 %)", s.anteil_pro_person) +
-      cardRow("Patrick effektiv getragen", s.beitrag_patrick) +
-      cardRow("Nora effektiv getragen", s.beitrag_nora);
+      '<div class="card verr">' +
+        '<div class="verr-grid">' +
+          '<div class="verr-h"></div><div class="verr-h person-p">Patrick</div><div class="verr-h person-n">Nora</div>' +
+          "<div>Selbst gezahlt</div>" + cell(s.patrick_gezahlt) + cell(s.nora_gezahlt) +
+          "<div>Überweisung</div>" + cell(s.transfer_patrick_nora, "plus") + cell(-s.transfer_patrick_nora, "minus") +
+          "<div>Effektiv getragen</div>" + cell(s.beitrag_patrick, "strong") + cell(s.beitrag_nora, "strong") +
+          "<div>Fairer Anteil (50 %)</div>" + cell(s.anteil_pro_person) + cell(s.anteil_pro_person) +
+        "</div>" +
+        '<div class="verr-result' + (Math.abs(s.saldo_patrick) > 0.005 ? " debt" : " ok") + '">' + esc(saldoText) + "</div>" +
+      "</div>";
     document.getElementById("verrechnung-hint").textContent =
-      "Effektiv = eigene Zahlungen plus/minus Überweisung. " +
-      (s.beitrag_nora < 0 ? "Negativ bei Nora heißt: von den 2.000 € ist noch mehr übrig, als sie selbst beigesteuert hat. " : "") +
+      (s.beitrag_nora < 0 ? "Negativ bei Nora: von der Überweisung ist noch mehr übrig, als sie selbst beigesteuert hat. " : "") +
       saldoHint(s);
 
     var op = document.getElementById("offene-punkte-list");
@@ -752,13 +920,28 @@
       op.innerHTML = '<div class="empty-state">Keine offenen Punkte 🎉</div>';
     } else {
       op.innerHTML = data.offene_punkte.map(function (o) {
-        return '<div class="open-item"><div>' + esc(o.punkt) + '</div>' +
-               '<div class="warum">' + esc(o.warum) + "</div></div>";
+        // Erster Satz/Halbsatz als Titel, der Rest aufklappbar - die Texte
+        // stammen aus docs/offene-punkte.md und sind dort bewusst ausfuehrlich.
+        var m = /^(.{12,120}?)(?:\s+[—–-]\s+|\.\s+|:\s+)([\s\S]+)$/.exec(o.punkt);
+        var titel = m ? m[1] : o.punkt;
+        var rest = m ? m[2] : "";
+        if (!m && o.punkt.length > 90) {
+          var cut = o.punkt.lastIndexOf(" ", 84);
+          titel = o.punkt.slice(0, cut > 40 ? cut : 84) + " …";
+          rest = o.punkt;
+        }
+        return '<div class="open-item">' +
+          '<div class="open-title">' + esc(titel) + "</div>" +
+          '<div class="warum">' + esc(o.warum) + "</div>" +
+          (rest ? '<details class="open-more"><summary>Details</summary><div>' + esc(rest) + "</div></details>" : "") +
+        "</div>";
       }).join("");
     }
 
+    var gen = new Date(data.generated_at);
     document.getElementById("update-note").textContent =
-      "Stand: " + new Date(data.generated_at).toLocaleString("de-DE");
+      "Datenstand " + gen.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }) +
+      ", " + gen.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + " Uhr";
   }
 
   function cardRow(label, value) {
@@ -782,8 +965,6 @@
   initNav();
   initErfassen();
   loadData().then(function (data) {
-    document.getElementById("header-subline").textContent =
-      "02.09. – 21.09.2026 · Patrick & Nora";
     renderHeute(data);
     renderReiseStatus(data);
     renderLetzteAusgaben(data);
@@ -792,6 +973,9 @@
     renderMehr(data);
   }).catch(function () {
     document.getElementById("header-subline").textContent = "Daten konnten nicht geladen werden.";
+    var banner = document.getElementById("offline-banner");
+    banner.textContent = "Daten konnten nicht geladen werden – bitte mit Netz einmal neu laden.";
+    banner.classList.add("show");
   });
 
   window.addEventListener("hashchange", function () {

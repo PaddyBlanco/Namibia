@@ -1,13 +1,20 @@
 {
-  "stand": "2026-09-07",
-  "letzter_volltank": {"ort": "Helmeringhausen", "datum": "2026-09-07", "kilometerstand": 21586},
-  "aktueller_standort": {"ort": "Helmeringhausen", "datum": "2026-09-07"},
-  "strecke_seit_volltank_km": 0,
+  "stand": "2026-09-08",
+  "letzter_volltank": {
+    "ort": "Helmeringhausen",
+    "datum": "2026-09-07",
+    "kilometerstand": 21586
+  },
+  "aktueller_standort": {
+    "ort": "Little Sossus Campsite (Sesriem)",
+    "datum": "2026-09-08"
+  },
+  "strecke_seit_volltank_km": 280,
   "naechster_pflicht_stopp": {
     "ort": "Solitaire",
     "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
   },
-  "strecke_bis_naechster_stopp_km": "TBD",
-  "empfehlung": "Frisch volltanken (34,29 L bei 21.586 km) - reicht rechnerisch weit über Solitaire hinaus, auch ohne genaue km-Zahl. Nächste Pflicht-Gelegenheit bleibt Solitaire, da Wêreldend und das NamibRand-Gebiet dazwischen keine Tankstelle haben. Genaue Strecke Helmeringhausen–Solitaire noch nicht recherchiert (die bisherigen 348 km galten ab Aus, nicht ab hier).",
-  "anmerkung": "Neuer Nullpunkt: 21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (04_tanken.csv Nr. 4) - der erste Fill-up mit bekanntem Stand. Die vorherige Schätzung (Aus, 125 km seit Lüderitz) ist damit abgelöst. Da der vorangegangene Fill-up (Lüderitz) keinen Kilometerstand hat, kann der Verbrauch erst zwischen diesem und dem nächsten Fill-up mit km-Stand berechnet werden - bis dahin gilt weiter der Bordcomputer-Schnitt (11,2 L/100km)."
+  "strecke_bis_naechster_stopp_km": 80,
+  "empfehlung": "Tank reicht locker: Seit dem Volltanken in Helmeringhausen sind es rund 280 km (C27 nach Sesriem plus Ausflug zum Canyon), bis Solitaire noch etwa 80 km. Dort trotzdem auffüllen – es ist die einzige Tankstelle zwischen Sesriem-Gebiet und Küste, und ab Sossusvlei geht es 340 km bis Walvis Bay.",
+  "anmerkung": "21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (07.09.). Die 280 km seither sind geschätzt: C27 Helmeringhausen–Sesriem 237 km (Wikipedia) plus ca. 40 km Sesriem/Little Sossus und Canyon-Ausflug. Sesriem–Solitaire ca. 80 km (C19, Reiseführer-Angaben 78–83 km). Verbrauch bis zum nächsten Volltank mit Kilometerstand weiter vom Bordcomputer (11,2 L/100 km)."
 }

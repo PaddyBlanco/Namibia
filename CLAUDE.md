@@ -230,49 +230,67 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   keine Unterpunkte voneinander** (Nutzer hat das ausdrücklich korrigiert,
   nachdem Home zuerst nur eine Umbenennung des Kosten-Tabs war):
   1. **Home** (`home`, 🏠) — der Startbildschirm, genau drei Blöcke, siehe unten
-  2. **Kosten** (`kosten`, 💶) — Sub-Nav mit **drei** Reitern: „Kostenübersicht"
-     (Gesamt-Kacheln, Reisekasse, Saldo + Hinweis zur Saldo-Basis),
-     „Ausgabenliste" und „Erfassen" (siehe unten). **Die Ausgabenliste trennt
-     nach Gerätedatum:** oben alles bis heute, neueste zuerst; darunter ein
-     eingeklappter Block „Kommende Buchungen (n · Summe)" mit den Blatt-1-
-     Zeilen, deren Check-in-Datum in der Zukunft liegt. Grund (Bug 07.09.2026):
-     Blatt-1-Zeilen tragen das Check-in-, nicht das Zahldatum — ohne Trennung
-     standen 11 vorausbezahlte Unterkünfte über den echten Einträgen von
-     heute, die dadurch „fehlten". NAD-Originalbetrag wird in der Zeile mit
-     angezeigt (`betrag_fw`/`waehrung`).
-     - **„Erfassen" (seit 08.09.2026):** Formular für Kosten ohne Netz.
-       Speichert Einträge ausschließlich lokal (`localStorage`, Key
-       `namibia2026:pending-entries`) — **kein** automatischer Schreibzugriff
-       aufs Repo (bewusste Entscheidung 08.09.2026: ein im Browser
-       gespeicherter GitHub-Token auf einem Handy, das verloren gehen oder
-       geteilt werden kann, wäre ein Sicherheitsrisiko bei einem öffentlichen
-       Repo, und würde außerdem alle Prüfungen umgehen, die sonst beim
-       Verbuchen laufen — Bargeld-Zahler-Regel, Kategorie-Validierung,
-       CSV-Komma-Fallstrick). Stattdessen: Button „An Claude übergeben"
-       kopiert alle offenen Einträge als Klartext in die Zwischenablage
-       (`formatPendingEntry()` in `app.js`); der Nutzer fügt den Text im
-       Chat ein, Claude trägt ihn wie jeden anderen Beleg ein und wendet
-       dabei dieselben Prüfungen an wie sonst auch. „Liste leeren" erst
-       danach antippen (fragt zur Sicherheit nach, per `confirm()`).
-       Zahlmittel `Bargeld` setzt den Zahler automatisch auf `Patrick` und
-       sperrt das Feld (Grundregel 9) — nicht von Hand aushebeln. Ein roter
-       Zähler-Badge auf dem Reiter „Erfassen" zeigt, wie viele Einträge noch
-       nicht übergeben sind (`[hidden]`-Sichtbarkeit: `.badge[hidden] {
-       display: none }` explizit nötig, weil `.badge { display: inline-block
-       }` sonst das UA-Default fürs `hidden`-Attribut per Kaskade schlägt —
-       am 08.09.2026 genau darüber gestolpert, siehe Playwright-Test).
+  2. **Kosten** (`kosten`, 💶) — Sub-Nav mit **zwei** Reitern „Übersicht"
+     (Gesamt-Kacheln, Reisekasse, Saldo + Hinweis zur Saldo-Basis) und
+     „Ausgaben". **Die Ausgabenliste trennt nach Gerätedatum:** oben alles
+     bis heute, neueste zuerst, **gruppiert nach Tag** mit Tageskopf
+     („Di, 08.09. · 4 Posten · 177,86 €") und einer Summenzeile über der
+     Liste; darunter ein eingeklappter Block „Kommende Buchungen (n · Summe)"
+     mit den Blatt-1-Zeilen, deren Check-in-Datum in der Zukunft liegt.
+     Grund (Bug 07.09.2026): Blatt-1-Zeilen tragen das Check-in-, nicht das
+     Zahldatum — ohne Trennung standen 11 vorausbezahlte Unterkünfte über den
+     echten Einträgen von heute. **Eine Kartenfunktion für alle Listen**
+     (`ausgabeCard()` in `app.js`, auch auf Home): links Kategorie-Farbpunkt
+     (gleiche Farbe wie im Donut) + Titel, darunter Zahler als farbige
+     Personen-Pille (Patrick blau, Nora violett — eigene Token `--person-*`,
+     sonst nirgends verwendet) und Zahlmittel als Text; rechts Betrag,
+     darunter der NAD-Originalbetrag. Nur „offen" bleibt eine Warnpille.
+     - **„+"-Button & Bottom-Sheet (seit 08.09.2026, ersetzt den früheren
+       Reiter „Erfassen"):** kleiner runder „+" im Abschnittskopf der
+       Ausgabenliste und neben „Letzte Ausgaben" auf Home öffnet ein
+       Bottom-Sheet (`#sheet-erfassen`) zum Erfassen ohne Netz: Betrag groß
+       mit NAD/EUR-Segment, Ort/Beschreibung, **„Wer hat gezahlt?"
+       (Patrick | Nora) als eigener Schritt**, „Womit?" (N26 | Debit | Bar |
+       Kredit — wird nach Zahler vorbelegt: Nora→N26, Patrick→Bar, bleibt
+       änderbar), Kategorie als Chip-Raster, Datum/Anmerkung eingeklappt.
+       `Bargeld` erzwingt Zahler `Patrick` und sperrt das Segment
+       (Grundregel 9). Speichern → Toast, Sheet schließt. Einträge liegen
+       ausschließlich lokal (`localStorage`, Key `namibia2026:pending-entries`)
+       und erscheinen in der Ausgabenliste oben als Karte „Noch nicht
+       übergeben (n)" mit „An Claude übergeben" (kopiert Klartext in die
+       Zwischenablage, `formatPendingEntry()`) und „Leeren" (mit `confirm()`).
+       Auf Home zeigt ein Link „n Einträge warten auf Übergabe →" darauf.
+       **Kein** automatischer Schreibzugriff aufs Repo (Entscheidung
+       08.09.2026: ein GitHub-Token im Browser eines Handys, das verloren
+       gehen oder geteilt werden kann, wäre bei einem öffentlichen Repo ein
+       Sicherheitsrisiko und würde alle Prüfungen beim Verbuchen umgehen).
+       Wenn der Nutzer den kopierten Text im Chat einfügt („Offline erfasste
+       Kosten: …"), jede Zeile wie einen normalen Beleg verbuchen.
+       CSS-Fallstrick: Elemente, die per `hidden`-Attribut gesteuert werden,
+       dürfen keine eigene `display:`-Regel bekommen (sonst schlägt die
+       Author-Regel das UA-Default) — deshalb `.badge[hidden] { display: none }`.
   3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
      Tankvorgänge, Tankstellen-Planung
   4. **Reiseplan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem
-     Gerätedatum des Betrachters hervorgehoben
-  5. **Mehr** (`mehr`, ⋯) — Verrechnung, offene Punkte
+     Gerätedatum des Betrachters hervorgehoben; jede Karte zeigt Betrag und
+     (wenn bezahlt) Zahler + Zahlmittel — `build_site_data.py` liefert dafür
+     `plan[].betrag/zahler/zahlmittel` und führt aufgeteilte Posten (Flug je
+     zur Hälfte) zu einem Eintrag mit Summe und „Patrick + Nora" zusammen
+     (`zahlerPill()` rendert das neutral als `zahler-beide`). Fahrzeit-Pille
+     heißt „Anfahrt 1h15" und ist neutral (kein Akzent mehr)
+  5. **Mehr** (`mehr`, ⋯) — Verrechnung als Gegenüberstellung Patrick | Nora
+     (Selbst gezahlt / Überweisung / Effektiv getragen / Fairer Anteil, darunter
+     der Saldo-Satz), offene Punkte mit Titel + aufklappbaren Details (Titel =
+     erster Halbsatz vor „—", „." oder „:", sonst nach ~84 Zeichen gekürzt)
 - **Kleinstes Zielgerät ist ein iPhone 15 (393 × 852 CSS-Pixel)** — vom
   Nutzer am 06.09.2026 festgelegt. Nicht mehr auf 320px optimieren
   (deshalb heißt Tab 4 wieder ausgeschrieben „Reiseplan"). Beim Testen
   mit Playwright diese Viewport-Größe verwenden.
 - **Die Kopfzeile erscheint nur auf Home** und ist bewusst kompakt
   (`.app-header.hidden` wird in `showView()` gesetzt, sobald der Tab
-  nicht `home` ist). Auf den anderen Tabs übernimmt die Bottom-Nav die
+  nicht `home` ist). Ihre Unterzeile trägt seit 08.09.2026 „Tag X von Y ·
+  02.09. – 21.09.2026" (aus `renderHeute()`); der frühere separate
+  Tag-Badge auf Home ist entfallen (Redundanz laut UX-Audit). Auf den anderen Tabs übernimmt die Bottom-Nav die
   Orientierung. **Wichtig dabei:** ohne sichtbaren Header muss der Inhalt
   selbst um Notch/Dynamic Island herum — dafür sorgt
   `.app-header.hidden ~ main { padding-top: calc(16px + env(safe-area-inset-top)) }`.
@@ -288,15 +306,17 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   2. Letzte 5 Ausgaben — `bisherigeAusgaben(data).slice(-5).reverse()` in
      `app.js`: `data.ausgaben` ist nach `(datum, zeit)` aufsteigend sortiert,
      wird aber erst gegen das Gerätedatum auf „bis heute" gefiltert, sonst
-     stünden vorausbezahlte Unterkünfte mit künftigem Check-in oben. Plus
-     Button „Alle Ausgaben anzeigen", der per
+     stünden vorausbezahlte Unterkünfte mit künftigem Check-in oben. Gleiche
+     Karte wie in der Ausgabenliste (`ausgabeCard(a, true)`), im Abschnitts-
+     kopf der „+"-Button fürs Bottom-Sheet, darunter ggf. der Link „n Einträge
+     warten auf Übergabe →" und der Button „Alle Ausgaben anzeigen", der per
      `showView("kosten") + showSubView("ausgaben")` in den Kosten-Tab springt
   3. Gesamtkosten als Tortendiagramm (Donut + Legende)
   Stat-Kacheln, Reisekasse und Saldo gehören **nicht** auf Home, sondern in
   den Kosten-Tab.
 - Sub-Nav-Umschaltung (`showSubView()` in `app.js`) ist reines Anzeigen/
   Verstecken, nicht in der URL kodiert (kein Deep-Link auf die Ausgabenliste).
-  Die DOM-IDs der einzelnen Widgets (`#day-badge`, `#t-gesamt`,
+  Die DOM-IDs der einzelnen Widgets (`#header-subline`, `#t-gesamt`,
   `#kategorien-donut`, `#ausgaben-list` usw.) sind unabhängig davon, in
   welchem Tab sie liegen — beim Umbauen der Navigation reicht es, das
   HTML zu verschieben, die Render-Funktionen in `app.js` bleiben gleich.
@@ -339,18 +359,35 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   bleibt für noch nicht bezahlte Posten erhalten — Status hat Vorrang vor
   Zahlmittel. Neue Zahlmittel-Werte in den CSVs ggf. in `mapZahlmittel()`
   ergänzen, sonst erscheinen sie 1:1 als Fallback-Text.
-- **Dark-Mode-Design „Namibia bei Nacht"** (Nutzerwunsch 06.09.2026, mehr
-  Namibia-Bezug statt neutralem Dunkelmodus): wärmeres Wüstenschwarz
-  (`--bg: #14100c`) statt Grau, satteres Sonnenuntergangs-Terrakotta als
-  Akzent (`--accent: #e2793d`, Kontrast gegen `--bg` = 6,3:1, per
-  `dataviz`-Skill-Validator geprüft), plus eine sehr dezente, nahtlos
-  kachelnde Dünensilhouette als `background-image` auf `body`
-  (nur im Dark-Mode-Media-Query, `:root:not([data-theme="light"]) body`
-  — **nicht** auf `:root` selbst, sonst wird sie vom deckenden
-  `body`-Hintergrund verdeckt, siehe Chatverlauf 06.09.2026). Kategorie-
-  Donutfarben (`--series-*`) bleiben unverändert, nur die UI-Chrome-Farben
-  wurden angepasst. Beim Weiterbauen: neue Akzentfarben immer gegen
-  `--bg` mit dem Validator prüfen, nicht eyeballen.
+- **Dark-Mode-Design „Sternenhimmel über der Namib"** (seit 08.09.2026,
+  ersetzt „Namibia bei Nacht" — das warme Wüstenschwarz mit Terrakotta und
+  Dünen-Silhouette gefiel dem Nutzer nicht). Story: NamibRand ist ein
+  Dark-Sky-Reserve. Tiefes, kühles Nachtblau als Grund (`--bg: #0b1220`),
+  Karten eine Stufe heller/bläulicher (`--bg-elevated: #141d2f`), warmes
+  Sand-/Amber-Gelb als Akzent (`--accent: #e8b45a`, Kontrast auf `--bg`
+  9,9:1), Text leicht warm getönt (`#ece8df`, 15,3:1), **kein Hintergrund-
+  bild mehr**. Alle Paare per dataviz-Validator/WCAG geprüft (Dark-Block in
+  `style.css` dokumentiert die Kontraste). Zusatzregeln stehen im Block
+  „Dark-Theme Sternenhimmel (Zusatzregeln)" am Dateiende (`color-scheme:
+  dark`, Badge-Textfarbe, Innen-Lichtsaum auf Karten, Offene Punkte als
+  Karte mit Warn-Kante); die Personenfarben für Dark (`--person-*`) im
+  Block direkt danach. `<meta name="theme-color">` in `index.html`: hell
+  `#faf6f0`, dunkel `#0b1220`. Beim Weiterbauen: neue Farben gegen `--bg`
+  UND `--bg-elevated` prüfen, nicht eyeballen.
+- **Typografie-Skala:** fünf Token in `:root` (`--fs-xs` 12px, `-sm` 13px,
+  `-md` 15px, `-lg` 17px, `-xl` 24px) — keine weiteren Zwischenwerte
+  einführen (UX-Audit 08.09.2026 fand 21 verschiedene Schriftgrößen).
+  Interaktive Elemente haben `min-height` ≥ 40–48px (Touch-Ziele).
+- **UX-Audit 08.09.2026** (Subagent, Light Mode, iPhone 15) lieferte 15
+  Befunde; umgesetzt: Touch-Ziele, Tagesgruppierung + Summen in der
+  Ausgabenliste, Karten-Layout mit Zahler/Zahlmittel-Hierarchie und
+  Personenfarben, Tankplanung-Texte ohne Dateiverweise + „Hintergrund"
+  einklappbar, Toast/Inline-Fehler im Formular, Fehlerbanner bei Ladefehler,
+  Verrechnung als Personen-Gegenüberstellung, Offene Punkte gekürzt,
+  Tanken-Kacheln 2×2 mit Quelle als Fußnote, Tag-Badge in die Kopfzeile,
+  „Anfahrt"-Beschriftung, Nächstes Ziel zweizeilig, „Datenstand" ohne
+  Sekunden. Bewusst nicht umgesetzt: Floating-Action-Button (Nutzer wollte
+  explizit einen kleinen „+" in der Liste), Sticky-Filterzeile.
 
 ## Konventionen
 

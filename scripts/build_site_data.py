@@ -247,26 +247,38 @@ def main():
     # zusammenfassen, sonst taucht derselbe Tag doppelt auf.
     ANTEIL_SUFFIX = re.compile(r"\s*-\s*\S+-Anteil\s*\(\d+%\)\s*$")
     plan = []
-    seen_plan_keys = set()
+    plan_by_key = {}
     for r in b1:
         beschreibung = ANTEIL_SUFFIX.sub("", r["beschreibung"])
         key = (r["datum"], r["kategorie"], beschreibung)
-        if key in seen_plan_keys:
+        betrag = round(num(r["betrag_eur"]), 2)
+        if key in plan_by_key:
+            # Aufgeteilter Posten (z.B. Flug je zur Haelfte): Betrag summieren,
+            # Zahler zusammenfuehren, damit die Zeitleiste "wer hat gezahlt"
+            # korrekt zeigt.
+            eintrag = plan_by_key[key]
+            eintrag["betrag"] = round(eintrag["betrag"] + betrag, 2)
+            if r["zahler"] not in eintrag["zahler"].split(" + "):
+                eintrag["zahler"] += " + " + r["zahler"]
             continue
-        seen_plan_keys.add(key)
         start = datetime.date.fromisoformat(r["datum"])
         naechte = int(float(r["naechte"])) if r["naechte"] else 0
         ende = (start + datetime.timedelta(days=naechte)).isoformat() if naechte else r["datum"]
-        plan.append({
+        eintrag = {
             "start": r["datum"],
             "ende": ende,
             "naechte": naechte,
             "kategorie": r["kategorie"],
             "beschreibung": beschreibung,
+            "betrag": betrag,
+            "zahler": r["zahler"],
+            "zahlmittel": r["zahlmittel"],
             "status": "offen" if num(r["offen_eur"]) > 0 and num(r["betrag_eur"]) > 0 else "bezahlt",
             "info_link": r.get("info_link") or None,
             "fahrzeit": r.get("fahrzeit") or None,
-        })
+        }
+        plan_by_key[key] = eintrag
+        plan.append(eintrag)
 
     offene_punkte = parse_offene_punkte()
     tanken = parse_tanken()
