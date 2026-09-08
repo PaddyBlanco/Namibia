@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-08T14:47:07+00:00",
+  "generated_at": "2026-09-08T14:53:21+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6220.56,
-    "bezahlt": 5792.76,
+    "gesamt": 6210.76,
+    "bezahlt": 5782.96,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 41.32,
     "kasse_bestand": 175.88,
-    "patrick_gezahlt": 3987.81,
+    "patrick_gezahlt": 3978.01,
     "nora_gezahlt": 1804.95,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5792.76,
-    "anteil_pro_person": 2896.38,
-    "beitrag_patrick": 5987.81,
+    "saldo_basis": 5782.96,
+    "anteil_pro_person": 2891.48,
+    "beitrag_patrick": 5978.01,
     "beitrag_nora": -195.05,
-    "saldo_patrick": 3091.43
+    "saldo_patrick": 3086.53
   },
   "kategorien": [
     {
@@ -40,15 +40,15 @@
     },
     {
       "name": "Lebensmittel",
-      "betrag": 240.04
-    },
-    {
-      "name": "Restaurant",
-      "betrag": 119.78
+      "betrag": 261.41
     },
     {
       "name": "Eintritt",
       "betrag": 92.04
+    },
+    {
+      "name": "Restaurant",
+      "betrag": 88.61
     },
     {
       "name": "Aktivitäten",
@@ -91,19 +91,6 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
-      "status": "bezahlt"
-    },
-    {
-      "id": "b2-1",
-      "datum": "2026-09-02",
-      "zeit": "14:14",
-      "kategorie": "Restaurant",
-      "beschreibung": "Leberkaespepi",
-      "betrag": 9.8,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "Patrick",
       "zahlmittel": "TBD",
       "status": "bezahlt"
     },
@@ -462,7 +449,7 @@
       "id": "b2-25",
       "datum": "2026-09-08",
       "zeit": "",
-      "kategorie": "Restaurant",
+      "kategorie": "Lebensmittel",
       "beschreibung": "Tankstelle Sesriem",
       "betrag": 21.37,
       "betrag_fw": null,

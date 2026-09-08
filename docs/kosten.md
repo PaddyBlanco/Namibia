@@ -33,7 +33,6 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Nr | Datum | Zeit | Typ | Ort | Händler | Kategorie | Betrag FW | € | Zahler | Zahlmittel | Kurs | Anmerkung |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2026-09-02 | 14:14 | Ausgabe | Flughafen Wien | Leberkaespepi | Restaurant | – | 9,80 € | Patrick | TBD | – | Verpflegung Anreise - Karte auf Wunsch nicht weiter geklaert |
 | 2 | 2026-09-02 | 15:03 | Ausgabe | Flughafen Wien | Relay F Gate | Sonstiges | – | 11,84 € | Patrick | TBD | – | Kiosk - Karte auf Wunsch nicht weiter geklaert |
 | 3 | 2026-09-02 | 20:05 | Ausgabe | Flughafen Muenchen | MUC Airport Retail | Sonstiges | – | 5,91 € | Patrick | TBD | – | Transit MUC - Karte auf Wunsch nicht weiter geklaert |
 | 4 | 2026-09-03 | 09:08 | Abhebung 💶 | Windhoek | ATM WHKHKC01 | Bargeld | 4047.00 NAD | 217,20 € | Patrick | Oberbank Debit | 18.633 | Bargeldbezug in die Reisekasse - KEINE Ausgabe |
@@ -57,10 +56,10 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 22 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Restaurant | 50.00 NAD | 2,68 € | Patrick | Bargeld | 18.657 | Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender) |
 | 23 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Tanken | 980.01 NAD | 53,17 € | Nora | N26 Debit | 18.432 | Volltanken - 34.29 Liter a 28.58 NAD/Liter bei km-Stand 21586 (siehe 04_tanken.csv Nr. 4) |
 | 24 | 2026-09-08 | – | Ausgabe | Little Sossus Campsite | Little Sossus Campsite | Lebensmittel | – | 5,41 € | Nora | N26 Debit | – | Wasser |
-| 25 | 2026-09-08 | – | Ausgabe | Sesriem | Tankstelle Sesriem | Restaurant | – | 21,37 € | Nora | N26 Debit | – | Essen an der Tankstelle |
+| 25 | 2026-09-08 | – | Ausgabe | Sesriem | Tankstelle Sesriem | Lebensmittel | – | 21,37 € | Nora | N26 Debit | – | Essen an der Tankstelle (Kategorie per App-Aenderung 08.09. Restaurant -> Lebensmittel) |
 | 26 | 2026-09-08 | – | Ausgabe | Sesriem | NWR Sesriem | Eintritt | – | 67,08 € | Nora | N26 Debit | – | Park-Permit Namib-Naukluft (Sesriem Canyon / Elim Dune / Sossusvlei) |
 
-**Echte Ausgaben:** 916,69 € (davon bar 41,32 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 175,88 €
+**Echte Ausgaben:** 906,89 € (davon bar 41,32 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 175,88 €
 
 ## 3. Zusammenfassung
 
@@ -72,21 +71,21 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Flug | 1.895,26 € |
 | Unterkunft | 746,06 € |
 | Tanken | 284,94 € |
-| Lebensmittel | 240,04 € |
-| Restaurant | 119,78 € |
+| Lebensmittel | 261,41 € |
 | Eintritt | 92,04 € |
+| Restaurant | 88,61 € |
 | Aktivitäten | 75,95 € |
 | Shopping | 20,07 € |
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |
 
-**Gesamtausgaben: 6.220,56 €** (davon bezahlt 5.792,76 €, noch offen 427,80 €)
+**Gesamtausgaben: 6.210,76 €** (davon bezahlt 5.782,96 €, noch offen 427,80 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 3.673,78 € | 314,03 € | 3.987,81 € |
+| Patrick | 3.673,78 € | 304,23 € | 3.978,01 € |
 | Nora | 1.202,29 € | 602,66 € | 1.804,95 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 427,80 € |
 
@@ -102,14 +101,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Patrick gezahlt (Karte + Bargeld) | 3.987,81 € |
+| Patrick gezahlt (Karte + Bargeld) | 3.978,01 € |
 | Nora gezahlt (Karte) | 1.804,95 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 5.792,76 € |
-| Anteil je Person (50 %) | 2.896,38 € |
-| Patrick effektiv getragen (gezahlt + Überweisung) | 5.987,81 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 5.782,96 € |
+| Anteil je Person (50 %) | 2.891,48 € |
+| Patrick effektiv getragen (gezahlt + Überweisung) | 5.978,01 € |
 | Nora effektiv getragen (gezahlt − Überweisung) | -195,05 € |
-| **Saldo** | **Nora schuldet Patrick 3.091,43 €** |
+| **Saldo** | **Nora schuldet Patrick 3.086,53 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 427,80 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

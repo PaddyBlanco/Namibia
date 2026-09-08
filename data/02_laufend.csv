@@ -1,5 +1,4 @@
 nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,zahlmittel,anmerkung
-1,2026-09-02,14:14,Ausgabe,Flughafen Wien,Leberkaespepi,Restaurant,,EUR,9.80,Patrick,TBD,Verpflegung Anreise - Karte auf Wunsch nicht weiter geklaert
 2,2026-09-02,15:03,Ausgabe,Flughafen Wien,Relay F Gate,Sonstiges,,EUR,11.84,Patrick,TBD,Kiosk - Karte auf Wunsch nicht weiter geklaert
 3,2026-09-02,20:05,Ausgabe,Flughafen Muenchen,MUC Airport Retail,Sonstiges,,EUR,5.91,Patrick,TBD,Transit MUC - Karte auf Wunsch nicht weiter geklaert
 4,2026-09-03,09:08,Abhebung,Windhoek,ATM WHKHKC01,Bargeld,4047.00,NAD,217.20,Patrick,Oberbank Debit,Bargeldbezug in die Reisekasse - KEINE Ausgabe
@@ -23,5 +22,5 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 22,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Restaurant,50.00,NAD,2.68,Patrick,Bargeld,Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender)
 23,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Tanken,980.01,NAD,53.17,Nora,N26 Debit,Volltanken - 34.29 Liter a 28.58 NAD/Liter bei km-Stand 21586 (siehe 04_tanken.csv Nr. 4)
 24,2026-09-08,,Ausgabe,Little Sossus Campsite,Little Sossus Campsite,Lebensmittel,,EUR,5.41,Nora,N26 Debit,Wasser
-25,2026-09-08,,Ausgabe,Sesriem,Tankstelle Sesriem,Restaurant,,EUR,21.37,Nora,N26 Debit,Essen an der Tankstelle
+25,2026-09-08,,Ausgabe,Sesriem,Tankstelle Sesriem,Lebensmittel,,EUR,21.37,Nora,N26 Debit,Essen an der Tankstelle (Kategorie per App-Aenderung 08.09. Restaurant -> Lebensmittel)
 26,2026-09-08,,Ausgabe,Sesriem,NWR Sesriem,Eintritt,,EUR,67.08,Nora,N26 Debit,Park-Permit Namib-Naukluft (Sesriem Canyon / Elim Dune / Sossusvlei)
