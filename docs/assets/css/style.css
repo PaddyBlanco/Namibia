@@ -261,6 +261,9 @@ main {
   align-items: center;
 }
 .reise-status-sub { font-size: var(--fs-xs); color: var(--text-dim); font-weight: 400; margin-top: 1px; }
+.reise-link { color: var(--accent); text-decoration: none; }
+.reise-link:active { opacity: 0.7; }
+.reise-link-icon { font-size: var(--fs-xs); opacity: 0.85; }
 
 /* ---------- Kompakte Kartenliste + Link-Button ---------- */
 .card-list-compact .card { padding: 10px 14px; }

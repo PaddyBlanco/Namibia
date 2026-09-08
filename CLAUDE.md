@@ -332,7 +332,9 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   1. Reise-Status, klein oben: aktuelle Unterkunft, nächstes Ziel,
      aufklappbare Liste „Alle Unterkünfte" mit Maps-Links — berechnet aus
      `data.plan`, gefiltert auf `kategorie === "Unterkunft"`, verglichen
-     gegen das *Gerätedatum des Betrachters*, nicht gegen `generated_at`
+     gegen das *Gerätedatum des Betrachters*, nicht gegen `generated_at`.
+     „Aktuell" und „Nächstes Ziel" sind selbst Google-Maps-Links
+     (`info_link`, Nutzerwunsch 08.09.2026, `.reise-link` mit ↗)
   2. Letzte 5 Ausgaben — `bisherigeAusgaben(data).slice(-5).reverse()` in
      `app.js`: `data.ausgaben` ist nach `(datum, zeit)` aufsteigend sortiert,
      wird aber erst gegen das Gerätedatum auf „bis heute" gefiltert, sonst

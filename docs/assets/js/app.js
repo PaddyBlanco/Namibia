@@ -646,12 +646,19 @@
       .filter(function (p) { return p.start > today; })
       .sort(function (a, b) { return a.start < b.start ? -1 : 1; })[0];
 
-    document.getElementById("status-aktuell").textContent = aktuell ? aktuell.beschreibung : "–";
+    // Name als Google-Maps-Link (Suchlink aus info_link, siehe CLAUDE.md) -
+    // damit man direkt aus dem Reise-Status navigieren kann.
+    var mapsLink = function (u) {
+      return u.info_link
+        ? '<a class="reise-link" href="' + esc(u.info_link) + '" target="_blank" rel="noopener">' + esc(u.beschreibung) + ' <span class="reise-link-icon">↗</span></a>'
+        : esc(u.beschreibung);
+    };
+    document.getElementById("status-aktuell").innerHTML = aktuell ? mapsLink(aktuell) : "–";
     var naechstesEl = document.getElementById("status-naechstes");
     if (naechstes) {
       var zusatz = "ab " + fmtDate(naechstes.start);
       if (naechstes.fahrzeit) zusatz += " · Anfahrt " + naechstes.fahrzeit;
-      naechstesEl.innerHTML = esc(naechstes.beschreibung) + '<div class="reise-status-sub">' + esc(zusatz) + "</div>";
+      naechstesEl.innerHTML = mapsLink(naechstes) + '<div class="reise-status-sub">' + esc(zusatz) + "</div>";
     } else {
       naechstesEl.textContent = "Reise beendet";
     }
