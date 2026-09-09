@@ -256,12 +256,30 @@ def main():
     # Zeilen in 01_bezahlt.csv - fuer die Zeitleiste zu einem Eintrag
     # zusammenfassen, sonst taucht derselbe Tag doppelt auf.
     ANTEIL_SUFFIX = re.compile(r"\s*-\s*\S+-Anteil\s*\(\d+%\)\s*$")
+    # Vor-Ort-Zahlungen stehen nach Regel 6 in Blatt 2; die Blatt-1-Zeile verweist
+    # darauf ("steht in Blatt 02 Nr. 8"). Der Reiseplan zeigt die Summe aus
+    # Blatt-1-Betrag (z.B. Anzahlung) und diesen Zahlungen - also was die
+    # Station wirklich gekostet hat.
+    BLATT2_REF = re.compile(r"steht in Blatt 0?2 Nr\.\s*(\d+)")  # nur diese Formulierung zaehlt (Regel 6)
+    b2_by_nr = {r["nr"]: r for r in b2}
     plan = []
     plan_by_key = {}
     for r in b1:
         beschreibung = ANTEIL_SUFFIX.sub("", r["beschreibung"])
         key = (r["datum"], r["kategorie"], beschreibung)
         betrag = round(num(r["betrag_eur"]), 2)
+        zahler_set = [r["zahler"]] if num(r["bezahlt_eur"]) > 0 else []
+        zahlmittel_set = [r["zahlmittel"]] if num(r["bezahlt_eur"]) > 0 else []
+        for ref in BLATT2_REF.findall(r["anmerkung"]):
+            z = b2_by_nr.get(ref)
+            if not z or z["typ"] != "Ausgabe":
+                continue
+            betrag = round(betrag + num(z["betrag_eur"]), 2)
+            if z["zahler"] not in zahler_set:
+                zahler_set.append(z["zahler"])
+            if z["zahlmittel"] not in zahlmittel_set:
+                zahlmittel_set.append(z["zahlmittel"])
+        vor_ort = bool(BLATT2_REF.search(r["anmerkung"]))
         if key in plan_by_key:
             # Aufgeteilter Posten (z.B. Flug je zur Haelfte): Betrag summieren,
             # Zahler zusammenfuehren, damit die Zeitleiste "wer hat gezahlt"
@@ -285,8 +303,9 @@ def main():
             "kategorie": r["kategorie"],
             "beschreibung": beschreibung,
             "betrag": betrag,
-            "zahler": r["zahler"],
-            "zahlmittel": r["zahlmittel"],
+            "zahler": " + ".join(zahler_set) if zahler_set else r["zahler"],
+            "zahlmittel": " + ".join(zahlmittel_set) if zahlmittel_set else r["zahlmittel"],
+            "vor_ort": vor_ort,
             "status": "offen" if num(r["offen_eur"]) > 0 and num(r["betrag_eur"]) > 0 else "bezahlt",
             "info_link": r.get("info_link") or None,
             "fahrzeit": r.get("fahrzeit") or None,

@@ -1,34 +1,34 @@
 {
-  "generated_at": "2026-09-09T12:34:42+00:00",
+  "generated_at": "2026-09-09T14:17:08+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6318.5,
-    "bezahlt": 5890.7,
-    "offen": 427.8,
+    "gesamt": 6302.9,
+    "bezahlt": 5922.9,
+    "offen": 380.0,
     "kasse_abgehoben": 376.43,
-    "kasse_bar_ausgegeben": 41.32,
-    "kasse_bestand": 335.11,
-    "patrick_gezahlt": 3978.01,
+    "kasse_bar_ausgegeben": 73.52,
+    "kasse_bestand": 302.91,
+    "patrick_gezahlt": 4010.21,
     "nora_gezahlt": 1912.69,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5890.7,
-    "anteil_pro_person": 2945.35,
-    "beitrag_patrick": 5978.01,
+    "saldo_basis": 5922.9,
+    "anteil_pro_person": 2961.45,
+    "beitrag_patrick": 6010.21,
     "beitrag_nora": -87.31,
-    "saldo_patrick": 3032.66,
+    "saldo_patrick": 3048.76,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
         "abgehoben_nad": 4047.0,
         "abgehoben_eur": 217.2,
-        "bar_nad": 770.0,
-        "bar_eur": 41.32,
-        "bestand_nad": 3277.0,
-        "bestand_eur": 175.88,
+        "bar_nad": 1370.0,
+        "bar_eur": 73.52,
+        "bestand_nad": 2677.0,
+        "bestand_eur": 143.68,
         "kurs": 18.63
       },
       "Nora": {
@@ -54,7 +54,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 746.06
+      "betrag": 730.46
     },
     {
       "name": "Tanken",
@@ -364,19 +364,6 @@
       "status": "bezahlt"
     },
     {
-      "id": "b1-7",
-      "datum": "2026-09-07",
-      "zeit": "",
-      "kategorie": "Unterkunft",
-      "beschreibung": "Wereldend Mountain Campsite",
-      "betrag": 47.8,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "TBD",
-      "zahlmittel": "Bargeld",
-      "status": "offen"
-    },
-    {
       "id": "b2-21",
       "datum": "2026-09-07",
       "zeit": "",
@@ -413,6 +400,19 @@
       "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-31",
+      "datum": "2026-09-07",
+      "zeit": "",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Wereldend Mountain Campsite",
+      "betrag": 32.2,
+      "betrag_fw": 600.0,
+      "waehrung": "NAD",
+      "zahler": "Patrick",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
     {
@@ -673,6 +673,7 @@
       "betrag": 1895.26,
       "zahler": "Patrick + Nora",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": null,
       "fahrzeit": null
@@ -686,6 +687,7 @@
       "betrag": 2726.15,
       "zahler": "Patrick",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": null,
       "fahrzeit": null
@@ -699,6 +701,7 @@
       "betrag": 36.0,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Kalahari%20Anib%20Campsite%2C%20Namibia",
       "fahrzeit": "3h"
@@ -709,9 +712,10 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Quiver Tree Camping",
-      "betrag": 0.0,
+      "betrag": 38.64,
       "zahler": "Patrick",
       "zahlmittel": "Bargeld",
+      "vor_ort": true,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Quiver%20Tree%20Camping%2C%20Namibia",
       "fahrzeit": "3h"
@@ -722,9 +726,10 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
-      "betrag": 24.96,
+      "betrag": 49.92,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": true,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia",
       "fahrzeit": "2h"
@@ -735,10 +740,11 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Wereldend Mountain Campsite",
-      "betrag": 47.8,
-      "zahler": "TBD",
+      "betrag": 32.2,
+      "zahler": "Patrick",
       "zahlmittel": "Bargeld",
-      "status": "offen",
+      "vor_ort": true,
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Wereldend%20Mountain%20Campsite%2C%20Namibia",
       "fahrzeit": "4h"
     },
@@ -751,6 +757,7 @@
       "betrag": 84.0,
       "zahler": "TBD",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia",
       "fahrzeit": "1h15"
@@ -764,6 +771,7 @@
       "betrag": 25.0,
       "zahler": "TBD",
       "zahlmittel": "Bargeld",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia",
       "fahrzeit": "5–7h"
@@ -777,6 +785,7 @@
       "betrag": 62.0,
       "zahler": "TBD",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
       "fahrzeit": "2h"
@@ -790,6 +799,7 @@
       "betrag": 48.0,
       "zahler": "TBD",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Granietkop%20Campsite%20Damaraland%2C%20Namibia",
       "fahrzeit": "3h"
@@ -803,6 +813,7 @@
       "betrag": 45.0,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Hoada%20Campsite%20%28statt%20Ugab%20Terrace%29%2C%20Namibia",
       "fahrzeit": "2h"
@@ -816,6 +827,7 @@
       "betrag": 58.0,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Okaukuejo%20Campsite%20Etosha%2C%20Namibia",
       "fahrzeit": "ca. 3h30"
@@ -829,6 +841,7 @@
       "betrag": 57.0,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Halali%20Campsite%20Etosha%2C%20Namibia",
       "fahrzeit": "2h"
@@ -842,6 +855,7 @@
       "betrag": 58.0,
       "zahler": "TBD",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%2C%20Namibia",
       "fahrzeit": "3h"
@@ -855,6 +869,7 @@
       "betrag": 58.0,
       "zahler": "TBD",
       "zahlmittel": "TBD",
+      "vor_ort": false,
       "status": "offen",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia",
       "fahrzeit": null
@@ -868,6 +883,7 @@
       "betrag": 44.7,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Waterberg%20Campsite%2C%20Namibia",
       "fahrzeit": "4h30"
@@ -881,6 +897,7 @@
       "betrag": 34.0,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
       "fahrzeit": "ca. 2h30"

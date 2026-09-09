@@ -12,7 +12,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 4 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,00 € | bezahlt | 36,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
 | 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,96 € | Anzahlung vorab bezahlt - Rest siehe Blatt 02 | 24,96 € | 0,00 € | Nora | N26 Debit | Anzahlung 460 NAD am 23.04. von Nora per N26 (Rechnung 6483110; Patrick 07.09.) - EUR VORLAEUFIG mit dem Kurs der Restzahlung 18.4323 gerechnet; echten N26-Betrag vom 23.04. nachtragen. Restzahlung 460 NAD am 05.09. steht in Blatt 02 Nr. 11. Die frueher hier gefuehrten 24 EUR waren der Kolmanskop-Eintritt (= Blatt 02 Nr. 12) |
-| 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 47,80 € | offen - cash on arrival | 0,00 € | 47,80 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
+| 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig; 600.00 NAD am 2026-09-07 Bargeld von Patrick - steht in Blatt 02 Nr. 31 |
 | 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,00 € | offen | 0,00 € | 84,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
 | 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 25,00 € | offen - cash on arrival | 0,00 € | 25,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
 | 10 | 2026-09-11 | Unterkunft | Spitzkoppe Campsite | 2 | 62,00 € | offen | 0,00 € | 62,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
@@ -25,7 +25,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 
-**Summe:** 5.303,87 € geplant · 4.876,07 € bezahlt · **427,80 € noch offen**
+**Summe:** 5.256,07 € geplant · 4.876,07 € bezahlt · **380,00 € noch offen**
 
 ## 2. Laufende Kosten während der Reise
 
@@ -62,8 +62,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 28 | 2026-09-09 | – | Ausgabe | Sesriem | Tankstellenshop Sesriem | Lebensmittel | – | 21,15 € | Nora | N26 Debit | – | Zahlmittel N26 angenommen (Noras einzige Karte) |
 | 29 | 2026-09-09 | – | Abhebung 💶 | Sesriem | ATM | Bargeld | 3000.00 NAD | 159,23 € | Nora | N26 Debit | 18.841 | Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 161.88 EUR fuer 3050.00 NAD inkl. Entgelt (Kurs 18.841). Ort angenommen (heute in Sesriem) - ggf. korrigieren |
 | 30 | 2026-09-09 | – | Ausgabe | Sesriem | ATM Behebungsentgelt | Gebühren | 50.00 NAD | 2,65 € | Nora | N26 Debit | 18.868 | Entgelt zur Abhebung Nr. 29 |
+| 31 | 2026-09-07 | – | Ausgabe | Wereldend | Wereldend Mountain Campsite | Unterkunft | 600.00 NAD | 32,20 € | Patrick | Bargeld | 18.634 | EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
 
-**Echte Ausgaben:** 1.014,63 € (davon bar 41,32 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 335,11 €
+**Echte Ausgaben:** 1.046,83 € (davon bar 73,52 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 302,91 €
 
 ## 3. Zusammenfassung
 
@@ -73,7 +74,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
-| Unterkunft | 746,06 € |
+| Unterkunft | 730,46 € |
 | Tanken | 368,88 € |
 | Lebensmittel | 282,56 € |
 | Eintritt | 92,04 € |
@@ -83,22 +84,22 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 17,75 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.318,50 €** (davon bezahlt 5.890,70 €, noch offen 427,80 €)
+**Gesamtausgaben: 6.302,90 €** (davon bezahlt 5.922,90 €, noch offen 380,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 3.673,78 € | 304,23 € | 3.978,01 € |
+| Patrick | 3.673,78 € | 336,43 € | 4.010,21 € |
 | Nora | 1.202,29 € | 710,40 € | 1.912,69 € |
-| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 427,80 € |
+| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 380,00 € |
 
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **376,43 €**
-- Davon bar ausgegeben: **41,32 €**
-- Kassenbestand rechnerisch: **335,11 €**
-  - Topf Patrick: 3.277 NAD ≈ 175,88 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
+- Davon bar ausgegeben: **73,52 €**
+- Kassenbestand rechnerisch: **302,91 €**
+  - Topf Patrick: 2.677 NAD ≈ 143,68 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
   - Topf Nora: 3.000 NAD ≈ 159,23 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
 - Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
@@ -108,16 +109,16 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Patrick gezahlt (Karte + Bargeld) | 3.978,01 € |
+| Patrick gezahlt (Karte + Bargeld) | 4.010,21 € |
 | Nora gezahlt (Karte) | 1.912,69 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 5.890,70 € |
-| Anteil je Person (50 %) | 2.945,35 € |
-| Patrick effektiv getragen (gezahlt + Überweisung) | 5.978,01 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 5.922,90 € |
+| Anteil je Person (50 %) | 2.961,45 € |
+| Patrick effektiv getragen (gezahlt + Überweisung) | 6.010,21 € |
 | Nora effektiv getragen (gezahlt − Überweisung) | -87,31 € |
-| **Saldo** | **Nora schuldet Patrick 3.032,66 €** |
+| **Saldo** | **Nora schuldet Patrick 3.048,76 €** |
 
-*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 427,80 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
+*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 380,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
 ### Offene Punkte (⚠️ markiert)
 

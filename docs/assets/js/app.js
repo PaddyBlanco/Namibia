@@ -881,7 +881,7 @@
             '<span class="pill">' + esc(p.kategorie) + "</span>" +
             (p.fahrzeit ? '<span class="pill">Anfahrt ' + esc(p.fahrzeit) + "</span>" : "") +
             (p.status === "offen" ? '<span class="pill status-offen">offen</span>' : bezahltVon) +
-            (p.status !== "offen" && hatBetrag && p.betrag <= 0 ? '<span class="pill">vor Ort bezahlt</span>' : "") +
+            (p.vor_ort ? '<span class="pill">vor Ort</span>' : "") +
           "</div>" +
         "</div>";
       el.appendChild(item);

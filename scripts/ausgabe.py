@@ -8,6 +8,8 @@ Beispiele (Datum = heute in Windhoek, wenn nicht angegeben):
       --kat Restaurant --nad 120 --zahler Nora --zahlmittel bar   # "Nora Bar": Noras Topf, dessen Kurs
   python3 scripts/ausgabe.py add --ort Solitaire --haendler Tankstelle --kat Tanken \
       --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja
+  python3 scripts/ausgabe.py add --datum 2026-09-07 --ort Wereldend --haendler "Wereldend Mountain Campsite" \
+      --kat Unterkunft --nad 600 --zahler Patrick --zahlmittel bar --unterkunft b1-7   # Regel 6
   python3 scripts/ausgabe.py abhebung --ort Sesriem --nad 3000 --gebuehr-nad 50 --eur 161.88 \
       --zahler Nora --zahlmittel n26                          # Umbuchung + Entgelt, EUR anteilig
   python3 scripts/ausgabe.py edit b2-25 kategorie=Lebensmittel
@@ -41,7 +43,7 @@ ZAHLMITTEL = {"n26": "N26 Debit", "debit": "Oberbank Debit", "oberbank": "Oberba
 KARTE_KURS_SCHAETZ = 18.43  # nur mit --kurs-schaetzen, als vorlaeufig markiert
 
 sys.path.insert(0, str(ROOT / "scripts"))
-from kosten_core import kassen_toepfe  # noqa: E402
+from kosten_core import kassen_toepfe, num  # noqa: E402
 
 
 def bar_topf(rows, person, nad):
@@ -137,6 +139,21 @@ def cmd_add(a):
     })
     write(LAUFEND, rows, fields)
     print(f"+ b2-{nr}: {a.datum} {a.haendler or a.ort} {a.kat} {fmt(eur)} EUR {zahler}/{zm}")
+
+    if a.unterkunft:
+        # Regel 6: Vor-Ort-Zahlung einer gebuchten Unterkunft - Blatt-1-Zeile
+        # bleibt als Buchung/Reiseplan stehen, zaehlt aber nur noch die schon
+        # vorab gezahlte Anzahlung; der Rest steht jetzt in Blatt 2.
+        brows, bfields = read(BEZAHLT)
+        bnr = a.unterkunft.split("-", 1)[1]
+        b = next((x for x in brows if x["nr"] == bnr), None) or sys.exit(f"{a.unterkunft} nicht gefunden")
+        b["betrag_eur"] = fmt(num(b["bezahlt_eur"]))
+        b["offen_eur"] = "0.00"
+        b["status"] = f"vor Ort bezahlt ({zm}) - siehe Blatt 02"
+        b["anmerkung"] = (b["anmerkung"] + "; " if b["anmerkung"] else "") + \
+            f"{fmt(a.nad) + ' NAD' if a.nad is not None else fmt(eur) + ' EUR'} am {a.datum} {zm} von {zahler} - steht in Blatt 02 Nr. {nr}"
+        write(BEZAHLT, brows, bfields)
+        print(f"~ {a.unterkunft}: Buchung auf Anzahlung {b['betrag_eur']} EUR gesetzt, offen 0, Verweis auf b2-{nr}")
     return a.msg or f"{a.haendler or a.ort}: {a.kat} ({fmt(eur).replace('.', ',')} EUR, {zahler}/{zm})"
 
 
@@ -245,6 +262,7 @@ def main():
     s.add_argument("--preis-l", type=float, help="NAD je Liter")
     s.add_argument("--km", type=int)
     s.add_argument("--voll", choices=["ja", "nein"])
+    s.add_argument("--unterkunft", help="b1-<nr>: gebuchte Unterkunft, die hiermit vor Ort bezahlt wird (Regel 6)")
     s.set_defaults(fn=cmd_add)
 
     s = sub.add_parser("abhebung")

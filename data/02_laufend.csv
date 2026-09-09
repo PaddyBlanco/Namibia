@@ -28,3 +28,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 28,2026-09-09,,Ausgabe,Sesriem,Tankstellenshop Sesriem,Lebensmittel,,EUR,21.15,Nora,N26 Debit,Zahlmittel N26 angenommen (Noras einzige Karte)
 29,2026-09-09,,Abhebung,Sesriem,ATM,Bargeld,3000.00,NAD,159.23,Nora,N26 Debit,Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 161.88 EUR fuer 3050.00 NAD inkl. Entgelt (Kurs 18.841). Ort angenommen (heute in Sesriem) - ggf. korrigieren
 30,2026-09-09,,Ausgabe,Sesriem,ATM Behebungsentgelt,Gebühren,50.00,NAD,2.65,Nora,N26 Debit,Entgelt zur Abhebung Nr. 29
+31,2026-09-07,,Ausgabe,Wereldend,Wereldend Mountain Campsite,Unterkunft,600.00,NAD,32.20,Patrick,Bargeld,EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)

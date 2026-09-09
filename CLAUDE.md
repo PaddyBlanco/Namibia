@@ -72,9 +72,16 @@ unabhängig davon.
    in die Spalte `Anmerkung`.
 6. **Jede Zahlung steht genau einmal.** Eine Unterkunft, die vor Ort (bar oder Karte)
    bezahlt wird, gehört als Zahlung nach `02_laufend.csv`. Ihre Zeile in
-   `01_bezahlt.csv` bleibt als Buchungsübersicht stehen, bekommt aber
-   `betrag_eur = 0`, `offen_eur = 0` und einen Verweis in der Anmerkung —
-   sonst zählt Blatt 3 den Posten doppelt.
+   `01_bezahlt.csv` bleibt als Buchungsübersicht stehen, `betrag_eur` wird
+   auf die schon vorab gezahlte Anzahlung gesetzt (meist 0), `offen_eur = 0`,
+   und die Anmerkung bekommt **wörtlich** den Verweis `steht in Blatt 02 Nr. <nr>`
+   — sonst zählt Blatt 3 den Posten doppelt. **Der Reiseplan summiert genau
+   diese Verweise** (`build_site_data.py`, Regex `steht in Blatt 0?2 Nr\.`) zum
+   Blatt-1-Betrag und zeigt so, was die Station wirklich gekostet hat
+   (Nutzerwunsch 09.09.2026: „Reiseplan-Kosten nach den Ausgaben, immer
+   aktuell"); andere Erwähnungen einer Blatt-2-Nummer (z. B. „(= Blatt 02
+   Nr. 12)" als Erklärung) zählen bewusst nicht. Schnellweg:
+   `ausgabe.py add … --unterkunft b1-<nr>` erledigt beides in einem Schritt.
 7. **Barausgaben in EUR** werden mit dem Kurs bewertet, zu dem das Bargeld beschafft
    wurde — **je Bargeld-Topf** (Regel 9): Patrick 18,633 NAD/€ (ATM 03.09.),
    Nora 18,841 NAD/€ (ATM 09.09., 3.050 NAD inkl. 50 NAD Entgelt für 161,88 €).
@@ -148,6 +155,7 @@ holen** (Datum ist sonst „heute Windhoek"), nichts von Hand in die CSVs.
 | „Nora N26 Wasser Little Sossus 5,41" | `python3 scripts/ausgabe.py add --ort "Little Sossus" --haendler "Little Sossus Campsite" --kat Lebensmittel --eur 5.41 --zahler Nora --zahlmittel n26` |
 | „50 NAD Trinkgeld, Nora Bar" | `… add --ort Helmeringhausen --kat Restaurant --nad 50 --zahler Nora --zahlmittel bar` (EUR zum Kurs von Noras Topf; ohne „Patrick/Nora Bar" nachfragen) |
 | „Nora N26 83,94 Tanken, 54,6 L, km 22085, voll" | `… add --ort Sesriem --haendler Tankstelle --kat Tanken --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja` (schreibt auch `04_tanken.csv`) |
+| „Wereldend 600 NAD Patrick Bar" (gebuchte Unterkunft vor Ort bezahlt) | `… add --datum 2026-09-07 --ort Wereldend --haendler "Wereldend Mountain Campsite" --kat Unterkunft --nad 600 --zahler Patrick --zahlmittel bar --unterkunft b1-7` (Regel 6: Blatt-1-Zeile auf Anzahlung/0, Verweis, Reiseplan zeigt die Summe) |
 | App-Text `ÄNDERN [b2-25 …]: Kategorie Restaurant → Lebensmittel` | `… edit b2-25 kategorie=Lebensmittel` |
 | App-Text `LÖSCHEN [b2-1 …]` | `… delete b2-1` (Blatt 1 verweigert ohne `--force`, s. Regel 6) |
 | App-Text `NEU: …` | wie eine normale Meldung → `add` |
@@ -383,7 +391,9 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   3. **Tanken** (`tanken`, ⛽) — Tankplanung-Karte, Verbrauch/Reichweite,
      Tankvorgänge, Tankstellen-Planung
   4. **Reiseplan** (`plan`, 🗺️) — Zeitleiste, heutiger Tag live aus dem
-     Gerätedatum des Betrachters hervorgehoben; jede Karte zeigt Betrag und
+     Gerätedatum des Betrachters hervorgehoben; jede Karte zeigt den
+     **tatsächlichen Betrag** (Blatt-1-Betrag + verlinkte Vor-Ort-Zahlungen
+     aus Blatt 2, s. Regel 6; Pille „vor Ort", Feld `plan[].vor_ort`) und
      (wenn bezahlt) Zahler + Zahlmittel — `build_site_data.py` liefert dafür
      `plan[].betrag/zahler/zahlmittel` und führt aufgeteilte Posten (Flug je
      zur Hälfte) zu einem Eintrag mit Summe und „Patrick + Nora" zusammen
