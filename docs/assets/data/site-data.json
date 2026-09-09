@@ -1,34 +1,34 @@
 {
-  "generated_at": "2026-09-09T14:27:52+00:00",
+  "generated_at": "2026-09-09T17:21:32+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6302.9,
-    "bezahlt": 5922.9,
+    "gesamt": 6306.66,
+    "bezahlt": 5926.66,
     "offen": 380.0,
     "kasse_abgehoben": 376.43,
-    "kasse_bar_ausgegeben": 73.52,
-    "kasse_bestand": 302.91,
-    "patrick_gezahlt": 4010.21,
+    "kasse_bar_ausgegeben": 77.28,
+    "kasse_bestand": 299.15,
+    "patrick_gezahlt": 4013.97,
     "nora_gezahlt": 1912.69,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5922.9,
-    "anteil_pro_person": 2961.45,
-    "beitrag_patrick": 6010.21,
+    "saldo_basis": 5926.66,
+    "anteil_pro_person": 2963.33,
+    "beitrag_patrick": 6013.97,
     "beitrag_nora": -87.31,
-    "saldo_patrick": 3048.76,
+    "saldo_patrick": 3050.64,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
         "abgehoben_nad": 4047.0,
         "abgehoben_eur": 217.2,
-        "bar_nad": 1370.0,
-        "bar_eur": 73.52,
-        "bestand_nad": 2677.0,
-        "bestand_eur": 143.68,
+        "bar_nad": 1440.0,
+        "bar_eur": 77.28,
+        "bestand_nad": 2607.0,
+        "bestand_eur": 139.92,
         "kurs": 18.63
       },
       "Nora": {
@@ -77,12 +77,12 @@
       "betrag": 75.95
     },
     {
-      "name": "Shopping",
-      "betrag": 20.07
+      "name": "Sonstiges",
+      "betrag": 21.51
     },
     {
-      "name": "Sonstiges",
-      "betrag": 17.75
+      "name": "Shopping",
+      "betrag": 20.07
     },
     {
       "name": "Gebühren",
@@ -598,6 +598,21 @@
       "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-32",
+      "datum": "2026-09-09",
+      "zeit": "",
+      "ort": "Little Sossus",
+      "ort_link": null,
+      "kategorie": "Sonstiges",
+      "beschreibung": "Little Sossus Campsite",
+      "betrag": 3.76,
+      "betrag_fw": 70.0,
+      "waehrung": "NAD",
+      "zahler": "Patrick",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
     {
