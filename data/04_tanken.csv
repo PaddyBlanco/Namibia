@@ -3,4 +3,4 @@ nr,datum,ort,liter,preis_pro_liter_nad,kilometerstand,betrag_eur,zahler,anmerkun
 2,2026-09-05,Keetmanshoop,TBD,TBD,TBD,98.15,Nora,Entspricht Blatt 02 Nr. 10 (Agra Keetmanshoop) - Liter/Preis/km-Stand fehlen noch,TBD
 3,2026-09-06,Lüderitz,TBD,TBD,TBD,60.20,Nora,Entspricht Blatt 02 Nr. 17 (Lüderitz Fuel Center) - Liter/Preis/km-Stand fehlen noch - Volltanken von Patrick bestaetigt (06.09.),ja
 4,2026-09-07,Helmeringhausen,34.29,28.58,21586,53.17,Nora,Entspricht Blatt 02 Nr. 23 - erster Fill-up mit bekanntem Kilometerstand,ja
-5,2026-09-09,Sesriem,54.60,TBD,22085,83.94,Nora,Entspricht Blatt 02 Nr. 27 - erster Abschnitt mit zwei km-Staenden (Helmeringhausen 21586 -> Sesriem 22085 = 499 km); Volltanken noch nicht bestaetigt,TBD
+5,2026-09-09,Sesriem,54.60,TBD,22085,83.94,Nora,Entspricht Blatt 02 Nr. 27 - erster Abschnitt mit zwei Volltanks und km-Staenden (Helmeringhausen 21586 -> Sesriem 22085 = 499 km); Volltanken von Patrick bestaetigt (09.09.),ja

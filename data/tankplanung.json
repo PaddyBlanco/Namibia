@@ -16,5 +16,5 @@
   },
   "strecke_bis_naechster_stopp_km": 80,
   "empfehlung": "Frisch getankt in Sesriem (54,60 L bei 22.085 km). Morgen Richtung Swakopmund liegt Solitaire nach ~80 km auf dem Weg - dort kurz auffüllen, dann sind die ~340 km bis Walvis Bay/Swakopmund entspannt, egal wie voll der Tank jetzt ist.",
-  "anmerkung": "Erster Abschnitt mit zwei echten Kilometerständen: Helmeringhausen 21.586 km → Sesriem 22.085 km = 499 km mit 54,60 L nachgetankt, rechnerisch 10,9 L/100 km - gilt nur, wenn in Sesriem wieder ganz vollgetankt wurde (noch nicht bestätigt). Bis dahin bleibt der Bordcomputer-Schnitt (11,2 L/100 km) die Referenz für die Restreichweite."
+  "anmerkung": "Erster gemessener Verbrauch: Helmeringhausen 21.586 km → Sesriem 22.085 km = 499 km mit 54,60 L nachgetankt, beide Male voll = 10,9 L/100 km (Bordcomputer sagte 11,2). Die Seite rechnet ab jetzt mit dem gemessenen Wert; jeder weitere Volltank mit Kilometerstand verfeinert den Schnitt."
 }
