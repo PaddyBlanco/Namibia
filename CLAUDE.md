@@ -174,8 +174,13 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   dieselbe Zeile (verknüpft über Datum/Ort in der Anmerkung). Beim Eintragen
   neuer Tankbelege also **beide Dateien** pflegen: Betrag in `02_laufend.csv`,
   Details in `04_tanken.csv`.
-- Verbrauch (L/100km) wird nur berechnet, wenn zwei **aufeinanderfolgende**
-  Fill-ups beide einen Kilometerstand haben — sonst `null`, nie geschätzt.
+- Verbrauch (L/100km) wird nur berechnet, wenn zwei **bestätigte Volltanks**
+  (`volltanken = ja`) beide einen Kilometerstand haben — bei einer
+  Teilbetankung dazwischen ist der echte Verbrauch unbekannt, dann bleibt der
+  Bordcomputer-Schnitt die Quelle (seit 09.09.2026; vorher reichten zwei
+  km-Stände, was bei „Tanken in Sesriem" ohne Voll-Bestätigung eine
+  Scheinmessung erzeugt hätte). Sonst `null`, nie geschätzt. Beim Erfassen
+  eines Tankvorgangs deshalb immer fragen: **voll?**
 - Reichweite (km) = Tankgröße ÷ Verbrauch × 100, nur wenn beides in
   `data/fahrzeug.json` bzw. aus echten Fill-ups bekannt ist. Solange das
   Fahrzeugmodell `"TBD"` ist, zeigt die Seite "Tankgröße fehlt noch".
