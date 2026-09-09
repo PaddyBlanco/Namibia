@@ -246,6 +246,10 @@ def main():
         "kasse_bestand", "patrick_gezahlt", "nora_gezahlt", "tbd_gezahlt",
         "transfer_patrick_nora", "saldo_basis", "anteil_pro_person",
         "beitrag_patrick", "beitrag_nora", "saldo_patrick")}
+    summary["kasse"] = {
+        person: {key: (round(v, 2) if isinstance(v, float) else v) for key, v in t.items()}
+        for person, t in k["kasse"].items()
+    }
 
     # ---------- Reiseplan (aus Blatt 1, inkl. Naechte-Spanne) ----------
     # Aufgeteilte Posten (z.B. Flug haelftig Patrick/Nora) stehen als zwei

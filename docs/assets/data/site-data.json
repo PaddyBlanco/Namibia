@@ -1,25 +1,47 @@
 {
-  "generated_at": "2026-09-09T12:25:42+00:00",
+  "generated_at": "2026-09-09T12:28:26+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6315.85,
-    "bezahlt": 5888.05,
+    "gesamt": 6318.5,
+    "bezahlt": 5890.7,
     "offen": 427.8,
-    "kasse_abgehoben": 217.2,
+    "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 41.32,
-    "kasse_bestand": 175.88,
+    "kasse_bestand": 335.11,
     "patrick_gezahlt": 3978.01,
-    "nora_gezahlt": 1910.04,
+    "nora_gezahlt": 1912.69,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5888.05,
-    "anteil_pro_person": 2944.03,
+    "saldo_basis": 5890.7,
+    "anteil_pro_person": 2945.35,
     "beitrag_patrick": 5978.01,
-    "beitrag_nora": -89.96,
-    "saldo_patrick": 3033.98
+    "beitrag_nora": -87.31,
+    "saldo_patrick": 3032.66,
+    "kasse": {
+      "Patrick": {
+        "seit": "2026-09-03",
+        "abgehoben_nad": 4047.0,
+        "abgehoben_eur": 217.2,
+        "bar_nad": 770.0,
+        "bar_eur": 41.32,
+        "bestand_nad": 3277.0,
+        "bestand_eur": 175.88,
+        "kurs": 18.63
+      },
+      "Nora": {
+        "seit": "2026-09-09",
+        "abgehoben_nad": 3000.0,
+        "abgehoben_eur": 159.23,
+        "bar_nad": 0.0,
+        "bar_eur": 0.0,
+        "bestand_nad": 3000.0,
+        "bestand_eur": 159.23,
+        "kurs": 18.84
+      }
+    }
   },
   "kategorien": [
     {
@@ -64,7 +86,7 @@
     },
     {
       "name": "Gebühren",
-      "betrag": 2.52
+      "betrag": 5.17
     }
   ],
   "ausgaben": [
@@ -493,6 +515,19 @@
       "betrag": 21.15,
       "betrag_fw": null,
       "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-30",
+      "datum": "2026-09-09",
+      "zeit": "",
+      "kategorie": "Gebühren",
+      "beschreibung": "ATM Behebungsentgelt",
+      "betrag": 2.65,
+      "betrag_fw": 50.0,
+      "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "status": "bezahlt"

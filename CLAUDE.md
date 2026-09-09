@@ -41,7 +41,12 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
    `betrag_eur = 0`, `offen_eur = 0` und einen Verweis in der Anmerkung —
    sonst zählt Blatt 3 den Posten doppelt.
 7. **Barausgaben in EUR** werden mit dem Kurs bewertet, zu dem das Bargeld beschafft
-   wurde (aktuell **18,633 NAD/€** aus der ATM-Abhebung vom 03.09.).
+   wurde — **je Bargeld-Topf** (Regel 9): Patrick 18,633 NAD/€ (ATM 03.09.),
+   Nora 18,841 NAD/€ (ATM 09.09., 3.050 NAD inkl. 50 NAD Entgelt für 161,88 €).
+   `kosten_core.kassen_toepfe()` liefert den Kurs je Topf; `ausgabe.py` nimmt
+   ihn automatisch. Bei einer Abhebung wird der EUR-Gesamtabzug anteilig auf
+   Umbuchung (Regel 1) und Entgelt (Kategorie `Gebühren`) verteilt
+   (`ausgabe.py abhebung`).
 8. **Saldo-Definition (seit 07.09.2026, `scripts/kosten_core.py`):** 50/50 auf
    Basis dessen, was **bisher nachweislich von Patrick oder Nora bezahlt** wurde
    (`saldo_basis`). Noch offene Posten gehören niemandem, bis sie jemand bezahlt;
@@ -52,13 +57,19 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
    Abzug der Überweisung aus (Summe der Beiträge lag 2.000 € über dem Bezahlten).
    `build_md.py` und `build_site_data.py` rechnen **beide** über `kosten_core.compute()`
    — Zahlenlogik nie in einem der beiden Skripte allein ändern.
-9. **Bargeld gehört dem Abhebenden.** Die Reisekasse stammt aus Patricks
-   ATM-Abhebung — jede Zeile mit `zahlmittel = Bargeld` bekommt deshalb
-   `zahler = Patrick`, auch wenn Nora physisch bezahlt hat. Sonst würde
-   Patricks Geld Nora gutgeschrieben und der Saldo kippt. `kosten_core.pruefe()`
-   warnt bei beiden Build-Skripten auf stderr, wenn ein Barzahler nicht
-   abgehoben hat oder ein Zahler-Wert weder `Patrick`, `Nora` noch `TBD` ist
-   (Tippfehler wie `patrick` fallen sonst stillschweigend aus der Saldo-Basis).
+9. **Bargeld gehört dem Abhebenden — ein Topf je Person, FIFO.** Bis 08.09. gab
+   es nur Patricks Topf (ATM 03.09., 4.047 NAD), seit 09.09. auch Noras (ATM
+   Sesriem, 3.000 NAD). Eine Barzahlung bekommt als `zahler` **den ältesten
+   Topf, der den Betrag noch deckt** — also Patrick, bis seine ~3.277 NAD
+   aufgebraucht sind, danach Nora — unabhängig davon, wer die Scheine
+   physisch übergibt (Nutzerentscheidung 09.09.: nicht pro Zahlung fragen,
+   wessen Geld es war). `ausgabe.py add --zahlmittel bar` macht das
+   automatisch (`bar_topf()`), vermerkt den physischen Zahler in der
+   Anmerkung und nimmt den Kurs des Topfs (Regel 7). `kosten_core.pruefe()`
+   warnt bei beiden Build-Skripten, wenn ein Barzahler keinen Topf hat, ein
+   Topf überzogen ist oder ein Zahler-Wert weder `Patrick`, `Nora` noch `TBD`
+   ist. Die Website zeigt die Töpfe unter Kosten → Reisekasse; `kosten.md`
+   unter „Reisekasse".
 
 ## Kategorien (fix — nicht erweitern ohne Rücksprache)
 

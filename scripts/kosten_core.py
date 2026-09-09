@@ -20,14 +20,44 @@ def pruefe(b1, b2):
             if z not in PERSONEN + ("TBD",):
                 warnungen.append(f"{blatt} Nr. {r['nr']}: unbekannter Zahler {z!r} - "
                                  "faellt stillschweigend aus der Saldo-Basis")
-    # Bargeld gehoert dem, der es abgehoben hat. Zahlt jemand anderes "bar",
-    # wuerde fremdes Geld ihm gutgeschrieben und der Saldo kippt.
-    abheber = {r["zahler"] for r in b2 if r["typ"] == "Abhebung"}
+    # Bargeld gehoert dem, der es abgehoben hat (ein Topf je Person). Zahlt
+    # jemand "bar", der keinen Topf hat, oder wird ein Topf ueberzogen, stimmt
+    # die Zuordnung nicht - dann kippt der Saldo.
+    toepfe = kassen_toepfe(b2)
     for r in b2:
-        if r["typ"] == "Ausgabe" and r["zahlmittel"] == "Bargeld" and r["zahler"] not in abheber:
+        if r["typ"] == "Ausgabe" and r["zahlmittel"] == "Bargeld" and r["zahler"] not in toepfe:
             warnungen.append(f"02_laufend.csv Nr. {r['nr']}: Barzahlung mit Zahler {r['zahler']!r}, "
-                             f"abgehoben hat aber {sorted(abheber)} - Zahler muss der Abhebende sein")
+                             f"abgehoben haben aber nur {sorted(toepfe)} - Zahler muss einen Bargeld-Topf haben")
+    for person, t in toepfe.items():
+        if t["bestand_nad"] < -0.5:
+            warnungen.append(f"Bargeld-Topf {person} ueberzogen: {t['bestand_nad']:.0f} NAD - "
+                             "Barzahlungen sind dem falschen Topf zugeordnet (FIFO-Regel, CLAUDE.md Regel 9)")
     return warnungen
+
+
+def kassen_toepfe(b2):
+    """Ein Bargeld-Topf je Person: Abhebungen minus Barzahlungen, mit eigenem Kurs.
+
+    Reihenfolge = erste Abhebung (aeltester Topf zuerst) - diese Reihenfolge
+    nutzt ausgabe.py, um Barzahlungen dem aeltesten Topf mit Deckung zuzuordnen.
+    """
+    toepfe = {}
+    for r in b2:
+        if r["typ"] != "Abhebung":
+            continue
+        t = toepfe.setdefault(r["zahler"], {"seit": r["datum"], "abgehoben_nad": 0.0, "abgehoben_eur": 0.0,
+                                             "bar_nad": 0.0, "bar_eur": 0.0})
+        t["abgehoben_nad"] += num(r["betrag_fw"])
+        t["abgehoben_eur"] += num(r["betrag_eur"])
+    for r in b2:
+        if r["typ"] == "Ausgabe" and r["zahlmittel"] == "Bargeld" and r["zahler"] in toepfe:
+            toepfe[r["zahler"]]["bar_nad"] += num(r["betrag_fw"])
+            toepfe[r["zahler"]]["bar_eur"] += num(r["betrag_eur"])
+    for t in toepfe.values():
+        t["bestand_nad"] = t["abgehoben_nad"] - t["bar_nad"]
+        t["bestand_eur"] = t["abgehoben_eur"] - t["bar_eur"]
+        t["kurs"] = round(t["abgehoben_nad"] / t["abgehoben_eur"], 3) if t["abgehoben_eur"] else None
+    return dict(sorted(toepfe.items(), key=lambda kv: kv[1]["seit"]))
 
 
 def warne(warnungen):
@@ -110,6 +140,7 @@ def compute(b1, b2, b3):
         "kasse_abgehoben": abh_sum,
         "kasse_bar_ausgegeben": bar_sum,
         "kasse_bestand": abh_sum - bar_sum,
+        "kasse": kassen_toepfe(b2),
         "kategorien": kategorien,
         "patrick_gezahlt": patrick_gezahlt,
         "nora_gezahlt": nora_gezahlt,

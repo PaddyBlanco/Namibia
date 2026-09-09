@@ -8,6 +8,8 @@ Beispiele (Datum = heute in Windhoek, wenn nicht angegeben):
       --kat Restaurant --nad 120 --zahlmittel bar            # Zahler wird Patrick, EUR zum Kassenkurs
   python3 scripts/ausgabe.py add --ort Solitaire --haendler Tankstelle --kat Tanken \
       --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja
+  python3 scripts/ausgabe.py abhebung --ort Sesriem --nad 3000 --gebuehr-nad 50 --eur 161.88 \
+      --zahler Nora --zahlmittel n26                          # Umbuchung + Entgelt, EUR anteilig
   python3 scripts/ausgabe.py edit b2-25 kategorie=Lebensmittel
   python3 scripts/ausgabe.py delete b2-1
 
@@ -36,8 +38,23 @@ KATEGORIEN = ["Flug", "Mietwagen", "Unterkunft", "Tanken", "Lebensmittel", "Rest
 ZAHLMITTEL = {"n26": "N26 Debit", "debit": "Oberbank Debit", "oberbank": "Oberbank Debit",
               "bar": "Bargeld", "bargeld": "Bargeld", "kredit": "card complete",
               "cardcomplete": "card complete", "tbd": "TBD"}
-BAR_KURS = 18.633          # Regel 7: Kurs der ATM-Abhebung vom 03.09.2026
 KARTE_KURS_SCHAETZ = 18.43  # nur mit --kurs-schaetzen, als vorlaeufig markiert
+
+sys.path.insert(0, str(ROOT / "scripts"))
+from kosten_core import kassen_toepfe  # noqa: E402
+
+
+def bar_topf(rows, nad):
+    """Aeltester Bargeld-Topf mit Deckung (Regel 9 / FIFO); Kurs des Topfs (Regel 7)."""
+    toepfe = kassen_toepfe(rows)
+    if not toepfe:
+        sys.exit("Keine Abhebung erfasst - Barzahlung nicht zuordenbar")
+    for person, t in toepfe.items():
+        if t["bestand_nad"] + 0.5 >= nad:
+            return person, t["kurs"], t
+    person, t = list(toepfe.items())[-1]
+    print(f"WARNUNG: kein Topf deckt {nad:.0f} NAD - {person} wird ueberzogen ({t['bestand_nad']:.0f} NAD Bestand)")
+    return person, t["kurs"], t
 
 
 def heute():
@@ -70,10 +87,14 @@ def cmd_add(a):
     zm = ZAHLMITTEL.get(a.zahlmittel.lower().replace(" ", ""), a.zahlmittel)
     zahler = a.zahler
     notes = [a.anmerkung] if a.anmerkung else []
+    bar_kurs = None
     if zm == "Bargeld":
-        if zahler and zahler != "Patrick":
-            notes.append(f"bar von {zahler} bezahlt - Zahler laut Regel 9 Patrick (Abhebender)")
-        zahler = "Patrick"
+        if a.nad is None:
+            sys.exit("Barzahlung braucht --nad (Bargeld ist immer NAD)")
+        topf, bar_kurs, _ = bar_topf(rows, a.nad)
+        if zahler and zahler != topf:
+            notes.append(f"bar von {zahler} bezahlt - zaehlt beim Bargeld-Topf {topf} (Regel 9, FIFO)")
+        zahler = topf
     if zahler not in ("Patrick", "Nora", "TBD"):
         sys.exit("--zahler Patrick|Nora|TBD noetig (ausser bei Bargeld)")
 
@@ -82,8 +103,8 @@ def cmd_add(a):
     eur = a.eur
     if eur is None:
         if zm == "Bargeld":
-            eur = round(a.nad / BAR_KURS, 2)
-            notes.append(f"EUR zum Kassenkurs {BAR_KURS} NAD/EUR")
+            eur = round(a.nad / bar_kurs, 2)
+            notes.append(f"EUR zum Kurs des Bargeld-Topfs {zahler} ({bar_kurs} NAD/EUR)")
         elif a.kurs_schaetzen:
             eur = round(a.nad / KARTE_KURS_SCHAETZ, 2)
             notes.append(f"EUR VORLAEUFIG mit {KARTE_KURS_SCHAETZ} NAD/EUR geschaetzt - echten Kartenbetrag nachtragen")
@@ -120,6 +141,30 @@ def cmd_add(a):
     write(LAUFEND, rows, fields)
     print(f"+ b2-{nr}: {a.datum} {a.haendler or a.ort} {a.kat} {fmt(eur)} EUR {zahler}/{zm}")
     return a.msg or f"{a.haendler or a.ort}: {a.kat} ({fmt(eur).replace('.', ',')} EUR, {zahler}/{zm})"
+
+
+def cmd_abhebung(a):
+    """Bargeldabhebung = Umbuchung (Regel 1) + Behebungsentgelt als Gebuehr, EUR anteilig aus dem Gesamtabzug."""
+    rows, fields = read(LAUFEND)
+    nr = max(int(r["nr"]) for r in rows) + 1
+    zm = ZAHLMITTEL.get(a.zahlmittel.lower().replace(" ", ""), a.zahlmittel)
+    gesamt_nad = a.nad + a.gebuehr_nad
+    kurs = gesamt_nad / a.eur
+    eur_abh = round(a.nad / kurs, 2)
+    eur_geb = round(a.eur - eur_abh, 2)
+    base = {"datum": a.datum, "zeit": a.zeit or "", "ort": a.ort, "zahler": a.zahler, "zahlmittel": zm}
+    rows.append(dict(base, nr=str(nr), typ="Abhebung", haendler=a.haendler or "ATM", kategorie="Bargeld",
+                     betrag_fw=fmt(a.nad), waehrung="NAD", betrag_eur=fmt(eur_abh),
+                     anmerkung=f"Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug {fmt(a.eur)} EUR fuer "
+                               f"{fmt(gesamt_nad)} NAD inkl. Entgelt (Kurs {kurs:.3f}). {a.anmerkung or ''}".strip()))
+    if a.gebuehr_nad:
+        rows.append(dict(base, nr=str(nr + 1), typ="Ausgabe", haendler="ATM Behebungsentgelt", kategorie="Gebühren",
+                         betrag_fw=fmt(a.gebuehr_nad), waehrung="NAD", betrag_eur=fmt(eur_geb),
+                         anmerkung=f"Entgelt zur Abhebung Nr. {nr}"))
+    write(LAUFEND, rows, fields)
+    print(f"+ b2-{nr}: Abhebung {fmt(a.nad)} NAD = {fmt(eur_abh)} EUR ({a.zahler}, Kurs {kurs:.3f})"
+          + (f"; + b2-{nr+1}: Entgelt {fmt(a.gebuehr_nad)} NAD = {fmt(eur_geb)} EUR" if a.gebuehr_nad else ""))
+    return a.msg or f"Abhebung {a.zahler}: {a.nad:.0f} NAD + {a.gebuehr_nad:.0f} NAD Entgelt = {fmt(a.eur).replace('.', ',')} EUR"
 
 
 def finde(id_):
@@ -204,6 +249,19 @@ def main():
     s.add_argument("--km", type=int)
     s.add_argument("--voll", choices=["ja", "nein"])
     s.set_defaults(fn=cmd_add)
+
+    s = sub.add_parser("abhebung")
+    s.add_argument("--datum", default=heute())
+    s.add_argument("--zeit")
+    s.add_argument("--ort", required=True)
+    s.add_argument("--haendler")
+    s.add_argument("--nad", type=float, required=True, help="abgehobener Betrag")
+    s.add_argument("--gebuehr-nad", type=float, default=0.0, help="Behebungsentgelt in NAD")
+    s.add_argument("--eur", type=float, required=True, help="gesamt abgebuchter EUR-Betrag")
+    s.add_argument("--zahler", required=True, choices=["Patrick", "Nora"])
+    s.add_argument("--zahlmittel", required=True)
+    s.add_argument("--anmerkung")
+    s.set_defaults(fn=cmd_abhebung)
 
     s = sub.add_parser("edit")
     s.add_argument("id", help="b2-<nr> oder b1-<nr>")

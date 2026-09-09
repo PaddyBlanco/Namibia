@@ -109,6 +109,12 @@ def main():
     lines.append(f"- Abgehoben gesamt: **{eur(k['kasse_abgehoben'])}**")
     lines.append(f"- Davon bar ausgegeben: **{eur(k['kasse_bar_ausgegeben'])}**")
     lines.append(f"- Kassenbestand rechnerisch: **{eur(k['kasse_bestand'])}**")
+    for person, t in k["kasse"].items():
+        nad = lambda v: f"{v:,.0f}".replace(",", ".")
+        lines.append(f"  - Topf {person}: {nad(t['bestand_nad'])} NAD ≈ {eur(t['bestand_eur'])} "
+                     f"(abgehoben {nad(t['abgehoben_nad'])} NAD zu {t['kurs']} NAD/€)")
+    lines.append("- Barzahlungen werden dem ältesten Topf mit Deckung zugerechnet (Regel 9), "
+                 "EUR zum Kurs des jeweiligen Topfs (Regel 7).")
     lines.append("")
 
     lines.append("### Verrechnung zwischen Patrick und Nora")

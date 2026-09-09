@@ -611,6 +611,15 @@
     document.getElementById("t-kasse-abgehoben").textContent = euro(s.kasse_abgehoben);
     document.getElementById("t-kasse-ausgegeben").textContent = euro(s.kasse_bar_ausgegeben);
     document.getElementById("t-kasse-bestand").textContent = euro(s.kasse_bestand);
+    var kasseHint = document.getElementById("kasse-hint");
+    if (s.kasse && Object.keys(s.kasse).length > 1) {
+      kasseHint.textContent = "Zwei Bargeld-Töpfe: " + Object.keys(s.kasse).map(function (p) {
+        var t = s.kasse[p];
+        return p + " " + Math.round(t.bestand_nad).toLocaleString("de-DE") + " NAD (≈ " + euro(t.bestand_eur) + ")";
+      }).join(" · ") + ". Barzahlungen zählen beim älteren Topf, bis er leer ist.";
+    } else {
+      kasseHint.textContent = "";
+    }
 
     var saldoEl = document.getElementById("t-saldo");
     var labelEl = document.getElementById("saldo-label");

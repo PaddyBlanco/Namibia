@@ -60,8 +60,10 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 26 | 2026-09-08 | – | Ausgabe | Sesriem | NWR Sesriem | Eintritt | – | 67,08 € | Nora | N26 Debit | – | Park-Permit Namib-Naukluft (Sesriem Canyon / Elim Dune / Sossusvlei) |
 | 27 | 2026-09-09 | – | Ausgabe | Sesriem | Tankstelle Sesriem | Tanken | – | 83,94 € | Nora | N26 Debit | – | 54.60 Liter bei km-Stand 22085 (siehe 04_tanken.csv Nr. 5) - NAD-Betrag und Preis/Liter nicht genannt |
 | 28 | 2026-09-09 | – | Ausgabe | Sesriem | Tankstellenshop Sesriem | Lebensmittel | – | 21,15 € | Nora | N26 Debit | – | Zahlmittel N26 angenommen (Noras einzige Karte) |
+| 29 | 2026-09-09 | – | Abhebung 💶 | Sesriem | ATM | Bargeld | 3000.00 NAD | 159,23 € | Nora | N26 Debit | 18.841 | Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 161.88 EUR fuer 3050.00 NAD inkl. Entgelt (Kurs 18.841). Ort angenommen (heute in Sesriem) - ggf. korrigieren |
+| 30 | 2026-09-09 | – | Ausgabe | Sesriem | ATM Behebungsentgelt | Gebühren | 50.00 NAD | 2,65 € | Nora | N26 Debit | 18.868 | Entgelt zur Abhebung Nr. 29 |
 
-**Echte Ausgaben:** 1.011,98 € (davon bar 41,32 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 175,88 €
+**Echte Ausgaben:** 1.014,63 € (davon bar 41,32 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 335,11 €
 
 ## 3. Zusammenfassung
 
@@ -79,23 +81,26 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Aktivitäten | 75,95 € |
 | Shopping | 20,07 € |
 | Sonstiges | 17,75 € |
-| Gebühren | 2,52 € |
+| Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.315,85 €** (davon bezahlt 5.888,05 €, noch offen 427,80 €)
+**Gesamtausgaben: 6.318,50 €** (davon bezahlt 5.890,70 €, noch offen 427,80 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 304,23 € | 3.978,01 € |
-| Nora | 1.202,29 € | 707,75 € | 1.910,04 € |
+| Nora | 1.202,29 € | 710,40 € | 1.912,69 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 427,80 € |
 
 ### Reisekasse (Bargeld)
 
-- Abgehoben gesamt: **217,20 €**
+- Abgehoben gesamt: **376,43 €**
 - Davon bar ausgegeben: **41,32 €**
-- Kassenbestand rechnerisch: **175,88 €**
+- Kassenbestand rechnerisch: **335,11 €**
+  - Topf Patrick: 3.277 NAD ≈ 175,88 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
+  - Topf Nora: 3.000 NAD ≈ 159,23 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
+- Barzahlungen werden dem ältesten Topf mit Deckung zugerechnet (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
 
@@ -104,13 +109,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 3.978,01 € |
-| Nora gezahlt (Karte) | 1.910,04 € |
+| Nora gezahlt (Karte) | 1.912,69 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 5.888,05 € |
-| Anteil je Person (50 %) | 2.944,03 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 5.890,70 € |
+| Anteil je Person (50 %) | 2.945,35 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 5.978,01 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | -89,96 € |
-| **Saldo** | **Nora schuldet Patrick 3.033,98 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | -87,31 € |
+| **Saldo** | **Nora schuldet Patrick 3.032,66 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 427,80 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
