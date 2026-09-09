@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-09T11:48:23+00:00",
+  "generated_at": "2026-09-09T12:22:44+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6294.7,
-    "bezahlt": 5866.9,
+    "gesamt": 6315.85,
+    "bezahlt": 5888.05,
     "offen": 427.8,
     "kasse_abgehoben": 217.2,
     "kasse_bar_ausgegeben": 41.32,
     "kasse_bestand": 175.88,
     "patrick_gezahlt": 3978.01,
-    "nora_gezahlt": 1888.89,
+    "nora_gezahlt": 1910.04,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5866.9,
-    "anteil_pro_person": 2933.45,
+    "saldo_basis": 5888.05,
+    "anteil_pro_person": 2944.03,
     "beitrag_patrick": 5978.01,
-    "beitrag_nora": -111.11,
-    "saldo_patrick": 3044.56
+    "beitrag_nora": -89.96,
+    "saldo_patrick": 3033.98
   },
   "kategorien": [
     {
@@ -40,7 +40,7 @@
     },
     {
       "name": "Lebensmittel",
-      "betrag": 261.41
+      "betrag": 282.56
     },
     {
       "name": "Eintritt",
@@ -478,6 +478,19 @@
       "kategorie": "Tanken",
       "beschreibung": "Tankstelle Sesriem",
       "betrag": 83.94,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-28",
+      "datum": "2026-09-09",
+      "zeit": "",
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Tankstellenshop Sesriem",
+      "betrag": 21.15,
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
