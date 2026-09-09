@@ -81,7 +81,9 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 | `docs/offene-punkte.md`    | Was noch geklärt werden muss |
 | `docs/handover.md`         | Projektstand-Übergabe: was fertig ist, was offen ist, wie es weitergeht |
 | `scripts/kosten_core.py`   | **Gemeinsame Rechenlogik** (Summen, Kategorien, Saldo) für beide Build-Skripte — einzige Stelle für Zahlenlogik |
-| `scripts/build_md.py`      | Baut `docs/kosten.md` aus den CSVs (schnell, Standardweg) |
+| `scripts/ausgabe.py`       | **Schnellweg für Belege:** `add` / `edit <id>` / `delete <id>` → CSV schreiben, beide Builds, Commit + Push in einem Aufruf (siehe Workflow) |
+| `.claude/commit-trailer.txt` | Co-Authored-By/Session-Trailer, den `ausgabe.py` an jede Commit-Nachricht hängt |
+| `scripts/build_md.py`      | Baut `docs/kosten.md` aus den CSVs |
 | `scripts/build_sheet.py`   | Baut zusätzlich eine .xlsx mit 3 Tabs – nur auf Zuruf, siehe unten |
 | `scripts/build_site_data.py` | Baut `docs/assets/data/site-data.json` für die GitHub-Pages-Seite und stempelt `?v=<hash>` an `app.js`/`style.css` in `index.html` (Cache-Busting, s. Website) |
 | `docs/index.html` + `docs/assets/` | GitHub-Pages-Seite (Mobile-App-Stil), siehe Abschnitt „Website" unten |
@@ -89,9 +91,38 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
 
 ## Workflow bei neuen Belegen
 
-**Standardweg (schnell, während der Reise):**
+**Schnellweg (Standard seit 09.09.2026): ein Aufruf von `scripts/ausgabe.py`.**
+Das Skript kennt die Regeln (Bargeld → Zahler Patrick, Bar-EUR zum Kassen-
+kurs, feste Kategorien, Tankdetails), schreibt die CSV per `csv`-Modul
+(kein Komma-Fallstrick), baut `kosten.md` + `site-data.json` und committet/
+pusht mit dem Trailer aus `.claude/commit-trailer.txt`. **Vorher `date`
+holen** (Datum ist sonst „heute Windhoek"), nichts von Hand in die CSVs.
 
-1. Screenshot/Beleg auswerten → Zeile in die passende CSV eintragen (Zahler nicht vergessen)
+| Nutzer schreibt … | Aufruf |
+|---|---|
+| „Nora N26 Wasser Little Sossus 5,41" | `python3 scripts/ausgabe.py add --ort "Little Sossus" --haendler "Little Sossus Campsite" --kat Lebensmittel --eur 5.41 --zahler Nora --zahlmittel n26` |
+| „50 NAD Trinkgeld bar" | `… add --ort Helmeringhausen --kat Restaurant --nad 50 --zahlmittel bar` (Zahler wird Patrick, EUR zum Kassenkurs) |
+| „Nora N26 83,94 Tanken, 54,6 L, km 22085, voll" | `… add --ort Sesriem --haendler Tankstelle --kat Tanken --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja` (schreibt auch `04_tanken.csv`) |
+| App-Text `ÄNDERN [b2-25 …]: Kategorie Restaurant → Lebensmittel` | `… edit b2-25 kategorie=Lebensmittel` |
+| App-Text `LÖSCHEN [b2-1 …]` | `… delete b2-1` (Blatt 1 verweigert ohne `--force`, s. Regel 6) |
+| App-Text `NEU: …` | wie eine normale Meldung → `add` |
+| NAD per Karte ohne EUR-Betrag | `--nad 127.50 --kurs-schaetzen` → EUR vorläufig markiert; sobald der echte Betrag kommt: `edit b2-N betrag_eur=6.92` |
+
+Danach dem Nutzer nur den neuen Stand nennen (Gesamt, Saldo) — beides steht
+in `docs/assets/data/site-data.json` → `summary`. **Bei Tanken immer fragen:
+voll?** (sonst `volltanken=TBD`, s. Abschnitt Tanken). Ortswechsel ⇒
+`data/tankplanung.json` von Hand nachziehen (macht das Skript nicht).
+
+**Warum kein Claude-Code-Hook:** Ein PostToolUse-Hook, der nach jeder CSV-
+Änderung baut, würde bei jedem Lauf `generated_at` in `site-data.json`
+neu schreiben (Dauer-Diff) und den Commit trotzdem nicht ersetzen. Ein
+einziger Einstiegspunkt (das Skript) ist schneller, deterministisch und
+bleibt lesbar; Hooks nur erwägen, wenn regelmäßig Builds vergessen werden.
+
+**Manueller Weg (Fallback, z. B. für `03_verrechnung.csv`, Abhebungen,
+Sonderfälle):**
+
+1. Zeile in die passende CSV eintragen (Zahler nicht vergessen, Kommas quoten)
 2. `python3 scripts/build_md.py` → aktualisiert `docs/kosten.md`
 3. `python3 scripts/build_site_data.py` → aktualisiert die Website-Daten
 4. Committen und pushen auf `claude/namibia-2026-bkm6h4`
