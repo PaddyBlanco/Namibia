@@ -240,10 +240,12 @@ ist, immer den Google-Maps-Link hinterlegen." Umsetzung in `app.js`:
 `ortLink(name, url)` baut denselben Suchlink wie `info_link`
 (`…/maps/search/?api=1&query=<Name> Namibia`); Anreise-Orte mit „Wien"/
 „München" bekommen kein „Namibia"-Suffix (`AUSSERHALB`). Verlinkt sind:
-Ausgabenkarten (Feld `ort`, bei Blatt-1-Zeilen `ort_link` = `info_link`),
-Reiseplan-Titel (nur Unterkünfte — Flug/Mietwagen sind keine Orte),
-Tankvorgänge, die drei Orte der Tankplanung, Reise-Status und Unterkunfts-
-liste auf Home. Klicks auf Links in Ausgabenkarten öffnen **nicht** das
+Ausgabenkarten — **Titel** (`titelLink()`: Händler/Unterkunft/Tankstelle,
+Suche = Titel + Ort, wenn der Ort nicht schon im Titel steht; Flug und
+Mietwagen bleiben Text) und Feld `ort` (bei Blatt-1-Zeilen `ort_link` =
+`info_link`), Reiseplan-Titel (nur Unterkünfte), Tankvorgänge, alle Orte
+der Tankplanung, die Etappen-Endpunkte der Tankstellen-Planung (Abschnitt
+an „ → " gesplittet), Reise-Status und Unterkunftsliste auf Home. Klicks auf Links in Ausgabenkarten öffnen **nicht** das
 Aktions-Sheet (`ev.target.closest("a")`-Guard). Neue Stellen mit Ortsnamen:
 immer `ortLink()` benutzen, nie nackten Text.
 

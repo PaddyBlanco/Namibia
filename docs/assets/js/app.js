@@ -40,6 +40,15 @@
     return '<a class="ort-link" href="' + esc(url || mapsUrl(name)) + '" target="_blank" rel="noopener">' + esc(name) + " ↗</a>";
   }
 
+  // Kartentitel (Unterkunft, Tankstelle, Laden, Restaurant ...) ist selbst ein
+  // Maps-Link; Flug/Mietwagen sind keine Orte. Suche = Titel + Ort, wenn der
+  // Ort nicht schon im Titel steckt ("Spar" -> "Spar Lüderitz").
+  function titelLink(a) {
+    if (!a.ort || a.kategorie === "Flug" || a.kategorie === "Mietwagen") return esc(a.beschreibung);
+    var q = a.beschreibung.indexOf(a.ort) !== -1 ? a.beschreibung : a.beschreibung + " " + a.ort;
+    return ortLink(a.beschreibung, a.ort_link || mapsUrl(q));
+  }
+
   function zahlerPill(z) {
     var name = z == null || z === "" ? "TBD" : String(z);
     var cls = name.indexOf("+") !== -1 ? "beide" : name.toLowerCase().replace(/[^a-z]/g, "");
@@ -804,7 +813,7 @@
     return '<div class="card ausgabe' + (tappable ? " tappable" : "") + '"' + attrs + (tappable ? ' role="button" tabindex="0"' : "") + ">" +
       '<div class="card-row">' +
         '<div class="card-main">' +
-          '<div class="card-title">' + esc(a.beschreibung) + "</div>" +
+          '<div class="card-title">' + titelLink(a) + "</div>" +
           '<div class="card-sub">' +
             '<span class="kat-dot" style="background: var(' + katColorVar(a.kategorie) + ')"></span>' +
             '<span class="card-kat">' + esc(a.kategorie) + "</span>" +
@@ -1052,7 +1061,7 @@
       row("Aktueller Standort", ortLink(planung.aktueller_standort.ort) + " (" + fmtDate(planung.aktueller_standort.datum) + ")", true) +
       (planung.kilometerstand
         ? row("Kilometerstand", planung.kilometerstand.wert.toLocaleString("de-DE") + " km · " +
-              planung.kilometerstand.ort + ", " + fmtDate(planung.kilometerstand.datum))
+              ortLink(planung.kilometerstand.ort) + ", " + fmtDate(planung.kilometerstand.datum), true)
         : "") +
       row("Gefahren seit Volltank", typeof seitKm === "number" ? "~" + seitKm + " km" : "TBD") +
       (planung.geschaetzte_restreichweite_km != null
@@ -1124,7 +1133,7 @@
     var tsList = document.getElementById("tankstellen-list");
     tsList.innerHTML = (t.tankstellen_hinweise || []).map(function (h) {
       return '<div class="tankstellen-item">' +
-        '<div class="abschnitt">' + esc(h.abschnitt) + "</div>" +
+        '<div class="abschnitt">' + h.abschnitt.split(" → ").map(function (o) { return ortLink(o); }).join(" → ") + "</div>" +
         '<div class="hinweis">' + esc(h.hinweis) + "</div>" +
       "</div>";
     }).join("");
