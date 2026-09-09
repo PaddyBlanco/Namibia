@@ -5,7 +5,7 @@ Beispiele (Datum = heute in Windhoek, wenn nicht angegeben):
   python3 scripts/ausgabe.py add --ort Sesriem --haendler "Tankstellenshop" \
       --kat Lebensmittel --eur 21.15 --zahler Nora --zahlmittel n26
   python3 scripts/ausgabe.py add --ort Solitaire --haendler "Solitaire Bakery" \
-      --kat Restaurant --nad 120 --zahlmittel bar            # Zahler wird Patrick, EUR zum Kassenkurs
+      --kat Restaurant --nad 120 --zahler Nora --zahlmittel bar   # "Nora Bar": Noras Topf, dessen Kurs
   python3 scripts/ausgabe.py add --ort Solitaire --haendler Tankstelle --kat Tanken \
       --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja
   python3 scripts/ausgabe.py abhebung --ort Sesriem --nad 3000 --gebuehr-nad 50 --eur 161.88 \
@@ -13,8 +13,8 @@ Beispiele (Datum = heute in Windhoek, wenn nicht angegeben):
   python3 scripts/ausgabe.py edit b2-25 kategorie=Lebensmittel
   python3 scripts/ausgabe.py delete b2-1
 
-Regeln aus CLAUDE.md sind eingebaut: Bargeld => Zahler Patrick (Regel 9),
-Bar-EUR zum Kassenkurs (Regel 7), Kategorien fix, NAD ohne EUR bei Karte
+Regeln aus CLAUDE.md sind eingebaut: Bargeld => Zahler = wessen Topf, wie
+vom Nutzer genannt (Regel 9), Bar-EUR zum Kurs dieses Topfs (Regel 7), Kategorien fix, NAD ohne EUR bei Karte
 => vorlaeufiger Kurs nur mit --kurs-schaetzen (Regel 5), Tankdetails in
 04_tanken.csv (Abschnitt Tanken). Danach: build_md, build_site_data,
 Commit, Push - ausser --no-push.
@@ -44,16 +44,14 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from kosten_core import kassen_toepfe  # noqa: E402
 
 
-def bar_topf(rows, nad):
-    """Aeltester Bargeld-Topf mit Deckung (Regel 9 / FIFO); Kurs des Topfs (Regel 7)."""
+def bar_topf(rows, person, nad):
+    """Bargeld-Topf der genannten Person (Regel 9: Nutzer sagt "Patrick Bar"/"Nora Bar"); Kurs des Topfs (Regel 7)."""
     toepfe = kassen_toepfe(rows)
-    if not toepfe:
-        sys.exit("Keine Abhebung erfasst - Barzahlung nicht zuordenbar")
-    for person, t in toepfe.items():
-        if t["bestand_nad"] + 0.5 >= nad:
-            return person, t["kurs"], t
-    person, t = list(toepfe.items())[-1]
-    print(f"WARNUNG: kein Topf deckt {nad:.0f} NAD - {person} wird ueberzogen ({t['bestand_nad']:.0f} NAD Bestand)")
+    if person not in toepfe:
+        sys.exit(f"{person} hat keinen Bargeld-Topf (keine Abhebung erfasst) - Zahler pruefen")
+    t = toepfe[person]
+    if t["bestand_nad"] + 0.5 < nad:
+        print(f"WARNUNG: Topf {person} deckt {nad:.0f} NAD nicht ({t['bestand_nad']:.0f} NAD Bestand) - Zahler pruefen")
     return person, t["kurs"], t
 
 
@@ -91,10 +89,9 @@ def cmd_add(a):
     if zm == "Bargeld":
         if a.nad is None:
             sys.exit("Barzahlung braucht --nad (Bargeld ist immer NAD)")
-        topf, bar_kurs, _ = bar_topf(rows, a.nad)
-        if zahler and zahler != topf:
-            notes.append(f"bar von {zahler} bezahlt - zaehlt beim Bargeld-Topf {topf} (Regel 9, FIFO)")
-        zahler = topf
+        if zahler not in ("Patrick", "Nora"):
+            sys.exit("Barzahlung: --zahler Patrick|Nora angeben (wessen Bargeld - der Nutzer sagt 'Patrick Bar'/'Nora Bar')")
+        _, bar_kurs, _ = bar_topf(rows, zahler, a.nad)
     if zahler not in ("Patrick", "Nora", "TBD"):
         sys.exit("--zahler Patrick|Nora|TBD noetig (ausser bei Bargeld)")
 

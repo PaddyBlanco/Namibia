@@ -31,15 +31,15 @@ def pruefe(b1, b2):
     for person, t in toepfe.items():
         if t["bestand_nad"] < -0.5:
             warnungen.append(f"Bargeld-Topf {person} ueberzogen: {t['bestand_nad']:.0f} NAD - "
-                             "Barzahlungen sind dem falschen Topf zugeordnet (FIFO-Regel, CLAUDE.md Regel 9)")
+                             "Barzahlungen sind dem falschen Topf zugeordnet (CLAUDE.md Regel 9)")
     return warnungen
 
 
 def kassen_toepfe(b2):
     """Ein Bargeld-Topf je Person: Abhebungen minus Barzahlungen, mit eigenem Kurs.
 
-    Reihenfolge = erste Abhebung (aeltester Topf zuerst) - diese Reihenfolge
-    nutzt ausgabe.py, um Barzahlungen dem aeltesten Topf mit Deckung zuzuordnen.
+    Reihenfolge = erste Abhebung. Welcher Topf bei einer Barzahlung zaehlt,
+    sagt der Nutzer ("Patrick Bar"/"Nora Bar") - keine Automatik (Regel 9).
     """
     toepfe = {}
     for r in b2:

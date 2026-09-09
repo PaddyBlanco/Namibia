@@ -100,7 +100,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 - Kassenbestand rechnerisch: **335,11 €**
   - Topf Patrick: 3.277 NAD ≈ 175,88 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
   - Topf Nora: 3.000 NAD ≈ 159,23 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
-- Barzahlungen werden dem ältesten Topf mit Deckung zugerechnet (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
+- Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
 

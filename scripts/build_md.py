@@ -113,7 +113,7 @@ def main():
         nad = lambda v: f"{v:,.0f}".replace(",", ".")
         lines.append(f"  - Topf {person}: {nad(t['bestand_nad'])} NAD ≈ {eur(t['bestand_eur'])} "
                      f"(abgehoben {nad(t['abgehoben_nad'])} NAD zu {t['kurs']} NAD/€)")
-    lines.append("- Barzahlungen werden dem ältesten Topf mit Deckung zugerechnet (Regel 9), "
+    lines.append("- Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), "
                  "EUR zum Kurs des jeweiligen Topfs (Regel 7).")
     lines.append("")
 

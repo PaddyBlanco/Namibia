@@ -616,7 +616,7 @@
       kasseHint.textContent = "Zwei Bargeld-Töpfe: " + Object.keys(s.kasse).map(function (p) {
         var t = s.kasse[p];
         return p + " " + Math.round(t.bestand_nad).toLocaleString("de-DE") + " NAD (≈ " + euro(t.bestand_eur) + ")";
-      }).join(" · ") + ". Barzahlungen zählen beim älteren Topf, bis er leer ist.";
+      }).join(" · ") + ". Barzahlungen zählen bei dem, dessen Bargeld benutzt wurde.";
     } else {
       kasseHint.textContent = "";
     }

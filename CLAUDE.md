@@ -57,15 +57,14 @@ Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeu
    Abzug der Überweisung aus (Summe der Beiträge lag 2.000 € über dem Bezahlten).
    `build_md.py` und `build_site_data.py` rechnen **beide** über `kosten_core.compute()`
    — Zahlenlogik nie in einem der beiden Skripte allein ändern.
-9. **Bargeld gehört dem Abhebenden — ein Topf je Person, FIFO.** Bis 08.09. gab
-   es nur Patricks Topf (ATM 03.09., 4.047 NAD), seit 09.09. auch Noras (ATM
-   Sesriem, 3.000 NAD). Eine Barzahlung bekommt als `zahler` **den ältesten
-   Topf, der den Betrag noch deckt** — also Patrick, bis seine ~3.277 NAD
-   aufgebraucht sind, danach Nora — unabhängig davon, wer die Scheine
-   physisch übergibt (Nutzerentscheidung 09.09.: nicht pro Zahlung fragen,
-   wessen Geld es war). `ausgabe.py add --zahlmittel bar` macht das
-   automatisch (`bar_topf()`), vermerkt den physischen Zahler in der
-   Anmerkung und nimmt den Kurs des Topfs (Regel 7). `kosten_core.pruefe()`
+9. **Bargeld gehört dem Abhebenden — ein Topf je Person, schlicht.** Bis 08.09.
+   gab es nur Patricks Topf (ATM 03.09., 4.047 NAD), seit 09.09. auch Noras
+   (ATM Sesriem, 3.000 NAD). **Der Nutzer sagt bei jeder Barzahlung, wessen
+   Bargeld es war („Patrick Bar" / „Nora Bar") — genau das wird `zahler`.**
+   Kein FIFO, keine Automatik (Nutzerentscheidung 09.09.: „schlicht und
+   easy"). Fehlt die Angabe: nachfragen, nicht raten. `ausgabe.py add
+   --zahlmittel bar --zahler <Person>` nimmt den Kurs dieses Topfs (Regel 7)
+   und warnt, wenn der Topf den Betrag nicht deckt. `kosten_core.pruefe()`
    warnt bei beiden Build-Skripten, wenn ein Barzahler keinen Topf hat, ein
    Topf überzogen ist oder ein Zahler-Wert weder `Patrick`, `Nora` noch `TBD`
    ist. Die Website zeigt die Töpfe unter Kosten → Reisekasse; `kosten.md`
@@ -112,7 +111,7 @@ holen** (Datum ist sonst „heute Windhoek"), nichts von Hand in die CSVs.
 | Nutzer schreibt … | Aufruf |
 |---|---|
 | „Nora N26 Wasser Little Sossus 5,41" | `python3 scripts/ausgabe.py add --ort "Little Sossus" --haendler "Little Sossus Campsite" --kat Lebensmittel --eur 5.41 --zahler Nora --zahlmittel n26` |
-| „50 NAD Trinkgeld bar" | `… add --ort Helmeringhausen --kat Restaurant --nad 50 --zahlmittel bar` (Zahler wird Patrick, EUR zum Kassenkurs) |
+| „50 NAD Trinkgeld, Nora Bar" | `… add --ort Helmeringhausen --kat Restaurant --nad 50 --zahler Nora --zahlmittel bar` (EUR zum Kurs von Noras Topf; ohne „Patrick/Nora Bar" nachfragen) |
 | „Nora N26 83,94 Tanken, 54,6 L, km 22085, voll" | `… add --ort Sesriem --haendler Tankstelle --kat Tanken --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja` (schreibt auch `04_tanken.csv`) |
 | App-Text `ÄNDERN [b2-25 …]: Kategorie Restaurant → Lebensmittel` | `… edit b2-25 kategorie=Lebensmittel` |
 | App-Text `LÖSCHEN [b2-1 …]` | `… delete b2-1` (Blatt 1 verweigert ohne `--force`, s. Regel 6) |
