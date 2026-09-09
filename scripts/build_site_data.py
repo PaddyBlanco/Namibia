@@ -75,19 +75,23 @@ def parse_tanken():
         return {"fillups": [], "summary": None}
 
     fillups = []
-    last_km = None
+    last_full_km = None  # km-Stand des letzten bestaetigten VOLLtanks
     for r in rows_:
         liter = None if is_tbd(r["liter"]) else float(r["liter"])
         preis_l_nad = None if is_tbd(r["preis_pro_liter_nad"]) else float(r["preis_pro_liter_nad"])
         km = None if is_tbd(r["kilometerstand"]) else float(r["kilometerstand"])
         betrag = num(r["betrag_eur"])
         preis_l_eur = round(betrag / liter, 3) if liter else None
+        voll = (r.get("volltanken") or "").strip().lower() == "ja"
 
+        # Verbrauch nur zwischen zwei bestaetigten Volltanks mit km-Stand:
+        # Bei einer Teilbetankung ist unbekannt, wie viel wirklich verbraucht
+        # wurde - dann lieber Bordcomputer-Schnitt als eine falsche Messung.
         verbrauch = None
-        if km is not None and last_km is not None and liter is not None and km > last_km:
-            verbrauch = round(liter / (km - last_km) * 100, 1)
-        if km is not None:
-            last_km = km
+        if voll and km is not None and last_full_km is not None and liter is not None and km > last_full_km:
+            verbrauch = round(liter / (km - last_full_km) * 100, 1)
+        if voll and km is not None:
+            last_full_km = km
 
         fillups.append({
             "datum": r["datum"],
