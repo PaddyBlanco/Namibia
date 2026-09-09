@@ -58,8 +58,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 24 | 2026-09-08 | – | Ausgabe | Little Sossus Campsite | Little Sossus Campsite | Lebensmittel | – | 5,41 € | Nora | N26 Debit | – | Wasser |
 | 25 | 2026-09-08 | – | Ausgabe | Sesriem | Tankstelle Sesriem | Lebensmittel | – | 21,37 € | Nora | N26 Debit | – | Essen an der Tankstelle (Kategorie per App-Aenderung 08.09. Restaurant -> Lebensmittel) |
 | 26 | 2026-09-08 | – | Ausgabe | Sesriem | NWR Sesriem | Eintritt | – | 67,08 € | Nora | N26 Debit | – | Park-Permit Namib-Naukluft (Sesriem Canyon / Elim Dune / Sossusvlei) |
+| 27 | 2026-09-09 | – | Ausgabe | Sesriem | Tankstelle Sesriem | Tanken | – | 83,94 € | Nora | N26 Debit | – | 54.60 Liter bei km-Stand 22085 (siehe 04_tanken.csv Nr. 5) - NAD-Betrag und Preis/Liter nicht genannt |
 
-**Echte Ausgaben:** 906,89 € (davon bar 41,32 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 175,88 €
+**Echte Ausgaben:** 990,83 € (davon bar 41,32 €) · **Bargeldabhebungen:** 217,20 € · **Kassenbestand:** 175,88 €
 
 ## 3. Zusammenfassung
 
@@ -70,7 +71,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
 | Unterkunft | 746,06 € |
-| Tanken | 284,94 € |
+| Tanken | 368,88 € |
 | Lebensmittel | 261,41 € |
 | Eintritt | 92,04 € |
 | Restaurant | 88,61 € |
@@ -79,14 +80,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 17,75 € |
 | Gebühren | 2,52 € |
 
-**Gesamtausgaben: 6.210,76 €** (davon bezahlt 5.782,96 €, noch offen 427,80 €)
+**Gesamtausgaben: 6.294,70 €** (davon bezahlt 5.866,90 €, noch offen 427,80 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 304,23 € | 3.978,01 € |
-| Nora | 1.202,29 € | 602,66 € | 1.804,95 € |
+| Nora | 1.202,29 € | 686,60 € | 1.888,89 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 427,80 € |
 
 ### Reisekasse (Bargeld)
@@ -102,13 +103,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 3.978,01 € |
-| Nora gezahlt (Karte) | 1.804,95 € |
+| Nora gezahlt (Karte) | 1.888,89 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 5.782,96 € |
-| Anteil je Person (50 %) | 2.891,48 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 5.866,90 € |
+| Anteil je Person (50 %) | 2.933,45 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 5.978,01 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | -195,05 € |
-| **Saldo** | **Nora schuldet Patrick 3.086,53 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | -111,11 € |
+| **Saldo** | **Nora schuldet Patrick 3.044,56 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 427,80 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

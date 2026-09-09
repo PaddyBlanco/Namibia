@@ -24,3 +24,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 24,2026-09-08,,Ausgabe,Little Sossus Campsite,Little Sossus Campsite,Lebensmittel,,EUR,5.41,Nora,N26 Debit,Wasser
 25,2026-09-08,,Ausgabe,Sesriem,Tankstelle Sesriem,Lebensmittel,,EUR,21.37,Nora,N26 Debit,Essen an der Tankstelle (Kategorie per App-Aenderung 08.09. Restaurant -> Lebensmittel)
 26,2026-09-08,,Ausgabe,Sesriem,NWR Sesriem,Eintritt,,EUR,67.08,Nora,N26 Debit,Park-Permit Namib-Naukluft (Sesriem Canyon / Elim Dune / Sossusvlei)
+27,2026-09-09,,Ausgabe,Sesriem,Tankstelle Sesriem,Tanken,,EUR,83.94,Nora,N26 Debit,54.60 Liter bei km-Stand 22085 (siehe 04_tanken.csv Nr. 5) - NAD-Betrag und Preis/Liter nicht genannt

@@ -1,20 +1,20 @@
 {
-  "stand": "2026-09-08",
+  "stand": "2026-09-09",
   "letzter_volltank": {
-    "ort": "Helmeringhausen",
-    "datum": "2026-09-07",
-    "kilometerstand": 21586
+    "ort": "Sesriem",
+    "datum": "2026-09-09",
+    "kilometerstand": 22085
   },
   "aktueller_standort": {
-    "ort": "Little Sossus Campsite (Sesriem)",
-    "datum": "2026-09-08"
+    "ort": "Sesriem / Little Sossus Campsite",
+    "datum": "2026-09-09"
   },
-  "strecke_seit_volltank_km": 280,
+  "strecke_seit_volltank_km": 0,
   "naechster_pflicht_stopp": {
     "ort": "Solitaire",
-    "hinweis": "Einzige Tankstelle zwischen dem Sesriem-Gebiet und der Küste"
+    "hinweis": "Letzte Tankstelle vor der Küste - danach ca. 340 km bis Walvis Bay"
   },
   "strecke_bis_naechster_stopp_km": 80,
-  "empfehlung": "Tank reicht locker: Seit dem Volltanken in Helmeringhausen sind es rund 280 km (C27 nach Sesriem plus Ausflug zum Canyon), bis Solitaire noch etwa 80 km. Dort trotzdem auffüllen – es ist die einzige Tankstelle zwischen Sesriem-Gebiet und Küste, und ab Sossusvlei geht es 340 km bis Walvis Bay.",
-  "anmerkung": "21.586 km ist der echte Kilometerstand beim Volltanken in Helmeringhausen (07.09.). Die 280 km seither sind geschätzt: C27 Helmeringhausen–Sesriem 237 km (Wikipedia) plus ca. 40 km Sesriem/Little Sossus und Canyon-Ausflug. Sesriem–Solitaire ca. 80 km (C19, Reiseführer-Angaben 78–83 km). Verbrauch bis zum nächsten Volltank mit Kilometerstand weiter vom Bordcomputer (11,2 L/100 km)."
+  "empfehlung": "Frisch getankt in Sesriem (54,60 L bei 22.085 km). Morgen Richtung Swakopmund liegt Solitaire nach ~80 km auf dem Weg - dort kurz auffüllen, dann sind die ~340 km bis Walvis Bay/Swakopmund entspannt, egal wie voll der Tank jetzt ist.",
+  "anmerkung": "Erster Abschnitt mit zwei echten Kilometerständen: Helmeringhausen 21.586 km → Sesriem 22.085 km = 499 km mit 54,60 L nachgetankt, rechnerisch 10,9 L/100 km - gilt nur, wenn in Sesriem wieder ganz vollgetankt wurde (noch nicht bestätigt). Bis dahin bleibt der Bordcomputer-Schnitt (11,2 L/100 km) die Referenz für die Restreichweite."
 }
