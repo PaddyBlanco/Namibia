@@ -2,12 +2,12 @@
 // CACHE_VERSION und die versionierten URLs unten werden von
 // scripts/build_site_data.py::stamp_asset_versions() automatisch gepflegt -
 // nicht von Hand aendern, ausser den Dateinamen in PRECACHE_URLS selbst.
-const CACHE_VERSION = "6838a5e3";
+const CACHE_VERSION = "1cb16806";
 const CACHE_NAME = "namibia2026-" + CACHE_VERSION;
 const PRECACHE_URLS = [
   "./",
   "assets/css/style.css?v=f7a76650",
-  "assets/js/app.js?v=bda3ab1f",
+  "assets/js/app.js?v=978b53a5",
   "assets/data/site-data.json",
 ];
 
@@ -32,13 +32,15 @@ self.addEventListener("fetch", (event) => {
 
   // Kostendaten: bei Netz immer die frischeste Version holen und cachen,
   // ohne Netz auf die zuletzt bekannte zurueckfallen (kein Fehlerbild).
-  if (req.url.endsWith("/assets/data/site-data.json")) {
+  const url = new URL(req.url);
+  if (url.pathname.endsWith("/assets/data/site-data.json")) {
+    const key = url.origin + url.pathname; // ohne ?t=, sonst waechst der Cache pro Aufruf
     event.respondWith(
       fetch(req).then((res) => {
         const copy = res.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+        caches.open(CACHE_NAME).then((cache) => cache.put(key, copy));
         return res;
-      }).catch(() => caches.match(req))
+      }).catch(() => caches.match(key))
     );
     return;
   }

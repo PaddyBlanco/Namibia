@@ -48,7 +48,10 @@
 
   // ---------------- Daten laden (mit Offline-Fallback) ----------------
   function loadData() {
-    return fetch(DATA_URL, { cache: "no-store" })
+    // ?t= umgeht den CDN-Edge-Cache von GitHub Pages (10 Min) - cache: no-store
+    // allein umgeht nur den Browser-Cache; der Service Worker cached unter der
+    // festen URL ohne Query (siehe sw.js).
+    return fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" })
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();

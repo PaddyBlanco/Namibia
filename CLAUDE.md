@@ -458,8 +458,12 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
   entstanden), stempelt `build_site_data.py` einen Inhalts-Hash als `?v=`
   an `app.js` und `style.css` in `index.html`. Der Stempel ändert sich nur,
   wenn sich die Datei ändert. `site-data.json` selbst wird mit
-  `cache: "no-store"` geladen. `index.html` bleibt 10 Min gecacht — dagegen
-  hilft nur Neuladen.
+  `cache: "no-store"` **und** `?t=<Zeitstempel>` geladen — `no-store` umgeht
+  nur den Browser-Cache, der Zeitstempel zusätzlich den **CDN-Edge-Cache von
+  GitHub Pages** (am 09.09.2026 sah der Nutzer frisch gepushte Ausgaben
+  deshalb bis zu 10 Min nicht, obwohl der Pages-Deploy längst durch war).
+  Der Service Worker ignoriert die Query und cached die JSON unter der
+  festen URL. `index.html` bleibt 10 Min gecacht — dagegen hilft nur Neuladen.
 - GitHub-Pages-Einstellung (macht der Nutzer selbst): Settings → Pages →
   Source: *Deploy from branch* → Branch **`claude/namibia-2026-bkm6h4`**
   (Stand 06.09.2026: `main` enthält nur die Start-README, die gesamte
