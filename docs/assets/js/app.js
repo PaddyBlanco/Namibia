@@ -28,6 +28,18 @@
     return ausgabenAktuell(data).filter(function (a) { return a.datum > t; });
   };
 
+  // Jeder Ortsname wird zum Google-Maps-Suchlink (Nutzerwunsch 09.09.2026:
+  // "egal auf welcher Seite"). Gleiches Muster wie info_link in 01_bezahlt.csv.
+  var AUSSERHALB = ["Wien", "Muenchen", "München"];  // Anreise-Orte: kein "Namibia"-Suffix
+  function mapsUrl(name) {
+    var q = AUSSERHALB.some(function (s) { return name.indexOf(s) !== -1; }) ? name : name + " Namibia";
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+  }
+  function ortLink(name, url) {
+    if (!name) return "";
+    return '<a class="ort-link" href="' + esc(url || mapsUrl(name)) + '" target="_blank" rel="noopener">' + esc(name) + " ↗</a>";
+  }
+
   function zahlerPill(z) {
     var name = z == null || z === "" ? "TBD" : String(z);
     var cls = name.indexOf("+") !== -1 ? "beide" : name.toLowerCase().replace(/[^a-z]/g, "");
@@ -537,6 +549,7 @@
     // Tipp auf eine Ausgabenkarte -> Aktions-Sheet (Bearbeiten / Loeschen)
     ["ausgaben-list", "letzte-ausgaben-list"].forEach(function (id) {
       document.getElementById(id).addEventListener("click", function (ev) {
+        if (ev.target.closest("a")) return;
         var card = ev.target.closest(".card.ausgabe"); if (!card || !currentData) return;
         var pendingIndex = card.dataset.pendingIndex !== undefined ? Number(card.dataset.pendingIndex) : null;
         var rowId = card.dataset.id || null;
@@ -798,6 +811,7 @@
             '<span class="card-sep">·</span>' +
             zahlerPill(a.zahler) + womit + pend +
             (showDate ? '<span class="card-sep">·</span><span>' + fmtDate(a.datum) + "</span>" : "") +
+            (a.ort ? '<span class="card-sep">·</span>' + ortLink(a.ort, a.ort_link) : "") +
           "</div>" +
         "</div>" +
         '<div class="card-right">' +
@@ -874,7 +888,7 @@
         '<div class="timeline-date">' + range + "</div>" +
         '<div class="card">' +
           '<div class="card-row">' +
-            '<span class="card-title">' + esc(p.beschreibung) + "</span>" +
+            '<span class="card-title">' + (p.kategorie === "Unterkunft" ? ortLink(p.beschreibung, p.info_link) : esc(p.beschreibung)) + "</span>" +
             (hatBetrag && p.betrag > 0 ? '<span class="card-amount">' + euro(p.betrag) + "</span>" : "") +
           "</div>" +
           '<div class="card-meta">' +
@@ -1032,10 +1046,10 @@
     var seitKm = planung.strecke_seit_volltank_km;
     var bisStopp = planung.strecke_bis_naechster_stopp_km;
     var rows =
-      row("Letzter Volltank", planung.letzter_volltank.ort +
+      row("Letzter Volltank", ortLink(planung.letzter_volltank.ort) +
           (volltankKm != null ? " · " + volltankKm.toLocaleString("de-DE") + " km" : "") +
-          " (" + fmtDate(planung.letzter_volltank.datum) + ")") +
-      row("Aktueller Standort", planung.aktueller_standort.ort + " (" + fmtDate(planung.aktueller_standort.datum) + ")") +
+          " (" + fmtDate(planung.letzter_volltank.datum) + ")", true) +
+      row("Aktueller Standort", ortLink(planung.aktueller_standort.ort) + " (" + fmtDate(planung.aktueller_standort.datum) + ")", true) +
       (planung.kilometerstand
         ? row("Kilometerstand", planung.kilometerstand.wert.toLocaleString("de-DE") + " km · " +
               planung.kilometerstand.ort + ", " + fmtDate(planung.kilometerstand.datum))
@@ -1044,16 +1058,16 @@
       (planung.geschaetzte_restreichweite_km != null
         ? row("Geschätzte Restreichweite", "~" + planung.geschaetzte_restreichweite_km + " km (~" + planung.geschaetzte_rest_liter + " L)")
         : "") +
-      row("Nächster Pflichtstopp", planung.naechster_pflicht_stopp.ort +
-          (typeof bisStopp === "number" ? " (~" + bisStopp + " km)" : " (Strecke noch offen)"));
+      row("Nächster Pflichtstopp", ortLink(planung.naechster_pflicht_stopp.ort) +
+          (typeof bisStopp === "number" ? " (~" + bisStopp + " km)" : " (Strecke noch offen)"), true);
 
     card.innerHTML = rows +
       '<div class="tankplanung-empfehlung"><span class="icon">💡</span>' + esc(planung.empfehlung) + "</div>" +
       '<details class="tp-details"><summary>Hintergrund zur Schätzung</summary>' +
         '<div class="tankplanung-anmerkung">' + esc(planung.anmerkung) + "</div></details>";
 
-    function row(label, value) {
-      return '<div class="tankplanung-row"><span class="tp-label">' + esc(label) + '</span><span class="tp-value">' + esc(value) + "</span></div>";
+    function row(label, value, html) {
+      return '<div class="tankplanung-row"><span class="tp-label">' + esc(label) + '</span><span class="tp-value">' + (html ? value : esc(value)) + "</span></div>";
     }
   }
 
@@ -1086,7 +1100,7 @@
         return '<div class="card">' +
           '<div class="card-row">' +
             '<div class="card-main">' +
-              '<div class="card-title">' + esc(f.ort) + "</div>" +
+              '<div class="card-title">' + ortLink(f.ort) + "</div>" +
               '<div class="card-sub">' + zahlerPill(f.zahler) + '<span class="card-sep">·</span><span>' + fmtDate(f.datum) + "</span>" +
                 (details.length ? '<span class="card-sep">·</span><span>' + esc(details.join(" · ")) + "</span>" : "") +
               "</div>" +

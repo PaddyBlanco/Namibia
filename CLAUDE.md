@@ -233,6 +233,20 @@ Vor jeder groesseren CSV-Aenderung zur Sicherheit gegenpruefen:
 - Neu erfasste Unterkünfte: `info_link` immer im selben Muster setzen,
   nie eine andere Linkart (Buchungsseite, Blog, Social Media) einsetzen.
 
+## Ortsnamen sind immer Google-Maps-Links
+
+Nutzervorgabe 09.09.2026: „Egal auf welcher Seite, wenn ein Ort angegeben
+ist, immer den Google-Maps-Link hinterlegen." Umsetzung in `app.js`:
+`ortLink(name, url)` baut denselben Suchlink wie `info_link`
+(`…/maps/search/?api=1&query=<Name> Namibia`); Anreise-Orte mit „Wien"/
+„München" bekommen kein „Namibia"-Suffix (`AUSSERHALB`). Verlinkt sind:
+Ausgabenkarten (Feld `ort`, bei Blatt-1-Zeilen `ort_link` = `info_link`),
+Reiseplan-Titel (nur Unterkünfte — Flug/Mietwagen sind keine Orte),
+Tankvorgänge, die drei Orte der Tankplanung, Reise-Status und Unterkunfts-
+liste auf Home. Klicks auf Links in Ausgabenkarten öffnen **nicht** das
+Aktions-Sheet (`ev.target.closest("a")`-Guard). Neue Stellen mit Ortsnamen:
+immer `ortLink()` benutzen, nie nackten Text.
+
 ## Fahrzeiten (`fahrzeit` in `01_bezahlt.csv`)
 
 - Die Spalte `fahrzeit` ist die **Anfahrt ZU dieser Unterkunft**, nicht die
