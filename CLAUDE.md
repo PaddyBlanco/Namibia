@@ -8,6 +8,41 @@ Kosten- und Reisedokumentation für den Namibia-Roadtrip **02.09. – 21.09.2026
 (Patrick + Nora). Das Repo ist die **Quelle der Wahrheit** für alle Kostendaten.
 Das Google Sheet ist die Anzeige-/Arbeitsoberfläche und wird aus dem Repo erzeugt.
 
+## Entwicklungsregeln: Ponytail (gilt für jede Code-Änderung)
+
+Nutzervorgabe 09.09.2026: **„Verwende immer den Ponytail.dev"** — das Open-Source-
+Regelwerk „Lazy Senior Dev" (github.com/DietrichGebert/ponytail). Der
+Original-Wortlaut liegt in **`.claude/rules/ponytail.md`** und ist vor jeder
+Code-Änderung (JS/CSS/HTML/Python) anzuwenden. Kern:
+
+1. Muss das überhaupt gebaut werden? (YAGNI)
+2. Gibt es das im Repo schon? Wiederverwenden, nicht neu schreiben.
+3. Kann es die Standardbibliothek? Benutzen.
+4. Deckt es ein natives Plattform-Feature ab? Benutzen.
+5. Löst es eine bereits installierte Abhängigkeit? Benutzen.
+6. Geht es in einer Zeile? Eine Zeile.
+7. Erst dann: das Minimum, das funktioniert.
+
+Dazu: erst verstehen, dann klettern (Problem lesen, echten Ablauf verfolgen);
+Bugfix = Ursache, nicht Symptom (alle Aufrufer prüfen, einmal zentral
+fixen); keine unbestellten Abstraktionen, keine neuen Dependencies, kein
+Boilerplate; Löschen vor Hinzufügen, langweilig vor clever, so wenige
+Dateien wie möglich; komplexe Wünsche hinterfragen („brauchst du X, oder
+reicht Y?"); bewusste Abkürzungen mit bekannter Grenze per `ponytail:`-
+Kommentar markieren (Grenze + Upgrade-Pfad). **Nicht** lazy bei: Verstehen
+des Problems, Validierung an Vertrauensgrenzen, Fehlerbehandlung gegen
+Datenverlust, Sicherheit, Barrierefreiheit, explizit Gewünschtem. Nicht-
+triviale Logik hinterlässt **einen** lauffähigen Check (assert-Selbsttest
+oder eine kleine Testdatei, kein Framework); Einzeiler brauchen keinen.
+
+Passt zum Repo: keine externen Libraries auf der Website, Vanilla JS,
+Python-Stdlib in den Skripten, ein Einstiegspunkt (`ausgabe.py`) statt Hooks.
+Optional für die lokale Claude-Code-Installation des Nutzers (nicht in
+dieser Remote-Session ausführbar): `/plugin marketplace add
+DietrichGebert/ponytail` und `/plugin install ponytail@ponytail` — das
+Plugin erzwingt die Leiter per Lifecycle-Hook; die Regeldatei hier gilt
+unabhängig davon.
+
 ## Personen & Zahlungsmittel
 
 | Person  | Karte                                    | Rolle im Kostenmodell |
