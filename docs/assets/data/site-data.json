@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-10T06:53:28+00:00",
+  "generated_at": "2026-09-10T07:11:56+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6303.95,
-    "bezahlt": 6055.95,
+    "gesamt": 6312.57,
+    "bezahlt": 6064.57,
     "offen": 248.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 77.28,
     "kasse_bestand": 299.15,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2041.98,
+    "nora_gezahlt": 2050.6,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6055.95,
-    "anteil_pro_person": 3027.98,
+    "saldo_basis": 6064.57,
+    "anteil_pro_person": 3032.28,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 41.98,
-    "saldo_patrick": 2985.99,
+    "beitrag_nora": 50.6,
+    "saldo_patrick": 2981.69,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -62,7 +62,7 @@
     },
     {
       "name": "Lebensmittel",
-      "betrag": 282.56
+      "betrag": 291.18
     },
     {
       "name": "Eintritt",
@@ -629,6 +629,21 @@
       "zahler": "TBD",
       "zahlmittel": "Bargeld",
       "status": "offen"
+    },
+    {
+      "id": "b2-33",
+      "datum": "2026-09-10",
+      "zeit": "",
+      "ort": "Little Sossus",
+      "ort_link": null,
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Little Sossus Campsite",
+      "betrag": 8.62,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
     },
     {
       "id": "b1-10",

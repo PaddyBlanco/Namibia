@@ -64,8 +64,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 30 | 2026-09-09 | – | Ausgabe | Sesriem | ATM Behebungsentgelt | Gebühren | 50.00 NAD | 2,65 € | Nora | N26 Debit | 18.868 | Entgelt zur Abhebung Nr. 29 |
 | 31 | 2026-09-07 | – | Ausgabe | Wereldend | Wereldend Mountain Campsite | Unterkunft | 600.00 NAD | 32,20 € | Patrick | Bargeld | 18.634 | EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
 | 32 | 2026-09-09 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Sonstiges | 70.00 NAD | 3,76 € | Patrick | Bargeld | 18.617 | Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
+| 33 | 2026-09-10 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Lebensmittel | – | 8,62 € | Nora | N26 Debit | – | Bei Abreise |
 
-**Echte Ausgaben:** 1.050,59 € (davon bar 77,28 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 299,15 €
+**Echte Ausgaben:** 1.059,21 € (davon bar 77,28 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 299,15 €
 
 ## 3. Zusammenfassung
 
@@ -77,7 +78,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Flug | 1.895,26 € |
 | Unterkunft | 727,75 € |
 | Tanken | 368,88 € |
-| Lebensmittel | 282,56 € |
+| Lebensmittel | 291,18 € |
 | Eintritt | 92,04 € |
 | Restaurant | 88,61 € |
 | Aktivitäten | 75,95 € |
@@ -85,14 +86,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Shopping | 20,07 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.303,95 €** (davon bezahlt 6.055,95 €, noch offen 248,00 €)
+**Gesamtausgaben: 6.312,57 €** (davon bezahlt 6.064,57 €, noch offen 248,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.331,58 € | 710,40 € | 2.041,98 € |
+| Nora | 1.331,58 € | 719,02 € | 2.050,60 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 248,00 € |
 
 ### Reisekasse (Bargeld)
@@ -111,13 +112,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.041,98 € |
+| Nora gezahlt (Karte) | 2.050,60 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.055,95 € |
-| Anteil je Person (50 %) | 3.027,98 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.064,57 € |
+| Anteil je Person (50 %) | 3.032,28 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 41,98 € |
-| **Saldo** | **Nora schuldet Patrick 2.985,99 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 50,60 € |
+| **Saldo** | **Nora schuldet Patrick 2.981,69 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 248,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
