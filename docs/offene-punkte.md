@@ -43,13 +43,20 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   überwiesen, exaktes Datum nicht bekannt.
 - **Kalahari Anib Campsite (36 €):** vorab von Nora bezahlt (N26 Debit),
   wie die anderen im Voraus gebuchten Camps.
+- **Vorab-Zahlungen Nora mit Bankbelegen abgeglichen (10.09.):** Kalahari
+  Anib 36,67 €, Little Sossus 84,58 €, Okaukuejo 59,54 €, Halali 45,96 €,
+  Waterberg 46,11 €, Granietkop 50,30 € — alle im April per Karte „K2"
+  bezahlt (Belege zeigen Spesen, also nicht N26; Karte noch zu bestätigen).
+  Granietkop und Little Sossus damit nicht mehr offen. Zuordnung der zwei
+  gleichen NWR-Zahlungen (je 860 NAD) zu Halali/Waterberg ist eine Annahme,
+  Summe identisch.
 - **Wereldend Mountain Campsite (47,80 €):** bestätigt noch nicht fällig,
   bleibt planmäßig als „cash on arrival" offen.
 - **Little Sossus (84 €), Moonvalley (25 €), Spitzkoppe (62 €):** bestätigt
   noch nicht fällig, alle drei liegen noch in der Zukunft (08./10./11.09.),
   bleiben planmäßig offen.
-- **Granietkop (48 €), Onguma 2 Nächte (116 €):** bestätigt noch nicht fällig
-  (13./17.–19.09. liegen noch in der Zukunft), bleiben planmäßig offen.
+- **Onguma 2 Nächte (116 €):** bestätigt noch nicht fällig
+  (17.–19.09. liegen noch in der Zukunft), bleibt planmäßig offen.
 - **Tankgröße:** 160 Liter, aufgeteilt in 2×80-Liter-Tanks (Haupt- + Zusatztank).
 - **Klein-Aus Vista, 100,91 € vom 05.09. aufgeklärt** (Rechnung 6483110, erhalten
   beim Auschecken am 07.09.): Es war *nicht* nur die Unterkunft. Die Zahlung
