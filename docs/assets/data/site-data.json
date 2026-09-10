@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T06:43:44+00:00",
+  "generated_at": "2026-09-10T06:44:24+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -177,7 +177,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -252,7 +252,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -657,7 +657,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -687,7 +687,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -702,7 +702,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -747,7 +747,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -762,7 +762,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     }
   ],
@@ -803,7 +803,7 @@
       "beschreibung": "Kalahari Anib Campsite",
       "betrag": 36.67,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Kalahari%20Anib%20Campsite%2C%20Namibia",
@@ -831,7 +831,7 @@
       "beschreibung": "Desert Horse Campsite Aus",
       "betrag": 50.11,
       "zahler": "Nora",
-      "zahlmittel": "TBD + N26 Debit",
+      "zahlmittel": "Nora Debit + N26 Debit",
       "vor_ort": true,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia",
@@ -901,7 +901,7 @@
       "beschreibung": "Granietkop Campsite Damaraland",
       "betrag": 50.3,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Granietkop%20Campsite%20Damaraland%2C%20Namibia",
@@ -929,7 +929,7 @@
       "beschreibung": "Okaukuejo Campsite Etosha",
       "betrag": 59.54,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Okaukuejo%20Campsite%20Etosha%2C%20Namibia",
@@ -943,7 +943,7 @@
       "beschreibung": "Halali Campsite Etosha",
       "betrag": 45.96,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Halali%20Campsite%20Etosha%2C%20Namibia",
@@ -985,7 +985,7 @@
       "beschreibung": "Waterberg Campsite",
       "betrag": 46.11,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Waterberg%20Campsite%2C%20Namibia",
@@ -999,7 +999,7 @@
       "beschreibung": "Omatozu Safari Camp",
       "betrag": 35.64,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
