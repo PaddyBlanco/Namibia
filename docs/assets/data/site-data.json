@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-10T06:42:56+00:00",
+  "generated_at": "2026-09-10T06:43:44+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6302.12,
-    "bezahlt": 6054.12,
+    "gesamt": 6303.95,
+    "bezahlt": 6055.95,
     "offen": 248.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 77.28,
     "kasse_bestand": 299.15,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2040.15,
+    "nora_gezahlt": 2041.98,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6054.12,
-    "anteil_pro_person": 3027.06,
+    "saldo_basis": 6055.95,
+    "anteil_pro_person": 3027.98,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 40.15,
-    "saldo_patrick": 2986.91,
+    "beitrag_nora": 41.98,
+    "saldo_patrick": 2985.99,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 725.92
+      "betrag": 727.75
     },
     {
       "name": "Tanken",
@@ -248,11 +248,11 @@
       "ort_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia",
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
-      "betrag": 24.96,
+      "betrag": 25.15,
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     },
     {
@@ -758,11 +758,11 @@
       "ort_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
-      "betrag": 34.0,
+      "betrag": 35.64,
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
+      "zahlmittel": "TBD",
       "status": "bezahlt"
     }
   ],
@@ -829,9 +829,9 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Desert Horse Campsite Aus",
-      "betrag": 49.92,
+      "betrag": 50.11,
       "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
+      "zahlmittel": "TBD + N26 Debit",
       "vor_ort": true,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Desert%20Horse%20Campsite%20Aus%2C%20Namibia",
@@ -997,9 +997,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Omatozu Safari Camp",
-      "betrag": 34.0,
+      "betrag": 35.64,
       "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
+      "zahlmittel": "TBD",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Omatozu%20Safari%20Camp%2C%20Namibia",
@@ -1158,7 +1158,7 @@
       "warum": "Zahlungsstand"
     },
     {
-      "punkt": "N26-Kurse noch vorläufig — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern. Ebenfalls vorläufig: Desert-Horse-Anzahlung 460 NAD vom 23.04. (Nora/N26, mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen).",
+      "punkt": "N26-Kurse noch vorläufig — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern.",
       "warum": "Kleine Rundungsabweichungen möglich, sobald final gebucht"
     },
     {

@@ -7,7 +7,7 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 | # | Punkt | Warum es zählt |
 |---|---|---|
 | 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
-| 2 | **N26-Kurse noch vorläufig** — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern. Ebenfalls vorläufig: Desert-Horse-Anzahlung 460 NAD vom 23.04. (Nora/N26, mit Kurs der Restzahlung = 24,96 € angesetzt — echten N26-Betrag aus der App nachtragen). | Kleine Rundungsabweichungen möglich, sobald final gebucht |
+| 2 | **N26-Kurse noch vorläufig** — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 | 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
 
 ## Nach der Reise
@@ -45,7 +45,8 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   wie die anderen im Voraus gebuchten Camps.
 - **Vorab-Zahlungen Nora mit Bankbelegen abgeglichen (10.09.):** Kalahari
   Anib 36,67 €, Little Sossus 84,58 €, Okaukuejo 59,54 €, Halali 45,96 €,
-  Waterberg 46,11 €, Granietkop 50,30 € — alle im April per Karte „K2"
+  Waterberg 46,11 €, Granietkop 50,30 €, Omatozu 35,64 €, Desert-Horse-
+  Anzahlung 25,15 € (statt vorläufig 24,96 €) — alle im April per Karte „K2"
   bezahlt (Belege zeigen Spesen, also nicht N26; Karte noch zu bestätigen).
   Granietkop und Little Sossus damit nicht mehr offen. Zuordnung der zwei
   gleichen NWR-Zahlungen (je 860 NAD) zu Halali/Waterberg ist eine Annahme,
