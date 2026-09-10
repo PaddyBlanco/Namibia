@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T06:44:24+00:00",
+  "generated_at": "2026-09-10T06:44:51+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -507,7 +507,7 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "status": "bezahlt"
     },
     {
@@ -859,7 +859,7 @@
       "beschreibung": "Little Sossus Campsite",
       "betrag": 84.58,
       "zahler": "Nora",
-      "zahlmittel": "TBD",
+      "zahlmittel": "Nora Debit",
       "vor_ort": false,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia",

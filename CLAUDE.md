@@ -50,6 +50,7 @@ unabhängig davon.
 | Patrick | Oberbank Debitkarte                      | Girokonto, Standard für Bargeldabhebung |
 | Patrick | Mastercard card complete World Superior  | Kreditkarte, nur Notfall/Kaution |
 | Nora    | N26 Debit (Mastercard)                   | Standard für Kartenzahlungen |
+| Nora    | normale Bank-Debitkarte (`Nora Debit`)   | Nur die Vorab-Zahlungen der Unterkünfte im April 2026 (Belege mit Kartenkennung K2, Spesen ca. 1,3 bis 1,7 EUR je Zahlung); unterwegs nicht benutzen |
 
 **Kartenregel (siehe `docs/karten-gebuehren.md`):**
 - Kartenzahlung in NAD → **Nora / N26** (0 % Fremdwährungsgebühr)

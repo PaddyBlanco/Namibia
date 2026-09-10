@@ -47,7 +47,8 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   Anib 36,67 €, Little Sossus 84,58 €, Okaukuejo 59,54 €, Halali 45,96 €,
   Waterberg 46,11 €, Granietkop 50,30 €, Omatozu 35,64 €, Desert-Horse-
   Anzahlung 25,15 € (statt vorläufig 24,96 €) — alle im April per Karte „K2"
-  bezahlt (Belege zeigen Spesen, also nicht N26; Karte noch zu bestätigen).
+  bezahlt = Noras normale Bank-Debitkarte, nicht N26 (Patrick, 10.09.;
+  Zahlmittel `Nora Debit`).
   Granietkop und Little Sossus damit nicht mehr offen. Zuordnung der zwei
   gleichen NWR-Zahlungen (je 860 NAD) zu Halali/Waterberg ist eine Annahme,
   Summe identisch.
