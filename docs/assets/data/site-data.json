@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-09T17:21:32+00:00",
+  "generated_at": "2026-09-10T06:34:39+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6306.66,
-    "bezahlt": 5926.66,
-    "offen": 380.0,
+    "gesamt": 6307.24,
+    "bezahlt": 6011.24,
+    "offen": 296.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 77.28,
     "kasse_bestand": 299.15,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 1912.69,
+    "nora_gezahlt": 1997.27,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 5926.66,
-    "anteil_pro_person": 2963.33,
+    "saldo_basis": 6011.24,
+    "anteil_pro_person": 3005.62,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": -87.31,
-    "saldo_patrick": 3050.64,
+    "beitrag_nora": -2.73,
+    "saldo_patrick": 3008.35,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 730.46
+      "betrag": 731.04
     },
     {
       "name": "Tanken",
@@ -503,12 +503,12 @@
       "ort_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia",
       "kategorie": "Unterkunft",
       "beschreibung": "Little Sossus Campsite",
-      "betrag": 84.0,
+      "betrag": 84.58,
       "betrag_fw": null,
       "waehrung": "EUR",
-      "zahler": "TBD",
+      "zahler": "Nora",
       "zahlmittel": "TBD",
-      "status": "offen"
+      "status": "bezahlt"
     },
     {
       "id": "b2-24",
@@ -857,11 +857,11 @@
       "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Little Sossus Campsite",
-      "betrag": 84.0,
-      "zahler": "TBD",
+      "betrag": 84.58,
+      "zahler": "Nora",
       "zahlmittel": "TBD",
       "vor_ort": false,
-      "status": "offen",
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Little%20Sossus%20Campsite%2C%20Namibia",
       "fahrzeit": "1h15"
     },

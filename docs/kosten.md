@@ -13,7 +13,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
 | 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 24,96 € | Anzahlung vorab bezahlt - Rest siehe Blatt 02 | 24,96 € | 0,00 € | Nora | N26 Debit | Anzahlung 460 NAD am 23.04. von Nora per N26 (Rechnung 6483110; Patrick 07.09.) - EUR VORLAEUFIG mit dem Kurs der Restzahlung 18.4323 gerechnet; echten N26-Betrag vom 23.04. nachtragen. Restzahlung 460 NAD am 05.09. steht in Blatt 02 Nr. 11. Die frueher hier gefuehrten 24 EUR waren der Kolmanskop-Eintritt (= Blatt 02 Nr. 12) |
 | 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig; 600.00 NAD am 2026-09-07 Bargeld von Patrick - steht in Blatt 02 Nr. 31 |
-| 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,00 € | offen | 0,00 € | 84,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
+| 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,58 € | bezahlt | 84,58 € | 0,00 € | Nora ⚠️ | TBD | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1600 NAD = 84.58 EUR inkl. Spesen 1.71 EUR, Kurs 19.3070 (Beleg: LITTLE SOSSUS LODGE 1 MALTAHOHE). Karte unklar - Beleg zeigt Spesen, N26 verrechnet keine; Zahlmittel bestaetigen. |
 | 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 25,00 € | offen - cash on arrival | 0,00 € | 25,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig |
 | 10 | 2026-09-11 | Unterkunft | Spitzkoppe Campsite | 2 | 62,00 € | offen | 0,00 € | 62,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
 | 11 | 2026-09-13 | Unterkunft | Granietkop Campsite Damaraland | 1 | 48,00 € | gebucht - Status unklar | 0,00 € | 48,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
@@ -25,7 +25,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 44,70 € | bezahlt | 44,70 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 | 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 34,00 € | bezahlt | 34,00 € | 0,00 € | Nora | N26 Debit | Von Nora vorab beglichen |
 
-**Summe:** 5.256,07 € geplant · 4.876,07 € bezahlt · **380,00 € noch offen**
+**Summe:** 5.256,65 € geplant · 4.960,65 € bezahlt · **296,00 € noch offen**
 
 ## 2. Laufende Kosten während der Reise
 
@@ -75,7 +75,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
-| Unterkunft | 730,46 € |
+| Unterkunft | 731,04 € |
 | Tanken | 368,88 € |
 | Lebensmittel | 282,56 € |
 | Eintritt | 92,04 € |
@@ -85,15 +85,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Shopping | 20,07 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.306,66 €** (davon bezahlt 5.926,66 €, noch offen 380,00 €)
+**Gesamtausgaben: 6.307,24 €** (davon bezahlt 6.011,24 €, noch offen 296,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.202,29 € | 710,40 € | 1.912,69 € |
-| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 380,00 € |
+| Nora | 1.286,87 € | 710,40 € | 1.997,27 € |
+| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 296,00 € |
 
 ### Reisekasse (Bargeld)
 
@@ -111,15 +111,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 1.912,69 € |
+| Nora gezahlt (Karte) | 1.997,27 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 5.926,66 € |
-| Anteil je Person (50 %) | 2.963,33 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.011,24 € |
+| Anteil je Person (50 %) | 3.005,62 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | -87,31 € |
-| **Saldo** | **Nora schuldet Patrick 3.050,64 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | -2,73 € |
+| **Saldo** | **Nora schuldet Patrick 3.008,35 €** |
 
-*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 380,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
+*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 296,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
 ### Offene Punkte (⚠️ markiert)
 
