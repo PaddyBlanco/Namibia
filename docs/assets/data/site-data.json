@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T06:44:51+00:00",
+  "generated_at": "2026-09-10T06:53:28+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -1130,26 +1130,26 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-09",
+      "stand": "2026-09-10",
       "letzter_volltank": {
         "ort": "Sesriem",
         "datum": "2026-09-09",
         "kilometerstand": 22085
       },
       "aktueller_standort": {
-        "ort": "Sesriem / Little Sossus Campsite",
-        "datum": "2026-09-09"
+        "ort": "unterwegs Little Sossus → Swakopmund",
+        "datum": "2026-09-10"
       },
-      "strecke_seit_volltank_km": 0,
+      "strecke_seit_volltank_km": 25,
       "naechster_pflicht_stopp": {
         "ort": "Solitaire",
-        "hinweis": "Letzte Tankstelle vor der Küste - danach ca. 340 km bis Walvis Bay"
+        "hinweis": "Letzte Tankstelle vor der Kueste - danach ca. 260 km bis Walvis Bay, ca. 290 km bis Swakopmund"
       },
       "strecke_bis_naechster_stopp_km": 80,
-      "empfehlung": "Frisch getankt in Sesriem (54,60 L bei 22.085 km). Morgen Richtung Swakopmund liegt Solitaire nach ~80 km auf dem Weg - dort kurz auffüllen, dann sind die ~340 km bis Walvis Bay/Swakopmund entspannt, egal wie voll der Tank jetzt ist.",
+      "empfehlung": "Abfahrt 10.09. mit vollem Tank aus Sesriem (Vortag, 22.085 km). Bis Swakopmund sind es ca. 370 km (C19/C14 ueber Solitaire, Kuiseb-Pass, Walvis Bay) = ca. 40 L bei 10,9 L/100 km - passt locker in einen 160-L-Tank. Solitaire nach ~80 km ist optional (Apfelkuchen, Kaffee), tanken erst in Swakopmund (viele Tankstellen, meist guenstiger als in der Wueste).",
       "anmerkung": "Erster gemessener Verbrauch: Helmeringhausen 21.586 km → Sesriem 22.085 km = 499 km mit 54,60 L nachgetankt, beide Male voll = 10,9 L/100 km (Bordcomputer sagte 11,2). Die Seite rechnet ab jetzt mit dem gemessenen Wert; jeder weitere Volltank mit Kilometerstand verfeinert den Schnitt.",
-      "geschaetzte_rest_liter": 160.0,
-      "geschaetzte_restreichweite_km": 1468
+      "geschaetzte_rest_liter": 157.3,
+      "geschaetzte_restreichweite_km": 1443
     }
   },
   "offene_punkte": [
