@@ -65,8 +65,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 31 | 2026-09-07 | – | Ausgabe | Wereldend | Wereldend Mountain Campsite | Unterkunft | 600.00 NAD | 32,20 € | Patrick | Bargeld | 18.634 | EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
 | 32 | 2026-09-09 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Sonstiges | 70.00 NAD | 3,76 € | Patrick | Bargeld | 18.617 | Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
 | 33 | 2026-09-10 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Lebensmittel | – | 8,62 € | Nora | N26 Debit | – | Bei Abreise |
+| 34 | 2026-09-10 | – | Ausgabe | Solitaire | Tankstelle Solitaire | Tanken | 220.00 NAD | 11,68 € | Nora | Bargeld | 18.836 | Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6 |
 
-**Echte Ausgaben:** 1.059,21 € (davon bar 77,28 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 299,15 €
+**Echte Ausgaben:** 1.070,89 € (davon bar 88,96 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 287,47 €
 
 ## 3. Zusammenfassung
 
@@ -77,7 +78,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
 | Unterkunft | 727,75 € |
-| Tanken | 368,88 € |
+| Tanken | 380,56 € |
 | Lebensmittel | 291,18 € |
 | Eintritt | 92,04 € |
 | Restaurant | 88,61 € |
@@ -86,23 +87,23 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Shopping | 20,07 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.312,57 €** (davon bezahlt 6.064,57 €, noch offen 248,00 €)
+**Gesamtausgaben: 6.324,25 €** (davon bezahlt 6.076,25 €, noch offen 248,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.331,58 € | 719,02 € | 2.050,60 € |
+| Nora | 1.331,58 € | 730,70 € | 2.062,28 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 248,00 € |
 
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **376,43 €**
-- Davon bar ausgegeben: **77,28 €**
-- Kassenbestand rechnerisch: **299,15 €**
+- Davon bar ausgegeben: **88,96 €**
+- Kassenbestand rechnerisch: **287,47 €**
   - Topf Patrick: 2.607 NAD ≈ 139,92 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
-  - Topf Nora: 3.000 NAD ≈ 159,23 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
+  - Topf Nora: 2.780 NAD ≈ 147,55 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
 - Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
@@ -112,13 +113,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.050,60 € |
+| Nora gezahlt (Karte) | 2.062,28 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.064,57 € |
-| Anteil je Person (50 %) | 3.032,28 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.076,25 € |
+| Anteil je Person (50 %) | 3.038,12 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 50,60 € |
-| **Saldo** | **Nora schuldet Patrick 2.981,69 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 62,28 € |
+| **Saldo** | **Nora schuldet Patrick 2.975,85 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 248,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

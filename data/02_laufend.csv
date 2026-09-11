@@ -31,3 +31,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 31,2026-09-07,,Ausgabe,Wereldend,Wereldend Mountain Campsite,Unterkunft,600.00,NAD,32.20,Patrick,Bargeld,EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
 32,2026-09-09,,Ausgabe,Little Sossus,Little Sossus Campsite,Sonstiges,70.00,NAD,3.76,Patrick,Bargeld,Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
 33,2026-09-10,,Ausgabe,Little Sossus,Little Sossus Campsite,Lebensmittel,,EUR,8.62,Nora,N26 Debit,Bei Abreise
+34,2026-09-10,,Ausgabe,Solitaire,Tankstelle Solitaire,Tanken,220.00,NAD,11.68,Nora,Bargeld,Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6

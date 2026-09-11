@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-10T07:11:56+00:00",
+  "generated_at": "2026-09-11T08:14:30+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6312.57,
-    "bezahlt": 6064.57,
+    "gesamt": 6324.25,
+    "bezahlt": 6076.25,
     "offen": 248.0,
     "kasse_abgehoben": 376.43,
-    "kasse_bar_ausgegeben": 77.28,
-    "kasse_bestand": 299.15,
+    "kasse_bar_ausgegeben": 88.96,
+    "kasse_bestand": 287.47,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2050.6,
+    "nora_gezahlt": 2062.28,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6064.57,
-    "anteil_pro_person": 3032.28,
+    "saldo_basis": 6076.25,
+    "anteil_pro_person": 3038.12,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 50.6,
-    "saldo_patrick": 2981.69,
+    "beitrag_nora": 62.28,
+    "saldo_patrick": 2975.85,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -35,10 +35,10 @@
         "seit": "2026-09-09",
         "abgehoben_nad": 3000.0,
         "abgehoben_eur": 159.23,
-        "bar_nad": 0.0,
-        "bar_eur": 0.0,
-        "bestand_nad": 3000.0,
-        "bestand_eur": 159.23,
+        "bar_nad": 220.0,
+        "bar_eur": 11.68,
+        "bestand_nad": 2780.0,
+        "bestand_eur": 147.55,
         "kurs": 18.84
       }
     }
@@ -58,7 +58,7 @@
     },
     {
       "name": "Tanken",
-      "betrag": 368.88
+      "betrag": 380.56
     },
     {
       "name": "Lebensmittel",
@@ -646,6 +646,21 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-34",
+      "datum": "2026-09-10",
+      "zeit": "",
+      "ort": "Solitaire",
+      "ort_link": null,
+      "kategorie": "Tanken",
+      "beschreibung": "Tankstelle Solitaire",
+      "betrag": 11.68,
+      "betrag_fw": 220.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-10",
       "datum": "2026-09-11",
       "zeit": "",
@@ -1082,12 +1097,24 @@
         "verbrauch_l_100km": 10.9,
         "zahler": "Nora",
         "anmerkung": "Entspricht Blatt 02 Nr. 27 - erster Abschnitt mit zwei Volltanks und km-Staenden (Helmeringhausen 21586 -> Sesriem 22085 = 499 km); Volltanken von Patrick bestaetigt (09.09.)"
+      },
+      {
+        "datum": "2026-09-10",
+        "ort": "Solitaire",
+        "liter": 7.8,
+        "preis_pro_liter_nad": 28.21,
+        "preis_pro_liter_eur": 1.497,
+        "betrag_eur": 11.68,
+        "kilometerstand": null,
+        "verbrauch_l_100km": null,
+        "zahler": "Nora",
+        "anmerkung": "Entspricht Blatt 02 Nr. 34 - 220 NAD bar (Nora); Preis/L aus 220/7,8 gerechnet; Kilometerstand nicht notiert, daher kein Verbrauchsabschnitt Sesriem -> Solitaire"
       }
     ],
     "summary": {
-      "gesamt_liter": 88.9,
-      "gesamt_kosten": 368.88,
-      "avg_preis_liter_eur": 1.544,
+      "gesamt_liter": 96.7,
+      "gesamt_kosten": 380.56,
+      "avg_preis_liter_eur": 1.528,
       "avg_verbrauch_l_100km": 10.9,
       "verbrauch_quelle": "fillups",
       "fahrzeug_modell": "TBD",
@@ -1145,26 +1172,26 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-10",
+      "stand": "2026-09-11",
       "letzter_volltank": {
-        "ort": "Sesriem",
-        "datum": "2026-09-09",
-        "kilometerstand": 22085
+        "ort": "Solitaire",
+        "datum": "2026-09-10",
+        "kilometerstand": null
       },
       "aktueller_standort": {
-        "ort": "unterwegs Little Sossus → Swakopmund",
-        "datum": "2026-09-10"
+        "ort": "Swakopmund (Moonvalley River Camp)",
+        "datum": "2026-09-11"
       },
-      "strecke_seit_volltank_km": 25,
+      "strecke_seit_volltank_km": 290,
       "naechster_pflicht_stopp": {
-        "ort": "Solitaire",
-        "hinweis": "Letzte Tankstelle vor der Kueste - danach ca. 260 km bis Walvis Bay, ca. 290 km bis Swakopmund"
+        "ort": "Swakopmund",
+        "hinweis": "Vor der Abfahrt nach Spitzkoppe volltanken - an der Spitzkoppe gibt es keinen Sprit, naechste Tankstelle danach Usakos (ca. 40 km oestlich der Abzweigung)"
       },
-      "strecke_bis_naechster_stopp_km": 80,
-      "empfehlung": "Abfahrt 10.09. mit vollem Tank aus Sesriem (Vortag, 22.085 km). Bis Swakopmund sind es ca. 370 km (C19/C14 ueber Solitaire, Kuiseb-Pass, Walvis Bay) = ca. 40 L bei 10,9 L/100 km - passt locker in einen 160-L-Tank. Solitaire nach ~80 km ist optional (Apfelkuchen, Kaffee), tanken erst in Swakopmund (viele Tankstellen, meist guenstiger als in der Wueste).",
-      "anmerkung": "Erster gemessener Verbrauch: Helmeringhausen 21.586 km → Sesriem 22.085 km = 499 km mit 54,60 L nachgetankt, beide Male voll = 10,9 L/100 km (Bordcomputer sagte 11,2). Die Seite rechnet ab jetzt mit dem gemessenen Wert; jeder weitere Volltank mit Kilometerstand verfeinert den Schnitt.",
-      "geschaetzte_rest_liter": 157.3,
-      "geschaetzte_restreichweite_km": 1443
+      "strecke_bis_naechster_stopp_km": 0,
+      "empfehlung": "Voll in Solitaire (10.09., 7,8 L nachgefuellt). Seither ca. 290 km bis Swakopmund = ca. 32 L verbraucht, also noch rund 125 L im Tank. Heute in Swakopmund trotzdem volltanken: Spitzkoppe (ca. 150 km) hat keine Tankstelle, danach geht es weiter Richtung Damaraland, wo Tankstellen weit auseinander liegen. Kilometerstand beim Tanken notieren, dann gibt es wieder eine echte Verbrauchsmessung.",
+      "anmerkung": "Gemessener Verbrauch 10,9 L/100 km (Helmeringhausen -> Sesriem, 499 km, 54,60 L). Der Volltank in Solitaire hat keinen Kilometerstand, deshalb faellt der Abschnitt Sesriem -> Solitaire fuer die Messung aus; der naechste Volltank MIT Kilometerstand setzt den Nullpunkt neu.",
+      "geschaetzte_rest_liter": 128.4,
+      "geschaetzte_restreichweite_km": 1178
     }
   },
   "offene_punkte": [

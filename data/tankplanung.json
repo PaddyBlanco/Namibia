@@ -1,20 +1,20 @@
 {
-  "stand": "2026-09-10",
+  "stand": "2026-09-11",
   "letzter_volltank": {
-    "ort": "Sesriem",
-    "datum": "2026-09-09",
-    "kilometerstand": 22085
+    "ort": "Solitaire",
+    "datum": "2026-09-10",
+    "kilometerstand": null
   },
   "aktueller_standort": {
-    "ort": "unterwegs Little Sossus → Swakopmund",
-    "datum": "2026-09-10"
+    "ort": "Swakopmund (Moonvalley River Camp)",
+    "datum": "2026-09-11"
   },
-  "strecke_seit_volltank_km": 25,
+  "strecke_seit_volltank_km": 290,
   "naechster_pflicht_stopp": {
-    "ort": "Solitaire",
-    "hinweis": "Letzte Tankstelle vor der Kueste - danach ca. 260 km bis Walvis Bay, ca. 290 km bis Swakopmund"
+    "ort": "Swakopmund",
+    "hinweis": "Vor der Abfahrt nach Spitzkoppe volltanken - an der Spitzkoppe gibt es keinen Sprit, naechste Tankstelle danach Usakos (ca. 40 km oestlich der Abzweigung)"
   },
-  "strecke_bis_naechster_stopp_km": 80,
-  "empfehlung": "Abfahrt 10.09. mit vollem Tank aus Sesriem (Vortag, 22.085 km). Bis Swakopmund sind es ca. 370 km (C19/C14 ueber Solitaire, Kuiseb-Pass, Walvis Bay) = ca. 40 L bei 10,9 L/100 km - passt locker in einen 160-L-Tank. Solitaire nach ~80 km ist optional (Apfelkuchen, Kaffee), tanken erst in Swakopmund (viele Tankstellen, meist guenstiger als in der Wueste).",
-  "anmerkung": "Erster gemessener Verbrauch: Helmeringhausen 21.586 km → Sesriem 22.085 km = 499 km mit 54,60 L nachgetankt, beide Male voll = 10,9 L/100 km (Bordcomputer sagte 11,2). Die Seite rechnet ab jetzt mit dem gemessenen Wert; jeder weitere Volltank mit Kilometerstand verfeinert den Schnitt."
+  "strecke_bis_naechster_stopp_km": 0,
+  "empfehlung": "Voll in Solitaire (10.09., 7,8 L nachgefuellt). Seither ca. 290 km bis Swakopmund = ca. 32 L verbraucht, also noch rund 125 L im Tank. Heute in Swakopmund trotzdem volltanken: Spitzkoppe (ca. 150 km) hat keine Tankstelle, danach geht es weiter Richtung Damaraland, wo Tankstellen weit auseinander liegen. Kilometerstand beim Tanken notieren, dann gibt es wieder eine echte Verbrauchsmessung.",
+  "anmerkung": "Gemessener Verbrauch 10,9 L/100 km (Helmeringhausen -> Sesriem, 499 km, 54,60 L). Der Volltank in Solitaire hat keinen Kilometerstand, deshalb faellt der Abschnitt Sesriem -> Solitaire fuer die Messung aus; der naechste Volltank MIT Kilometerstand setzt den Nullpunkt neu."
 }
