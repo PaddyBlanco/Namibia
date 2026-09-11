@@ -491,6 +491,12 @@ immer `ortLink()` benutzen, nie nackten Text.
   deshalb bis zu 10 Min nicht, obwohl der Pages-Deploy längst durch war).
   Der Service Worker ignoriert die Query und cached die JSON unter der
   festen URL. `index.html` bleibt 10 Min gecacht — dagegen hilft nur Neuladen.
+  **„↻ Aktualisieren"-Button** unter dem Datenstand (alle Tabs, seit
+  11.09.2026, nachdem das Handy den ganzen Tag den Stand von 10:14 Uhr
+  zeigte, obwohl elf Deploys durch waren): löscht die JSON aus allen
+  Cache-Storage-Caches, stößt ein SW-Update an, lädt neu und rendert alles
+  (`renderAll()`). Liefert `loadData()` den localStorage-Fallback
+  (`_ausCache`), bleibt der alte Stand mit Toast „Kein Netz" und Banner.
 - GitHub-Pages-Einstellung (macht der Nutzer selbst): Settings → Pages →
   Source: *Deploy from branch* → Branch **`claude/namibia-2026-bkm6h4`**
   (Stand 06.09.2026: `main` enthält nur die Start-README, die gesamte

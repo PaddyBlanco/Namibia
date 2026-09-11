@@ -86,7 +86,9 @@
         try { cached = localStorage.getItem(CACHE_KEY); } catch (e) {}
         if (cached) {
           document.getElementById("offline-banner").classList.add("show");
-          return JSON.parse(cached);
+          var alt = JSON.parse(cached);
+          alt._ausCache = true;  // damit "Aktualisieren" einen Fehlschlag erkennt
+          return alt;
         }
         throw err;
       });
@@ -1230,14 +1232,41 @@
   // ---------------- Start ----------------
   initNav();
   initErfassen();
-  loadData().then(function (data) {
+  function renderAll(data) {
     renderHeute(data);
     renderReiseStatus(data);
     renderLetzteAusgaben(data);
     renderAusgaben(data);
     renderPlan(data);
     renderMehr(data);
-  }).catch(function () {
+  }
+
+  // "Aktualisieren"-Button (Nutzerwunsch 11.09.2026, nachdem das Handy den
+  // ganzen Tag einen alten Datenstand zeigte): Cache-Kopie der JSON verwerfen,
+  // frisch laden, alles neu zeichnen. Ohne Netz bleibt der alte Stand stehen.
+  document.getElementById("refresh-btn").addEventListener("click", function () {
+    var btn = this;
+    btn.disabled = true;
+    var jsonUrl = new URL(DATA_URL, location.href).href;
+    var drop = ("caches" in window)
+      ? caches.keys().then(function (keys) {
+          return Promise.all(keys.map(function (k) { return caches.open(k).then(function (c) { return c.delete(jsonUrl); }); }));
+        }).catch(function () {})
+      : Promise.resolve();
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistration().then(function (r) { if (r) return r.update(); }).catch(function () {});
+    }
+    drop.then(loadData).then(function (data) {
+      if (data._ausCache) throw new Error("offline");
+      renderAll(data);
+      document.getElementById("offline-banner").classList.remove("show");
+      toast("Aktualisiert: " + document.getElementById("update-note").textContent);
+    }).catch(function () {
+      toast("Kein Netz – alter Stand bleibt");
+    }).then(function () { btn.disabled = false; });
+  });
+
+  loadData().then(renderAll).catch(function () {
     document.getElementById("header-subline").textContent = "Daten konnten nicht geladen werden.";
     var banner = document.getElementById("offline-banner");
     banner.textContent = "Daten konnten nicht geladen werden – bitte mit Netz einmal neu laden.";
