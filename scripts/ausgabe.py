@@ -204,9 +204,8 @@ def cmd_edit(a):
             v = ZAHLMITTEL.get(v.lower().replace(" ", ""), v)
         changes.append(f"{k} {r[k]!r} -> {v!r}")
         r[k] = v
-    if r.get("zahlmittel") == "Bargeld" and r.get("zahler") != "Patrick":
-        changes.append(f"zahler {r['zahler']!r} -> 'Patrick' (Regel 9)")
-        r["zahler"] = "Patrick"
+    if r.get("zahlmittel") == "Bargeld" and r.get("zahler") not in ("Patrick", "Nora", "TBD"):
+        sys.exit("Barzahlung: zahler=Patrick|Nora angeben (Regel 9: wessen Bargeld)")
     write(path, rows, fields)
     print(f"~ {a.id}: " + "; ".join(changes))
     return a.msg or f"{a.id} geaendert: " + "; ".join(changes)
