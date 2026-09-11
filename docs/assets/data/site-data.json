@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T14:46:56+00:00",
+  "generated_at": "2026-09-11T14:48:08+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6420.63,
-    "bezahlt": 6389.63,
+    "gesamt": 6500.6,
+    "bezahlt": 6469.6,
     "offen": 31.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 107.54,
     "kasse_bestand": 376.69,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2375.66,
+    "nora_gezahlt": 2455.63,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6389.63,
-    "anteil_pro_person": 3194.82,
+    "saldo_basis": 6469.6,
+    "anteil_pro_person": 3234.8,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 375.66,
-    "saldo_patrick": 2819.16,
+    "beitrag_nora": 455.63,
+    "saldo_patrick": 2779.17,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -58,7 +58,7 @@
     },
     {
       "name": "Tanken",
-      "betrag": 380.56
+      "betrag": 460.53
     },
     {
       "name": "Lebensmittel",
@@ -751,6 +751,21 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-43",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Tanken",
+      "beschreibung": "Tankstelle",
+      "betrag": 79.97,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-10",
       "datum": "2026-09-12",
       "zeit": "",
@@ -1199,12 +1214,24 @@
         "verbrauch_l_100km": null,
         "zahler": "Nora",
         "anmerkung": "Entspricht Blatt 02 Nr. 34 - 220 NAD bar (Nora); Preis/L aus 220/7,8 gerechnet; Kilometerstand nicht notiert, daher kein Verbrauchsabschnitt Sesriem -> Solitaire"
+      },
+      {
+        "datum": "2026-09-11",
+        "ort": "Swakopmund",
+        "liter": 53.08,
+        "preis_pro_liter_nad": null,
+        "preis_pro_liter_eur": 1.507,
+        "betrag_eur": 79.97,
+        "kilometerstand": 22581.0,
+        "verbrauch_l_100km": null,
+        "zahler": "Nora",
+        "anmerkung": "Entspricht Blatt 02 Nr. 43"
       }
     ],
     "summary": {
-      "gesamt_liter": 96.7,
-      "gesamt_kosten": 380.56,
-      "avg_preis_liter_eur": 1.528,
+      "gesamt_liter": 149.8,
+      "gesamt_kosten": 460.53,
+      "avg_preis_liter_eur": 1.523,
       "avg_verbrauch_l_100km": 10.9,
       "verbrauch_quelle": "fillups",
       "fahrzeug_modell": "TBD",

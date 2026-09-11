@@ -76,6 +76,7 @@ def parse_tanken():
 
     fillups = []
     last_full_km = None  # km-Stand des letzten bestaetigten VOLLtanks
+    liter_seit = 0.0     # Liter aller Tankstopps seit diesem Volltank (auch Zwischenstopps ohne km)
     for r in rows_:
         liter = None if is_tbd(r["liter"]) else float(r["liter"])
         preis_l_nad = None if is_tbd(r["preis_pro_liter_nad"]) else float(r["preis_pro_liter_nad"])
@@ -87,11 +88,15 @@ def parse_tanken():
         # Verbrauch nur zwischen zwei bestaetigten Volltanks mit km-Stand:
         # Bei einer Teilbetankung ist unbekannt, wie viel wirklich verbraucht
         # wurde - dann lieber Bordcomputer-Schnitt als eine falsche Messung.
+        # Zwischenstopps (z. B. Solitaire 10.09.: voll, aber ohne km) zaehlen
+        # mit ihren Litern zum Abschnitt dazu - sonst fehlt getankter Sprit.
         verbrauch = None
-        if voll and km is not None and last_full_km is not None and liter is not None and km > last_full_km:
-            verbrauch = round(liter / (km - last_full_km) * 100, 1)
+        liter_seit = None if liter is None or liter_seit is None else liter_seit + liter
+        if voll and km is not None and last_full_km is not None and liter_seit is not None and km > last_full_km:
+            verbrauch = round(liter_seit / (km - last_full_km) * 100, 1)
         if voll and km is not None:
             last_full_km = km
+            liter_seit = 0.0
 
         fillups.append({
             "datum": r["datum"],

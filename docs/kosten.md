@@ -74,8 +74,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 40 | 2026-09-11 | – | Ausgabe | Swakopmund | SuperSpar Swakopmund | Lebensmittel | – | 60,66 € | Nora | N26 Debit | – | – |
 | 41 | 2026-09-11 | – | Ausgabe | Swakopmund | Tops Swakopmund | Lebensmittel | – | 18,99 € | Nora | N26 Debit | – | Tops (Spar-Getraenkemarkt) |
 | 42 | 2026-09-11 | – | Abhebung 💶 | Swakopmund | Spar Swakopmund (Bargeld an der Kasse/ATM) | Bargeld | 2000.00 NAD | 107,80 € | Nora | N26 Debit | 18.553 | Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 107.80 EUR fuer 2000.00 NAD inkl. Entgelt (Kurs 18.553). N26-Push: Abhebung 107,80 EUR bei Swakopmund Spar. Entgelt unbekannt - falls N26 mehr als 2000 NAD ausweist, Differenz als Gebuehr nachtragen |
+| 43 | 2026-09-11 | – | Ausgabe | Swakopmund | Tankstelle | Tanken | – | 79,97 € | Nora | N26 Debit | – | Tankdetails in 04_tanken.csv Nr. 7 |
 
-**Echte Ausgaben:** 1.223,27 € (davon bar 107,54 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 376,69 €
+**Echte Ausgaben:** 1.303,24 € (davon bar 107,54 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 376,69 €
 
 ## 3. Zusammenfassung
 
@@ -86,7 +87,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
 | Unterkunft | 685,02 € |
-| Tanken | 380,56 € |
+| Tanken | 460,53 € |
 | Lebensmittel | 370,83 € |
 | Restaurant | 121,11 € |
 | Eintritt | 97,35 € |
@@ -95,14 +96,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.420,63 €** (davon bezahlt 6.389,63 €, noch offen 31,00 €)
+**Gesamtausgaben: 6.500,60 €** (davon bezahlt 6.469,60 €, noch offen 31,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.492,58 € | 883,08 € | 2.375,66 € |
+| Nora | 1.492,58 € | 963,05 € | 2.455,63 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 31,00 € |
 
 ### Reisekasse (Bargeld)
@@ -121,13 +122,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.375,66 € |
+| Nora gezahlt (Karte) | 2.455,63 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.389,63 € |
-| Anteil je Person (50 %) | 3.194,82 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.469,60 € |
+| Anteil je Person (50 %) | 3.234,80 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 375,66 € |
-| **Saldo** | **Nora schuldet Patrick 2.819,16 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 455,63 € |
+| **Saldo** | **Nora schuldet Patrick 2.779,17 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 31,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
