@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T08:14:30+00:00",
+  "generated_at": "2026-09-11T08:21:16+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6324.25,
-    "bezahlt": 6076.25,
-    "offen": 248.0,
+    "gesamt": 6312.52,
+    "bezahlt": 6089.52,
+    "offen": 223.0,
     "kasse_abgehoben": 376.43,
-    "kasse_bar_ausgegeben": 88.96,
-    "kasse_bestand": 287.47,
+    "kasse_bar_ausgegeben": 102.23,
+    "kasse_bestand": 274.2,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2062.28,
+    "nora_gezahlt": 2075.55,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6076.25,
-    "anteil_pro_person": 3038.12,
+    "saldo_basis": 6089.52,
+    "anteil_pro_person": 3044.76,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 62.28,
-    "saldo_patrick": 2975.85,
+    "beitrag_nora": 75.55,
+    "saldo_patrick": 2969.21,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -35,10 +35,10 @@
         "seit": "2026-09-09",
         "abgehoben_nad": 3000.0,
         "abgehoben_eur": 159.23,
-        "bar_nad": 220.0,
-        "bar_eur": 11.68,
-        "bestand_nad": 2780.0,
-        "bestand_eur": 147.55,
+        "bar_nad": 470.0,
+        "bar_eur": 24.95,
+        "bestand_nad": 2530.0,
+        "bestand_eur": 134.28,
         "kurs": 18.84
       }
     }
@@ -54,7 +54,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 727.75
+      "betrag": 716.02
     },
     {
       "name": "Tanken",
@@ -616,21 +616,6 @@
       "status": "bezahlt"
     },
     {
-      "id": "b1-9",
-      "datum": "2026-09-10",
-      "zeit": "",
-      "ort": "Moonvalley River Camp Swakopmund",
-      "ort_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia",
-      "kategorie": "Unterkunft",
-      "beschreibung": "Moonvalley River Camp Swakopmund",
-      "betrag": 25.0,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "TBD",
-      "zahlmittel": "Bargeld",
-      "status": "offen"
-    },
-    {
       "id": "b2-33",
       "datum": "2026-09-10",
       "zeit": "",
@@ -655,6 +640,21 @@
       "beschreibung": "Tankstelle Solitaire",
       "betrag": 11.68,
       "betrag_fw": 220.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-35",
+      "datum": "2026-09-10",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Unterkunft",
+      "beschreibung": "Moonvalley River Camp",
+      "betrag": 13.27,
+      "betrag_fw": 250.0,
       "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "Bargeld",
@@ -901,11 +901,11 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
-      "betrag": 25.0,
-      "zahler": "TBD",
+      "betrag": 13.27,
+      "zahler": "Nora",
       "zahlmittel": "Bargeld",
-      "vor_ort": false,
-      "status": "offen",
+      "vor_ort": true,
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Moonvalley%20River%20Camp%20Swakopmund%2C%20Namibia",
       "fahrzeit": "5–7h"
     },
