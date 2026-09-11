@@ -42,3 +42,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 42,2026-09-11,,Abhebung,Swakopmund,Spar Swakopmund (Bargeld an der Kasse/ATM),Bargeld,2000.00,NAD,107.80,Nora,N26 Debit,"Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 107.80 EUR fuer 2000.00 NAD inkl. Entgelt (Kurs 18.553). N26-Push: Abhebung 107,80 EUR bei Swakopmund Spar. Entgelt unbekannt - falls N26 mehr als 2000 NAD ausweist, Differenz als Gebuehr nachtragen"
 43,2026-09-11,,Ausgabe,Swakopmund,Tankstelle,Tanken,,EUR,79.97,Nora,N26 Debit,Tankdetails in 04_tanken.csv Nr. 7
 44,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum,Eintritt,90.00,NAD,4.81,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
+45,2026-09-11,,Ausgabe,Swakopmund,Ankerplatz,Restaurant,,EUR,31.10,Nora,N26 Debit,Abendessen

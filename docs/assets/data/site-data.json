@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T14:50:16+00:00",
+  "generated_at": "2026-09-11T14:51:10+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6505.41,
-    "bezahlt": 6474.41,
+    "gesamt": 6536.51,
+    "bezahlt": 6505.51,
     "offen": 31.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 112.35,
     "kasse_bestand": 371.88,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2460.44,
+    "nora_gezahlt": 2491.54,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6474.41,
-    "anteil_pro_person": 3237.2,
+    "saldo_basis": 6505.51,
+    "anteil_pro_person": 3252.76,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 460.44,
-    "saldo_patrick": 2776.77,
+    "beitrag_nora": 491.54,
+    "saldo_patrick": 2761.22,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 121.11
+      "betrag": 152.21
     },
     {
       "name": "Eintritt",
@@ -778,6 +778,21 @@
       "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-45",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Ankerplatz",
+      "betrag": 31.1,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
