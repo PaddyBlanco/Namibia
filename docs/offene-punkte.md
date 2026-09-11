@@ -6,7 +6,7 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 
 | # | Punkt | Warum es zählt |
 |---|---|---|
-| 1 | **Hoada-Anzahlung** — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt. | Zahlungsstand |
+| 1 | **Hoada und Onguma (2 Nächte) — Belege fehlen** — laut Patrick (11.09.) von Nora komplett vorab bezahlt, aktuell mit den Planwerten 45 € / 2 × 58 € als bezahlt geführt, Karte unbekannt (TBD). Kartenbelege (NAD, EUR, Karte) aus Noras Banking-App nachtragen. | Betrag und Zahlmittel vorläufig |
 | 2 | **N26-Kurse noch vorläufig** — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern. | Kleine Rundungsabweichungen möglich, sobald final gebucht |
 | 3 | **Tanken-Details:** Mietwagen-Modell, Herstellerverbrauch und bisherige Tankvorgänge (Liter, Preis/Liter, Kilometerstand) fehlen noch — Tankgröße ist bereits bekannt (160 L, 2×80 L). Betrifft nicht die Kostensumme (die stimmt bereits), nur die Reichweiten-/Verbrauchsanzeige auf der Seite. | Reichweite lässt sich erst berechnen, wenn zusätzlich der Verbrauch bekannt ist (Herstellerangabe oder mind. 2 Fill-ups mit km-Stand) |
 
@@ -57,8 +57,9 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
 - **Little Sossus (84 €), Moonvalley (25 €), Spitzkoppe (62 €):** bestätigt
   noch nicht fällig, alle drei liegen noch in der Zukunft (08./10./11.09.),
   bleiben planmäßig offen.
-- **Onguma 2 Nächte (116 €):** bestätigt noch nicht fällig
-  (17.–19.09. liegen noch in der Zukunft), bleibt planmäßig offen.
+- **Hoada (45 €) und Onguma 2 Nächte (116 €):** laut Patrick (11.09.) von Nora
+  komplett vorab bezahlt; Planwerte als bezahlt übernommen, Belege fehlen noch
+  (siehe Blockierend Nr. 1).
 - **Tankgröße:** 160 Liter, aufgeteilt in 2×80-Liter-Tanks (Haupt- + Zusatztank).
 - **Klein-Aus Vista, 100,91 € vom 05.09. aufgeklärt** (Rechnung 6483110, erhalten
   beim Auschecken am 07.09.): Es war *nicht* nur die Unterkunft. Die Zahlung

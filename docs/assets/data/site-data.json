@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T10:27:54+00:00",
+  "generated_at": "2026-09-11T12:03:40+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
     "gesamt": 6366.67,
-    "bezahlt": 6143.67,
-    "offen": 223.0,
+    "bezahlt": 6304.67,
+    "offen": 62.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 102.23,
     "kasse_bestand": 274.2,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2129.7,
+    "nora_gezahlt": 2290.7,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6143.67,
-    "anteil_pro_person": 3071.84,
+    "saldo_basis": 6304.67,
+    "anteil_pro_person": 3152.34,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 129.7,
-    "saldo_patrick": 2942.14,
+    "beitrag_nora": 290.7,
+    "saldo_patrick": 2861.64,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -747,8 +747,8 @@
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
-      "status": "offen"
+      "zahlmittel": "TBD",
+      "status": "bezahlt"
     },
     {
       "id": "b1-13",
@@ -791,9 +791,9 @@
       "betrag": 58.0,
       "betrag_fw": null,
       "waehrung": "EUR",
-      "zahler": "TBD",
+      "zahler": "Nora",
       "zahlmittel": "TBD",
-      "status": "offen"
+      "status": "bezahlt"
     },
     {
       "id": "b1-16",
@@ -806,9 +806,9 @@
       "betrag": 58.0,
       "betrag_fw": null,
       "waehrung": "EUR",
-      "zahler": "TBD",
+      "zahler": "Nora",
       "zahlmittel": "TBD",
-      "status": "offen"
+      "status": "bezahlt"
     },
     {
       "id": "b1-17",
@@ -990,9 +990,9 @@
       "beschreibung": "Hoada Campsite (statt Ugab Terrace)",
       "betrag": 45.0,
       "zahler": "Nora",
-      "zahlmittel": "N26 Debit",
+      "zahlmittel": "TBD",
       "vor_ort": false,
-      "status": "offen",
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Hoada%20Campsite%20%28statt%20Ugab%20Terrace%29%2C%20Namibia",
       "fahrzeit": "2h"
     },
@@ -1031,10 +1031,10 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti",
       "betrag": 58.0,
-      "zahler": "TBD",
+      "zahler": "Nora",
       "zahlmittel": "TBD",
       "vor_ort": false,
-      "status": "offen",
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%2C%20Namibia",
       "fahrzeit": "3h"
     },
@@ -1045,10 +1045,10 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
       "betrag": 58.0,
-      "zahler": "TBD",
+      "zahler": "Nora",
       "zahlmittel": "TBD",
       "vor_ort": false,
-      "status": "offen",
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia",
       "fahrzeit": null
     },
@@ -1241,8 +1241,8 @@
   },
   "offene_punkte": [
     {
-      "punkt": "Hoada-Anzahlung — Höhe der bereits geleisteten Anzahlung unbekannt (Patrick weiß es noch nicht), aktuell 45 € komplett als offen geführt.",
-      "warum": "Zahlungsstand"
+      "punkt": "Hoada und Onguma (2 Nächte) — Belege fehlen — laut Patrick (11.09.) von Nora komplett vorab bezahlt, aktuell mit den Planwerten 45 € / 2 × 58 € als bezahlt geführt, Karte unbekannt (TBD). Kartenbelege (NAD, EUR, Karte) aus Noras Banking-App nachtragen.",
+      "warum": "Betrag und Zahlmittel vorläufig"
     },
     {
       "punkt": "N26-Kurse noch vorläufig — fünf Umsätze standen bei der Erfassung auf „Wird bearbeitet\" (Agra Keetmanshoop, Klein Aus Vista, Ghost Town Tours, Desert Deli, Portugues Fisherman), Kurs kann sich laut N26 noch ändern.",

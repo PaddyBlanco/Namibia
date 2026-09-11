@@ -17,15 +17,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig; 250.00 NAD am 2026-09-10 Bargeld von Nora - steht in Blatt 02 Nr. 35 |
 | 10 | 2026-09-11 | Unterkunft | Spitzkoppe Campsite | 2 | 62,00 € | offen | 0,00 € | 62,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
 | 11 | 2026-09-13 | Unterkunft | Granietkop Campsite Damaraland | 1 | 50,30 € | bezahlt | 50,30 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 940 NAD = 50.30 EUR inkl. Spesen 1.46 EUR, Kurs 19.2467 (Beleg: GRANIETKOP CAMPSITE WINDHOEK). Noras normale Debitkarte (K2, Spesen inkl.). |
-| 12 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | angezahlt | 0,00 € | 45,00 € | Nora | N26 Debit | Anzahlungsbetrag unbekannt - bitte nachtragen |
+| 12 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | bezahlt | 45,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 45.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
 | 13 | 2026-09-15 | Unterkunft | Okaukuejo Campsite Etosha | 1 | 59,54 € | bezahlt | 59,54 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1120 NAD = 59.54 EUR inkl. Spesen 1.53 EUR, Kurs 19.3070 (Beleg: NAMIBIA WILDLIFE RESORTS, 17:37). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 14 | 2026-09-16 | Unterkunft | Halali Campsite Etosha | 1 | 45,96 € | bezahlt | 45,96 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 860 NAD = 45.96 EUR inkl. Spesen 1.42 EUR, Kurs 19.3070 (Beleg: NAMIBIA WILDLIFE RESORTS, 18:17). ANNAHME: zwei NWR-Zahlungen zu je 860 NAD (19.04. und 21.04.) - die vom 19.04. Halali (mit Okaukuejo gebucht), die vom 21.04. Waterberg zugeordnet; Summe unabhaengig davon gleich. Noras normale Debitkarte (K2, Spesen inkl.). |
-| 15 | 2026-09-17 | Unterkunft | Onguma Tamboti | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
-| 16 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | gebucht - Status unklar | 0,00 € | 58,00 € | TBD ⚠️ | TBD | Zahlungsstatus bitte pruefen |
+| 15 | 2026-09-17 | Unterkunft | Onguma Tamboti | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 58.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
+| 16 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 58.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
 | 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 46,11 € | bezahlt | 46,11 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 860 NAD = 46.11 EUR inkl. Spesen 1.43 EUR, Kurs 19.2467 (Beleg: NAMIBIA WILDLIFE RESORTS, 20:33). ANNAHME Zuordnung siehe Halali (Nr. 14). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 35,64 € | bezahlt | 35,64 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 660 NAD = 35.64 EUR inkl. Spesen 1.35 EUR, Kurs 19.2467 (Beleg: OMATOZU SAFARIS OKAHANDJA, POS). Noras normale Debitkarte (K2, Spesen inkl.). |
 
-**Summe:** 5.228,36 € geplant · 5.005,36 € bezahlt · **223,00 € noch offen**
+**Summe:** 5.228,36 € geplant · 5.166,36 € bezahlt · **62,00 € noch offen**
 
 ## 2. Laufende Kosten während der Reise
 
@@ -91,15 +91,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.366,67 €** (davon bezahlt 6.143,67 €, noch offen 223,00 €)
+**Gesamtausgaben: 6.366,67 €** (davon bezahlt 6.304,67 €, noch offen 62,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.331,58 € | 798,12 € | 2.129,70 € |
-| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 223,00 € |
+| Nora | 1.492,58 € | 798,12 € | 2.290,70 € |
+| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 62,00 € |
 
 ### Reisekasse (Bargeld)
 
@@ -117,15 +117,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.129,70 € |
+| Nora gezahlt (Karte) | 2.290,70 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.143,67 € |
-| Anteil je Person (50 %) | 3.071,84 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.304,67 € |
+| Anteil je Person (50 %) | 3.152,34 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 129,70 € |
-| **Saldo** | **Nora schuldet Patrick 2.942,14 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 290,70 € |
+| **Saldo** | **Nora schuldet Patrick 2.861,64 €** |
 
-*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 223,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
+*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 62,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
 ### Offene Punkte (⚠️ markiert)
 
