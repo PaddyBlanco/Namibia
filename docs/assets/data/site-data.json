@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T08:23:53+00:00",
+  "generated_at": "2026-09-11T08:25:22+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6335.16,
-    "bezahlt": 6112.16,
+    "gesamt": 6345.02,
+    "bezahlt": 6122.02,
     "offen": 223.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 102.23,
     "kasse_bestand": 274.2,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2098.19,
+    "nora_gezahlt": 2108.05,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6112.16,
-    "anteil_pro_person": 3056.08,
+    "saldo_basis": 6122.02,
+    "anteil_pro_person": 3061.01,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 98.19,
-    "saldo_patrick": 2957.89,
+    "beitrag_nora": 108.05,
+    "saldo_patrick": 2952.96,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 111.25
+      "betrag": 121.11
     },
     {
       "name": "Eintritt",
@@ -689,6 +689,21 @@
       "zahler": "TBD",
       "zahlmittel": "TBD",
       "status": "offen"
+    },
+    {
+      "id": "b2-37",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Slowtown Coffee Roasters",
+      "betrag": 9.86,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
     },
     {
       "id": "b1-11",

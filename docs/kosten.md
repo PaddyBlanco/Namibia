@@ -68,8 +68,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 34 | 2026-09-10 | – | Ausgabe | Solitaire | Tankstelle Solitaire | Tanken | 220.00 NAD | 11,68 € | Nora | Bargeld | 18.836 | Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6 |
 | 35 | 2026-09-10 | – | Ausgabe | Swakopmund | Moonvalley River Camp | Unterkunft | 250.00 NAD | 13,27 € | Nora | Bargeld | 18.839 | Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
 | 36 | 2026-09-10 | 10:41 | Ausgabe | Solitaire | Solitaire Country Lodge | Restaurant | – | 22,64 € | Nora | N26 Debit | – | N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren. |
+| 37 | 2026-09-11 | – | Ausgabe | Swakopmund | Slowtown Coffee Roasters | Restaurant | – | 9,86 € | Nora | N26 Debit | – | Kaffee und Muffins |
 
-**Echte Ausgaben:** 1.106,80 € (davon bar 102,23 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 274,20 €
+**Echte Ausgaben:** 1.116,66 € (davon bar 102,23 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 274,20 €
 
 ## 3. Zusammenfassung
 
@@ -82,21 +83,21 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Unterkunft | 716,02 € |
 | Tanken | 380,56 € |
 | Lebensmittel | 291,18 € |
-| Restaurant | 111,25 € |
+| Restaurant | 121,11 € |
 | Eintritt | 92,04 € |
 | Aktivitäten | 75,95 € |
 | Sonstiges | 21,51 € |
 | Shopping | 20,07 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.335,16 €** (davon bezahlt 6.112,16 €, noch offen 223,00 €)
+**Gesamtausgaben: 6.345,02 €** (davon bezahlt 6.122,02 €, noch offen 223,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.331,58 € | 766,61 € | 2.098,19 € |
+| Nora | 1.331,58 € | 776,47 € | 2.108,05 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 223,00 € |
 
 ### Reisekasse (Bargeld)
@@ -115,13 +116,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.098,19 € |
+| Nora gezahlt (Karte) | 2.108,05 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.112,16 € |
-| Anteil je Person (50 %) | 3.056,08 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.122,02 € |
+| Anteil je Person (50 %) | 3.061,01 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 98,19 € |
-| **Saldo** | **Nora schuldet Patrick 2.957,89 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 108,05 € |
+| **Saldo** | **Nora schuldet Patrick 2.952,96 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 223,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

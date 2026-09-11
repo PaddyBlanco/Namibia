@@ -34,3 +34,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 34,2026-09-10,,Ausgabe,Solitaire,Tankstelle Solitaire,Tanken,220.00,NAD,11.68,Nora,Bargeld,Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6
 35,2026-09-10,,Ausgabe,Swakopmund,Moonvalley River Camp,Unterkunft,250.00,NAD,13.27,Nora,Bargeld,Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
 36,2026-09-10,10:41,Ausgabe,Solitaire,Solitaire Country Lodge,Restaurant,,EUR,22.64,Nora,N26 Debit,"N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren."
+37,2026-09-11,,Ausgabe,Swakopmund,Slowtown Coffee Roasters,Restaurant,,EUR,9.86,Nora,N26 Debit,Kaffee und Muffins
