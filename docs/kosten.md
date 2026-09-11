@@ -70,8 +70,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 36 | 2026-09-10 | 10:41 | Ausgabe | Solitaire | Solitaire Country Lodge | Restaurant | – | 22,64 € | Nora | N26 Debit | – | N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren. |
 | 37 | 2026-09-11 | – | Ausgabe | Swakopmund | Slowtown Coffee Roasters | Restaurant | – | 9,86 € | Nora | N26 Debit | – | Kaffee und Muffins |
 | 38 | 2026-09-11 | – | Ausgabe | Swakopmund | Swakopmund Museum Shop | Shopping | – | 21,65 € | Nora | N26 Debit | – | Buch und Loeffel |
+| 39 | 2026-09-11 | – | Ausgabe | Swakopmund | Woermannhaus Turm | Eintritt | 100.00 NAD | 5,31 € | Nora | Bargeld | 18.832 | Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
 
-**Echte Ausgaben:** 1.138,31 € (davon bar 102,23 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 274,20 €
+**Echte Ausgaben:** 1.143,62 € (davon bar 107,54 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 268,89 €
 
 ## 3. Zusammenfassung
 
@@ -85,29 +86,29 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Tanken | 380,56 € |
 | Lebensmittel | 291,18 € |
 | Restaurant | 121,11 € |
-| Eintritt | 92,04 € |
+| Eintritt | 97,35 € |
 | Aktivitäten | 75,95 € |
 | Shopping | 41,72 € |
 | Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.366,67 €** (davon bezahlt 6.304,67 €, noch offen 62,00 €)
+**Gesamtausgaben: 6.371,98 €** (davon bezahlt 6.309,98 €, noch offen 62,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.492,58 € | 798,12 € | 2.290,70 € |
+| Nora | 1.492,58 € | 803,43 € | 2.296,01 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 62,00 € |
 
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **376,43 €**
-- Davon bar ausgegeben: **102,23 €**
-- Kassenbestand rechnerisch: **274,20 €**
+- Davon bar ausgegeben: **107,54 €**
+- Kassenbestand rechnerisch: **268,89 €**
   - Topf Patrick: 2.607 NAD ≈ 139,92 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
-  - Topf Nora: 2.530 NAD ≈ 134,28 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
+  - Topf Nora: 2.430 NAD ≈ 128,97 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
 - Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
@@ -117,13 +118,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.290,70 € |
+| Nora gezahlt (Karte) | 2.296,01 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.304,67 € |
-| Anteil je Person (50 %) | 3.152,34 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.309,98 € |
+| Anteil je Person (50 %) | 3.154,99 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 290,70 € |
-| **Saldo** | **Nora schuldet Patrick 2.861,64 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 296,01 € |
+| **Saldo** | **Nora schuldet Patrick 2.858,98 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 62,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

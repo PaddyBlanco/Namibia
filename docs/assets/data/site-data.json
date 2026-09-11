@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T12:03:40+00:00",
+  "generated_at": "2026-09-11T13:18:59+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6366.67,
-    "bezahlt": 6304.67,
+    "gesamt": 6371.98,
+    "bezahlt": 6309.98,
     "offen": 62.0,
     "kasse_abgehoben": 376.43,
-    "kasse_bar_ausgegeben": 102.23,
-    "kasse_bestand": 274.2,
+    "kasse_bar_ausgegeben": 107.54,
+    "kasse_bestand": 268.89,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2290.7,
+    "nora_gezahlt": 2296.01,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6304.67,
-    "anteil_pro_person": 3152.34,
+    "saldo_basis": 6309.98,
+    "anteil_pro_person": 3154.99,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 290.7,
-    "saldo_patrick": 2861.64,
+    "beitrag_nora": 296.01,
+    "saldo_patrick": 2858.98,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -35,10 +35,10 @@
         "seit": "2026-09-09",
         "abgehoben_nad": 3000.0,
         "abgehoben_eur": 159.23,
-        "bar_nad": 470.0,
-        "bar_eur": 24.95,
-        "bestand_nad": 2530.0,
-        "bestand_eur": 134.28,
+        "bar_nad": 570.0,
+        "bar_eur": 30.26,
+        "bestand_nad": 2430.0,
+        "bestand_eur": 128.97,
         "kurs": 18.84
       }
     }
@@ -70,7 +70,7 @@
     },
     {
       "name": "Eintritt",
-      "betrag": 92.04
+      "betrag": 97.35
     },
     {
       "name": "Aktivitäten",
@@ -718,6 +718,21 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-39",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Eintritt",
+      "beschreibung": "Woermannhaus Turm",
+      "betrag": 5.31,
+      "betrag_fw": 100.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
     {

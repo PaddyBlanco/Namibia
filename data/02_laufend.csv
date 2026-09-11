@@ -36,3 +36,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 36,2026-09-10,10:41,Ausgabe,Solitaire,Solitaire Country Lodge,Restaurant,,EUR,22.64,Nora,N26 Debit,"N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren."
 37,2026-09-11,,Ausgabe,Swakopmund,Slowtown Coffee Roasters,Restaurant,,EUR,9.86,Nora,N26 Debit,Kaffee und Muffins
 38,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum Shop,Shopping,,EUR,21.65,Nora,N26 Debit,Buch und Loeffel
+39,2026-09-11,,Ausgabe,Swakopmund,Woermannhaus Turm,Eintritt,100.00,NAD,5.31,Nora,Bargeld,Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
