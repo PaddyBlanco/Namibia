@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-11T14:34:57+00:00",
+  "generated_at": "2026-09-11T14:46:18+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6451.63,
+    "gesamt": 6420.63,
     "bezahlt": 6389.63,
-    "offen": 62.0,
+    "offen": 31.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 107.54,
     "kasse_bestand": 376.69,
@@ -54,7 +54,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 716.02
+      "betrag": 685.02
     },
     {
       "name": "Tanken",
@@ -676,21 +676,6 @@
       "status": "bezahlt"
     },
     {
-      "id": "b1-10",
-      "datum": "2026-09-11",
-      "zeit": "",
-      "ort": "Spitzkoppe Campsite",
-      "ort_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
-      "kategorie": "Unterkunft",
-      "beschreibung": "Spitzkoppe Campsite",
-      "betrag": 62.0,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "TBD",
-      "zahlmittel": "TBD",
-      "status": "offen"
-    },
-    {
       "id": "b2-37",
       "datum": "2026-09-11",
       "zeit": "",
@@ -764,6 +749,21 @@
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "status": "bezahlt"
+    },
+    {
+      "id": "b1-10",
+      "datum": "2026-09-12",
+      "zeit": "",
+      "ort": "Spitzkoppe Campsite",
+      "ort_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
+      "kategorie": "Unterkunft",
+      "beschreibung": "Spitzkoppe Campsite",
+      "betrag": 31.0,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "TBD",
+      "zahlmittel": "TBD",
+      "status": "offen"
     },
     {
       "id": "b1-11",
@@ -987,8 +987,8 @@
     },
     {
       "start": "2026-09-10",
-      "ende": "2026-09-11",
-      "naechte": 1,
+      "ende": "2026-09-12",
+      "naechte": 2,
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
       "betrag": 13.27,
@@ -1000,12 +1000,12 @@
       "fahrzeit": "5–7h"
     },
     {
-      "start": "2026-09-11",
+      "start": "2026-09-12",
       "ende": "2026-09-13",
-      "naechte": 2,
+      "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
-      "betrag": 62.0,
+      "betrag": 31.0,
       "zahler": "TBD",
       "zahlmittel": "TBD",
       "vor_ort": false,

@@ -14,8 +14,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 25,15 € | Anzahlung vorab bezahlt - Rest siehe Blatt 02 | 25,15 € | 0,00 € | Nora | Nora Debit | Anzahlung 460 NAD am 22.04.2026 (Valuta) von Nora = 25.15 EUR inkl. Spesen 1.27 EUR, Kurs 19.2618 (Beleg: KLEIN AUS VISTA AUS; Rechnung 6483110). Noras normale Debitkarte (K2, Spesen inkl.). Restzahlung 460 NAD am 05.09. steht in Blatt 02 Nr. 11. Die frueher hier gefuehrten 24 EUR waren der Kolmanskop-Eintritt (= Blatt 02 Nr. 12) |
 | 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig; 600.00 NAD am 2026-09-07 Bargeld von Patrick - steht in Blatt 02 Nr. 31 |
 | 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,58 € | bezahlt | 84,58 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1600 NAD = 84.58 EUR inkl. Spesen 1.71 EUR, Kurs 19.3070 (Beleg: LITTLE SOSSUS LODGE 1 MALTAHOHE). Noras normale Debitkarte (K2, Spesen inkl.). |
-| 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig; 250.00 NAD am 2026-09-10 Bargeld von Nora - steht in Blatt 02 Nr. 35 |
-| 10 | 2026-09-11 | Unterkunft | Spitzkoppe Campsite | 2 | 62,00 € | offen | 0,00 € | 62,00 € | TBD ⚠️ | TBD | Zahlung ausstaendig |
+| 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 2 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | Bar vor Ort faellig; 250.00 NAD am 2026-09-10 Bargeld von Nora - steht in Blatt 02 Nr. 35 (1. Nacht). Planaenderung 11.09.: 2. Nacht 11.-12.09. dazu (dafuer Spitzkoppe nur 1 Nacht), 2. Nacht wird separat vor Ort bezahlt. |
+| 10 | 2026-09-12 | Unterkunft | Spitzkoppe Campsite | 1 | 31,00 € | offen | 0,00 € | 31,00 € | TBD ⚠️ | TBD | Planaenderung 11.09.: nur noch 1 Nacht (12.-13.09.) statt 2, weil eine Nacht laenger in Swakopmund. Planwert halbiert (62 -> 31 EUR), echter Preis vor Ort. Payment-Link evtl. nie erhalten - vor Ort zahlen. |
 | 11 | 2026-09-13 | Unterkunft | Granietkop Campsite Damaraland | 1 | 50,30 € | bezahlt | 50,30 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 940 NAD = 50.30 EUR inkl. Spesen 1.46 EUR, Kurs 19.2467 (Beleg: GRANIETKOP CAMPSITE WINDHOEK). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 12 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | bezahlt | 45,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 45.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
 | 13 | 2026-09-15 | Unterkunft | Okaukuejo Campsite Etosha | 1 | 59,54 € | bezahlt | 59,54 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1120 NAD = 59.54 EUR inkl. Spesen 1.53 EUR, Kurs 19.3070 (Beleg: NAMIBIA WILDLIFE RESORTS, 17:37). Noras normale Debitkarte (K2, Spesen inkl.). |
@@ -25,7 +25,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 46,11 € | bezahlt | 46,11 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 860 NAD = 46.11 EUR inkl. Spesen 1.43 EUR, Kurs 19.2467 (Beleg: NAMIBIA WILDLIFE RESORTS, 20:33). ANNAHME Zuordnung siehe Halali (Nr. 14). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 35,64 € | bezahlt | 35,64 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 660 NAD = 35.64 EUR inkl. Spesen 1.35 EUR, Kurs 19.2467 (Beleg: OMATOZU SAFARIS OKAHANDJA, POS). Noras normale Debitkarte (K2, Spesen inkl.). |
 
-**Summe:** 5.228,36 € geplant · 5.166,36 € bezahlt · **62,00 € noch offen**
+**Summe:** 5.197,36 € geplant · 5.166,36 € bezahlt · **31,00 € noch offen**
 
 ## 2. Laufende Kosten während der Reise
 
@@ -85,7 +85,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
-| Unterkunft | 716,02 € |
+| Unterkunft | 685,02 € |
 | Tanken | 380,56 € |
 | Lebensmittel | 370,83 € |
 | Restaurant | 121,11 € |
@@ -95,7 +95,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.451,63 €** (davon bezahlt 6.389,63 €, noch offen 62,00 €)
+**Gesamtausgaben: 6.420,63 €** (davon bezahlt 6.389,63 €, noch offen 31,00 €)
 
 ### Wer hat wie viel gezahlt
 
@@ -103,7 +103,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
 | Nora | 1.492,58 € | 883,08 € | 2.375,66 € |
-| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 62,00 € |
+| Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 31,00 € |
 
 ### Reisekasse (Bargeld)
 
@@ -129,7 +129,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Nora effektiv getragen (gezahlt − Überweisung) | 375,66 € |
 | **Saldo** | **Nora schuldet Patrick 2.819,16 €** |
 
-*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 62,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
+*Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 31,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
 ### Offene Punkte (⚠️ markiert)
 
