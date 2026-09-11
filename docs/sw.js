@@ -2,14 +2,13 @@
 // CACHE_VERSION und die versionierten URLs unten werden von
 // scripts/build_site_data.py::stamp_asset_versions() automatisch gepflegt -
 // nicht von Hand aendern, ausser den Dateinamen in PRECACHE_URLS selbst.
-const CACHE_VERSION = "bd78f878";
+const CACHE_VERSION = "9086b0cb";
 const CACHE_NAME = "namibia2026-" + CACHE_VERSION;
 const PRECACHE_URLS = [
   "./",
   "index.html",
-  "assets/css/style.css?v=22a3b8a8",
-  "assets/js/app.js?v=fa78571d",
-  "assets/data/site-data.json",
+  "assets/css/style.css?v=a58d163d",
+  "assets/js/app.js?v=7b8a7315",
 ];
 
 self.addEventListener("install", (event) => {
@@ -31,20 +30,9 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET" || !req.url.startsWith(self.location.origin)) return;
 
-  // Kostendaten: bei Netz immer die frischeste Version holen und cachen,
-  // ohne Netz auf die zuletzt bekannte zurueckfallen (kein Fehlerbild).
-  const url = new URL(req.url);
-  if (url.pathname.endsWith("/assets/data/site-data.json")) {
-    const key = url.origin + url.pathname; // ohne ?t=, sonst waechst der Cache pro Aufruf
-    event.respondWith(
-      fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(key, copy));
-        return res;
-      }).catch(() => caches.match(key))
-    );
-    return;
-  }
+  // Kostendaten laufen NICHT ueber den Worker: app.js holt sie selbst von
+  // zwei Quellen und haelt den letzten Stand in localStorage (11.09.2026).
+  if (new URL(req.url).pathname.endsWith("/assets/data/site-data.json")) return;
 
   // App-Shell (HTML/CSS/JS): sofort aus dem Cache antworten, im Hintergrund
   // parallel neu laden und den Cache auffrischen - schnell UND aktuell.

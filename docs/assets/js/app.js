@@ -67,31 +67,60 @@
     return txt.trim();
   }
 
-  // ---------------- Daten laden (mit Offline-Fallback) ----------------
-  function loadData() {
-    // ?t= umgeht den CDN-Edge-Cache von GitHub Pages (10 Min) - cache: no-store
-    // allein umgeht nur den Browser-Cache; der Service Worker cached unter der
-    // festen URL ohne Query (siehe sw.js).
-    return fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" })
+  // ---------------- Daten laden (zwei Quellen, Offline-Fallback) ----------------
+  // 11.09.2026: Das Handy zeigte den ganzen Tag einen alten Datenstand, obwohl
+  // jeder Pages-Deploy erfolgreich war und selbst die direkte JSON-URL alt
+  // blieb - der GitHub-Pages-Edge-Cache in Namibia hing, ?t= half nicht.
+  // Deshalb wird die Datei jetzt parallel von zwei Quellen geholt (Pages +
+  // raw.githubusercontent.com, anderer CDN, CORS *, max-age 300) und die
+  // neuere gewinnt. Faellt beides aus, kommt der letzte Stand aus localStorage.
+  var RAW_URL = "https://raw.githubusercontent.com/PaddyBlanco/Namibia/claude/namibia-2026-bkm6h4/docs/assets/data/site-data.json";
+  var ladeBanner = document.getElementById("lade-banner");
+  var offlineBanner = document.getElementById("offline-banner");
+
+  function fetchJson(url, quelle) {
+    return fetch(url + "?t=" + Date.now(), { cache: "no-store" })
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
-      .then(function (data) {
-        try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (e) {}
-        return data;
-      })
-      .catch(function (err) {
-        var cached = null;
-        try { cached = localStorage.getItem(CACHE_KEY); } catch (e) {}
-        if (cached) {
-          document.getElementById("offline-banner").classList.add("show");
-          var alt = JSON.parse(cached);
-          alt._ausCache = true;  // damit "Aktualisieren" einen Fehlschlag erkennt
-          return alt;
+      .then(function (data) { data._quelle = quelle; return data; });
+  }
+
+  function readCache() {
+    try { var c = localStorage.getItem(CACHE_KEY); return c ? JSON.parse(c) : null; } catch (e) { return null; }
+  }
+
+  function fmtStand(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }) +
+      ", " + d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + " Uhr";
+  }
+
+  function loadData() {
+    ladeBanner.classList.add("show");
+    return Promise.allSettled([fetchJson(DATA_URL, "Pages"), fetchJson(RAW_URL, "GitHub")])
+      .then(function (results) {
+        var ok = results.filter(function (r) { return r.status === "fulfilled"; }).map(function (r) { return r.value; });
+        ok.sort(function (a, b) { return a.generated_at < b.generated_at ? 1 : -1; });
+        var cached = readCache();
+        var best = ok[0];
+        if (best && (!cached || cached.generated_at <= best.generated_at)) {
+          best._geladen = new Date().toISOString();
+          try { localStorage.setItem(CACHE_KEY, JSON.stringify(best)); } catch (e) {}
+          offlineBanner.classList.remove("show");
+          return best;
         }
-        throw err;
-      });
+        if (cached) {
+          cached._ausCache = true;  // damit "Aktualisieren" einen Fehlschlag erkennt
+          offlineBanner.textContent = (best ? "Netz liefert nur aelteren Stand" : "Offline") +
+            " – zeige gespeicherten Stand vom " + fmtStand(cached.generated_at);
+          offlineBanner.classList.add("show");
+          return cached;
+        }
+        throw new Error("keine Daten");
+      })
+      .finally(function () { ladeBanner.classList.remove("show"); });
   }
 
   // ---------------- Lokale Aenderungen: Create / Update / Delete ----------------
@@ -1206,10 +1235,10 @@
       }).join("");
     }
 
-    var gen = new Date(data.generated_at);
     document.getElementById("update-note").textContent =
-      "Datenstand " + gen.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }) +
-      ", " + gen.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + " Uhr";
+      "Datenstand " + fmtStand(data.generated_at) +
+      (data._quelle ? " · Quelle " + data._quelle : "") +
+      (data._geladen ? " · geladen " + new Date(data._geladen).toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + " Uhr" : "");
   }
 
   function cardRow(label, value) {
@@ -1241,36 +1270,29 @@
     renderMehr(data);
   }
 
-  // "Aktualisieren"-Button (Nutzerwunsch 11.09.2026, nachdem das Handy den
-  // ganzen Tag einen alten Datenstand zeigte): Cache-Kopie der JSON verwerfen,
-  // frisch laden, alles neu zeichnen. Ohne Netz bleibt der alte Stand stehen.
+  // "Aktualisieren"-Button (Nutzerwunsch 11.09.2026): beide Quellen neu
+  // abfragen und alles neu zeichnen. Ohne Netz bleibt der alte Stand stehen.
   document.getElementById("refresh-btn").addEventListener("click", function () {
     var btn = this;
     btn.disabled = true;
-    var jsonUrl = new URL(DATA_URL, location.href).href;
-    var drop = ("caches" in window)
-      ? caches.keys().then(function (keys) {
-          return Promise.all(keys.map(function (k) { return caches.open(k).then(function (c) { return c.delete(jsonUrl); }); }));
-        }).catch(function () {})
-      : Promise.resolve();
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.getRegistration().then(function (r) { if (r) return r.update(); }).catch(function () {});
-    }
-    drop.then(loadData).then(function (data) {
+    loadData().then(function (data) {
       if (data._ausCache) throw new Error("offline");
       renderAll(data);
-      document.getElementById("offline-banner").classList.remove("show");
       toast("Aktualisiert: " + document.getElementById("update-note").textContent);
     }).catch(function () {
-      toast("Kein Netz – alter Stand bleibt");
+      toast("Kein neuer Stand erreichbar – alter Stand bleibt");
     }).then(function () { btn.disabled = false; });
   });
 
+  // Start: Was das Handy schon hat, sofort zeigen (Nutzerwunsch 11.09.2026:
+  // "Seite soll immer die Daten anzeigen, die sie hat"); frische Daten
+  // kommen mit Lade-Banner nach.
+  var vorab = readCache();
+  if (vorab) renderAll(vorab);
   loadData().then(renderAll).catch(function () {
     document.getElementById("header-subline").textContent = "Daten konnten nicht geladen werden.";
-    var banner = document.getElementById("offline-banner");
-    banner.textContent = "Daten konnten nicht geladen werden – bitte mit Netz einmal neu laden.";
-    banner.classList.add("show");
+    offlineBanner.textContent = "Daten konnten nicht geladen werden – bitte mit Netz einmal neu laden.";
+    offlineBanner.classList.add("show");
   });
 
   window.addEventListener("hashchange", function () {

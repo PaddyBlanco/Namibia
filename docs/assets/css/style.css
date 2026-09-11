@@ -131,6 +131,15 @@ body {
   text-align: center;
 }
 .offline-banner.show { display: block; }
+.lade-banner {
+  display: none;
+  background: var(--bg-elevated);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  text-align: center;
+}
+.lade-banner.show { display: block; }
 
 main {
   padding: 16px;
