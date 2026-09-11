@@ -69,8 +69,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 35 | 2026-09-10 | – | Ausgabe | Swakopmund | Moonvalley River Camp | Unterkunft | 250.00 NAD | 13,27 € | Nora | Bargeld | 18.839 | Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
 | 36 | 2026-09-10 | 10:41 | Ausgabe | Solitaire | Solitaire Country Lodge | Restaurant | – | 22,64 € | Nora | N26 Debit | – | N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren. |
 | 37 | 2026-09-11 | – | Ausgabe | Swakopmund | Slowtown Coffee Roasters | Restaurant | – | 9,86 € | Nora | N26 Debit | – | Kaffee und Muffins |
+| 38 | 2026-09-11 | – | Ausgabe | Swakopmund | Swakopmund Museum Shop | Shopping | – | 21,65 € | Nora | N26 Debit | – | Buch und Loeffel |
 
-**Echte Ausgaben:** 1.116,66 € (davon bar 102,23 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 274,20 €
+**Echte Ausgaben:** 1.138,31 € (davon bar 102,23 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 274,20 €
 
 ## 3. Zusammenfassung
 
@@ -86,18 +87,18 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Restaurant | 121,11 € |
 | Eintritt | 92,04 € |
 | Aktivitäten | 75,95 € |
+| Shopping | 41,72 € |
 | Sonstiges | 21,51 € |
-| Shopping | 20,07 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.345,02 €** (davon bezahlt 6.122,02 €, noch offen 223,00 €)
+**Gesamtausgaben: 6.366,67 €** (davon bezahlt 6.143,67 €, noch offen 223,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.331,58 € | 776,47 € | 2.108,05 € |
+| Nora | 1.331,58 € | 798,12 € | 2.129,70 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 223,00 € |
 
 ### Reisekasse (Bargeld)
@@ -116,13 +117,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.108,05 € |
+| Nora gezahlt (Karte) | 2.129,70 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.122,02 € |
-| Anteil je Person (50 %) | 3.061,01 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.143,67 € |
+| Anteil je Person (50 %) | 3.071,84 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 108,05 € |
-| **Saldo** | **Nora schuldet Patrick 2.952,96 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 129,70 € |
+| **Saldo** | **Nora schuldet Patrick 2.942,14 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 223,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

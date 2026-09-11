@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T08:25:22+00:00",
+  "generated_at": "2026-09-11T10:27:54+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6345.02,
-    "bezahlt": 6122.02,
+    "gesamt": 6366.67,
+    "bezahlt": 6143.67,
     "offen": 223.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 102.23,
     "kasse_bestand": 274.2,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2108.05,
+    "nora_gezahlt": 2129.7,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6122.02,
-    "anteil_pro_person": 3061.01,
+    "saldo_basis": 6143.67,
+    "anteil_pro_person": 3071.84,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 108.05,
-    "saldo_patrick": 2952.96,
+    "beitrag_nora": 129.7,
+    "saldo_patrick": 2942.14,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -77,12 +77,12 @@
       "betrag": 75.95
     },
     {
-      "name": "Sonstiges",
-      "betrag": 21.51
+      "name": "Shopping",
+      "betrag": 41.72
     },
     {
-      "name": "Shopping",
-      "betrag": 20.07
+      "name": "Sonstiges",
+      "betrag": 21.51
     },
     {
       "name": "Gebühren",
@@ -699,6 +699,21 @@
       "kategorie": "Restaurant",
       "beschreibung": "Slowtown Coffee Roasters",
       "betrag": 9.86,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-38",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Shopping",
+      "beschreibung": "Swakopmund Museum Shop",
+      "betrag": 21.65,
       "betrag_fw": null,
       "waehrung": "EUR",
       "zahler": "Nora",
