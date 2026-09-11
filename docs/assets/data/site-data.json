@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T14:48:08+00:00",
+  "generated_at": "2026-09-11T14:48:47+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6500.6,
-    "bezahlt": 6469.6,
+    "gesamt": 6505.41,
+    "bezahlt": 6474.41,
     "offen": 31.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 107.54,
-    "kasse_bestand": 376.69,
+    "kasse_bar_ausgegeben": 112.35,
+    "kasse_bestand": 371.88,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2455.63,
+    "nora_gezahlt": 2460.44,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6469.6,
-    "anteil_pro_person": 3234.8,
+    "saldo_basis": 6474.41,
+    "anteil_pro_person": 3237.2,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 455.63,
-    "saldo_patrick": 2779.17,
+    "beitrag_nora": 460.44,
+    "saldo_patrick": 2776.77,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -35,10 +35,10 @@
         "seit": "2026-09-09",
         "abgehoben_nad": 5000.0,
         "abgehoben_eur": 267.03,
-        "bar_nad": 570.0,
-        "bar_eur": 30.26,
-        "bestand_nad": 4430.0,
-        "bestand_eur": 236.77,
+        "bar_nad": 660.0,
+        "bar_eur": 35.07,
+        "bestand_nad": 4340.0,
+        "bestand_eur": 231.96,
         "kurs": 18.72
       }
     }
@@ -70,7 +70,7 @@
     },
     {
       "name": "Eintritt",
-      "betrag": 97.35
+      "betrag": 102.16
     },
     {
       "name": "Aktivitäten",
@@ -763,6 +763,21 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-44",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Eintritt",
+      "beschreibung": "Swakopmund Museum",
+      "betrag": 4.81,
+      "betrag_fw": 90.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
     {
