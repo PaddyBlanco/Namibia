@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T08:21:16+00:00",
+  "generated_at": "2026-09-11T08:23:53+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6312.52,
-    "bezahlt": 6089.52,
+    "gesamt": 6335.16,
+    "bezahlt": 6112.16,
     "offen": 223.0,
     "kasse_abgehoben": 376.43,
     "kasse_bar_ausgegeben": 102.23,
     "kasse_bestand": 274.2,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2075.55,
+    "nora_gezahlt": 2098.19,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6089.52,
-    "anteil_pro_person": 3044.76,
+    "saldo_basis": 6112.16,
+    "anteil_pro_person": 3056.08,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 75.55,
-    "saldo_patrick": 2969.21,
+    "beitrag_nora": 98.19,
+    "saldo_patrick": 2957.89,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -65,12 +65,12 @@
       "betrag": 291.18
     },
     {
-      "name": "Eintritt",
-      "betrag": 92.04
+      "name": "Restaurant",
+      "betrag": 111.25
     },
     {
-      "name": "Restaurant",
-      "betrag": 88.61
+      "name": "Eintritt",
+      "betrag": 92.04
     },
     {
       "name": "Aktivitäten",
@@ -658,6 +658,21 @@
       "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-36",
+      "datum": "2026-09-10",
+      "zeit": "10:41",
+      "ort": "Solitaire",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Solitaire Country Lodge",
+      "betrag": 22.64,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
