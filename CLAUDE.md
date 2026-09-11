@@ -313,10 +313,10 @@ immer `ortLink()` benutzen, nie nackten Text.
   GitHub Pages cached Assets nur 10 Min. im Browser-HTTP-Cache, danach
   scheitert ein Ladeversuch ohne Empfang ganz. Der Worker hält HTML/CSS/JS
   dauerhaft im Cache Storage (stale-while-revalidate: sofort aus dem Cache
-  antworten, im Hintergrund auffrischen) und `site-data.json` network-first
-  mit Cache-Fallback (immer die frischeste Version, wenn online; zuletzt
-  bekannte, wenn nicht). Damit öffnet die Seite auch im Flugmodus/ohne
-  Empfang normal, mit dem letzten Stand.
+  antworten, im Hintergrund auffrischen); `site-data.json` läuft seit
+  11.09.2026 **nicht** mehr über den Worker (s. „Datenladen" unten). Damit
+  öffnet die Seite auch im Flugmodus/ohne Empfang normal, mit dem letzten
+  Stand.
   - `scripts/build_site_data.py::stamp_asset_versions()` pflegt `CACHE_VERSION`
     und die versionierten Dateinamen in `sw.js` automatisch mit (gleicher
     Hash-Mechanismus wie die `?v=`-Stempel in `index.html`) - **nie von Hand
@@ -484,19 +484,36 @@ immer `ortLink()` benutzen, nie nackten Text.
   `site-data.json` läuft (so sind am 07.09.2026 zweimal „veraltete" Ansichten
   entstanden), stempelt `build_site_data.py` einen Inhalts-Hash als `?v=`
   an `app.js` und `style.css` in `index.html`. Der Stempel ändert sich nur,
-  wenn sich die Datei ändert. `site-data.json` selbst wird mit
-  `cache: "no-store"` **und** `?t=<Zeitstempel>` geladen — `no-store` umgeht
-  nur den Browser-Cache, der Zeitstempel zusätzlich den **CDN-Edge-Cache von
-  GitHub Pages** (am 09.09.2026 sah der Nutzer frisch gepushte Ausgaben
-  deshalb bis zu 10 Min nicht, obwohl der Pages-Deploy längst durch war).
-  Der Service Worker ignoriert die Query und cached die JSON unter der
-  festen URL. `index.html` bleibt 10 Min gecacht — dagegen hilft nur Neuladen.
-  **„↻ Aktualisieren"-Button** unter dem Datenstand (alle Tabs, seit
-  11.09.2026, nachdem das Handy den ganzen Tag den Stand von 10:14 Uhr
-  zeigte, obwohl elf Deploys durch waren): löscht die JSON aus allen
-  Cache-Storage-Caches, stößt ein SW-Update an, lädt neu und rendert alles
-  (`renderAll()`). Liefert `loadData()` den localStorage-Fallback
-  (`_ausCache`), bleibt der alte Stand mit Toast „Kein Netz" und Banner.
+  wenn sich die Datei ändert. `index.html` bleibt 10 Min gecacht — dagegen
+  hilft nur Neuladen.
+- **Datenladen: zwei Quellen, neueste gewinnt (seit 11.09.2026).**
+  Vorfall: Das Handy zeigte den ganzen 11.09. den Stand von 10:14 Uhr,
+  obwohl elf Pages-Deploys erfolgreich waren, `?t=`-Cache-Buster und
+  `cache: "no-store"` gesetzt waren und selbst die direkt in Safari
+  geöffnete JSON-URL alt blieb — der GitHub-Pages-Edge-Cache (Fastly) in
+  Namibia hing; lokal (Playwright) war derselbe Stand korrekt. Deshalb holt
+  `loadData()` in `app.js` die JSON **parallel** von Pages
+  (`assets/data/site-data.json?t=…`) und von
+  `raw.githubusercontent.com/PaddyBlanco/Namibia/claude/namibia-2026-bkm6h4/docs/assets/data/site-data.json`
+  (anderes CDN, `access-control-allow-origin: *`, `max-age=300`,
+  `content-type: text/plain` — `res.json()` stört das nicht) und nimmt den
+  Stand mit dem jüngeren `generated_at`; ist der gespeicherte Stand jünger
+  als alles, was das Netz liefert, bleibt er. **Der Service Worker fasst die
+  JSON nicht mehr an** (`sw.js` gibt für diesen Pfad ohne `respondWith`
+  zurück, kein Precache) — die Datenhaltung liegt allein in
+  `localStorage[CACHE_KEY]`, weniger bewegliche Teile.
+  **Anzeigeregel (Nutzerwunsch 11.09.2026):** Die Seite zeigt sofort, was
+  sie hat (`readCache()` → `renderAll()` vor dem ersten Fetch); solange
+  geladen wird, steht oben der neutrale Banner „Daten werden geladen …"
+  (`#lade-banner`); scheitern beide Quellen, bleibt der alte Stand mit dem
+  Warn-Banner „Offline – zeige gespeicherten Stand vom <Datum, Uhrzeit>".
+  Die Fußzeile nennt `Datenstand … · Quelle Pages|GitHub · geladen HH:MM`,
+  damit sich ein hängendes CDN vom Handy aus erkennen lässt. Der
+  **„↻ Aktualisieren"-Button** darunter ruft dasselbe `loadData()` auf und
+  meldet per Toast den neuen Stand bzw. „Kein neuer Stand erreichbar".
+  Getestet (Playwright, 11.09.): raw gewinnt bei altem Pages; Cache sofort
+  sichtbar + Lade-Banner bei langsamem Netz; beide Quellen weg → Cache +
+  Offline-Banner mit Zeitstempel. Branch-Wechsel ⇒ `RAW_URL` anpassen.
 - GitHub-Pages-Einstellung (macht der Nutzer selbst): Settings → Pages →
   Source: *Deploy from branch* → Branch **`claude/namibia-2026-bkm6h4`**
   (Stand 06.09.2026: `main` enthält nur die Start-README, die gesamte
