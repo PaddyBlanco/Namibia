@@ -37,3 +37,6 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 37,2026-09-11,,Ausgabe,Swakopmund,Slowtown Coffee Roasters,Restaurant,,EUR,9.86,Nora,N26 Debit,Kaffee und Muffins
 38,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum Shop,Shopping,,EUR,21.65,Nora,N26 Debit,Buch und Loeffel
 39,2026-09-11,,Ausgabe,Swakopmund,Woermannhaus Turm,Eintritt,100.00,NAD,5.31,Nora,Bargeld,Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
+40,2026-09-11,,Ausgabe,Swakopmund,SuperSpar Swakopmund,Lebensmittel,,EUR,60.66,Nora,N26 Debit,
+41,2026-09-11,,Ausgabe,Swakopmund,Tops Swakopmund,Lebensmittel,,EUR,18.99,Nora,N26 Debit,Tops (Spar-Getraenkemarkt)
+42,2026-09-11,,Abhebung,Swakopmund,Spar Swakopmund (Bargeld an der Kasse/ATM),Bargeld,2000.00,NAD,107.80,Nora,N26 Debit,"Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 107.80 EUR fuer 2000.00 NAD inkl. Entgelt (Kurs 18.553). N26-Push: Abhebung 107,80 EUR bei Swakopmund Spar. Entgelt unbekannt - falls N26 mehr als 2000 NAD ausweist, Differenz als Gebuehr nachtragen"

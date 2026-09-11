@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-11T13:18:59+00:00",
+  "generated_at": "2026-09-11T14:34:57+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6371.98,
-    "bezahlt": 6309.98,
+    "gesamt": 6451.63,
+    "bezahlt": 6389.63,
     "offen": 62.0,
-    "kasse_abgehoben": 376.43,
+    "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 107.54,
-    "kasse_bestand": 268.89,
+    "kasse_bestand": 376.69,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2296.01,
+    "nora_gezahlt": 2375.66,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6309.98,
-    "anteil_pro_person": 3154.99,
+    "saldo_basis": 6389.63,
+    "anteil_pro_person": 3194.82,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 296.01,
-    "saldo_patrick": 2858.98,
+    "beitrag_nora": 375.66,
+    "saldo_patrick": 2819.16,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -33,13 +33,13 @@
       },
       "Nora": {
         "seit": "2026-09-09",
-        "abgehoben_nad": 3000.0,
-        "abgehoben_eur": 159.23,
+        "abgehoben_nad": 5000.0,
+        "abgehoben_eur": 267.03,
         "bar_nad": 570.0,
         "bar_eur": 30.26,
-        "bestand_nad": 2430.0,
-        "bestand_eur": 128.97,
-        "kurs": 18.84
+        "bestand_nad": 4430.0,
+        "bestand_eur": 236.77,
+        "kurs": 18.72
       }
     }
   },
@@ -62,7 +62,7 @@
     },
     {
       "name": "Lebensmittel",
-      "betrag": 291.18
+      "betrag": 370.83
     },
     {
       "name": "Restaurant",
@@ -733,6 +733,36 @@
       "waehrung": "NAD",
       "zahler": "Nora",
       "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-40",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Lebensmittel",
+      "beschreibung": "SuperSpar Swakopmund",
+      "betrag": 60.66,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-41",
+      "datum": "2026-09-11",
+      "zeit": "",
+      "ort": "Swakopmund",
+      "ort_link": null,
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Tops Swakopmund",
+      "betrag": 18.99,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {

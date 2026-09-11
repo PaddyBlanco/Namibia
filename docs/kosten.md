@@ -71,8 +71,11 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 37 | 2026-09-11 | – | Ausgabe | Swakopmund | Slowtown Coffee Roasters | Restaurant | – | 9,86 € | Nora | N26 Debit | – | Kaffee und Muffins |
 | 38 | 2026-09-11 | – | Ausgabe | Swakopmund | Swakopmund Museum Shop | Shopping | – | 21,65 € | Nora | N26 Debit | – | Buch und Loeffel |
 | 39 | 2026-09-11 | – | Ausgabe | Swakopmund | Woermannhaus Turm | Eintritt | 100.00 NAD | 5,31 € | Nora | Bargeld | 18.832 | Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
+| 40 | 2026-09-11 | – | Ausgabe | Swakopmund | SuperSpar Swakopmund | Lebensmittel | – | 60,66 € | Nora | N26 Debit | – | – |
+| 41 | 2026-09-11 | – | Ausgabe | Swakopmund | Tops Swakopmund | Lebensmittel | – | 18,99 € | Nora | N26 Debit | – | Tops (Spar-Getraenkemarkt) |
+| 42 | 2026-09-11 | – | Abhebung 💶 | Swakopmund | Spar Swakopmund (Bargeld an der Kasse/ATM) | Bargeld | 2000.00 NAD | 107,80 € | Nora | N26 Debit | 18.553 | Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 107.80 EUR fuer 2000.00 NAD inkl. Entgelt (Kurs 18.553). N26-Push: Abhebung 107,80 EUR bei Swakopmund Spar. Entgelt unbekannt - falls N26 mehr als 2000 NAD ausweist, Differenz als Gebuehr nachtragen |
 
-**Echte Ausgaben:** 1.143,62 € (davon bar 107,54 €) · **Bargeldabhebungen:** 376,43 € · **Kassenbestand:** 268,89 €
+**Echte Ausgaben:** 1.223,27 € (davon bar 107,54 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 376,69 €
 
 ## 3. Zusammenfassung
 
@@ -84,7 +87,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Flug | 1.895,26 € |
 | Unterkunft | 716,02 € |
 | Tanken | 380,56 € |
-| Lebensmittel | 291,18 € |
+| Lebensmittel | 370,83 € |
 | Restaurant | 121,11 € |
 | Eintritt | 97,35 € |
 | Aktivitäten | 75,95 € |
@@ -92,23 +95,23 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.371,98 €** (davon bezahlt 6.309,98 €, noch offen 62,00 €)
+**Gesamtausgaben: 6.451,63 €** (davon bezahlt 6.389,63 €, noch offen 62,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.492,58 € | 803,43 € | 2.296,01 € |
+| Nora | 1.492,58 € | 883,08 € | 2.375,66 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 62,00 € |
 
 ### Reisekasse (Bargeld)
 
-- Abgehoben gesamt: **376,43 €**
+- Abgehoben gesamt: **484,23 €**
 - Davon bar ausgegeben: **107,54 €**
-- Kassenbestand rechnerisch: **268,89 €**
+- Kassenbestand rechnerisch: **376,69 €**
   - Topf Patrick: 2.607 NAD ≈ 139,92 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
-  - Topf Nora: 2.430 NAD ≈ 128,97 € (abgehoben 3.000 NAD zu 18.841 NAD/€)
+  - Topf Nora: 4.430 NAD ≈ 236,77 € (abgehoben 5.000 NAD zu 18.724 NAD/€)
 - Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
@@ -118,13 +121,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.296,01 € |
+| Nora gezahlt (Karte) | 2.375,66 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.309,98 € |
-| Anteil je Person (50 %) | 3.154,99 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.389,63 € |
+| Anteil je Person (50 %) | 3.194,82 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 296,01 € |
-| **Saldo** | **Nora schuldet Patrick 2.858,98 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 375,66 € |
+| **Saldo** | **Nora schuldet Patrick 2.819,16 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 62,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
