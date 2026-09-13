@@ -2,12 +2,12 @@
 // CACHE_VERSION und die versionierten URLs unten werden von
 // scripts/build_site_data.py::stamp_asset_versions() automatisch gepflegt -
 // nicht von Hand aendern, ausser den Dateinamen in PRECACHE_URLS selbst.
-const CACHE_VERSION = "57621d93";
+const CACHE_VERSION = "bb77f191";
 const CACHE_NAME = "namibia2026-" + CACHE_VERSION;
 const PRECACHE_URLS = [
   "./",
   "index.html",
-  "assets/css/style.css?v=a58d163d",
+  "assets/css/style.css?v=db9b5ecf",
   "assets/js/app.js?v=7b8a7315",
 ];
 

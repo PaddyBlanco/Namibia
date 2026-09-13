@@ -94,7 +94,7 @@ body {
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: calc(var(--nav-height) + 12px);
+  padding-bottom: calc(var(--nav-height) + 12px + env(safe-area-inset-bottom, 0px));
 }
 
 /* Header ist bewusst kompakt und erscheint nur auf Home (Nutzerwunsch
@@ -954,12 +954,15 @@ body.sheet-open { overflow: hidden; }
 .bottom-nav {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  height: var(--nav-height);
+  /* min-height statt height: mit box-sizing border-box hat die Safe-Area-
+     Polsterung (34px am iPhone) sonst die 64px von innen aufgefressen, die
+     Buttons wurden 30px hoch und die Icons ragten oben heraus (13.09.2026). */
+  min-height: var(--nav-height);
   background: var(--bg-elevated);
   border-top: 1px solid var(--border);
   display: flex;
   z-index: 20;
-  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .nav-btn {
   flex: 1;
@@ -974,6 +977,7 @@ body.sheet-open { overflow: hidden; }
   font-size: var(--fs-xs);
   font-family: inherit;
   padding: 6px 0;
+  min-height: var(--nav-height);
 }
 .nav-btn .icon { font-size: 1.25rem; line-height: 1; }
 .nav-btn.active { color: var(--accent); }
