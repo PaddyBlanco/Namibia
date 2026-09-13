@@ -1,20 +1,20 @@
 {
-  "stand": "2026-09-11",
+  "stand": "2026-09-13",
   "letzter_volltank": {
     "ort": "Swakopmund",
     "datum": "2026-09-11",
     "kilometerstand": 22581
   },
   "aktueller_standort": {
-    "ort": "Swakopmund (Moonvalley River Camp, 2. Nacht)",
-    "datum": "2026-09-11"
+    "ort": "unterwegs Spitzkoppe → Damaraland (Granietkop)",
+    "datum": "2026-09-13"
   },
-  "strecke_seit_volltank_km": 0,
+  "strecke_seit_volltank_km": 430,
   "naechster_pflicht_stopp": {
-    "ort": "Usakos",
-    "hinweis": "Spitzkoppe (12.09.) hat keinen Sprit; Usakos liegt ca. 40 km oestlich der Spitzkoppe-Abzweigung an der B2. Danach Uis (kleine Tankstelle, nicht immer Diesel) und Khorixas."
+    "ort": "Khorixas",
+    "hinweis": "Uis (heute am Weg, kleine Tankstelle) oder Khorixas (morgen Richtung Hoada); danach bis Etosha/Okaukuejo keine sichere Tankstelle mehr"
   },
-  "strecke_bis_naechster_stopp_km": 190,
-  "empfehlung": "Voll in Swakopmund (11.09., 22.581 km). Morgen Spitzkoppe (ca. 150 km), uebermorgen weiter nach Granietkop/Damaraland (ca. 250 km ueber Uis). Mit vollem Tank reicht das bis Khorixas oder Palmwag, tanken unterwegs nicht noetig; bei Gelegenheit in Uis oder Khorixas nachfuellen, weil im Damaraland die Abstaende gross werden.",
+  "strecke_bis_naechster_stopp_km": 120,
+  "empfehlung": "Seit Swakopmund (22.581 km) ca. 150 km bis Spitzkoppe plus ca. 280 km heute ueber Uis, Brandberg und Twyfelfontein = ca. 430 km = ca. 50 L bei 11,6 L/100 km, also noch rund 110 L im Tank. Kein Zwang zu tanken; in Uis oder morgen in Khorixas nachfuellen, weil danach Hoada und Etosha (ca. 300 km) kommen. Kilometerstand notieren.",
   "anmerkung": "Zweite Messung Sesriem -> Swakopmund: 496 km, 60,88 L (Solitaire 7,8 L + Swakopmund 53,08 L) = 12,3 L/100 km (Schotter, Kuiseb-Pass, Gegenwind). Erste Messung Helmeringhausen -> Sesriem: 10,9 L/100 km. Die Seite rechnet mit dem Schnitt aller Messungen."
 }
