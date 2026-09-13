@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-13T08:03:54+00:00",
+  "generated_at": "2026-09-13T10:03:14+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6536.51,
-    "bezahlt": 6505.51,
-    "offen": 31.0,
+    "gesamt": 6537.55,
+    "bezahlt": 6537.55,
+    "offen": 0.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 112.35,
-    "kasse_bestand": 371.88,
+    "kasse_bar_ausgegeben": 144.39,
+    "kasse_bestand": 339.84,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2491.54,
+    "nora_gezahlt": 2523.58,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6505.51,
-    "anteil_pro_person": 3252.76,
+    "saldo_basis": 6537.55,
+    "anteil_pro_person": 3268.78,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 491.54,
-    "saldo_patrick": 2761.22,
+    "beitrag_nora": 523.58,
+    "saldo_patrick": 2745.2,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -35,10 +35,10 @@
         "seit": "2026-09-09",
         "abgehoben_nad": 5000.0,
         "abgehoben_eur": 267.03,
-        "bar_nad": 660.0,
-        "bar_eur": 35.07,
-        "bestand_nad": 4340.0,
-        "bestand_eur": 231.96,
+        "bar_nad": 1260.0,
+        "bar_eur": 67.11,
+        "bestand_nad": 3740.0,
+        "bestand_eur": 199.92,
         "kurs": 18.72
       }
     }
@@ -54,7 +54,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 685.02
+      "betrag": 686.06
     },
     {
       "name": "Tanken",
@@ -796,19 +796,19 @@
       "status": "bezahlt"
     },
     {
-      "id": "b1-10",
+      "id": "b2-46",
       "datum": "2026-09-12",
       "zeit": "",
-      "ort": "Spitzkoppe Campsite",
-      "ort_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
+      "ort": "Spitzkoppe",
+      "ort_link": null,
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
-      "betrag": 31.0,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "TBD",
-      "zahlmittel": "TBD",
-      "status": "offen"
+      "betrag": 32.04,
+      "betrag_fw": 600.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
     },
     {
       "id": "b1-11",
@@ -1050,11 +1050,11 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
-      "betrag": 31.0,
-      "zahler": "TBD",
-      "zahlmittel": "TBD",
-      "vor_ort": false,
-      "status": "offen",
+      "betrag": 32.04,
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
+      "vor_ort": true,
+      "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Spitzkoppe%20Campsite%2C%20Namibia",
       "fahrzeit": "2h"
     },

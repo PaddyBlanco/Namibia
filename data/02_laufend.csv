@@ -43,3 +43,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 43,2026-09-11,,Ausgabe,Swakopmund,Tankstelle,Tanken,,EUR,79.97,Nora,N26 Debit,Tankdetails in 04_tanken.csv Nr. 7
 44,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum,Eintritt,90.00,NAD,4.81,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
 45,2026-09-11,,Ausgabe,Swakopmund,Ankerplatz,Restaurant,,EUR,31.10,Nora,N26 Debit,Abendessen
+46,2026-09-12,,Ausgabe,Spitzkoppe,Spitzkoppe Campsite,Unterkunft,600.00,NAD,32.04,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
