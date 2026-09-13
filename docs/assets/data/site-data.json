@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-13T10:27:56+00:00",
+  "generated_at": "2026-09-13T10:39:10+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6537.55,
-    "bezahlt": 6537.55,
+    "gesamt": 6552.6,
+    "bezahlt": 6552.6,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 144.39,
     "kasse_bestand": 339.84,
     "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2523.58,
+    "nora_gezahlt": 2538.63,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6537.55,
-    "anteil_pro_person": 3268.78,
+    "saldo_basis": 6552.6,
+    "anteil_pro_person": 3276.3,
     "beitrag_patrick": 6013.97,
-    "beitrag_nora": 523.58,
-    "saldo_patrick": 2745.2,
+    "beitrag_nora": 538.63,
+    "saldo_patrick": 2737.67,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 152.21
+      "betrag": 167.26
     },
     {
       "name": "Eintritt",
@@ -823,6 +823,21 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "Nora Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-47",
+      "datum": "2026-09-13",
+      "zeit": "",
+      "ort": "Uis",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Café Uis",
+      "betrag": 15.05,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
