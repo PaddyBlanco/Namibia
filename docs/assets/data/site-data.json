@@ -1,44 +1,44 @@
 {
-  "generated_at": "2026-09-14T10:15:35+00:00",
+  "generated_at": "2026-09-14T17:48:05+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6669.8,
-    "bezahlt": 6669.8,
+    "gesamt": 6697.06,
+    "bezahlt": 6697.06,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 144.39,
-    "kasse_bestand": 339.84,
-    "patrick_gezahlt": 4013.97,
-    "nora_gezahlt": 2655.83,
+    "kasse_bar_ausgegeben": 171.65,
+    "kasse_bestand": 312.58,
+    "patrick_gezahlt": 4019.87,
+    "nora_gezahlt": 2677.19,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6669.8,
-    "anteil_pro_person": 3334.9,
-    "beitrag_patrick": 6013.97,
-    "beitrag_nora": 655.83,
-    "saldo_patrick": 2679.07,
+    "saldo_basis": 6697.06,
+    "anteil_pro_person": 3348.53,
+    "beitrag_patrick": 6019.87,
+    "beitrag_nora": 677.19,
+    "saldo_patrick": 2671.34,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
         "abgehoben_nad": 4047.0,
         "abgehoben_eur": 217.2,
-        "bar_nad": 1440.0,
-        "bar_eur": 77.28,
-        "bestand_nad": 2607.0,
-        "bestand_eur": 139.92,
+        "bar_nad": 1550.0,
+        "bar_eur": 83.18,
+        "bestand_nad": 2497.0,
+        "bestand_eur": 134.02,
         "kurs": 18.63
       },
       "Nora": {
         "seit": "2026-09-09",
         "abgehoben_nad": 5000.0,
         "abgehoben_eur": 267.03,
-        "bar_nad": 1260.0,
-        "bar_eur": 67.11,
-        "bestand_nad": 3740.0,
-        "bestand_eur": 199.92,
+        "bar_nad": 1660.0,
+        "bar_eur": 88.47,
+        "bestand_nad": 3340.0,
+        "bestand_eur": 178.56,
         "kurs": 18.72
       }
     }
@@ -66,7 +66,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 167.26
+      "betrag": 173.16
     },
     {
       "name": "Eintritt",
@@ -77,12 +77,12 @@
       "betrag": 75.95
     },
     {
-      "name": "Shopping",
-      "betrag": 41.72
+      "name": "Sonstiges",
+      "betrag": 42.87
     },
     {
-      "name": "Sonstiges",
-      "betrag": 21.51
+      "name": "Shopping",
+      "betrag": 41.72
     },
     {
       "name": "Gebühren",
@@ -871,6 +871,36 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-49",
+      "datum": "2026-09-14",
+      "zeit": "",
+      "ort": "Hoada",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Hoada Campsite Bar",
+      "betrag": 5.9,
+      "betrag_fw": 110.0,
+      "waehrung": "NAD",
+      "zahler": "Patrick",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-50",
+      "datum": "2026-09-14",
+      "zeit": "",
+      "ort": "Hoada",
+      "ort_link": null,
+      "kategorie": "Sonstiges",
+      "beschreibung": "Schulbus-Spende",
+      "betrag": 21.36,
+      "betrag_fw": 400.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-13",
       "datum": "2026-09-15",
       "zeit": "",
@@ -1361,26 +1391,26 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-13",
+      "stand": "2026-09-14",
       "letzter_volltank": {
         "ort": "Swakopmund",
         "datum": "2026-09-11",
         "kilometerstand": 22581
       },
       "aktueller_standort": {
-        "ort": "unterwegs Spitzkoppe → Damaraland (Granietkop)",
-        "datum": "2026-09-13"
+        "ort": "Hoada Campsite (Grootberg)",
+        "datum": "2026-09-14"
       },
-      "strecke_seit_volltank_km": 430,
+      "strecke_seit_volltank_km": 720,
       "naechster_pflicht_stopp": {
-        "ort": "Khorixas",
-        "hinweis": "Uis (heute am Weg, kleine Tankstelle) oder Khorixas (morgen Richtung Hoada); danach bis Etosha/Okaukuejo keine sichere Tankstelle mehr"
+        "ort": "Kamanjab",
+        "hinweis": "Letzte Tankstelle vor Etosha (Anderson Gate/Okaukuejo ca. 150 km weiter); in Etosha nur Okaukuejo, Halali und Namutoni"
       },
-      "strecke_bis_naechster_stopp_km": 120,
-      "empfehlung": "Seit Swakopmund (22.581 km) ca. 150 km bis Spitzkoppe plus ca. 280 km heute ueber Uis, Brandberg und Twyfelfontein = ca. 430 km = ca. 50 L bei 11,6 L/100 km, also noch rund 110 L im Tank. Kein Zwang zu tanken; in Uis oder morgen in Khorixas nachfuellen, weil danach Hoada und Etosha (ca. 300 km) kommen. Kilometerstand notieren.",
+      "strecke_bis_naechster_stopp_km": 80,
+      "empfehlung": "Palmwag am 14.09. mit 78,27 L nachgetankt (23.205 km) - ob voll, ist noch nicht bestaetigt; bis dahin gilt Swakopmund als Nullpunkt und die Restschaetzung unten ist zu pessimistisch. Morgen Richtung Okaukuejo in Kamanjab kurz nachfuellen, dann sind die Etosha-Tage entspannt.",
       "anmerkung": "Zweite Messung Sesriem -> Swakopmund: 496 km, 60,88 L (Solitaire 7,8 L + Swakopmund 53,08 L) = 12,3 L/100 km (Schotter, Kuiseb-Pass, Gegenwind). Erste Messung Helmeringhausen -> Sesriem: 10,9 L/100 km. Die Seite rechnet mit dem Schnitt aller Messungen.",
-      "geschaetzte_rest_liter": 110.1,
-      "geschaetzte_restreichweite_km": 949
+      "geschaetzte_rest_liter": 76.5,
+      "geschaetzte_restreichweite_km": 659
     }
   },
   "offene_punkte": [

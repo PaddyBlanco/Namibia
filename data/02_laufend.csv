@@ -46,3 +46,5 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 46,2026-09-12,,Ausgabe,Spitzkoppe,Spitzkoppe Campsite,Unterkunft,600.00,NAD,32.04,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
 47,2026-09-13,,Ausgabe,Uis,Café Uis,Restaurant,,EUR,15.05,Nora,N26 Debit,Kaffee/Fruehstueck
 48,2026-09-14,,Ausgabe,Palmwag,Palmwag Fuel Station,Tanken,,EUR,117.20,Nora,N26 Debit,Tankdetails in 04_tanken.csv Nr. 8
+49,2026-09-14,,Ausgabe,Hoada,Hoada Campsite Bar,Restaurant,110.00,NAD,5.90,Patrick,Bargeld,Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
+50,2026-09-14,,Ausgabe,Hoada,Schulbus-Spende,Sonstiges,400.00,NAD,21.36,Nora,Bargeld,Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)

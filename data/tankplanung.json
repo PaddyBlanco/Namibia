@@ -1,20 +1,20 @@
 {
-  "stand": "2026-09-13",
+  "stand": "2026-09-14",
   "letzter_volltank": {
     "ort": "Swakopmund",
     "datum": "2026-09-11",
     "kilometerstand": 22581
   },
   "aktueller_standort": {
-    "ort": "unterwegs Spitzkoppe → Damaraland (Granietkop)",
-    "datum": "2026-09-13"
+    "ort": "Hoada Campsite (Grootberg)",
+    "datum": "2026-09-14"
   },
-  "strecke_seit_volltank_km": 430,
+  "strecke_seit_volltank_km": 720,
   "naechster_pflicht_stopp": {
-    "ort": "Khorixas",
-    "hinweis": "Uis (heute am Weg, kleine Tankstelle) oder Khorixas (morgen Richtung Hoada); danach bis Etosha/Okaukuejo keine sichere Tankstelle mehr"
+    "ort": "Kamanjab",
+    "hinweis": "Letzte Tankstelle vor Etosha (Anderson Gate/Okaukuejo ca. 150 km weiter); in Etosha nur Okaukuejo, Halali und Namutoni"
   },
-  "strecke_bis_naechster_stopp_km": 120,
-  "empfehlung": "Seit Swakopmund (22.581 km) ca. 150 km bis Spitzkoppe plus ca. 280 km heute ueber Uis, Brandberg und Twyfelfontein = ca. 430 km = ca. 50 L bei 11,6 L/100 km, also noch rund 110 L im Tank. Kein Zwang zu tanken; in Uis oder morgen in Khorixas nachfuellen, weil danach Hoada und Etosha (ca. 300 km) kommen. Kilometerstand notieren.",
+  "strecke_bis_naechster_stopp_km": 80,
+  "empfehlung": "Palmwag am 14.09. mit 78,27 L nachgetankt (23.205 km) - ob voll, ist noch nicht bestaetigt; bis dahin gilt Swakopmund als Nullpunkt und die Restschaetzung unten ist zu pessimistisch. Morgen Richtung Okaukuejo in Kamanjab kurz nachfuellen, dann sind die Etosha-Tage entspannt.",
   "anmerkung": "Zweite Messung Sesriem -> Swakopmund: 496 km, 60,88 L (Solitaire 7,8 L + Swakopmund 53,08 L) = 12,3 L/100 km (Schotter, Kuiseb-Pass, Gegenwind). Erste Messung Helmeringhausen -> Sesriem: 10,9 L/100 km. Die Seite rechnet mit dem Schnitt aller Messungen."
 }

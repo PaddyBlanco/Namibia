@@ -80,8 +80,10 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 46 | 2026-09-12 | – | Ausgabe | Spitzkoppe | Spitzkoppe Campsite | Unterkunft | 600.00 NAD | 32,04 € | Nora | Bargeld | 18.727 | EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 | 47 | 2026-09-13 | – | Ausgabe | Uis | Café Uis | Restaurant | – | 15,05 € | Nora | N26 Debit | – | Kaffee/Fruehstueck |
 | 48 | 2026-09-14 | – | Ausgabe | Palmwag | Palmwag Fuel Station | Tanken | – | 117,20 € | Nora | N26 Debit | – | Tankdetails in 04_tanken.csv Nr. 8 |
+| 49 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite Bar | Restaurant | 110.00 NAD | 5,90 € | Patrick | Bargeld | 18.644 | Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
+| 50 | 2026-09-14 | – | Ausgabe | Hoada | Schulbus-Spende | Sonstiges | 400.00 NAD | 21,36 € | Nora | Bargeld | 18.727 | Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 
-**Echte Ausgaben:** 1.503,44 € (davon bar 144,39 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 339,84 €
+**Echte Ausgaben:** 1.530,70 € (davon bar 171,65 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 312,58 €
 
 ## 3. Zusammenfassung
 
@@ -94,30 +96,30 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Unterkunft | 686,06 € |
 | Tanken | 577,73 € |
 | Lebensmittel | 370,83 € |
-| Restaurant | 167,26 € |
+| Restaurant | 173,16 € |
 | Eintritt | 102,16 € |
 | Aktivitäten | 75,95 € |
+| Sonstiges | 42,87 € |
 | Shopping | 41,72 € |
-| Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.669,80 €** (davon bezahlt 6.669,80 €, noch offen 0,00 €)
+**Gesamtausgaben: 6.697,06 €** (davon bezahlt 6.697,06 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.492,58 € | 1.163,25 € | 2.655,83 € |
+| Patrick | 3.673,78 € | 346,09 € | 4.019,87 € |
+| Nora | 1.492,58 € | 1.184,61 € | 2.677,19 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 0,00 € |
 
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **484,23 €**
-- Davon bar ausgegeben: **144,39 €**
-- Kassenbestand rechnerisch: **339,84 €**
-  - Topf Patrick: 2.607 NAD ≈ 139,92 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
-  - Topf Nora: 3.740 NAD ≈ 199,92 € (abgehoben 5.000 NAD zu 18.724 NAD/€)
+- Davon bar ausgegeben: **171,65 €**
+- Kassenbestand rechnerisch: **312,58 €**
+  - Topf Patrick: 2.497 NAD ≈ 134,02 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
+  - Topf Nora: 3.340 NAD ≈ 178,56 € (abgehoben 5.000 NAD zu 18.724 NAD/€)
 - Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
@@ -126,14 +128,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.655,83 € |
+| Patrick gezahlt (Karte + Bargeld) | 4.019,87 € |
+| Nora gezahlt (Karte) | 2.677,19 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.669,80 € |
-| Anteil je Person (50 %) | 3.334,90 € |
-| Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 655,83 € |
-| **Saldo** | **Nora schuldet Patrick 2.679,07 €** |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.697,06 € |
+| Anteil je Person (50 %) | 3.348,53 € |
+| Patrick effektiv getragen (gezahlt + Überweisung) | 6.019,87 € |
+| Nora effektiv getragen (gezahlt − Überweisung) | 677,19 € |
+| **Saldo** | **Nora schuldet Patrick 2.671,34 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 0,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
