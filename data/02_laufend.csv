@@ -45,3 +45,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 45,2026-09-11,,Ausgabe,Swakopmund,Ankerplatz,Restaurant,,EUR,31.10,Nora,N26 Debit,Abendessen
 46,2026-09-12,,Ausgabe,Spitzkoppe,Spitzkoppe Campsite,Unterkunft,600.00,NAD,32.04,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
 47,2026-09-13,,Ausgabe,Uis,Café Uis,Restaurant,,EUR,15.05,Nora,N26 Debit,Kaffee/Fruehstueck
+48,2026-09-14,,Ausgabe,Palmwag,Palmwag Fuel Station,Tanken,,EUR,117.20,Nora,N26 Debit,Tankdetails in 04_tanken.csv Nr. 8

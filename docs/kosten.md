@@ -79,8 +79,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 45 | 2026-09-11 | – | Ausgabe | Swakopmund | Ankerplatz | Restaurant | – | 31,10 € | Nora | N26 Debit | – | Abendessen |
 | 46 | 2026-09-12 | – | Ausgabe | Spitzkoppe | Spitzkoppe Campsite | Unterkunft | 600.00 NAD | 32,04 € | Nora | Bargeld | 18.727 | EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 | 47 | 2026-09-13 | – | Ausgabe | Uis | Café Uis | Restaurant | – | 15,05 € | Nora | N26 Debit | – | Kaffee/Fruehstueck |
+| 48 | 2026-09-14 | – | Ausgabe | Palmwag | Palmwag Fuel Station | Tanken | – | 117,20 € | Nora | N26 Debit | – | Tankdetails in 04_tanken.csv Nr. 8 |
 
-**Echte Ausgaben:** 1.386,24 € (davon bar 144,39 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 339,84 €
+**Echte Ausgaben:** 1.503,44 € (davon bar 144,39 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 339,84 €
 
 ## 3. Zusammenfassung
 
@@ -91,7 +92,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
 | Unterkunft | 686,06 € |
-| Tanken | 460,53 € |
+| Tanken | 577,73 € |
 | Lebensmittel | 370,83 € |
 | Restaurant | 167,26 € |
 | Eintritt | 102,16 € |
@@ -100,14 +101,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Sonstiges | 21,51 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.552,60 €** (davon bezahlt 6.552,60 €, noch offen 0,00 €)
+**Gesamtausgaben: 6.669,80 €** (davon bezahlt 6.669,80 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 340,19 € | 4.013,97 € |
-| Nora | 1.492,58 € | 1.046,05 € | 2.538,63 € |
+| Nora | 1.492,58 € | 1.163,25 € | 2.655,83 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 0,00 € |
 
 ### Reisekasse (Bargeld)
@@ -126,13 +127,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick gezahlt (Karte + Bargeld) | 4.013,97 € |
-| Nora gezahlt (Karte) | 2.538,63 € |
+| Nora gezahlt (Karte) | 2.655,83 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.552,60 € |
-| Anteil je Person (50 %) | 3.276,30 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.669,80 € |
+| Anteil je Person (50 %) | 3.334,90 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.013,97 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 538,63 € |
-| **Saldo** | **Nora schuldet Patrick 2.737,67 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 655,83 € |
+| **Saldo** | **Nora schuldet Patrick 2.679,07 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 0,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
