@@ -85,7 +85,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 51 | 2026-09-15 | – | Ausgabe | Kamanjab | Tankstelle | Tanken | – | 32,75 € | Nora | N26 Debit | – | Kilometerstand nicht notiert; Tankdetails in 04_tanken.csv Nr. 9 |
 | 52 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | – | 42,79 € | Nora | N26 Debit | – | – |
 | 53 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | 228.98 NAD | 12,42 € | Patrick | Oberbank Debit | 18.436 | Alkohol; EUR vorlaeufig, Oberbank-Betrag nachtragen; EUR VORLAEUFIG mit 18.43 NAD/EUR geschaetzt - echten Kartenbetrag nachtragen |
-| 54 | 2026-09-15 | – | Ausgabe | Etosha | Etosha Nationalpark (Anderson Gate) | Eintritt | – | 100,00 € | Nora | N26 Debit | – | Parkgebuehr 2 Personen + Fahrzeug |
+| 54 | 2026-09-15 | – | Ausgabe | Etosha | Etosha Nationalpark (Galton Gate) | Eintritt | – | 100,00 € | Nora | N26 Debit | – | Parkgebuehr 2 Personen + Fahrzeug |
 | 55 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite | Sonstiges | 250.00 NAD | 13,35 € | Nora | Bargeld | 18.727 | Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 
 **Echte Ausgaben:** 1.732,01 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
