@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-14T17:48:32+00:00",
+  "generated_at": "2026-09-15T19:25:49+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 6697.06,
-    "bezahlt": 6697.06,
+    "gesamt": 6898.37,
+    "bezahlt": 6898.37,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 171.65,
-    "kasse_bestand": 312.58,
-    "patrick_gezahlt": 4019.87,
-    "nora_gezahlt": 2677.19,
+    "kasse_bar_ausgegeben": 185.0,
+    "kasse_bestand": 299.23,
+    "patrick_gezahlt": 4032.29,
+    "nora_gezahlt": 2866.08,
     "tbd_gezahlt": 0.0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6697.06,
-    "anteil_pro_person": 3348.53,
-    "beitrag_patrick": 6019.87,
-    "beitrag_nora": 677.19,
-    "saldo_patrick": 2671.34,
+    "saldo_basis": 6898.37,
+    "anteil_pro_person": 3449.18,
+    "beitrag_patrick": 6032.29,
+    "beitrag_nora": 866.08,
+    "saldo_patrick": 2583.11,
     "kasse": {
       "Patrick": {
         "seit": "2026-09-03",
@@ -35,10 +35,10 @@
         "seit": "2026-09-09",
         "abgehoben_nad": 5000.0,
         "abgehoben_eur": 267.03,
-        "bar_nad": 1660.0,
-        "bar_eur": 88.47,
-        "bestand_nad": 3340.0,
-        "bestand_eur": 178.56,
+        "bar_nad": 1910.0,
+        "bar_eur": 101.82,
+        "bestand_nad": 3090.0,
+        "bestand_eur": 165.21,
         "kurs": 18.72
       }
     }
@@ -58,19 +58,19 @@
     },
     {
       "name": "Tanken",
-      "betrag": 577.73
+      "betrag": 610.48
     },
     {
       "name": "Lebensmittel",
-      "betrag": 370.83
+      "betrag": 426.04
+    },
+    {
+      "name": "Eintritt",
+      "betrag": 202.16
     },
     {
       "name": "Restaurant",
       "betrag": 173.16
-    },
-    {
-      "name": "Eintritt",
-      "betrag": 102.16
     },
     {
       "name": "Aktivitäten",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Sonstiges",
-      "betrag": 42.87
+      "betrag": 56.22
     },
     {
       "name": "Shopping",
@@ -901,6 +901,21 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-55",
+      "datum": "2026-09-14",
+      "zeit": "",
+      "ort": "Hoada",
+      "ort_link": null,
+      "kategorie": "Sonstiges",
+      "beschreibung": "Hoada Campsite",
+      "betrag": 13.35,
+      "betrag_fw": 250.0,
+      "waehrung": "NAD",
+      "zahler": "Nora",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-13",
       "datum": "2026-09-15",
       "zeit": "",
@@ -913,6 +928,66 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "Nora Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-51",
+      "datum": "2026-09-15",
+      "zeit": "",
+      "ort": "Kamanjab",
+      "ort_link": null,
+      "kategorie": "Tanken",
+      "beschreibung": "Tankstelle",
+      "betrag": 32.75,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-52",
+      "datum": "2026-09-15",
+      "zeit": "",
+      "ort": "Kamanjab",
+      "ort_link": null,
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Spar Kamanjab",
+      "betrag": 42.79,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-53",
+      "datum": "2026-09-15",
+      "zeit": "",
+      "ort": "Kamanjab",
+      "ort_link": null,
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Spar Kamanjab",
+      "betrag": 12.42,
+      "betrag_fw": 228.98,
+      "waehrung": "NAD",
+      "zahler": "Patrick",
+      "zahlmittel": "Oberbank Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-54",
+      "datum": "2026-09-15",
+      "zeit": "",
+      "ort": "Etosha",
+      "ort_link": null,
+      "kategorie": "Eintritt",
+      "beschreibung": "Etosha Nationalpark (Anderson Gate)",
+      "betrag": 100.0,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     },
     {
@@ -1328,12 +1403,24 @@
         "verbrauch_l_100km": 12.5,
         "zahler": "Nora",
         "anmerkung": "Entspricht Blatt 02 Nr. 48 - Volltanken von Patrick bestaetigt (14.09.); Abschnitt Swakopmund 22581 -> Palmwag 23205 = 624 km mit 78,27 L"
+      },
+      {
+        "datum": "2026-09-15",
+        "ort": "Kamanjab",
+        "liter": 21.22,
+        "preis_pro_liter_nad": null,
+        "preis_pro_liter_eur": 1.543,
+        "betrag_eur": 32.75,
+        "kilometerstand": null,
+        "verbrauch_l_100km": null,
+        "zahler": "Nora",
+        "anmerkung": "Entspricht Blatt 02 Nr. 51"
       }
     ],
     "summary": {
-      "gesamt_liter": 228.0,
-      "gesamt_kosten": 577.73,
-      "avg_preis_liter_eur": 1.518,
+      "gesamt_liter": 249.3,
+      "gesamt_kosten": 610.48,
+      "avg_preis_liter_eur": 1.522,
       "avg_verbrauch_l_100km": 11.9,
       "verbrauch_quelle": "fillups",
       "fahrzeug_modell": "TBD",
@@ -1391,26 +1478,26 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-14",
+      "stand": "2026-09-15",
       "letzter_volltank": {
         "ort": "Palmwag",
         "datum": "2026-09-14",
         "kilometerstand": 23205
       },
       "aktueller_standort": {
-        "ort": "Hoada Campsite (Grootberg)",
-        "datum": "2026-09-14"
+        "ort": "Etosha (Okaukuejo)",
+        "datum": "2026-09-15"
       },
-      "strecke_seit_volltank_km": 90,
+      "strecke_seit_volltank_km": 230,
       "naechster_pflicht_stopp": {
-        "ort": "Kamanjab",
-        "hinweis": "Letzte Tankstelle vor Etosha (Anderson Gate/Okaukuejo ca. 150 km weiter); in Etosha nur Okaukuejo, Halali und Namutoni"
+        "ort": "Okaukuejo",
+        "hinweis": "Sprit in Okaukuejo, Halali und Namutoni; Pirschfahrten mit Umleitung Okaukuejo -> Halali brauchen mehr als geplant"
       },
-      "strecke_bis_naechster_stopp_km": 80,
-      "empfehlung": "Voll in Palmwag (14.09., 23.205 km), seither ca. 90 km bis Hoada. Bis Okaukuejo sind es ca. 230 km ueber Kamanjab und das Anderson Gate, dann drei Etosha-Tage mit Pirschfahrten - in Kamanjab kurz nachfuellen ist bequem, noetig ist es nicht; in Etosha gibt es Sprit in Okaukuejo, Halali und Namutoni.",
+      "strecke_bis_naechster_stopp_km": 0,
+      "empfehlung": "Kamanjab 15.09. voll (21,22 L, ohne Kilometerstand) - Nullpunkt fuer die Verbrauchsmessung bleibt Palmwag 23.205 km, der naechste Volltank MIT km-Stand schliesst den Abschnitt. Tank ist praktisch voll; die Etosha-Tage (ca. 300 bis 400 km inkl. Umleitung) gehen ohne Tankstopp, bei Gelegenheit in Halali oder Namutoni nachfuellen und km notieren.",
       "anmerkung": "Dritte Messung Swakopmund -> Palmwag: 624 km, 78,27 L = 12,5 L/100 km (Schotter Damaraland). Vorher 10,9 (Helmeringhausen -> Sesriem) und 12,3 (Sesriem -> Swakopmund). Die Seite rechnet mit dem Schnitt aller Messungen.",
-      "geschaetzte_rest_liter": 149.3,
-      "geschaetzte_restreichweite_km": 1255
+      "geschaetzte_rest_liter": 132.6,
+      "geschaetzte_restreichweite_km": 1115
     }
   },
   "offene_punkte": [

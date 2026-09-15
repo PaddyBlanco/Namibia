@@ -82,8 +82,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 48 | 2026-09-14 | – | Ausgabe | Palmwag | Palmwag Fuel Station | Tanken | – | 117,20 € | Nora | N26 Debit | – | Tankdetails in 04_tanken.csv Nr. 8 |
 | 49 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite Bar | Restaurant | 110.00 NAD | 5,90 € | Patrick | Bargeld | 18.644 | Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
 | 50 | 2026-09-14 | – | Ausgabe | Hoada | Schulbus-Spende | Sonstiges | 400.00 NAD | 21,36 € | Nora | Bargeld | 18.727 | Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
+| 51 | 2026-09-15 | – | Ausgabe | Kamanjab | Tankstelle | Tanken | – | 32,75 € | Nora | N26 Debit | – | Kilometerstand nicht notiert; Tankdetails in 04_tanken.csv Nr. 9 |
+| 52 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | – | 42,79 € | Nora | N26 Debit | – | – |
+| 53 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | 228.98 NAD | 12,42 € | Patrick | Oberbank Debit | 18.436 | Alkohol; EUR vorlaeufig, Oberbank-Betrag nachtragen; EUR VORLAEUFIG mit 18.43 NAD/EUR geschaetzt - echten Kartenbetrag nachtragen |
+| 54 | 2026-09-15 | – | Ausgabe | Etosha | Etosha Nationalpark (Anderson Gate) | Eintritt | – | 100,00 € | Nora | N26 Debit | – | Parkgebuehr 2 Personen + Fahrzeug |
+| 55 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite | Sonstiges | 250.00 NAD | 13,35 € | Nora | Bargeld | 18.727 | Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 
-**Echte Ausgaben:** 1.530,70 € (davon bar 171,65 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 312,58 €
+**Echte Ausgaben:** 1.732,01 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
 
 ## 3. Zusammenfassung
 
@@ -94,32 +99,32 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
 | Unterkunft | 686,06 € |
-| Tanken | 577,73 € |
-| Lebensmittel | 370,83 € |
+| Tanken | 610,48 € |
+| Lebensmittel | 426,04 € |
+| Eintritt | 202,16 € |
 | Restaurant | 173,16 € |
-| Eintritt | 102,16 € |
 | Aktivitäten | 75,95 € |
-| Sonstiges | 42,87 € |
+| Sonstiges | 56,22 € |
 | Shopping | 41,72 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.697,06 €** (davon bezahlt 6.697,06 €, noch offen 0,00 €)
+**Gesamtausgaben: 6.898,37 €** (davon bezahlt 6.898,37 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 3.673,78 € | 346,09 € | 4.019,87 € |
-| Nora | 1.492,58 € | 1.184,61 € | 2.677,19 € |
+| Patrick | 3.673,78 € | 358,51 € | 4.032,29 € |
+| Nora | 1.492,58 € | 1.373,50 € | 2.866,08 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 0,00 € |
 
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **484,23 €**
-- Davon bar ausgegeben: **171,65 €**
-- Kassenbestand rechnerisch: **312,58 €**
+- Davon bar ausgegeben: **185,00 €**
+- Kassenbestand rechnerisch: **299,23 €**
   - Topf Patrick: 2.497 NAD ≈ 134,02 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
-  - Topf Nora: 3.340 NAD ≈ 178,56 € (abgehoben 5.000 NAD zu 18.724 NAD/€)
+  - Topf Nora: 3.090 NAD ≈ 165,21 € (abgehoben 5.000 NAD zu 18.724 NAD/€)
 - Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
@@ -128,14 +133,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Patrick gezahlt (Karte + Bargeld) | 4.019,87 € |
-| Nora gezahlt (Karte) | 2.677,19 € |
+| Patrick gezahlt (Karte + Bargeld) | 4.032,29 € |
+| Nora gezahlt (Karte) | 2.866,08 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.697,06 € |
-| Anteil je Person (50 %) | 3.348,53 € |
-| Patrick effektiv getragen (gezahlt + Überweisung) | 6.019,87 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 677,19 € |
-| **Saldo** | **Nora schuldet Patrick 2.671,34 €** |
+| Bisher bezahlt gesamt (Saldo-Basis) | 6.898,37 € |
+| Anteil je Person (50 %) | 3.449,18 € |
+| Patrick effektiv getragen (gezahlt + Überweisung) | 6.032,29 € |
+| Nora effektiv getragen (gezahlt − Überweisung) | 866,08 € |
+| **Saldo** | **Nora schuldet Patrick 2.583,11 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 0,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

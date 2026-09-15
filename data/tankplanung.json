@@ -1,20 +1,20 @@
 {
-  "stand": "2026-09-14",
+  "stand": "2026-09-15",
   "letzter_volltank": {
     "ort": "Palmwag",
     "datum": "2026-09-14",
     "kilometerstand": 23205
   },
   "aktueller_standort": {
-    "ort": "Hoada Campsite (Grootberg)",
-    "datum": "2026-09-14"
+    "ort": "Etosha (Okaukuejo)",
+    "datum": "2026-09-15"
   },
-  "strecke_seit_volltank_km": 90,
+  "strecke_seit_volltank_km": 230,
   "naechster_pflicht_stopp": {
-    "ort": "Kamanjab",
-    "hinweis": "Letzte Tankstelle vor Etosha (Anderson Gate/Okaukuejo ca. 150 km weiter); in Etosha nur Okaukuejo, Halali und Namutoni"
+    "ort": "Okaukuejo",
+    "hinweis": "Sprit in Okaukuejo, Halali und Namutoni; Pirschfahrten mit Umleitung Okaukuejo -> Halali brauchen mehr als geplant"
   },
-  "strecke_bis_naechster_stopp_km": 80,
-  "empfehlung": "Voll in Palmwag (14.09., 23.205 km), seither ca. 90 km bis Hoada. Bis Okaukuejo sind es ca. 230 km ueber Kamanjab und das Anderson Gate, dann drei Etosha-Tage mit Pirschfahrten - in Kamanjab kurz nachfuellen ist bequem, noetig ist es nicht; in Etosha gibt es Sprit in Okaukuejo, Halali und Namutoni.",
+  "strecke_bis_naechster_stopp_km": 0,
+  "empfehlung": "Kamanjab 15.09. voll (21,22 L, ohne Kilometerstand) - Nullpunkt fuer die Verbrauchsmessung bleibt Palmwag 23.205 km, der naechste Volltank MIT km-Stand schliesst den Abschnitt. Tank ist praktisch voll; die Etosha-Tage (ca. 300 bis 400 km inkl. Umleitung) gehen ohne Tankstopp, bei Gelegenheit in Halali oder Namutoni nachfuellen und km notieren.",
   "anmerkung": "Dritte Messung Swakopmund -> Palmwag: 624 km, 78,27 L = 12,5 L/100 km (Schotter Damaraland). Vorher 10,9 (Helmeringhausen -> Sesriem) und 12,3 (Sesriem -> Swakopmund). Die Seite rechnet mit dem Schnitt aller Messungen."
 }
