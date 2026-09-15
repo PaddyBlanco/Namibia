@@ -10,12 +10,12 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 2 | 2026-09-02 | Flug | Flug Wien - Muenchen - Windhoek (2 Pers.) - Nora-Anteil (50%) | – | 947,63 € | bezahlt | 947,63 € | 0,00 € | Nora | TBD | Flug wurde gleichmaessig zwischen Patrick und Nora aufgeteilt, bereits bezahlt |
 | 3 | 2026-09-03 | Mietwagen | Mietwagen inkl. Camping-Ausstattung 03.-21.09. | – | 2.726,15 € | bezahlt | 2.726,15 € | 0,00 € | Patrick | TBD | Betrag von Patrick bestaetigt (2726.15 EUR) |
 | 4 | 2026-09-03 | Unterkunft | Kalahari Anib Campsite | 1 | 36,67 € | bezahlt | 36,67 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 682 NAD = 36.67 EUR inkl. Spesen 1.35 EUR, Kurs 19.3070 (Beleg: GONDWANA COLLECTION 1 WINDHOEK). Noras normale Debitkarte (K2, Spesen inkl.). |
-| 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Patrick | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
+| 5 | 2026-09-04 | Unterkunft | Quiver Tree Camping | 1 | 0,00 € | bar bezahlt - siehe Blatt 02 | 0,00 € | 0,00 € | Kasse | Bargeld | 720 NAD bar von Patrick gezahlt - Betrag steht in Blatt 02 Nr. 8 (keine Doppelzaehlung) |
 | 6 | 2026-09-05 | Unterkunft | Desert Horse Campsite Aus | 2 | 25,15 € | Anzahlung vorab bezahlt - Rest siehe Blatt 02 | 25,15 € | 0,00 € | Nora | Nora Debit | Anzahlung 460 NAD am 22.04.2026 (Valuta) von Nora = 25.15 EUR inkl. Spesen 1.27 EUR, Kurs 19.2618 (Beleg: KLEIN AUS VISTA AUS; Rechnung 6483110). Noras normale Debitkarte (K2, Spesen inkl.). Restzahlung 460 NAD am 05.09. steht in Blatt 02 Nr. 11. Die frueher hier gefuehrten 24 EUR waren der Kolmanskop-Eintritt (= Blatt 02 Nr. 12) |
-| 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | Bargeld | Bar vor Ort faellig; 600.00 NAD am 2026-09-07 Bargeld von Patrick - steht in Blatt 02 Nr. 31 |
+| 7 | 2026-09-07 | Unterkunft | Wereldend Mountain Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | Kasse | Bargeld | Bar vor Ort faellig; 600.00 NAD am 2026-09-07 Bargeld von Patrick - steht in Blatt 02 Nr. 31 |
 | 8 | 2026-09-08 | Unterkunft | Little Sossus Campsite | 2 | 84,58 € | bezahlt | 84,58 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1600 NAD = 84.58 EUR inkl. Spesen 1.71 EUR, Kurs 19.3070 (Beleg: LITTLE SOSSUS LODGE 1 MALTAHOHE). Noras normale Debitkarte (K2, Spesen inkl.). |
-| 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 2 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | Nora | Bargeld | Bar vor Ort faellig; 250.00 NAD am 2026-09-10 Bargeld von Nora - steht in Blatt 02 Nr. 35 (1. Nacht). Planaenderung 11.09.: 2. Nacht 11.-12.09. dazu (dafuer Spitzkoppe nur 1 Nacht), 2. Nacht wird separat vor Ort bezahlt. |
-| 10 | 2026-09-12 | Unterkunft | Spitzkoppe Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | TBD ⚠️ | TBD | Planaenderung 11.09.: nur noch 1 Nacht (12.-13.09.) statt 2, weil eine Nacht laenger in Swakopmund. Planwert halbiert (62 -> 31 EUR), echter Preis vor Ort. Payment-Link evtl. nie erhalten - vor Ort zahlen.; 600.00 NAD am 2026-09-12 Bargeld von Nora - steht in Blatt 02 Nr. 46 |
+| 9 | 2026-09-10 | Unterkunft | Moonvalley River Camp Swakopmund | 2 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | Kasse | Bargeld | Bar vor Ort faellig; 250.00 NAD am 2026-09-10 Bargeld von Nora - steht in Blatt 02 Nr. 35 (1. Nacht). Planaenderung 11.09.: 2. Nacht 11.-12.09. dazu (dafuer Spitzkoppe nur 1 Nacht), 2. Nacht wird separat vor Ort bezahlt. |
+| 10 | 2026-09-12 | Unterkunft | Spitzkoppe Campsite | 1 | 0,00 € | vor Ort bezahlt (Bargeld) - siehe Blatt 02 | 0,00 € | 0,00 € | Kasse | Bargeld | Planaenderung 11.09.: nur noch 1 Nacht (12.-13.09.) statt 2, weil eine Nacht laenger in Swakopmund. Planwert halbiert (62 -> 31 EUR), echter Preis vor Ort. Payment-Link evtl. nie erhalten - vor Ort zahlen.; 600.00 NAD am 2026-09-12 Bargeld von Nora - steht in Blatt 02 Nr. 46 |
 | 11 | 2026-09-13 | Unterkunft | Granietkop Campsite Damaraland | 1 | 50,30 € | bezahlt | 50,30 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 940 NAD = 50.30 EUR inkl. Spesen 1.46 EUR, Kurs 19.2467 (Beleg: GRANIETKOP CAMPSITE WINDHOEK). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 12 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | bezahlt | 45,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 45.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
 | 13 | 2026-09-15 | Unterkunft | Okaukuejo Campsite Etosha | 1 | 59,54 € | bezahlt | 59,54 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1120 NAD = 59.54 EUR inkl. Spesen 1.53 EUR, Kurs 19.3070 (Beleg: NAMIBIA WILDLIFE RESORTS, 17:37). Noras normale Debitkarte (K2, Spesen inkl.). |
@@ -39,7 +39,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 5 | 2026-09-03 | 09:08 | Ausgabe | Windhoek | ATM Behebungsentgelt | Gebühren | – | 2,52 € | Patrick | Oberbank Debit | – | Entgelt zur Abhebung Nr. 4 |
 | 6 | 2026-09-03 | 12:26 | Ausgabe | Windhoek | Superspar Maerua Mall | Lebensmittel | 3122.63 NAD | 169,22 € | Patrick | Oberbank Debit | 18.453 | Grosseinkauf Camping-Proviant - Karte von Patrick bestaetigt |
 | 7 | 2026-09-03 | 13:51 | Ausgabe | Rehoboth | Agrimark Rehoboth Express | Tanken | 1343.30 NAD | 73,42 € | Patrick | TBD | 18.296 | Diesel/Tanken - von Patrick bestaetigt; Karte auf Wunsch nicht weiter geklaert |
-| 8 | 2026-09-05 | – | Ausgabe | Quiver Tree Forest | Quivertree Forest Camping | Unterkunft | 720.00 NAD | 38,64 € | Patrick | Bargeld | 18.634 | Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet |
+| 8 | 2026-09-05 | – | Ausgabe | Quiver Tree Forest | Quivertree Forest Camping | Unterkunft | 720.00 NAD | 38,64 € | Kasse | Bargeld | 18.634 | Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet |
 | 9 | 2026-09-04 | 11:58 | Ausgabe | Mariental | Spar Mariental | Lebensmittel | – | 20,11 € | Nora | N26 Debit | – | – |
 | 10 | 2026-09-05 | 12:19 | Ausgabe | Keetmanshoop | Agra Keetmanshoop - Fo | Tanken | – | 98,15 € | Nora | N26 Debit | – | KATEGORIE ZU BESTAETIGEN - Agra ist Landhandel mit Tankstelle; N26 kategorisiert als Transport & Auto |
 | 11 | 2026-09-05 | 15:00 | Ausgabe | Aus | Klein-Aus Vista - Unterkunft (Rest) | Unterkunft | 460.00 NAD | 24,96 € | Nora | N26 Debit | 18.429 | Restzahlung Desert Horse Campsite (2 Naechte) laut Rechnung 6483110; 920 NAD gesamt minus 460 NAD Deposit vom 23.04. |
@@ -53,7 +53,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 19 | 2026-09-07 | 10:05 | Ausgabe | Aus | Klein-Aus Vista - Getränke | Restaurant | 102.00 NAD | 5,53 € | Nora | N26 Debit | 18.445 | Restsaldo der Rechnung 6483110 beim Auschecken (Windhoek Lager, Savanna Dry, Hansa Draught) - EUR mit dem Kurs der 05.09.-Zahlung gerechnet, echter N26-Betrag noch nicht bekannt |
 | 20 | 2026-09-07 | 10:43 | Ausgabe | Namib Garage | Namib Garage | Lebensmittel | 127.50 NAD | 6,92 € | Nora | N26 Debit | 18.425 | Debit Mastercard ****1143 (Noras N26) - echter N26-Betrag laut App (Kurs 18.425 NAD/EUR) |
 | 21 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Restaurant | – | 30,11 € | Nora | N26 Debit | – | Essen + Kaffee/Kuchen |
-| 22 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Restaurant | 50.00 NAD | 2,68 € | Patrick | Bargeld | 18.657 | Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender) |
+| 22 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Restaurant | 50.00 NAD | 2,68 € | Kasse | Bargeld | 18.657 | Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender) |
 | 23 | 2026-09-07 | – | Ausgabe | Helmeringhausen | Helmeringhausen | Tanken | 980.01 NAD | 53,17 € | Nora | N26 Debit | 18.432 | Volltanken - 34.29 Liter a 28.58 NAD/Liter bei km-Stand 21586 (siehe 04_tanken.csv Nr. 4) |
 | 24 | 2026-09-08 | – | Ausgabe | Little Sossus Campsite | Little Sossus Campsite | Lebensmittel | – | 5,41 € | Nora | N26 Debit | – | Wasser |
 | 25 | 2026-09-08 | – | Ausgabe | Sesriem | Tankstelle Sesriem | Lebensmittel | – | 21,37 € | Nora | N26 Debit | – | Essen an der Tankstelle (Kategorie per App-Aenderung 08.09. Restaurant -> Lebensmittel) |
@@ -62,31 +62,31 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 28 | 2026-09-09 | – | Ausgabe | Sesriem | Tankstellenshop Sesriem | Lebensmittel | – | 21,15 € | Nora | N26 Debit | – | Zahlmittel N26 angenommen (Noras einzige Karte) |
 | 29 | 2026-09-09 | – | Abhebung 💶 | Sesriem | ATM | Bargeld | 3000.00 NAD | 159,23 € | Nora | N26 Debit | 18.841 | Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 161.88 EUR fuer 3050.00 NAD inkl. Entgelt (Kurs 18.841). Ort angenommen (heute in Sesriem) - ggf. korrigieren |
 | 30 | 2026-09-09 | – | Ausgabe | Sesriem | ATM Behebungsentgelt | Gebühren | 50.00 NAD | 2,65 € | Nora | N26 Debit | 18.868 | Entgelt zur Abhebung Nr. 29 |
-| 31 | 2026-09-07 | – | Ausgabe | Wereldend | Wereldend Mountain Campsite | Unterkunft | 600.00 NAD | 32,20 € | Patrick | Bargeld | 18.634 | EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
-| 32 | 2026-09-09 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Sonstiges | 70.00 NAD | 3,76 € | Patrick | Bargeld | 18.617 | Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
+| 31 | 2026-09-07 | – | Ausgabe | Wereldend | Wereldend Mountain Campsite | Unterkunft | 600.00 NAD | 32,20 € | Kasse | Bargeld | 18.634 | EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
+| 32 | 2026-09-09 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Sonstiges | 70.00 NAD | 3,76 € | Kasse | Bargeld | 18.617 | Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
 | 33 | 2026-09-10 | – | Ausgabe | Little Sossus | Little Sossus Campsite | Lebensmittel | – | 8,62 € | Nora | N26 Debit | – | Bei Abreise |
-| 34 | 2026-09-10 | – | Ausgabe | Solitaire | Tankstelle Solitaire | Tanken | 220.00 NAD | 11,68 € | Nora | Bargeld | 18.836 | Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6 |
-| 35 | 2026-09-10 | – | Ausgabe | Swakopmund | Moonvalley River Camp | Unterkunft | 250.00 NAD | 13,27 € | Nora | Bargeld | 18.839 | Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
+| 34 | 2026-09-10 | – | Ausgabe | Solitaire | Tankstelle Solitaire | Tanken | 220.00 NAD | 11,68 € | Kasse | Bargeld | 18.836 | Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6 |
+| 35 | 2026-09-10 | – | Ausgabe | Swakopmund | Moonvalley River Camp | Unterkunft | 250.00 NAD | 13,27 € | Kasse | Bargeld | 18.839 | Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
 | 36 | 2026-09-10 | 10:41 | Ausgabe | Solitaire | Solitaire Country Lodge | Restaurant | – | 22,64 € | Nora | N26 Debit | – | N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren. |
 | 37 | 2026-09-11 | – | Ausgabe | Swakopmund | Slowtown Coffee Roasters | Restaurant | – | 9,86 € | Nora | N26 Debit | – | Kaffee und Muffins |
 | 38 | 2026-09-11 | – | Ausgabe | Swakopmund | Swakopmund Museum Shop | Shopping | – | 21,65 € | Nora | N26 Debit | – | Buch und Loeffel |
-| 39 | 2026-09-11 | – | Ausgabe | Swakopmund | Woermannhaus Turm | Eintritt | 100.00 NAD | 5,31 € | Nora | Bargeld | 18.832 | Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
+| 39 | 2026-09-11 | – | Ausgabe | Swakopmund | Woermannhaus Turm | Eintritt | 100.00 NAD | 5,31 € | Kasse | Bargeld | 18.832 | Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR) |
 | 40 | 2026-09-11 | – | Ausgabe | Swakopmund | SuperSpar Swakopmund | Lebensmittel | – | 60,66 € | Nora | N26 Debit | – | – |
 | 41 | 2026-09-11 | – | Ausgabe | Swakopmund | Tops Swakopmund | Lebensmittel | – | 18,99 € | Nora | N26 Debit | – | Tops (Spar-Getraenkemarkt) |
 | 42 | 2026-09-11 | – | Abhebung 💶 | Swakopmund | Spar Swakopmund (Bargeld an der Kasse/ATM) | Bargeld | 2000.00 NAD | 107,80 € | Nora | N26 Debit | 18.553 | Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 107.80 EUR fuer 2000.00 NAD inkl. Entgelt (Kurs 18.553). N26-Push: Abhebung 107,80 EUR bei Swakopmund Spar. Entgelt unbekannt - falls N26 mehr als 2000 NAD ausweist, Differenz als Gebuehr nachtragen |
 | 43 | 2026-09-11 | – | Ausgabe | Swakopmund | Tankstelle | Tanken | – | 79,97 € | Nora | N26 Debit | – | Tankdetails in 04_tanken.csv Nr. 7 |
-| 44 | 2026-09-11 | – | Ausgabe | Swakopmund | Swakopmund Museum | Eintritt | 90.00 NAD | 4,81 € | Nora | Bargeld | 18.711 | EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
+| 44 | 2026-09-11 | – | Ausgabe | Swakopmund | Swakopmund Museum | Eintritt | 90.00 NAD | 4,81 € | Kasse | Bargeld | 18.711 | EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 | 45 | 2026-09-11 | – | Ausgabe | Swakopmund | Ankerplatz | Restaurant | – | 31,10 € | Nora | N26 Debit | – | Abendessen |
-| 46 | 2026-09-12 | – | Ausgabe | Spitzkoppe | Spitzkoppe Campsite | Unterkunft | 600.00 NAD | 32,04 € | Nora | Bargeld | 18.727 | EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
+| 46 | 2026-09-12 | – | Ausgabe | Spitzkoppe | Spitzkoppe Campsite | Unterkunft | 600.00 NAD | 32,04 € | Kasse | Bargeld | 18.727 | EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 | 47 | 2026-09-13 | – | Ausgabe | Uis | Café Uis | Restaurant | – | 15,05 € | Nora | N26 Debit | – | Kaffee/Fruehstueck |
 | 48 | 2026-09-14 | – | Ausgabe | Palmwag | Palmwag Fuel Station | Tanken | – | 117,20 € | Nora | N26 Debit | – | Tankdetails in 04_tanken.csv Nr. 8 |
-| 49 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite Bar | Restaurant | 110.00 NAD | 5,90 € | Patrick | Bargeld | 18.644 | Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
-| 50 | 2026-09-14 | – | Ausgabe | Hoada | Schulbus-Spende | Sonstiges | 400.00 NAD | 21,36 € | Nora | Bargeld | 18.727 | Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
+| 49 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite Bar | Restaurant | 110.00 NAD | 5,90 € | Kasse | Bargeld | 18.644 | Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR) |
+| 50 | 2026-09-14 | – | Ausgabe | Hoada | Schulbus-Spende | Sonstiges | 400.00 NAD | 21,36 € | Kasse | Bargeld | 18.727 | Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 | 51 | 2026-09-15 | – | Ausgabe | Kamanjab | Tankstelle | Tanken | – | 32,75 € | Nora | N26 Debit | – | Kilometerstand nicht notiert; Tankdetails in 04_tanken.csv Nr. 9 |
 | 52 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | – | 42,79 € | Nora | N26 Debit | – | – |
 | 53 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | 228.98 NAD | 12,42 € | Patrick | Oberbank Debit | 18.436 | Alkohol; EUR vorlaeufig, Oberbank-Betrag nachtragen; EUR VORLAEUFIG mit 18.43 NAD/EUR geschaetzt - echten Kartenbetrag nachtragen |
 | 54 | 2026-09-15 | – | Ausgabe | Etosha | Etosha Nationalpark (Galton Gate) | Eintritt | – | 100,00 € | Nora | N26 Debit | – | Parkgebuehr 2 Personen + Fahrzeug |
-| 55 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite | Sonstiges | 250.00 NAD | 13,35 € | Nora | Bargeld | 18.727 | Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
+| 55 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite | Sonstiges | 250.00 NAD | 13,35 € | Kasse | Bargeld | 18.727 | Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
 
 **Echte Ausgaben:** 1.732,01 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
 
@@ -114,8 +114,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
-| Patrick | 3.673,78 € | 358,51 € | 4.032,29 € |
-| Nora | 1.492,58 € | 1.373,50 € | 2.866,08 € |
+| Patrick | 3.673,78 € | 492,53 € | 4.166,31 € |
+| Nora | 1.492,58 € | 1.538,71 € | 3.031,29 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 0,00 € |
 
 ### Reisekasse (Bargeld)
@@ -123,9 +123,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 - Abgehoben gesamt: **484,23 €**
 - Davon bar ausgegeben: **185,00 €**
 - Kassenbestand rechnerisch: **299,23 €**
-  - Topf Patrick: 2.497 NAD ≈ 134,02 € (abgehoben 4.047 NAD zu 18.633 NAD/€)
-  - Topf Nora: 3.090 NAD ≈ 165,21 € (abgehoben 5.000 NAD zu 18.724 NAD/€)
-- Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), EUR zum Kurs des jeweiligen Topfs (Regel 7).
+  - Bestand: 5.587 NAD ≈ 299,23 € (abgehoben 9.047 NAD zum Mischkurs 18.683 NAD/€)
+- Gemeinsame Kasse (seit 15.09.2026, Regel 9): Wer abhebt, streckt für beide vor und zählt mit dem Abhebungsbetrag im Saldo; Barzahlungen gehören niemandem (Zahler `Kasse`), EUR zum Mischkurs der Kasse (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora
 
@@ -133,14 +132,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 |  | Betrag |
 |---|---|
-| Patrick gezahlt (Karte + Bargeld) | 4.032,29 € |
-| Nora gezahlt (Karte) | 2.866,08 € |
+| Patrick vorgestreckt (Karte + Abhebungen) | 4.166,31 € |
+| Nora vorgestreckt (Karte + Abhebungen) | 3.031,29 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 6.898,37 € |
-| Anteil je Person (50 %) | 3.449,18 € |
-| Patrick effektiv getragen (gezahlt + Überweisung) | 6.032,29 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 866,08 € |
-| **Saldo** | **Nora schuldet Patrick 2.583,11 €** |
+| Bisher bezahlt gesamt (Saldo-Basis) | 7.197,60 € |
+| Anteil je Person (50 %) | 3.598,80 € |
+| Patrick effektiv getragen (gezahlt + Überweisung) | 6.166,31 € |
+| Nora effektiv getragen (gezahlt − Überweisung) | 1.031,29 € |
+| **Saldo** | **Nora schuldet Patrick 2.567,51 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 0,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 

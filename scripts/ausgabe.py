@@ -5,18 +5,19 @@ Beispiele (Datum = heute in Windhoek, wenn nicht angegeben):
   python3 scripts/ausgabe.py add --ort Sesriem --haendler "Tankstellenshop" \
       --kat Lebensmittel --eur 21.15 --zahler Nora --zahlmittel n26
   python3 scripts/ausgabe.py add --ort Solitaire --haendler "Solitaire Bakery" \
-      --kat Restaurant --nad 120 --zahler Nora --zahlmittel bar   # "Nora Bar": Noras Topf, dessen Kurs
+      --kat Restaurant --nad 120 --zahlmittel bar                 # bar = aus der gemeinsamen Kasse, Zahler "Kasse"
   python3 scripts/ausgabe.py add --ort Solitaire --haendler Tankstelle --kat Tanken \
       --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja
   python3 scripts/ausgabe.py add --datum 2026-09-07 --ort Wereldend --haendler "Wereldend Mountain Campsite" \
-      --kat Unterkunft --nad 600 --zahler Patrick --zahlmittel bar --unterkunft b1-7   # Regel 6
+      --kat Unterkunft --nad 600 --zahlmittel bar --unterkunft b1-7   # Regel 6
   python3 scripts/ausgabe.py abhebung --ort Sesriem --nad 3000 --gebuehr-nad 50 --eur 161.88 \
       --zahler Nora --zahlmittel n26                          # Umbuchung + Entgelt, EUR anteilig
   python3 scripts/ausgabe.py edit b2-25 kategorie=Lebensmittel
   python3 scripts/ausgabe.py delete b2-1
 
-Regeln aus CLAUDE.md sind eingebaut: Bargeld => Zahler = wessen Topf, wie
-vom Nutzer genannt (Regel 9), Bar-EUR zum Kurs dieses Topfs (Regel 7), Kategorien fix, NAD ohne EUR bei Karte
+Regeln aus CLAUDE.md sind eingebaut: Bargeld => Zahler "Kasse" (gemeinsame
+Reisekasse, wer abhebt zaehlt im Saldo - Regel 9), Bar-EUR zum Mischkurs der
+Kasse (Regel 7), Kategorien fix, NAD ohne EUR bei Karte
 => vorlaeufiger Kurs nur mit --kurs-schaetzen (Regel 5), Tankdetails in
 04_tanken.csv (Abschnitt Tanken). Danach: build_md, build_site_data,
 Commit, Push - ausser --no-push.
@@ -43,18 +44,17 @@ ZAHLMITTEL = {"n26": "N26 Debit", "debit": "Oberbank Debit", "oberbank": "Oberba
 KARTE_KURS_SCHAETZ = 18.43  # nur mit --kurs-schaetzen, als vorlaeufig markiert
 
 sys.path.insert(0, str(ROOT / "scripts"))
-from kosten_core import kassen_toepfe, num  # noqa: E402
+from kosten_core import KASSE, reisekasse, num  # noqa: E402
 
 
-def bar_topf(rows, person, nad):
-    """Bargeld-Topf der genannten Person (Regel 9: Nutzer sagt "Patrick Bar"/"Nora Bar"); Kurs des Topfs (Regel 7)."""
-    toepfe = kassen_toepfe(rows)
-    if person not in toepfe:
-        sys.exit(f"{person} hat keinen Bargeld-Topf (keine Abhebung erfasst) - Zahler pruefen")
-    t = toepfe[person]
-    if t["bestand_nad"] + 0.5 < nad:
-        print(f"WARNUNG: Topf {person} deckt {nad:.0f} NAD nicht ({t['bestand_nad']:.0f} NAD Bestand) - Zahler pruefen")
-    return person, t["kurs"], t
+def bar_kurs(rows, nad):
+    """Mischkurs der gemeinsamen Reisekasse (Regel 7); warnt, wenn der Bestand den Betrag nicht deckt."""
+    k = reisekasse(rows)
+    if not k["kurs"]:
+        sys.exit("Keine Abhebung erfasst - Reisekasse hat keinen Kurs")
+    if k["bestand_nad"] + 0.5 < nad:
+        print(f"WARNUNG: Reisekasse deckt {nad:.0f} NAD nicht ({k['bestand_nad']:.0f} NAD Bestand) - Abhebung vergessen?")
+    return k["kurs"]
 
 
 def heute():
@@ -87,13 +87,12 @@ def cmd_add(a):
     zm = ZAHLMITTEL.get(a.zahlmittel.lower().replace(" ", ""), a.zahlmittel)
     zahler = a.zahler
     notes = [a.anmerkung] if a.anmerkung else []
-    bar_kurs = None
+    kurs = None
     if zm == "Bargeld":
         if a.nad is None:
             sys.exit("Barzahlung braucht --nad (Bargeld ist immer NAD)")
-        if zahler not in ("Patrick", "Nora"):
-            sys.exit("Barzahlung: --zahler Patrick|Nora angeben (wessen Bargeld - der Nutzer sagt 'Patrick Bar'/'Nora Bar')")
-        _, bar_kurs, _ = bar_topf(rows, zahler, a.nad)
+        zahler = KASSE  # gemeinsame Kasse: die Abhebung zaehlt, nicht die Barzahlung (Regel 9)
+        kurs = bar_kurs(rows, a.nad)
     if zahler not in ("Patrick", "Nora", "TBD"):
         sys.exit("--zahler Patrick|Nora|TBD noetig (ausser bei Bargeld)")
 
@@ -102,8 +101,8 @@ def cmd_add(a):
     eur = a.eur
     if eur is None:
         if zm == "Bargeld":
-            eur = round(a.nad / bar_kurs, 2)
-            notes.append(f"EUR zum Kurs des Bargeld-Topfs {zahler} ({bar_kurs} NAD/EUR)")
+            eur = round(a.nad / kurs, 2)
+            notes.append(f"EUR zum Mischkurs der Reisekasse ({kurs} NAD/EUR)")
         elif a.kurs_schaetzen:
             eur = round(a.nad / KARTE_KURS_SCHAETZ, 2)
             notes.append(f"EUR VORLAEUFIG mit {KARTE_KURS_SCHAETZ} NAD/EUR geschaetzt - echten Kartenbetrag nachtragen")
@@ -151,7 +150,8 @@ def cmd_add(a):
         b["offen_eur"] = "0.00"
         b["status"] = f"vor Ort bezahlt ({zm}) - siehe Blatt 02"
         b["anmerkung"] = (b["anmerkung"] + "; " if b["anmerkung"] else "") + \
-            f"{fmt(a.nad) + ' NAD' if a.nad is not None else fmt(eur) + ' EUR'} am {a.datum} {zm} von {zahler} - steht in Blatt 02 Nr. {nr}"
+            f"{fmt(a.nad) + ' NAD' if a.nad is not None else fmt(eur) + ' EUR'} am {a.datum} {zm}" + \
+            (" aus der Reisekasse" if zahler == KASSE else f" von {zahler}") + f" - steht in Blatt 02 Nr. {nr}"
         write(BEZAHLT, brows, bfields)
         print(f"~ {a.unterkunft}: Buchung auf Anzahlung {b['betrag_eur']} EUR gesetzt, offen 0, Verweis auf b2-{nr}")
     return a.msg or f"{a.haendler or a.ort}: {a.kat} ({fmt(eur).replace('.', ',')} EUR, {zahler}/{zm})"
@@ -204,8 +204,9 @@ def cmd_edit(a):
             v = ZAHLMITTEL.get(v.lower().replace(" ", ""), v)
         changes.append(f"{k} {r[k]!r} -> {v!r}")
         r[k] = v
-    if r.get("zahlmittel") == "Bargeld" and r.get("zahler") not in ("Patrick", "Nora", "TBD"):
-        sys.exit("Barzahlung: zahler=Patrick|Nora angeben (Regel 9: wessen Bargeld)")
+    if r.get("zahlmittel") == "Bargeld" and r.get("typ", "Ausgabe") == "Ausgabe" and r.get("zahler") != KASSE:
+        changes.append(f"zahler {r['zahler']!r} -> {KASSE!r} (Regel 9: gemeinsame Kasse)")
+        r["zahler"] = KASSE
     write(path, rows, fields)
     print(f"~ {a.id}: " + "; ".join(changes))
     return a.msg or f"{a.id} geaendert: " + "; ".join(changes)

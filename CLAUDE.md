@@ -83,35 +83,43 @@ unabhängig davon.
    aktuell"); andere Erwähnungen einer Blatt-2-Nummer (z. B. „(= Blatt 02
    Nr. 12)" als Erklärung) zählen bewusst nicht. Schnellweg:
    `ausgabe.py add … --unterkunft b1-<nr>` erledigt beides in einem Schritt.
-7. **Barausgaben in EUR** werden mit dem Kurs bewertet, zu dem das Bargeld beschafft
-   wurde — **je Bargeld-Topf** (Regel 9): Patrick 18,633 NAD/€ (ATM 03.09.),
-   Nora 18,841 NAD/€ (ATM 09.09., 3.050 NAD inkl. 50 NAD Entgelt für 161,88 €).
-   `kosten_core.kassen_toepfe()` liefert den Kurs je Topf; `ausgabe.py` nimmt
-   ihn automatisch. Bei einer Abhebung wird der EUR-Gesamtabzug anteilig auf
-   Umbuchung (Regel 1) und Entgelt (Kategorie `Gebühren`) verteilt
-   (`ausgabe.py abhebung`).
-8. **Saldo-Definition (seit 07.09.2026, `scripts/kosten_core.py`):** 50/50 auf
-   Basis dessen, was **bisher nachweislich von Patrick oder Nora bezahlt** wurde
-   (`saldo_basis`). Noch offene Posten gehören niemandem, bis sie jemand bezahlt;
-   Zahlungen mit `zahler = TBD` bleiben außerhalb der Basis. Die 2.000-€-Überweisung
-   zählt bei Patrick plus, bei Nora minus („effektiv getragen"). Vorher wurde der
-   Anteil auf die Gesamtsumme *inkl. offen* gerechnet — das unterstellte still-
-   schweigend, dass Nora alle offenen Posten zahlt, und wies Noras Beitrag ohne
-   Abzug der Überweisung aus (Summe der Beiträge lag 2.000 € über dem Bezahlten).
-   `build_md.py` und `build_site_data.py` rechnen **beide** über `kosten_core.compute()`
-   — Zahlenlogik nie in einem der beiden Skripte allein ändern.
-9. **Bargeld gehört dem Abhebenden — ein Topf je Person, schlicht.** Bis 08.09.
-   gab es nur Patricks Topf (ATM 03.09., 4.047 NAD), seit 09.09. auch Noras
-   (ATM Sesriem, 3.000 NAD). **Der Nutzer sagt bei jeder Barzahlung, wessen
-   Bargeld es war („Patrick Bar" / „Nora Bar") — genau das wird `zahler`.**
-   Kein FIFO, keine Automatik (Nutzerentscheidung 09.09.: „schlicht und
-   easy"). Fehlt die Angabe: nachfragen, nicht raten. `ausgabe.py add
-   --zahlmittel bar --zahler <Person>` nimmt den Kurs dieses Topfs (Regel 7)
-   und warnt, wenn der Topf den Betrag nicht deckt. `kosten_core.pruefe()`
-   warnt bei beiden Build-Skripten, wenn ein Barzahler keinen Topf hat, ein
-   Topf überzogen ist oder ein Zahler-Wert weder `Patrick`, `Nora` noch `TBD`
-   ist. Die Website zeigt die Töpfe unter Kosten → Reisekasse; `kosten.md`
-   unter „Reisekasse".
+7. **Barausgaben in EUR** werden mit dem **Mischkurs der gemeinsamen Reisekasse**
+   bewertet (alle Abhebungen NAD ÷ alle Abhebungen EUR; `kosten_core.reisekasse()`,
+   `ausgabe.py` nimmt ihn automatisch). Bis 15.09.2026 galt ein Kurs je
+   Personen-Topf (Patrick 18,633, Nora 18,841) — die alten Zeilen behalten
+   ihre damals gerechneten EUR-Beträge. Bei einer Abhebung wird der EUR-
+   Gesamtabzug anteilig auf Umbuchung (Regel 1) und Entgelt (Kategorie
+   `Gebühren`) verteilt (`ausgabe.py abhebung`).
+8. **Saldo-Definition (seit 07.09.2026, Kassenmodell seit 15.09.2026,
+   `scripts/kosten_core.py`):** 50/50 auf Basis dessen, was **bisher
+   nachweislich von Patrick oder Nora vorgestreckt** wurde (`saldo_basis`):
+   Kartenzahlungen beim Zahler **plus Bargeldabhebungen beim Abhebenden**;
+   Barzahlungen selbst zählen bei niemandem (Zahler `Kasse`), sonst wäre
+   dasselbe Geld doppelt drin. Noch offene Posten gehören niemandem, bis sie
+   jemand bezahlt; Zahlungen mit `zahler = TBD` bleiben außerhalb der Basis.
+   Die 2.000-€-Überweisung zählt bei Patrick plus, bei Nora minus („effektiv
+   getragen"). Vorher (bis 15.09.) zählten Barzahlungen bei der Person, deren
+   Topf benutzt wurde, und Abhebungen gar nicht — Umstellung auf
+   Nutzerwunsch („Bargeld zusammengeschmissen, wenn Nora abhebt, schuldet ihr
+   Patrick sofort die Hälfte und umgekehrt"). `build_md.py` und
+   `build_site_data.py` rechnen **beide** über `kosten_core.compute()` —
+   Zahlenlogik nie in einem der beiden Skripte allein ändern;
+   `python3 scripts/kosten_core.py` führt den Selbsttest aus.
+9. **Eine gemeinsame Reisekasse (seit 15.09.2026).** Alles Bargeld liegt in
+   einem Topf, egal wer abgehoben hat. **Der Nutzer muss bei Barzahlungen
+   keinen Zahler mehr nennen** — `ausgabe.py add --zahlmittel bar` setzt
+   `zahler = Kasse` automatisch (ein `--zahler` wird ignoriert), nimmt den
+   Mischkurs (Regel 7) und warnt, wenn der Kassenbestand den Betrag nicht
+   deckt. Abhebungen (`ausgabe.py abhebung --zahler <Person>`) tragen
+   weiterhin die Person, denn genau dort entsteht der Saldo-Anspruch
+   (Regel 8). `kosten_core.pruefe()` warnt, wenn eine Barzahlung einen
+   anderen Zahler als `Kasse` trägt, wenn die Kasse überzogen ist oder ein
+   Zahler weder `Patrick`, `Nora`, `TBD` noch `Kasse` ist. Am 15.09. wurden
+   alle bisherigen Barzahlungen (12 Zeilen in Blatt 2, 4 Buchungszeilen in
+   Blatt 1) auf `Kasse` umgestellt. Historie: 03.–08.09. nur Patricks Topf,
+   09.–15.09. zwei Töpfe mit „Patrick Bar / Nora Bar" (kein FIFO).
+   Website: Kosten → Reisekasse zeigt Bestand und Mischkurs; im Erfassen-
+   Sheet sperrt „Bar" die Zahler-Auswahl (Pille `Kasse`, neutral gestylt).
 
 ## Kategorien (fix — nicht erweitern ohne Rücksprache)
 
@@ -145,8 +153,8 @@ unabhängig davon.
 ## Workflow bei neuen Belegen
 
 **Schnellweg (Standard seit 09.09.2026): ein Aufruf von `scripts/ausgabe.py`.**
-Das Skript kennt die Regeln (Bargeld → Zahler Patrick, Bar-EUR zum Kassen-
-kurs, feste Kategorien, Tankdetails), schreibt die CSV per `csv`-Modul
+Das Skript kennt die Regeln (Bargeld → Zahler `Kasse`, Bar-EUR zum Misch-
+kurs der Reisekasse, feste Kategorien, Tankdetails), schreibt die CSV per `csv`-Modul
 (kein Komma-Fallstrick), baut `kosten.md` + `site-data.json` und committet/
 pusht mit dem Trailer aus `.claude/commit-trailer.txt`. **Vorher `date`
 holen** (Datum ist sonst „heute Windhoek"), nichts von Hand in die CSVs.
@@ -154,9 +162,10 @@ holen** (Datum ist sonst „heute Windhoek"), nichts von Hand in die CSVs.
 | Nutzer schreibt … | Aufruf |
 |---|---|
 | „Nora N26 Wasser Little Sossus 5,41" | `python3 scripts/ausgabe.py add --ort "Little Sossus" --haendler "Little Sossus Campsite" --kat Lebensmittel --eur 5.41 --zahler Nora --zahlmittel n26` |
-| „50 NAD Trinkgeld, Nora Bar" | `… add --ort Helmeringhausen --kat Restaurant --nad 50 --zahler Nora --zahlmittel bar` (EUR zum Kurs von Noras Topf; ohne „Patrick/Nora Bar" nachfragen) |
+| „50 NAD Trinkgeld bar" | `… add --ort Helmeringhausen --kat Restaurant --nad 50 --zahlmittel bar` (Zahler wird `Kasse`, EUR zum Mischkurs der Reisekasse — Regel 9) |
 | „Nora N26 83,94 Tanken, 54,6 L, km 22085, voll" | `… add --ort Sesriem --haendler Tankstelle --kat Tanken --eur 83.94 --zahler Nora --zahlmittel n26 --liter 54.6 --km 22085 --voll ja` (schreibt auch `04_tanken.csv`) |
-| „Wereldend 600 NAD Patrick Bar" (gebuchte Unterkunft vor Ort bezahlt) | `… add --datum 2026-09-07 --ort Wereldend --haendler "Wereldend Mountain Campsite" --kat Unterkunft --nad 600 --zahler Patrick --zahlmittel bar --unterkunft b1-7` (Regel 6: Blatt-1-Zeile auf Anzahlung/0, Verweis, Reiseplan zeigt die Summe) |
+| „Wereldend 600 NAD bar" (gebuchte Unterkunft vor Ort bezahlt) | `… add --datum 2026-09-07 --ort Wereldend --haendler "Wereldend Mountain Campsite" --kat Unterkunft --nad 600 --zahlmittel bar --unterkunft b1-7` (Regel 6: Blatt-1-Zeile auf Anzahlung/0, Verweis, Reiseplan zeigt die Summe) |
+| „Nora hebt 2000 NAD ab, 107,80 € abgebucht" | `… abhebung --ort Swakopmund --nad 2000 --gebuehr-nad 0 --eur 107.80 --zahler Nora --zahlmittel "N26 Debit"` (Abhebung zählt im Saldo bei Nora, Regel 8/9) |
 | App-Text `ÄNDERN [b2-25 …]: Kategorie Restaurant → Lebensmittel` | `… edit b2-25 kategorie=Lebensmittel` |
 | App-Text `LÖSCHEN [b2-1 …]` | `… delete b2-1` (Blatt 1 verweigert ohne `--force`, s. Regel 6) |
 | App-Text `NEU: …` | wie eine normale Meldung → `add` |
@@ -337,7 +346,8 @@ immer `ortLink()` benutzen, nie nackten Text.
   nachdem Home zuerst nur eine Umbenennung des Kosten-Tabs war):
   1. **Home** (`home`, 🏠) — der Startbildschirm, genau drei Blöcke, siehe unten
   2. **Kosten** (`kosten`, 💶) — Sub-Nav mit **zwei** Reitern „Übersicht"
-     (Gesamt-Kacheln, Reisekasse, Saldo + Hinweis zur Saldo-Basis) und
+     (Gesamt-Kacheln, Reisekasse mit Bestand/Mischkurs-Hinweis, Saldo +
+     Hinweis zur Saldo-Basis) und
      „Ausgaben". **Die Ausgabenliste trennt nach Gerätedatum:** oben alles
      bis heute, neueste zuerst, **gruppiert nach Tag** mit Tageskopf
      („Di, 08.09. · 4 Posten · 177,86 €") und einer Summenzeile über der
@@ -359,8 +369,8 @@ immer `ortLink()` benutzen, nie nackten Text.
        (Patrick | Nora) als eigener Schritt**, „Womit?" (N26 | Debit | Bar |
        Kredit — wird nach Zahler vorbelegt: Nora→N26, Patrick→Bar, bleibt
        änderbar), Kategorie als Chip-Raster, Datum/Anmerkung eingeklappt.
-       `Bargeld` erzwingt Zahler `Patrick` und sperrt das Segment
-       (Grundregel 9). `parseBetrag()` versteht „1.250,00" und „980.01"
+       `Bargeld` setzt Zahler `Kasse` und sperrt das Segment (gemeinsame
+       Reisekasse, Grundregel 9; bis 15.09. war es `Patrick`). `parseBetrag()` versteht „1.250,00" und „980.01"
        (Review-Bug 08.09.: vorher wurde 1.250,00 zu 1,25).
      - **CUD — Bearbeiten und Löschen bestehender Einträge (seit 08.09.2026):**
        Tipp auf eine Ausgabenkarte (Liste oder Home) öffnet ein Aktions-Sheet

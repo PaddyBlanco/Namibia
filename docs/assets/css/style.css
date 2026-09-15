@@ -670,6 +670,7 @@ body.sheet-open { overflow: hidden; }
 .pill.zahler-patrick { background: var(--person-p-soft); color: var(--person-p); }
 .pill.zahler-nora { background: var(--person-n-soft); color: var(--person-n); }
 .pill.zahler-tbd { background: var(--warn-soft); color: var(--warn); }
+.pill.zahler-kasse { background: var(--bg-elevated); color: var(--text-dim); border: 1px solid var(--border); }
 
 /* ---------- Sub-navigation (innerhalb eines Tabs) ---------- */
 .subnav {

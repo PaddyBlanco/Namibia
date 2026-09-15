@@ -133,7 +133,7 @@
   var PENDING_KEY = "namibia2026:pending-entries";
   var KATEGORIEN = ["Lebensmittel", "Restaurant", "Tanken", "Eintritt", "Aktivitäten", "Unterkunft",
                     "Shopping", "Ausrüstung", "Gebühren", "Sonstiges", "Flug", "Mietwagen"];
-  var ZAHLMITTEL_DEFAULT = { Nora: "N26 Debit", Patrick: "Bargeld" };
+  var ZAHLMITTEL_DEFAULT = { Nora: "N26 Debit", Patrick: "Oberbank Debit" };
   var FELD_LABEL = { datum: "Datum", kategorie: "Kategorie", beschreibung: "Beschreibung", betrag: "Betrag",
                      zahler: "Zahler", zahlmittel: "Zahlmittel", anmerkung: "Anmerkung" };
   var currentData = null;
@@ -479,15 +479,19 @@
       bargeldHint.hidden = !bar;
       zahlerEl.classList.toggle("locked", bar);
       if (bar) {
-        sheetState.zahler = "Patrick";
-        setSegmented("ef-zahler", "Patrick");
+        // Gemeinsame Kasse (Regel 9): Barzahlungen haben keinen Zahler,
+        // die Abhebung zaehlt. Segment leeren und sperren.
+        sheetState.zahler = "Kasse";
+        setSegmented("ef-zahler", "");
+      } else if (sheetState.zahler === "Kasse") {
+        sheetState.zahler = "";
       }
     }
 
     zahlerEl.addEventListener("click", function (ev) {
       var b = ev.target.closest(".seg"); if (!b) return;
       if (zahlerEl.classList.contains("locked")) {
-        toast("Bei Bargeld ist der Zahler immer Patrick");
+        toast("Bargeld kommt aus der gemeinsamen Kasse – kein Zahler nötig");
         return;
       }
       sheetState.zahler = b.dataset.value;
@@ -668,14 +672,11 @@
     document.getElementById("t-kasse-ausgegeben").textContent = euro(s.kasse_bar_ausgegeben);
     document.getElementById("t-kasse-bestand").textContent = euro(s.kasse_bestand);
     var kasseHint = document.getElementById("kasse-hint");
-    if (s.kasse && Object.keys(s.kasse).length > 1) {
-      kasseHint.textContent = "Zwei Bargeld-Töpfe: " + Object.keys(s.kasse).map(function (p) {
-        var t = s.kasse[p];
-        return p + " " + Math.round(t.bestand_nad).toLocaleString("de-DE") + " NAD (≈ " + euro(t.bestand_eur) + ")";
-      }).join(" · ") + ". Barzahlungen zählen bei dem, dessen Bargeld benutzt wurde.";
-    } else {
-      kasseHint.textContent = "";
-    }
+    var rk = s.kasse && s.kasse.Reisekasse;
+    kasseHint.textContent = rk
+      ? "Gemeinsame Kasse: " + Math.round(rk.bestand_nad).toLocaleString("de-DE") + " NAD (Mischkurs " +
+        rk.kurs.toLocaleString("de-DE") + " NAD/€). Wer abhebt, streckt für beide vor – der Betrag zählt im Saldo, Barzahlungen selbst bei niemandem."
+      : "";
 
     var saldoEl = document.getElementById("t-saldo");
     var labelEl = document.getElementById("saldo-label");
@@ -1200,7 +1201,7 @@
       '<div class="card verr">' +
         '<div class="verr-grid">' +
           '<div class="verr-h"></div><div class="verr-h person-p">Patrick</div><div class="verr-h person-n">Nora</div>' +
-          "<div>Selbst gezahlt</div>" + cell(s.patrick_gezahlt) + cell(s.nora_gezahlt) +
+          "<div>Vorgestreckt (Karte + Abhebungen)</div>" + cell(s.patrick_gezahlt) + cell(s.nora_gezahlt) +
           "<div>Überweisung</div>" + cell(s.transfer_patrick_nora, "plus") + cell(-s.transfer_patrick_nora, "minus") +
           "<div>Effektiv getragen</div>" + cell(s.beitrag_patrick, "strong") + cell(s.beitrag_nora, "strong") +
           "<div>Fairer Anteil (50 %)</div>" + cell(s.anteil_pro_person) + cell(s.anteil_pro_person) +

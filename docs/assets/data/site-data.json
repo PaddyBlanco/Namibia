@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T19:28:29+00:00",
+  "generated_at": "2026-09-15T19:39:14+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -11,35 +11,25 @@
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 185.0,
     "kasse_bestand": 299.23,
-    "patrick_gezahlt": 4032.29,
-    "nora_gezahlt": 2866.08,
-    "tbd_gezahlt": 0.0,
+    "patrick_gezahlt": 4166.31,
+    "nora_gezahlt": 3031.29,
+    "tbd_gezahlt": 0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 6898.37,
-    "anteil_pro_person": 3449.18,
-    "beitrag_patrick": 6032.29,
-    "beitrag_nora": 866.08,
-    "saldo_patrick": 2583.11,
+    "saldo_basis": 7197.6,
+    "anteil_pro_person": 3598.8,
+    "beitrag_patrick": 6166.31,
+    "beitrag_nora": 1031.29,
+    "saldo_patrick": 2567.51,
     "kasse": {
-      "Patrick": {
+      "Reisekasse": {
         "seit": "2026-09-03",
-        "abgehoben_nad": 4047.0,
-        "abgehoben_eur": 217.2,
-        "bar_nad": 1550.0,
-        "bar_eur": 83.18,
-        "bestand_nad": 2497.0,
-        "bestand_eur": 134.02,
-        "kurs": 18.63
-      },
-      "Nora": {
-        "seit": "2026-09-09",
-        "abgehoben_nad": 5000.0,
-        "abgehoben_eur": 267.03,
-        "bar_nad": 1910.0,
-        "bar_eur": 101.82,
-        "bestand_nad": 3090.0,
-        "bestand_eur": 165.21,
-        "kurs": 18.72
+        "abgehoben_nad": 9047.0,
+        "abgehoben_eur": 484.23,
+        "bar_nad": 3460.0,
+        "bar_eur": 185.0,
+        "bestand_nad": 5587.0,
+        "bestand_eur": 299.23,
+        "kurs": 18.68
       }
     }
   },
@@ -266,7 +256,7 @@
       "betrag": 38.64,
       "betrag_fw": 720.0,
       "waehrung": "NAD",
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -431,7 +421,7 @@
       "betrag": 2.68,
       "betrag_fw": 50.0,
       "waehrung": "NAD",
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -461,7 +451,7 @@
       "betrag": 32.2,
       "betrag_fw": 600.0,
       "waehrung": "NAD",
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -611,7 +601,7 @@
       "betrag": 3.76,
       "betrag_fw": 70.0,
       "waehrung": "NAD",
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -641,7 +631,7 @@
       "betrag": 11.68,
       "betrag_fw": 220.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -656,7 +646,7 @@
       "betrag": 13.27,
       "betrag_fw": 250.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -716,7 +706,7 @@
       "betrag": 5.31,
       "betrag_fw": 100.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -776,7 +766,7 @@
       "betrag": 4.81,
       "betrag_fw": 90.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -806,7 +796,7 @@
       "betrag": 32.04,
       "betrag_fw": 600.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -881,7 +871,7 @@
       "betrag": 5.9,
       "betrag_fw": 110.0,
       "waehrung": "NAD",
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -896,7 +886,7 @@
       "betrag": 21.36,
       "betrag_fw": 400.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -911,7 +901,7 @@
       "betrag": 13.35,
       "betrag_fw": 250.0,
       "waehrung": "NAD",
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "status": "bezahlt"
     },
@@ -1116,7 +1106,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Quiver Tree Camping",
       "betrag": 38.64,
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "vor_ort": true,
       "status": "bezahlt",
@@ -1144,7 +1134,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Wereldend Mountain Campsite",
       "betrag": 32.2,
-      "zahler": "Patrick",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "vor_ort": true,
       "status": "bezahlt",
@@ -1172,7 +1162,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Moonvalley River Camp Swakopmund",
       "betrag": 13.27,
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "vor_ort": true,
       "status": "bezahlt",
@@ -1186,7 +1176,7 @@
       "kategorie": "Unterkunft",
       "beschreibung": "Spitzkoppe Campsite",
       "betrag": 32.04,
-      "zahler": "Nora",
+      "zahler": "Kasse",
       "zahlmittel": "Bargeld",
       "vor_ort": true,
       "status": "bezahlt",

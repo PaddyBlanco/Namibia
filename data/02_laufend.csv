@@ -5,7 +5,7 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 5,2026-09-03,09:08,Ausgabe,Windhoek,ATM Behebungsentgelt,Gebühren,,EUR,2.52,Patrick,Oberbank Debit,Entgelt zur Abhebung Nr. 4
 6,2026-09-03,12:26,Ausgabe,Windhoek,Superspar Maerua Mall,Lebensmittel,3122.63,NAD,169.22,Patrick,Oberbank Debit,Grosseinkauf Camping-Proviant - Karte von Patrick bestaetigt
 7,2026-09-03,13:51,Ausgabe,Rehoboth,Agrimark Rehoboth Express,Tanken,1343.30,NAD,73.42,Patrick,TBD,Diesel/Tanken - von Patrick bestaetigt; Karte auf Wunsch nicht weiter geklaert
-8,2026-09-05,,Ausgabe,Quiver Tree Forest,Quivertree Forest Camping,Unterkunft,720.00,NAD,38.64,Patrick,Bargeld,Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet
+8,2026-09-05,,Ausgabe,Quiver Tree Forest,Quivertree Forest Camping,Unterkunft,720.00,NAD,38.64,Kasse,Bargeld,Bar aus der Reisekasse; EUR zum ATM-Kurs 18.633 NAD/EUR umgerechnet
 9,2026-09-04,11:58,Ausgabe,Mariental,Spar Mariental,Lebensmittel,,EUR,20.11,Nora,N26 Debit,
 10,2026-09-05,12:19,Ausgabe,Keetmanshoop,Agra Keetmanshoop - Fo,Tanken,,EUR,98.15,Nora,N26 Debit,KATEGORIE ZU BESTAETIGEN - Agra ist Landhandel mit Tankstelle; N26 kategorisiert als Transport & Auto
 11,2026-09-05,15:00,Ausgabe,Aus,Klein-Aus Vista - Unterkunft (Rest),Unterkunft,460.00,NAD,24.96,Nora,N26 Debit,Restzahlung Desert Horse Campsite (2 Naechte) laut Rechnung 6483110; 920 NAD gesamt minus 460 NAD Deposit vom 23.04.
@@ -19,7 +19,7 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 19,2026-09-07,10:05,Ausgabe,Aus,Klein-Aus Vista - Getränke,Restaurant,102.00,NAD,5.53,Nora,N26 Debit,"Restsaldo der Rechnung 6483110 beim Auschecken (Windhoek Lager, Savanna Dry, Hansa Draught) - EUR mit dem Kurs der 05.09.-Zahlung gerechnet, echter N26-Betrag noch nicht bekannt"
 20,2026-09-07,10:43,Ausgabe,Namib Garage,Namib Garage,Lebensmittel,127.50,NAD,6.92,Nora,N26 Debit,Debit Mastercard ****1143 (Noras N26) - echter N26-Betrag laut App (Kurs 18.425 NAD/EUR)
 21,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Restaurant,,EUR,30.11,Nora,N26 Debit,Essen + Kaffee/Kuchen
-22,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Restaurant,50.00,NAD,2.68,Patrick,Bargeld,Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender)
+22,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Restaurant,50.00,NAD,2.68,Kasse,Bargeld,Trinkgeld zum Essen (Nr. 21) - bar von Nora aus der Reisekasse bezahlt; Zahler laut Regel 9 Patrick (Abhebender)
 23,2026-09-07,,Ausgabe,Helmeringhausen,Helmeringhausen,Tanken,980.01,NAD,53.17,Nora,N26 Debit,Volltanken - 34.29 Liter a 28.58 NAD/Liter bei km-Stand 21586 (siehe 04_tanken.csv Nr. 4)
 24,2026-09-08,,Ausgabe,Little Sossus Campsite,Little Sossus Campsite,Lebensmittel,,EUR,5.41,Nora,N26 Debit,Wasser
 25,2026-09-08,,Ausgabe,Sesriem,Tankstelle Sesriem,Lebensmittel,,EUR,21.37,Nora,N26 Debit,Essen an der Tankstelle (Kategorie per App-Aenderung 08.09. Restaurant -> Lebensmittel)
@@ -28,28 +28,28 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 28,2026-09-09,,Ausgabe,Sesriem,Tankstellenshop Sesriem,Lebensmittel,,EUR,21.15,Nora,N26 Debit,Zahlmittel N26 angenommen (Noras einzige Karte)
 29,2026-09-09,,Abhebung,Sesriem,ATM,Bargeld,3000.00,NAD,159.23,Nora,N26 Debit,Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 161.88 EUR fuer 3050.00 NAD inkl. Entgelt (Kurs 18.841). Ort angenommen (heute in Sesriem) - ggf. korrigieren
 30,2026-09-09,,Ausgabe,Sesriem,ATM Behebungsentgelt,Gebühren,50.00,NAD,2.65,Nora,N26 Debit,Entgelt zur Abhebung Nr. 29
-31,2026-09-07,,Ausgabe,Wereldend,Wereldend Mountain Campsite,Unterkunft,600.00,NAD,32.20,Patrick,Bargeld,EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
-32,2026-09-09,,Ausgabe,Little Sossus,Little Sossus Campsite,Sonstiges,70.00,NAD,3.76,Patrick,Bargeld,Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
+31,2026-09-07,,Ausgabe,Wereldend,Wereldend Mountain Campsite,Unterkunft,600.00,NAD,32.20,Kasse,Bargeld,EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
+32,2026-09-09,,Ausgabe,Little Sossus,Little Sossus Campsite,Sonstiges,70.00,NAD,3.76,Kasse,Bargeld,Feuerholz; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
 33,2026-09-10,,Ausgabe,Little Sossus,Little Sossus Campsite,Lebensmittel,,EUR,8.62,Nora,N26 Debit,Bei Abreise
-34,2026-09-10,,Ausgabe,Solitaire,Tankstelle Solitaire,Tanken,220.00,NAD,11.68,Nora,Bargeld,Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6
-35,2026-09-10,,Ausgabe,Swakopmund,Moonvalley River Camp,Unterkunft,250.00,NAD,13.27,Nora,Bargeld,Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
+34,2026-09-10,,Ausgabe,Solitaire,Tankstelle Solitaire,Tanken,220.00,NAD,11.68,Kasse,Bargeld,Kilometerstand nicht notiert; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR); Tankdetails in 04_tanken.csv Nr. 6
+35,2026-09-10,,Ausgabe,Swakopmund,Moonvalley River Camp,Unterkunft,250.00,NAD,13.27,Kasse,Bargeld,Datum = Check-in (cash on arrival) angenommen; gemeldet 11.09.; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
 36,2026-09-10,10:41,Ausgabe,Solitaire,Solitaire Country Lodge,Restaurant,,EUR,22.64,Nora,N26 Debit,"N26 Status 'Wird bearbeitet' - Kurs kann sich noch aendern. Kategorie Restaurant angenommen (Baeckerei/Cafe), bei Bedarf korrigieren."
 37,2026-09-11,,Ausgabe,Swakopmund,Slowtown Coffee Roasters,Restaurant,,EUR,9.86,Nora,N26 Debit,Kaffee und Muffins
 38,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum Shop,Shopping,,EUR,21.65,Nora,N26 Debit,Buch und Loeffel
-39,2026-09-11,,Ausgabe,Swakopmund,Woermannhaus Turm,Eintritt,100.00,NAD,5.31,Nora,Bargeld,Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
+39,2026-09-11,,Ausgabe,Swakopmund,Woermannhaus Turm,Eintritt,100.00,NAD,5.31,Kasse,Bargeld,Tower access; EUR zum Kurs des Bargeld-Topfs Nora (18.841 NAD/EUR)
 40,2026-09-11,,Ausgabe,Swakopmund,SuperSpar Swakopmund,Lebensmittel,,EUR,60.66,Nora,N26 Debit,
 41,2026-09-11,,Ausgabe,Swakopmund,Tops Swakopmund,Lebensmittel,,EUR,18.99,Nora,N26 Debit,Tops (Spar-Getraenkemarkt)
 42,2026-09-11,,Abhebung,Swakopmund,Spar Swakopmund (Bargeld an der Kasse/ATM),Bargeld,2000.00,NAD,107.80,Nora,N26 Debit,"Bargeldbezug in die Reisekasse - KEINE Ausgabe; Gesamtabzug 107.80 EUR fuer 2000.00 NAD inkl. Entgelt (Kurs 18.553). N26-Push: Abhebung 107,80 EUR bei Swakopmund Spar. Entgelt unbekannt - falls N26 mehr als 2000 NAD ausweist, Differenz als Gebuehr nachtragen"
 43,2026-09-11,,Ausgabe,Swakopmund,Tankstelle,Tanken,,EUR,79.97,Nora,N26 Debit,Tankdetails in 04_tanken.csv Nr. 7
-44,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum,Eintritt,90.00,NAD,4.81,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
+44,2026-09-11,,Ausgabe,Swakopmund,Swakopmund Museum,Eintritt,90.00,NAD,4.81,Kasse,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
 45,2026-09-11,,Ausgabe,Swakopmund,Ankerplatz,Restaurant,,EUR,31.10,Nora,N26 Debit,Abendessen
-46,2026-09-12,,Ausgabe,Spitzkoppe,Spitzkoppe Campsite,Unterkunft,600.00,NAD,32.04,Nora,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
+46,2026-09-12,,Ausgabe,Spitzkoppe,Spitzkoppe Campsite,Unterkunft,600.00,NAD,32.04,Kasse,Bargeld,EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
 47,2026-09-13,,Ausgabe,Uis,Café Uis,Restaurant,,EUR,15.05,Nora,N26 Debit,Kaffee/Fruehstueck
 48,2026-09-14,,Ausgabe,Palmwag,Palmwag Fuel Station,Tanken,,EUR,117.20,Nora,N26 Debit,Tankdetails in 04_tanken.csv Nr. 8
-49,2026-09-14,,Ausgabe,Hoada,Hoada Campsite Bar,Restaurant,110.00,NAD,5.90,Patrick,Bargeld,Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
-50,2026-09-14,,Ausgabe,Hoada,Schulbus-Spende,Sonstiges,400.00,NAD,21.36,Nora,Bargeld,Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
+49,2026-09-14,,Ausgabe,Hoada,Hoada Campsite Bar,Restaurant,110.00,NAD,5.90,Kasse,Bargeld,Getraenke an der Bar; EUR zum Kurs des Bargeld-Topfs Patrick (18.633 NAD/EUR)
+50,2026-09-14,,Ausgabe,Hoada,Schulbus-Spende,Sonstiges,400.00,NAD,21.36,Kasse,Bargeld,Spende an Kinder fuer Schulbus; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
 51,2026-09-15,,Ausgabe,Kamanjab,Tankstelle,Tanken,,EUR,32.75,Nora,N26 Debit,Kilometerstand nicht notiert; Tankdetails in 04_tanken.csv Nr. 9
 52,2026-09-15,,Ausgabe,Kamanjab,Spar Kamanjab,Lebensmittel,,EUR,42.79,Nora,N26 Debit,
 53,2026-09-15,,Ausgabe,Kamanjab,Spar Kamanjab,Lebensmittel,228.98,NAD,12.42,Patrick,Oberbank Debit,"Alkohol; EUR vorlaeufig, Oberbank-Betrag nachtragen; EUR VORLAEUFIG mit 18.43 NAD/EUR geschaetzt - echten Kartenbetrag nachtragen"
 54,2026-09-15,,Ausgabe,Etosha,Etosha Nationalpark (Galton Gate),Eintritt,,EUR,100.00,Nora,N26 Debit,Parkgebuehr 2 Personen + Fahrzeug
-55,2026-09-14,,Ausgabe,Hoada,Hoada Campsite,Sonstiges,250.00,NAD,13.35,Nora,Bargeld,Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
+55,2026-09-14,,Ausgabe,Hoada,Hoada Campsite,Sonstiges,250.00,NAD,13.35,Kasse,Bargeld,Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)

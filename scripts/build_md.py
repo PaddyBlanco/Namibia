@@ -109,12 +109,13 @@ def main():
     lines.append(f"- Abgehoben gesamt: **{eur(k['kasse_abgehoben'])}**")
     lines.append(f"- Davon bar ausgegeben: **{eur(k['kasse_bar_ausgegeben'])}**")
     lines.append(f"- Kassenbestand rechnerisch: **{eur(k['kasse_bestand'])}**")
-    for person, t in k["kasse"].items():
-        nad = lambda v: f"{v:,.0f}".replace(",", ".")
-        lines.append(f"  - Topf {person}: {nad(t['bestand_nad'])} NAD ≈ {eur(t['bestand_eur'])} "
-                     f"(abgehoben {nad(t['abgehoben_nad'])} NAD zu {t['kurs']} NAD/€)")
-    lines.append("- Barzahlungen zählen bei der Person, deren Bargeld benutzt wurde (Regel 9), "
-                 "EUR zum Kurs des jeweiligen Topfs (Regel 7).")
+    t = k["kasse"]["Reisekasse"]
+    nad = lambda v: f"{v:,.0f}".replace(",", ".")
+    lines.append(f"  - Bestand: {nad(t['bestand_nad'])} NAD ≈ {eur(t['bestand_eur'])} "
+                 f"(abgehoben {nad(t['abgehoben_nad'])} NAD zum Mischkurs {t['kurs']} NAD/€)")
+    lines.append("- Gemeinsame Kasse (seit 15.09.2026, Regel 9): Wer abhebt, streckt für beide vor und "
+                 "zählt mit dem Abhebungsbetrag im Saldo; Barzahlungen gehören niemandem (Zahler `Kasse`), "
+                 "EUR zum Mischkurs der Kasse (Regel 7).")
     lines.append("")
 
     lines.append("### Verrechnung zwischen Patrick und Nora")
@@ -129,8 +130,8 @@ def main():
                   else "**Ausgeglichen**")
     lines.append(md_table(
         ["", "Betrag"],
-        [["Patrick gezahlt (Karte + Bargeld)", eur(k["patrick_gezahlt"])],
-         ["Nora gezahlt (Karte)", eur(k["nora_gezahlt"])],
+        [["Patrick vorgestreckt (Karte + Abhebungen)", eur(k["patrick_gezahlt"])],
+         ["Nora vorgestreckt (Karte + Abhebungen)", eur(k["nora_gezahlt"])],
          ["Überweisung Patrick → Nora", eur(k["transfer_patrick_nora"])],
          ["Bisher bezahlt gesamt (Saldo-Basis)", eur(k["saldo_basis"])],
          ["Anteil je Person (50 %)", eur(k["anteil_pro_person"])],

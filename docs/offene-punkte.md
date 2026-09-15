@@ -43,6 +43,12 @@ Stand: 08.09.2026, 16:40 Uhr (Windhoek/Wien). Nichts davon wurde geraten — all
   überwiesen, exaktes Datum nicht bekannt.
 - **Kalahari Anib Campsite (36 €):** vorab von Nora bezahlt (N26 Debit),
   wie die anderen im Voraus gebuchten Camps.
+- **Gemeinsame Reisekasse (15.09.):** Bargeld wird nicht mehr je Person
+  geführt. Wer abhebt, streckt für beide vor und zählt mit dem Abhebungs-
+  betrag im Saldo; Barzahlungen tragen den Zahler `Kasse` und zählen bei
+  niemandem. Alle bisherigen Barzahlungen wurden umgestellt, der Saldo sank
+  dadurch von 2.583,11 € auf 2.567,51 € (das noch nicht ausgegebene Bargeld
+  ist jetzt hälftig verrechnet).
 - **Vorab-Zahlungen Nora mit Bankbelegen abgeglichen (10.09.):** Kalahari
   Anib 36,67 €, Little Sossus 84,58 €, Okaukuejo 59,54 €, Halali 45,96 €,
   Waterberg 46,11 €, Granietkop 50,30 €, Omatozu 35,64 €, Desert-Horse-
