@@ -20,8 +20,8 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 12 | 2026-09-14 | Unterkunft | Hoada Campsite (statt Ugab Terrace) | 1 | 45,00 € | bezahlt | 45,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 45.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
 | 13 | 2026-09-15 | Unterkunft | Okaukuejo Campsite Etosha | 1 | 59,54 € | bezahlt | 59,54 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 1120 NAD = 59.54 EUR inkl. Spesen 1.53 EUR, Kurs 19.3070 (Beleg: NAMIBIA WILDLIFE RESORTS, 17:37). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 14 | 2026-09-16 | Unterkunft | Halali Campsite Etosha | 1 | 45,96 € | bezahlt | 45,96 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 19.04.2026 (Valuta) von Nora: 860 NAD = 45.96 EUR inkl. Spesen 1.42 EUR, Kurs 19.3070 (Beleg: NAMIBIA WILDLIFE RESORTS, 18:17). ANNAHME: zwei NWR-Zahlungen zu je 860 NAD (19.04. und 21.04.) - die vom 19.04. Halali (mit Okaukuejo gebucht), die vom 21.04. Waterberg zugeordnet; Summe unabhaengig davon gleich. Noras normale Debitkarte (K2, Spesen inkl.). |
-| 15 | 2026-09-17 | Unterkunft | Onguma Tamboti | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 58.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
-| 16 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 58.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen. |
+| 15 | 2026-09-17 | Unterkunft | Onguma Tamboti | 1 | 58,00 € | bezahlt | 58,00 € | 0,00 € | Nora | TBD | Anzahlung 1130 NAD am 29.04.2026 per Ueberweisung von Nora (Rechnung AA49693). 58.00 EUR ist der Planwert - echten EUR-Betrag aus Noras Kontoauszug nachtragen. Rest (2. Nacht, Levy, Feuerholz) am 19.09. per N26 bezahlt - steht in Blatt 02 (siehe Nr. 16). |
+| 16 | 2026-09-18 | Unterkunft | Onguma Tamboti (2. Nacht) | 1 | 58,00 € | vor Ort bezahlt (N26 Debit) - siehe Blatt 02 | 58,00 € | 0,00 € | Nora | TBD | Vorab komplett von Nora bezahlt (Patrick, 11.09.). Betrag 58.00 EUR ist der Planwert - echten Kartenbeleg (NAD/EUR, Karte) nachtragen.; 1210.00 NAD am 2026-09-19 N26 Debit von Nora - steht in Blatt 02 Nr. 56 |
 | 17 | 2026-09-19 | Unterkunft | Waterberg Campsite | 1 | 46,11 € | bezahlt | 46,11 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 860 NAD = 46.11 EUR inkl. Spesen 1.43 EUR, Kurs 19.2467 (Beleg: NAMIBIA WILDLIFE RESORTS, 20:33). ANNAHME Zuordnung siehe Halali (Nr. 14). Noras normale Debitkarte (K2, Spesen inkl.). |
 | 18 | 2026-09-20 | Unterkunft | Omatozu Safari Camp | 1 | 35,64 € | bezahlt | 35,64 € | 0,00 € | Nora | Nora Debit | Vorab bezahlt 21.04.2026 (Valuta) von Nora: 660 NAD = 35.64 EUR inkl. Spesen 1.35 EUR, Kurs 19.2467 (Beleg: OMATOZU SAFARIS OKAHANDJA, POS). Noras normale Debitkarte (K2, Spesen inkl.). |
 
@@ -87,8 +87,11 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 53 | 2026-09-15 | – | Ausgabe | Kamanjab | Spar Kamanjab | Lebensmittel | 228.98 NAD | 12,42 € | Patrick | Oberbank Debit | 18.436 | Alkohol; EUR vorlaeufig, Oberbank-Betrag nachtragen; EUR VORLAEUFIG mit 18.43 NAD/EUR geschaetzt - echten Kartenbetrag nachtragen |
 | 54 | 2026-09-15 | – | Ausgabe | Etosha | Etosha Nationalpark (Galton Gate) | Eintritt | – | 100,00 € | Nora | N26 Debit | – | Parkgebuehr 2 Personen + Fahrzeug |
 | 55 | 2026-09-14 | – | Ausgabe | Hoada | Hoada Campsite | Sonstiges | 250.00 NAD | 13,35 € | Kasse | Bargeld | 18.727 | Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR) |
+| 56 | 2026-09-19 | – | Ausgabe | Onguma | Onguma Tamboti Campsite | Unterkunft | 1210.00 NAD | 64,95 € | Nora | N26 Debit | 18.630 | Rechnung AA49693 (19.09.): Unterkunft 2 Naechte 2000 + Conservation Levy 260 + Feuerholz 80 = 2340 NAD abzgl. Anzahlung 1130 NAD (29.04., steht in Blatt 1 Nr. 15). Teil der N26-Zahlung 4825 NAD = 259.00 EUR, EUR anteilig |
+| 57 | 2026-09-18 | – | Ausgabe | Onguma | Onguma Sunrise Drive | Aktivitäten | 1780.00 NAD | 95,55 € | Nora | N26 Debit | 18.629 | 2 Personen je 890 NAD; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig |
+| 58 | 2026-09-18 | – | Ausgabe | Onguma | Onguma Tamboti Restaurant/Bar | Restaurant | 1835.00 NAD | 98,50 € | Nora | N26 Debit | 18.629 | Essen und Getraenke 18.-19.09. inkl. 150 NAD Trinkgeld; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig |
 
-**Echte Ausgaben:** 1.732,01 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
+**Echte Ausgaben:** 1.991,01 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
 
 ## 3. Zusammenfassung
 
@@ -98,24 +101,24 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
-| Unterkunft | 686,06 € |
+| Unterkunft | 751,01 € |
 | Tanken | 610,48 € |
 | Lebensmittel | 426,04 € |
+| Restaurant | 271,66 € |
 | Eintritt | 202,16 € |
-| Restaurant | 173,16 € |
-| Aktivitäten | 75,95 € |
+| Aktivitäten | 171,50 € |
 | Sonstiges | 56,22 € |
 | Shopping | 41,72 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 6.898,37 €** (davon bezahlt 6.898,37 €, noch offen 0,00 €)
+**Gesamtausgaben: 7.157,37 €** (davon bezahlt 7.157,37 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 492,53 € | 4.166,31 € |
-| Nora | 1.492,58 € | 1.538,71 € | 3.031,29 € |
+| Nora | 1.492,58 € | 1.797,71 € | 3.290,29 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 0,00 € |
 
 ### Reisekasse (Bargeld)
@@ -133,13 +136,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick vorgestreckt (Karte + Abhebungen) | 4.166,31 € |
-| Nora vorgestreckt (Karte + Abhebungen) | 3.031,29 € |
+| Nora vorgestreckt (Karte + Abhebungen) | 3.290,29 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 7.197,60 € |
-| Anteil je Person (50 %) | 3.598,80 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 7.456,60 € |
+| Anteil je Person (50 %) | 3.728,30 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.166,31 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 1.031,29 € |
-| **Saldo** | **Nora schuldet Patrick 2.567,51 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 1.290,29 € |
+| **Saldo** | **Nora schuldet Patrick 2.438,01 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 0,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
