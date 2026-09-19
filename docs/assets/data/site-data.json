@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-19T07:10:11+00:00",
+  "generated_at": "2026-09-19T07:10:34+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 7157.37,
-    "bezahlt": 7157.37,
+    "gesamt": 7099.37,
+    "bezahlt": 7099.37,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 185.0,
     "kasse_bestand": 299.23,
     "patrick_gezahlt": 4166.31,
-    "nora_gezahlt": 3290.29,
+    "nora_gezahlt": 3232.29,
     "tbd_gezahlt": 0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 7456.6,
-    "anteil_pro_person": 3728.3,
+    "saldo_basis": 7398.6,
+    "anteil_pro_person": 3699.3,
     "beitrag_patrick": 6166.31,
-    "beitrag_nora": 1290.29,
-    "saldo_patrick": 2438.01,
+    "beitrag_nora": 1232.29,
+    "saldo_patrick": 2467.01,
     "kasse": {
       "Reisekasse": {
         "seit": "2026-09-03",
@@ -44,7 +44,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 751.01
+      "betrag": 693.01
     },
     {
       "name": "Tanken",
@@ -1011,21 +1011,6 @@
       "status": "bezahlt"
     },
     {
-      "id": "b1-16",
-      "datum": "2026-09-18",
-      "zeit": "",
-      "ort": "Onguma Tamboti (2. Nacht)",
-      "ort_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia",
-      "kategorie": "Unterkunft",
-      "beschreibung": "Onguma Tamboti (2. Nacht)",
-      "betrag": 58.0,
-      "betrag_fw": null,
-      "waehrung": "EUR",
-      "zahler": "Nora",
-      "zahlmittel": "TBD",
-      "status": "bezahlt"
-    },
-    {
       "id": "b2-57",
       "datum": "2026-09-18",
       "zeit": "",
@@ -1304,9 +1289,9 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
-      "betrag": 122.95,
+      "betrag": 64.95,
       "zahler": "Nora",
-      "zahlmittel": "TBD + N26 Debit",
+      "zahlmittel": "N26 Debit",
       "vor_ort": true,
       "status": "bezahlt",
       "info_link": "https://www.google.com/maps/search/?api=1&query=Onguma%20Tamboti%20%282.%20Nacht%29%2C%20Namibia",
