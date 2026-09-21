@@ -69,3 +69,4 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 69,2026-09-21,,Ausgabe,Windhoek,Namibia Craft Centre,Restaurant,400.00,NAD,21.41,Kasse,Bargeld,Kaffee im Craft Market; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)
 70,2026-09-21,,Ausgabe,Windhoek,Autowaesche,Sonstiges,170.00,NAD,9.10,Kasse,Bargeld,Mietwagen vor Rueckgabe; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)
 71,2026-09-21,,Ausgabe,Windhoek,Getraenke,Restaurant,140.00,NAD,7.49,Kasse,Bargeld,EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)
+72,2026-09-21,,Ausgabe,Windhoek,Nicht einzeln erfasste Barausgaben,Sonstiges,2957.00,NAD,158.27,Kasse,Bargeld,"Kassenabgleich 21.09.: rechnerisch 3477 NAD, gezaehlt 520 NAD. Differenz = Barausgaben ohne Einzelbeleg (Trinkgelder, Kleinkram, evtl. Waterberg/Omatozu). Bei Nachmeldung einzelne Posten hier abziehen.; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)"

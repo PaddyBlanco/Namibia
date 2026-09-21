@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-21T14:15:27+00:00",
+  "generated_at": "2026-09-21T14:19:13+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 7660.91,
-    "bezahlt": 7660.91,
+    "gesamt": 7819.18,
+    "bezahlt": 7819.18,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 297.93,
-    "kasse_bestand": 186.3,
+    "kasse_bar_ausgegeben": 456.2,
+    "kasse_bestand": 28.03,
     "patrick_gezahlt": 4166.31,
     "nora_gezahlt": 3680.9,
     "tbd_gezahlt": 0,
@@ -25,10 +25,10 @@
         "seit": "2026-09-03",
         "abgehoben_nad": 9047.0,
         "abgehoben_eur": 484.23,
-        "bar_nad": 5570.0,
-        "bar_eur": 297.93,
-        "bestand_nad": 3477.0,
-        "bestand_eur": 186.3,
+        "bar_nad": 8527.0,
+        "bar_eur": 456.2,
+        "bestand_nad": 520.0,
+        "bestand_eur": 28.03,
         "kurs": 18.68
       }
     }
@@ -55,16 +55,16 @@
       "betrag": 438.33
     },
     {
+      "name": "Sonstiges",
+      "betrag": 363.56
+    },
+    {
       "name": "Restaurant",
       "betrag": 332.96
     },
     {
       "name": "Eintritt",
       "betrag": 235.54
-    },
-    {
-      "name": "Sonstiges",
-      "betrag": 205.29
     },
     {
       "name": "Aktivitäten",
@@ -1275,6 +1275,21 @@
       "beschreibung": "Getraenke",
       "betrag": 7.49,
       "betrag_fw": 140.0,
+      "waehrung": "NAD",
+      "zahler": "Kasse",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-72",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Sonstiges",
+      "beschreibung": "Nicht einzeln erfasste Barausgaben",
+      "betrag": 158.27,
+      "betrag_fw": 2957.0,
       "waehrung": "NAD",
       "zahler": "Kasse",
       "zahlmittel": "Bargeld",
