@@ -98,7 +98,7 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 64 | 2026-09-19 | – | Ausgabe | Tsumeb | Supermarkt Tsumeb | Lebensmittel | – | 12,29 € | Nora | N26 Debit | – | – |
 | 65 | 2026-09-19 | – | Ausgabe | Waterberg | Waterberg Plateau Park | Eintritt | – | 33,38 € | Nora | N26 Debit | – | Datum angenommen (Ankunftstag) |
 | 66 | 2026-09-21 | – | Ausgabe | Windhoek | Tankstelle | Tanken | – | 144,99 € | Nora | N26 Debit | – | Letztes Tanken vor Mietwagenrueckgabe; voll und km-Stand nicht bestaetigt |
-| 67 | 2026-09-21 | – | Ausgabe | Windhoek | Windschutzscheibe | Sonstiges | – | 139,97 € | Nora | N26 Debit | – | Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe |
+| 67 | 2026-09-21 | – | Ausgabe | Windhoek | Windschutzscheibe | Mietwagen | – | 139,97 € | Nora | N26 Debit | – | Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe |
 | 68 | 2026-09-19 | – | Ausgabe | Tsumeb | Souvenirs Tsumeb | Shopping | 1400.00 NAD | 74,93 € | Kasse | Bargeld | 18.684 | EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
 | 69 | 2026-09-21 | – | Ausgabe | Windhoek | Namibia Craft Centre | Restaurant | 400.00 NAD | 21,41 € | Kasse | Bargeld | 18.683 | Kaffee im Craft Market; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
 | 70 | 2026-09-21 | – | Ausgabe | Windhoek | Autowaesche | Sonstiges | 170.00 NAD | 9,10 € | Kasse | Bargeld | 18.681 | Mietwagen vor Rueckgabe; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
@@ -114,14 +114,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 
 | Kategorie | Betrag |
 |---|---|
-| Mietwagen | 2.726,15 € |
+| Mietwagen | 2.866,12 € |
 | Flug | 1.895,26 € |
 | Tanken | 786,23 € |
 | Unterkunft | 693,20 € |
 | Lebensmittel | 438,33 € |
-| Sonstiges | 363,56 € |
 | Restaurant | 358,12 € |
 | Eintritt | 235,54 € |
+| Sonstiges | 223,59 € |
 | Aktivitäten | 171,78 € |
 | Shopping | 171,00 € |
 | Gebühren | 5,17 € |

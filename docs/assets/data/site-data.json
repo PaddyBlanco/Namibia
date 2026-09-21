@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T14:39:52+00:00",
+  "generated_at": "2026-09-21T14:45:26+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
@@ -36,7 +36,7 @@
   "kategorien": [
     {
       "name": "Mietwagen",
-      "betrag": 2726.15
+      "betrag": 2866.12
     },
     {
       "name": "Flug",
@@ -55,16 +55,16 @@
       "betrag": 438.33
     },
     {
-      "name": "Sonstiges",
-      "betrag": 363.56
-    },
-    {
       "name": "Restaurant",
       "betrag": 358.12
     },
     {
       "name": "Eintritt",
       "betrag": 235.54
+    },
+    {
+      "name": "Sonstiges",
+      "betrag": 223.59
     },
     {
       "name": "Aktivitäten",
@@ -1226,7 +1226,7 @@
       "zeit": "",
       "ort": "Windhoek",
       "ort_link": null,
-      "kategorie": "Sonstiges",
+      "kategorie": "Mietwagen",
       "beschreibung": "Windschutzscheibe",
       "betrag": 139.97,
       "betrag_fw": null,

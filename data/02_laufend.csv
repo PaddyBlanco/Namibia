@@ -64,7 +64,7 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 64,2026-09-19,,Ausgabe,Tsumeb,Supermarkt Tsumeb,Lebensmittel,,EUR,12.29,Nora,N26 Debit,
 65,2026-09-19,,Ausgabe,Waterberg,Waterberg Plateau Park,Eintritt,,EUR,33.38,Nora,N26 Debit,Datum angenommen (Ankunftstag)
 66,2026-09-21,,Ausgabe,Windhoek,Tankstelle,Tanken,,EUR,144.99,Nora,N26 Debit,Letztes Tanken vor Mietwagenrueckgabe; voll und km-Stand nicht bestaetigt
-67,2026-09-21,,Ausgabe,Windhoek,Windschutzscheibe,Sonstiges,,EUR,139.97,Nora,N26 Debit,Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe
+67,2026-09-21,,Ausgabe,Windhoek,Windschutzscheibe,Mietwagen,,EUR,139.97,Nora,N26 Debit,Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe
 68,2026-09-19,,Ausgabe,Tsumeb,Souvenirs Tsumeb,Shopping,1400.00,NAD,74.93,Kasse,Bargeld,EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)
 69,2026-09-21,,Ausgabe,Windhoek,Namibia Craft Centre,Restaurant,400.00,NAD,21.41,Kasse,Bargeld,Kaffee im Craft Market; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)
 70,2026-09-21,,Ausgabe,Windhoek,Autowaesche,Sonstiges,170.00,NAD,9.10,Kasse,Bargeld,Mietwagen vor Rueckgabe; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR)
