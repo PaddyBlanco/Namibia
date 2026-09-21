@@ -104,8 +104,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 70 | 2026-09-21 | – | Ausgabe | Windhoek | Autowaesche | Sonstiges | 170.00 NAD | 9,10 € | Kasse | Bargeld | 18.681 | Mietwagen vor Rueckgabe; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
 | 71 | 2026-09-21 | – | Ausgabe | Windhoek | Getraenke | Restaurant | 140.00 NAD | 7,49 € | Kasse | Bargeld | 18.692 | EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
 | 72 | 2026-09-21 | – | Ausgabe | Windhoek | Nicht einzeln erfasste Barausgaben | Sonstiges | 2957.00 NAD | 158,27 € | Kasse | Bargeld | 18.683 | Kassenabgleich 21.09.: rechnerisch 3477 NAD, gezaehlt 520 NAD. Differenz = Barausgaben ohne Einzelbeleg (Trinkgelder, Kleinkram, evtl. Waterberg/Omatozu). Bei Nachmeldung einzelne Posten hier abziehen.; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
+| 73 | 2026-09-21 | – | Ausgabe | Windhoek | Flughafen Windhoek Restaurant | Restaurant | 470.00 NAD | 25,16 € | Kasse | Bargeld | 18.680 | EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
 
-**Echte Ausgaben:** 2.710,82 € (davon bar 456,20 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 28,03 €
+**Echte Ausgaben:** 2.735,98 € (davon bar 481,36 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 2,87 €
 
 ## 3. Zusammenfassung
 
@@ -119,13 +120,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Unterkunft | 693,20 € |
 | Lebensmittel | 438,33 € |
 | Sonstiges | 363,56 € |
-| Restaurant | 332,96 € |
+| Restaurant | 358,12 € |
 | Eintritt | 235,54 € |
 | Aktivitäten | 171,78 € |
 | Shopping | 171,00 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 7.819,18 €** (davon bezahlt 7.819,18 €, noch offen 0,00 €)
+**Gesamtausgaben: 7.844,34 €** (davon bezahlt 7.844,34 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
@@ -138,9 +139,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **484,23 €**
-- Davon bar ausgegeben: **456,20 €**
-- Kassenbestand rechnerisch: **28,03 €**
-  - Bestand: 520 NAD ≈ 28,03 € (abgehoben 9.047 NAD zum Mischkurs 18.683 NAD/€)
+- Davon bar ausgegeben: **481,36 €**
+- Kassenbestand rechnerisch: **2,87 €**
+  - Bestand: 50 NAD ≈ 2,87 € (abgehoben 9.047 NAD zum Mischkurs 18.683 NAD/€)
 - Gemeinsame Kasse (seit 15.09.2026, Regel 9): Wer abhebt, streckt für beide vor und zählt mit dem Abhebungsbetrag im Saldo; Barzahlungen gehören niemandem (Zahler `Kasse`), EUR zum Mischkurs der Kasse (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora

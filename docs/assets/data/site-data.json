@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-21T14:19:13+00:00",
+  "generated_at": "2026-09-21T14:39:52+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 7819.18,
-    "bezahlt": 7819.18,
+    "gesamt": 7844.34,
+    "bezahlt": 7844.34,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 456.2,
-    "kasse_bestand": 28.03,
+    "kasse_bar_ausgegeben": 481.36,
+    "kasse_bestand": 2.87,
     "patrick_gezahlt": 4166.31,
     "nora_gezahlt": 3680.9,
     "tbd_gezahlt": 0,
@@ -25,10 +25,10 @@
         "seit": "2026-09-03",
         "abgehoben_nad": 9047.0,
         "abgehoben_eur": 484.23,
-        "bar_nad": 8527.0,
-        "bar_eur": 456.2,
-        "bestand_nad": 520.0,
-        "bestand_eur": 28.03,
+        "bar_nad": 8997.0,
+        "bar_eur": 481.36,
+        "bestand_nad": 50.0,
+        "bestand_eur": 2.87,
         "kurs": 18.68
       }
     }
@@ -60,7 +60,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 332.96
+      "betrag": 358.12
     },
     {
       "name": "Eintritt",
@@ -1290,6 +1290,21 @@
       "beschreibung": "Nicht einzeln erfasste Barausgaben",
       "betrag": 158.27,
       "betrag_fw": 2957.0,
+      "waehrung": "NAD",
+      "zahler": "Kasse",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-73",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Flughafen Windhoek Restaurant",
+      "betrag": 25.16,
+      "betrag_fw": 470.0,
       "waehrung": "NAD",
       "zahler": "Kasse",
       "zahlmittel": "Bargeld",
