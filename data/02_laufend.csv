@@ -53,6 +53,8 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 53,2026-09-15,,Ausgabe,Kamanjab,Spar Kamanjab,Lebensmittel,228.98,NAD,12.42,Patrick,Oberbank Debit,"Alkohol; EUR vorlaeufig, Oberbank-Betrag nachtragen; EUR VORLAEUFIG mit 18.43 NAD/EUR geschaetzt - echten Kartenbetrag nachtragen"
 54,2026-09-15,,Ausgabe,Etosha,Etosha Nationalpark (Galton Gate),Eintritt,,EUR,100.00,Nora,N26 Debit,Parkgebuehr 2 Personen + Fahrzeug
 55,2026-09-14,,Ausgabe,Hoada,Hoada Campsite,Sonstiges,250.00,NAD,13.35,Kasse,Bargeld,Waescheservice; EUR zum Kurs des Bargeld-Topfs Nora (18.724 NAD/EUR)
-56,2026-09-19,,Ausgabe,Onguma,Onguma Tamboti Campsite,Unterkunft,1210.00,NAD,64.95,Nora,N26 Debit,"Rechnung AA49693 (19.09.): Unterkunft 2 Naechte 2000 + Conservation Levy 260 + Feuerholz 80 = 2340 NAD abzgl. Anzahlung 1130 NAD (29.04., steht in Blatt 1 Nr. 15). Teil der N26-Zahlung 4825 NAD = 259.00 EUR, EUR anteilig"
-57,2026-09-18,,Ausgabe,Onguma,Onguma Sunrise Drive,Aktivitäten,1780.00,NAD,95.55,Nora,N26 Debit,"2 Personen je 890 NAD; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig"
-58,2026-09-18,,Ausgabe,Onguma,Onguma Tamboti Restaurant/Bar,Restaurant,1835.00,NAD,98.50,Nora,N26 Debit,"Essen und Getraenke 18.-19.09. inkl. 150 NAD Trinkgeld; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig"
+56,2026-09-19,,Ausgabe,Onguma,Onguma Tamboti Campsite,Unterkunft,1210.00,NAD,65.14,Nora,N26 Debit,"Rechnung AA49693 (19.09.): Unterkunft 2 Naechte 2000 + Conservation Levy 260 + Feuerholz 80 = 2340 NAD abzgl. Anzahlung 1130 NAD (29.04., steht in Blatt 1 Nr. 15). Teil der N26-Zahlung 4825 NAD = 259.00 EUR, EUR anteilig"
+57,2026-09-18,,Ausgabe,Onguma,Onguma Sunrise Drive,Aktivitäten,1780.00,NAD,95.83,Nora,N26 Debit,"2 Personen je 890 NAD; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig"
+58,2026-09-18,,Ausgabe,Onguma,Onguma Tamboti Restaurant/Bar,Restaurant,1835.00,NAD,98.79,Nora,N26 Debit,"Essen und Getraenke 18.-19.09. inkl. 150 NAD Trinkgeld; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig"
+59,2026-09-16,,Ausgabe,Halali,Halali Restcamp,Restaurant,,EUR,3.21,Nora,N26 Debit,Kaffee
+60,2026-09-16,,Ausgabe,Halali,Halali Restcamp,Restaurant,,EUR,12.21,Nora,N26 Debit,Getraenke

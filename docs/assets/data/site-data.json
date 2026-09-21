@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-19T07:10:34+00:00",
+  "generated_at": "2026-09-21T14:06:03+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 7099.37,
-    "bezahlt": 7099.37,
+    "gesamt": 7115.55,
+    "bezahlt": 7115.55,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 185.0,
     "kasse_bestand": 299.23,
     "patrick_gezahlt": 4166.31,
-    "nora_gezahlt": 3232.29,
+    "nora_gezahlt": 3248.47,
     "tbd_gezahlt": 0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 7398.6,
-    "anteil_pro_person": 3699.3,
+    "saldo_basis": 7414.78,
+    "anteil_pro_person": 3707.39,
     "beitrag_patrick": 6166.31,
-    "beitrag_nora": 1232.29,
-    "saldo_patrick": 2467.01,
+    "beitrag_nora": 1248.47,
+    "saldo_patrick": 2458.92,
     "kasse": {
       "Reisekasse": {
         "seit": "2026-09-03",
@@ -44,7 +44,7 @@
     },
     {
       "name": "Unterkunft",
-      "betrag": 693.01
+      "betrag": 693.2
     },
     {
       "name": "Tanken",
@@ -56,7 +56,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 271.66
+      "betrag": 287.37
     },
     {
       "name": "Eintritt",
@@ -64,7 +64,7 @@
     },
     {
       "name": "Aktivitäten",
-      "betrag": 171.5
+      "betrag": 171.78
     },
     {
       "name": "Sonstiges",
@@ -996,6 +996,36 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-59",
+      "datum": "2026-09-16",
+      "zeit": "",
+      "ort": "Halali",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Halali Restcamp",
+      "betrag": 3.21,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-60",
+      "datum": "2026-09-16",
+      "zeit": "",
+      "ort": "Halali",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Halali Restcamp",
+      "betrag": 12.21,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-15",
       "datum": "2026-09-17",
       "zeit": "",
@@ -1018,7 +1048,7 @@
       "ort_link": null,
       "kategorie": "Aktivitäten",
       "beschreibung": "Onguma Sunrise Drive",
-      "betrag": 95.55,
+      "betrag": 95.83,
       "betrag_fw": 1780.0,
       "waehrung": "NAD",
       "zahler": "Nora",
@@ -1033,7 +1063,7 @@
       "ort_link": null,
       "kategorie": "Restaurant",
       "beschreibung": "Onguma Tamboti Restaurant/Bar",
-      "betrag": 98.5,
+      "betrag": 98.79,
       "betrag_fw": 1835.0,
       "waehrung": "NAD",
       "zahler": "Nora",
@@ -1063,7 +1093,7 @@
       "ort_link": null,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti Campsite",
-      "betrag": 64.95,
+      "betrag": 65.14,
       "betrag_fw": 1210.0,
       "waehrung": "NAD",
       "zahler": "Nora",
@@ -1289,7 +1319,7 @@
       "naechte": 1,
       "kategorie": "Unterkunft",
       "beschreibung": "Onguma Tamboti (2. Nacht)",
-      "betrag": 64.95,
+      "betrag": 65.14,
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
       "vor_ort": true,
