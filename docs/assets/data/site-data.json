@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-21T14:06:03+00:00",
+  "generated_at": "2026-09-21T14:14:54+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 7115.55,
-    "bezahlt": 7115.55,
+    "gesamt": 7547.98,
+    "bezahlt": 7547.98,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
     "kasse_bar_ausgegeben": 185.0,
     "kasse_bestand": 299.23,
     "patrick_gezahlt": 4166.31,
-    "nora_gezahlt": 3248.47,
+    "nora_gezahlt": 3680.9,
     "tbd_gezahlt": 0,
     "transfer_patrick_nora": 2000.0,
-    "saldo_basis": 7414.78,
-    "anteil_pro_person": 3707.39,
+    "saldo_basis": 7847.21,
+    "anteil_pro_person": 3923.61,
     "beitrag_patrick": 6166.31,
-    "beitrag_nora": 1248.47,
-    "saldo_patrick": 2458.92,
+    "beitrag_nora": 1680.9,
+    "saldo_patrick": 2242.71,
     "kasse": {
       "Reisekasse": {
         "seit": "2026-09-03",
@@ -43,36 +43,36 @@
       "betrag": 1895.26
     },
     {
+      "name": "Tanken",
+      "betrag": 786.23
+    },
+    {
       "name": "Unterkunft",
       "betrag": 693.2
     },
     {
-      "name": "Tanken",
-      "betrag": 610.48
-    },
-    {
       "name": "Lebensmittel",
-      "betrag": 426.04
+      "betrag": 438.33
     },
     {
       "name": "Restaurant",
-      "betrag": 287.37
+      "betrag": 304.06
     },
     {
       "name": "Eintritt",
-      "betrag": 202.16
+      "betrag": 235.54
+    },
+    {
+      "name": "Sonstiges",
+      "betrag": 196.19
     },
     {
       "name": "Aktivitäten",
       "betrag": 171.78
     },
     {
-      "name": "Sonstiges",
-      "betrag": 56.22
-    },
-    {
       "name": "Shopping",
-      "betrag": 41.72
+      "betrag": 96.07
     },
     {
       "name": "Gebühren",
@@ -1101,6 +1101,81 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-61",
+      "datum": "2026-09-19",
+      "zeit": "",
+      "ort": "Tsumeb",
+      "ort_link": null,
+      "kategorie": "Tanken",
+      "beschreibung": "Tankstelle",
+      "betrag": 30.76,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-62",
+      "datum": "2026-09-19",
+      "zeit": "",
+      "ort": "Tsumeb",
+      "ort_link": null,
+      "kategorie": "Shopping",
+      "beschreibung": "Souvenirs Tsumeb",
+      "betrag": 54.35,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-63",
+      "datum": "2026-09-19",
+      "zeit": "",
+      "ort": "Tsumeb",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Sonjas Kitchen",
+      "betrag": 16.69,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-64",
+      "datum": "2026-09-19",
+      "zeit": "",
+      "ort": "Tsumeb",
+      "ort_link": null,
+      "kategorie": "Lebensmittel",
+      "beschreibung": "Supermarkt Tsumeb",
+      "betrag": 12.29,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-65",
+      "datum": "2026-09-19",
+      "zeit": "",
+      "ort": "Waterberg",
+      "ort_link": null,
+      "kategorie": "Eintritt",
+      "beschreibung": "Waterberg Plateau Park",
+      "betrag": 33.38,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-18",
       "datum": "2026-09-20",
       "zeit": "",
@@ -1113,6 +1188,36 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "Nora Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-66",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Tanken",
+      "beschreibung": "Tankstelle",
+      "betrag": 144.99,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-67",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Sonstiges",
+      "beschreibung": "Windschutzscheibe",
+      "betrag": 139.97,
+      "betrag_fw": null,
+      "waehrung": "EUR",
+      "zahler": "Nora",
+      "zahlmittel": "N26 Debit",
       "status": "bezahlt"
     }
   ],
@@ -1528,26 +1633,26 @@
       }
     ],
     "planung": {
-      "stand": "2026-09-15",
+      "stand": "2026-09-21",
       "letzter_volltank": {
-        "ort": "Palmwag",
-        "datum": "2026-09-14",
-        "kilometerstand": 23205
+        "ort": "Windhoek",
+        "datum": "2026-09-21",
+        "kilometerstand": null
       },
       "aktueller_standort": {
-        "ort": "Etosha (Okaukuejo)",
-        "datum": "2026-09-15"
+        "ort": "Windhoek (Mietwagenrueckgabe)",
+        "datum": "2026-09-21"
       },
-      "strecke_seit_volltank_km": 230,
+      "strecke_seit_volltank_km": 0,
       "naechster_pflicht_stopp": {
-        "ort": "Okaukuejo",
-        "hinweis": "Sprit in Okaukuejo, Halali und Namutoni; Pirschfahrten mit Umleitung Okaukuejo -> Halali brauchen mehr als geplant"
+        "ort": "Windhoek",
+        "hinweis": "Reise beendet - Fahrzeug am 21.09. zurueckgegeben"
       },
       "strecke_bis_naechster_stopp_km": 0,
-      "empfehlung": "Kamanjab 15.09. voll (21,22 L, ohne Kilometerstand) - Nullpunkt fuer die Verbrauchsmessung bleibt Palmwag 23.205 km, der naechste Volltank MIT km-Stand schliesst den Abschnitt. Tank ist praktisch voll; die Etosha-Tage (ca. 300 bis 400 km inkl. Umleitung) gehen ohne Tankstopp, bei Gelegenheit in Halali oder Namutoni nachfuellen und km notieren.",
+      "empfehlung": "Reise beendet. Letztes Tanken in Windhoek am 21.09. vor der Rueckgabe.",
       "anmerkung": "Dritte Messung Swakopmund -> Palmwag: 624 km, 78,27 L = 12,5 L/100 km (Schotter Damaraland). Vorher 10,9 (Helmeringhausen -> Sesriem) und 12,3 (Sesriem -> Swakopmund). Die Seite rechnet mit dem Schnitt aller Messungen.",
-      "geschaetzte_rest_liter": 132.6,
-      "geschaetzte_restreichweite_km": 1115
+      "geschaetzte_rest_liter": 160.0,
+      "geschaetzte_restreichweite_km": 1345
     }
   },
   "offene_punkte": [

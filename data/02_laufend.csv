@@ -58,3 +58,10 @@ nr,datum,zeit,typ,ort,haendler,kategorie,betrag_fw,waehrung,betrag_eur,zahler,za
 58,2026-09-18,,Ausgabe,Onguma,Onguma Tamboti Restaurant/Bar,Restaurant,1835.00,NAD,98.79,Nora,N26 Debit,"Essen und Getraenke 18.-19.09. inkl. 150 NAD Trinkgeld; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig"
 59,2026-09-16,,Ausgabe,Halali,Halali Restcamp,Restaurant,,EUR,3.21,Nora,N26 Debit,Kaffee
 60,2026-09-16,,Ausgabe,Halali,Halali Restcamp,Restaurant,,EUR,12.21,Nora,N26 Debit,Getraenke
+61,2026-09-19,,Ausgabe,Tsumeb,Tankstelle,Tanken,,EUR,30.76,Nora,N26 Debit,Kilometerstand nicht notiert
+62,2026-09-19,,Ausgabe,Tsumeb,Souvenirs Tsumeb,Shopping,,EUR,54.35,Nora,N26 Debit,
+63,2026-09-19,,Ausgabe,Tsumeb,Sonjas Kitchen,Restaurant,,EUR,16.69,Nora,N26 Debit,
+64,2026-09-19,,Ausgabe,Tsumeb,Supermarkt Tsumeb,Lebensmittel,,EUR,12.29,Nora,N26 Debit,
+65,2026-09-19,,Ausgabe,Waterberg,Waterberg Plateau Park,Eintritt,,EUR,33.38,Nora,N26 Debit,Datum angenommen (Ankunftstag)
+66,2026-09-21,,Ausgabe,Windhoek,Tankstelle,Tanken,,EUR,144.99,Nora,N26 Debit,Letztes Tanken vor Mietwagenrueckgabe; voll und km-Stand nicht bestaetigt
+67,2026-09-21,,Ausgabe,Windhoek,Windschutzscheibe,Sonstiges,,EUR,139.97,Nora,N26 Debit,Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe

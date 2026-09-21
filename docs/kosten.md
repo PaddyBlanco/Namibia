@@ -92,8 +92,15 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 58 | 2026-09-18 | – | Ausgabe | Onguma | Onguma Tamboti Restaurant/Bar | Restaurant | 1835.00 NAD | 98,79 € | Nora | N26 Debit | 18.575 | Essen und Getraenke 18.-19.09. inkl. 150 NAD Trinkgeld; Teil der N26-Zahlung 4825 NAD = 259.00 EUR am 19.09. (Rechnung AA49693), EUR anteilig |
 | 59 | 2026-09-16 | – | Ausgabe | Halali | Halali Restcamp | Restaurant | – | 3,21 € | Nora | N26 Debit | – | Kaffee |
 | 60 | 2026-09-16 | – | Ausgabe | Halali | Halali Restcamp | Restaurant | – | 12,21 € | Nora | N26 Debit | – | Getraenke |
+| 61 | 2026-09-19 | – | Ausgabe | Tsumeb | Tankstelle | Tanken | – | 30,76 € | Nora | N26 Debit | – | Kilometerstand nicht notiert |
+| 62 | 2026-09-19 | – | Ausgabe | Tsumeb | Souvenirs Tsumeb | Shopping | – | 54,35 € | Nora | N26 Debit | – | – |
+| 63 | 2026-09-19 | – | Ausgabe | Tsumeb | Sonjas Kitchen | Restaurant | – | 16,69 € | Nora | N26 Debit | – | – |
+| 64 | 2026-09-19 | – | Ausgabe | Tsumeb | Supermarkt Tsumeb | Lebensmittel | – | 12,29 € | Nora | N26 Debit | – | – |
+| 65 | 2026-09-19 | – | Ausgabe | Waterberg | Waterberg Plateau Park | Eintritt | – | 33,38 € | Nora | N26 Debit | – | Datum angenommen (Ankunftstag) |
+| 66 | 2026-09-21 | – | Ausgabe | Windhoek | Tankstelle | Tanken | – | 144,99 € | Nora | N26 Debit | – | Letztes Tanken vor Mietwagenrueckgabe; voll und km-Stand nicht bestaetigt |
+| 67 | 2026-09-21 | – | Ausgabe | Windhoek | Windschutzscheibe | Sonstiges | – | 139,97 € | Nora | N26 Debit | – | Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe |
 
-**Echte Ausgaben:** 2.007,19 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
+**Echte Ausgaben:** 2.439,62 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
 
 ## 3. Zusammenfassung
 
@@ -103,24 +110,24 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |---|---|
 | Mietwagen | 2.726,15 € |
 | Flug | 1.895,26 € |
+| Tanken | 786,23 € |
 | Unterkunft | 693,20 € |
-| Tanken | 610,48 € |
-| Lebensmittel | 426,04 € |
-| Restaurant | 287,37 € |
-| Eintritt | 202,16 € |
+| Lebensmittel | 438,33 € |
+| Restaurant | 304,06 € |
+| Eintritt | 235,54 € |
+| Sonstiges | 196,19 € |
 | Aktivitäten | 171,78 € |
-| Sonstiges | 56,22 € |
-| Shopping | 41,72 € |
+| Shopping | 96,07 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 7.115,55 €** (davon bezahlt 7.115,55 €, noch offen 0,00 €)
+**Gesamtausgaben: 7.547,98 €** (davon bezahlt 7.547,98 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
 | Person | Vorab (Blatt 1) | Laufend (Blatt 2) | Gesamt |
 |---|---|---|---|
 | Patrick | 3.673,78 € | 492,53 € | 4.166,31 € |
-| Nora | 1.434,58 € | 1.813,89 € | 3.248,47 € |
+| Nora | 1.434,58 € | 2.246,32 € | 3.680,90 € |
 | Noch offen (zählt erst bei Bezahlung, dann beim Zahler) | – | – | 0,00 € |
 
 ### Reisekasse (Bargeld)
@@ -138,13 +145,13 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 |  | Betrag |
 |---|---|
 | Patrick vorgestreckt (Karte + Abhebungen) | 4.166,31 € |
-| Nora vorgestreckt (Karte + Abhebungen) | 3.248,47 € |
+| Nora vorgestreckt (Karte + Abhebungen) | 3.680,90 € |
 | Überweisung Patrick → Nora | 2.000,00 € |
-| Bisher bezahlt gesamt (Saldo-Basis) | 7.414,78 € |
-| Anteil je Person (50 %) | 3.707,39 € |
+| Bisher bezahlt gesamt (Saldo-Basis) | 7.847,21 € |
+| Anteil je Person (50 %) | 3.923,61 € |
 | Patrick effektiv getragen (gezahlt + Überweisung) | 6.166,31 € |
-| Nora effektiv getragen (gezahlt − Überweisung) | 1.248,47 € |
-| **Saldo** | **Nora schuldet Patrick 2.458,92 €** |
+| Nora effektiv getragen (gezahlt − Überweisung) | 1.680,90 € |
+| **Saldo** | **Nora schuldet Patrick 2.242,71 €** |
 
 *Lesehilfe: Der Saldo wird 50/50 auf das gerechnet, was bisher tatsächlich bezahlt wurde – die noch offenen 0,00 € zählen erst, wenn jemand sie bezahlt (dann beim Zahler). Ein negativer Wert bei „Nora effektiv getragen“ heißt: von den 2.000 € Überweisung ist noch mehr übrig, als Nora selbst beigesteuert hat. Jede neue Zahlung von Nora in `data/02_laufend.csv` senkt den Saldo automatisch.*
 
