@@ -93,7 +93,7 @@ def cmd_add(a):
             sys.exit("Barzahlung braucht --nad (Bargeld ist immer NAD)")
         zahler = KASSE  # gemeinsame Kasse: die Abhebung zaehlt, nicht die Barzahlung (Regel 9)
         kurs = bar_kurs(rows, a.nad)
-    if zahler not in ("Patrick", "Nora", "TBD"):
+    if zahler not in ("Patrick", "Nora", "TBD", KASSE):
         sys.exit("--zahler Patrick|Nora|TBD noetig (ausser bei Bargeld)")
 
     if a.nad is None and a.eur is None:

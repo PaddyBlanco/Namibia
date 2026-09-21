@@ -99,8 +99,12 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | 65 | 2026-09-19 | – | Ausgabe | Waterberg | Waterberg Plateau Park | Eintritt | – | 33,38 € | Nora | N26 Debit | – | Datum angenommen (Ankunftstag) |
 | 66 | 2026-09-21 | – | Ausgabe | Windhoek | Tankstelle | Tanken | – | 144,99 € | Nora | N26 Debit | – | Letztes Tanken vor Mietwagenrueckgabe; voll und km-Stand nicht bestaetigt |
 | 67 | 2026-09-21 | – | Ausgabe | Windhoek | Windschutzscheibe | Sonstiges | – | 139,97 € | Nora | N26 Debit | – | Reparatur/Ersatz Windschutzscheibe Mietwagen vor Rueckgabe |
+| 68 | 2026-09-19 | – | Ausgabe | Tsumeb | Souvenirs Tsumeb | Shopping | 1400.00 NAD | 74,93 € | Kasse | Bargeld | 18.684 | EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
+| 69 | 2026-09-21 | – | Ausgabe | Windhoek | Namibia Craft Centre | Restaurant | 400.00 NAD | 21,41 € | Kasse | Bargeld | 18.683 | Kaffee im Craft Market; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
+| 70 | 2026-09-21 | – | Ausgabe | Windhoek | Autowaesche | Sonstiges | 170.00 NAD | 9,10 € | Kasse | Bargeld | 18.681 | Mietwagen vor Rueckgabe; EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
+| 71 | 2026-09-21 | – | Ausgabe | Windhoek | Getraenke | Restaurant | 140.00 NAD | 7,49 € | Kasse | Bargeld | 18.692 | EUR zum Mischkurs der Reisekasse (18.683 NAD/EUR) |
 
-**Echte Ausgaben:** 2.439,62 € (davon bar 185,00 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 299,23 €
+**Echte Ausgaben:** 2.552,55 € (davon bar 297,93 €) · **Bargeldabhebungen:** 484,23 € · **Kassenbestand:** 186,30 €
 
 ## 3. Zusammenfassung
 
@@ -113,14 +117,14 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 | Tanken | 786,23 € |
 | Unterkunft | 693,20 € |
 | Lebensmittel | 438,33 € |
-| Restaurant | 304,06 € |
+| Restaurant | 332,96 € |
 | Eintritt | 235,54 € |
-| Sonstiges | 196,19 € |
+| Sonstiges | 205,29 € |
 | Aktivitäten | 171,78 € |
-| Shopping | 96,07 € |
+| Shopping | 171,00 € |
 | Gebühren | 5,17 € |
 
-**Gesamtausgaben: 7.547,98 €** (davon bezahlt 7.547,98 €, noch offen 0,00 €)
+**Gesamtausgaben: 7.660,91 €** (davon bezahlt 7.660,91 €, noch offen 0,00 €)
 
 ### Wer hat wie viel gezahlt
 
@@ -133,9 +137,9 @@ Automatisch erzeugt aus `data/*.csv` mit `scripts/build_md.py`. **Nicht direkt e
 ### Reisekasse (Bargeld)
 
 - Abgehoben gesamt: **484,23 €**
-- Davon bar ausgegeben: **185,00 €**
-- Kassenbestand rechnerisch: **299,23 €**
-  - Bestand: 5.587 NAD ≈ 299,23 € (abgehoben 9.047 NAD zum Mischkurs 18.683 NAD/€)
+- Davon bar ausgegeben: **297,93 €**
+- Kassenbestand rechnerisch: **186,30 €**
+  - Bestand: 3.477 NAD ≈ 186,30 € (abgehoben 9.047 NAD zum Mischkurs 18.683 NAD/€)
 - Gemeinsame Kasse (seit 15.09.2026, Regel 9): Wer abhebt, streckt für beide vor und zählt mit dem Abhebungsbetrag im Saldo; Barzahlungen gehören niemandem (Zahler `Kasse`), EUR zum Mischkurs der Kasse (Regel 7).
 
 ### Verrechnung zwischen Patrick und Nora

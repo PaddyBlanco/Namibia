@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-21T14:14:54+00:00",
+  "generated_at": "2026-09-21T14:15:27+00:00",
   "trip": {
     "start": "2026-09-02",
     "end": "2026-09-21"
   },
   "summary": {
-    "gesamt": 7547.98,
-    "bezahlt": 7547.98,
+    "gesamt": 7660.91,
+    "bezahlt": 7660.91,
     "offen": 0.0,
     "kasse_abgehoben": 484.23,
-    "kasse_bar_ausgegeben": 185.0,
-    "kasse_bestand": 299.23,
+    "kasse_bar_ausgegeben": 297.93,
+    "kasse_bestand": 186.3,
     "patrick_gezahlt": 4166.31,
     "nora_gezahlt": 3680.9,
     "tbd_gezahlt": 0,
@@ -25,10 +25,10 @@
         "seit": "2026-09-03",
         "abgehoben_nad": 9047.0,
         "abgehoben_eur": 484.23,
-        "bar_nad": 3460.0,
-        "bar_eur": 185.0,
-        "bestand_nad": 5587.0,
-        "bestand_eur": 299.23,
+        "bar_nad": 5570.0,
+        "bar_eur": 297.93,
+        "bestand_nad": 3477.0,
+        "bestand_eur": 186.3,
         "kurs": 18.68
       }
     }
@@ -56,7 +56,7 @@
     },
     {
       "name": "Restaurant",
-      "betrag": 304.06
+      "betrag": 332.96
     },
     {
       "name": "Eintritt",
@@ -64,7 +64,7 @@
     },
     {
       "name": "Sonstiges",
-      "betrag": 196.19
+      "betrag": 205.29
     },
     {
       "name": "Aktivitäten",
@@ -72,7 +72,7 @@
     },
     {
       "name": "Shopping",
-      "betrag": 96.07
+      "betrag": 171.0
     },
     {
       "name": "Gebühren",
@@ -1176,6 +1176,21 @@
       "status": "bezahlt"
     },
     {
+      "id": "b2-68",
+      "datum": "2026-09-19",
+      "zeit": "",
+      "ort": "Tsumeb",
+      "ort_link": null,
+      "kategorie": "Shopping",
+      "beschreibung": "Souvenirs Tsumeb",
+      "betrag": 74.93,
+      "betrag_fw": 1400.0,
+      "waehrung": "NAD",
+      "zahler": "Kasse",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
       "id": "b1-18",
       "datum": "2026-09-20",
       "zeit": "",
@@ -1218,6 +1233,51 @@
       "waehrung": "EUR",
       "zahler": "Nora",
       "zahlmittel": "N26 Debit",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-69",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Namibia Craft Centre",
+      "betrag": 21.41,
+      "betrag_fw": 400.0,
+      "waehrung": "NAD",
+      "zahler": "Kasse",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-70",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Sonstiges",
+      "beschreibung": "Autowaesche",
+      "betrag": 9.1,
+      "betrag_fw": 170.0,
+      "waehrung": "NAD",
+      "zahler": "Kasse",
+      "zahlmittel": "Bargeld",
+      "status": "bezahlt"
+    },
+    {
+      "id": "b2-71",
+      "datum": "2026-09-21",
+      "zeit": "",
+      "ort": "Windhoek",
+      "ort_link": null,
+      "kategorie": "Restaurant",
+      "beschreibung": "Getraenke",
+      "betrag": 7.49,
+      "betrag_fw": 140.0,
+      "waehrung": "NAD",
+      "zahler": "Kasse",
+      "zahlmittel": "Bargeld",
       "status": "bezahlt"
     }
   ],
